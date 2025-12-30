@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="270px"
+            android:background="@drawable/roundwhitewhite_frame">
+        <ImageView
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:id="@+id/imgHelp" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50px" android:layout_marginTop="30px" android:scaleType="fitCenter"
+                android:src="@drawable/bk_help"/>
+        <TextView
+                android:layout_width="200px"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblTitle" android:layout_alignTop="@+id/imgHelp"
+                android:layout_toRightOf="@+id/imgHelp" android:layout_alignBottom="@+id/imgHelp"
+                android:layout_marginLeft="20px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="25px" android:text="发布成功"
+                android:gravity="center"/>
+        <Button
+                android:layout_width="150px"
+                android:layout_height="60px"
+                android:text="@string/STR_QUEDING"
+                android:id="@+id/btnOk"
+                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                android:textSize="21px" android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
+        <TextView
+                android:layout_width="80px"
+                android:layout_height="30px"
+                android:text="@string/STR_COMMUTEORDERFINISH_HINT"
+                android:id="@+id/lblHint" android:layout_below="@+id/btnOk" android:layout_alignParentLeft="true"
+                android:layout_marginTop="15px" android:layout_marginLeft="15px" android:gravity="left|top"
+                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="70px"
+                android:id="@+id/lblHintVal" android:layout_alignTop="@+id/lblHint"
+                android:layout_toRightOf="@+id/lblHint" android:layout_alignParentRight="true"
+                android:layout_marginRight="15px" android:gravity="left|top" android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px" android:text="上下班订单暂时无人接单时，系统会每天自动提醒您发送临时订单，请注意查看推送消息"/>
+    </RelativeLayout>
+</RelativeLayout>

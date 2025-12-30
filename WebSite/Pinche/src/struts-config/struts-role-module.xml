@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="role" extends="json-default,authority"
+		namespace="/role">
+
+		<!-- 资源管理 -->
+
+		<action name="resource_*" class="resourceAction" method="{1}">
+
+			<result name="listPath">
+				/WEB-INF/jsp/sysManage/role/listPath.jsp
+			</result>
+
+			<result name="updateResourceByRoleId" type="redirectAction">
+
+				<param name="actionName">
+					index
+				</param>
+
+				<param name="namespace">
+					/authority/role
+				</param>
+			</result>
+
+			<result name="findResourceByRoleId" type="json">
+
+				<param name="root">
+					list
+				</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="game" extends="json-default" namespace="/game">
+
+		<!-- 资源管理 -->
+
+		<action name="game_*" class="com.nmdy.activity.action.GameAction" method="{1}">
+
+			<result name="findLoginAdminId" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="listByCondition" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="listByBatchUserIds" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="countCityUserByTime" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="countCityUserByTime" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="giveUserMoney" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="findSyscoupon1Condition" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+
+			<result name="booleanLogin" type="json">
+
+				<param name="root">
+					jsonObj
+				</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 受权限控制的Action请求配置 -->
+
+	<package name="authority" extends="struts-default">
+
+		<interceptors>
+
+			<!-- 定义一个名为authority的拦截器 -->
+
+			<interceptor name="authority"
+				class="com.nmdy.sysManage.role.interceptor.AuthorityInterceptor" />
+			<!-- 定义一个包含权限检查的拦截器栈 -->
+
+			<interceptor-stack name="mydefault">
+
+				<!-- 配置内建默认拦截器 -->
+
+				<interceptor-ref name="defaultStack" />
+				<!-- 配置自定义的拦截器 -->
+
+				<interceptor-ref name="authority" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="mydefault" />
+		<!-- 定义全局Result -->
+
+		<global-results>
+
+			<result name="login">
+				/WEB-INF/jsp/login/login.jsp
+			</result>
+			<!-- 无权限进行操作 -->
+
+			<result name="authorityDeny">
+				/WEB-INF/jsp/authorityMsg.jsp
+			</result>
+		</global-results>
+	</package>
+
+</struts>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/parent_layout"
+                android:background="#00000000" android:gravity="center">
+    <!--标题 -->
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="wrap_content" android:background="#FFFFFF">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+                android:id="@+id/title_layout">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/STR_PASSMEMO_TITLE"
+                    android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                    android:textSize="@dimen/TITLE_FONTSIZE"/>
+
+        </RelativeLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:layout_below="@+id/title_layout"
+                android:id="@+id/content_layout"
+                android:orientation="vertical"
+                android:layout_margin="20px"
+                android:gravity="center_horizontal"
+                android:layout_centerHorizontal="true">
+
+                <EditText android:layout_width="fill_parent"
+                          android:layout_height="200px"
+                          android:textSize="25px"
+                          android:textColor="@color/GRAY_COLOR"
+                          android:background="@drawable/imgback"
+                          android:padding="10px"
+                          android:gravity="left|top"
+                          android:hint="@string/STR_PASSMEMO_DETAIL"
+                          android:id="@+id/memo_text"
+                          android:maxLength="100"  />
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="100px"
+                              android:layout_marginTop="20px"
+                              android:orientation="horizontal">
+                            <Button android:layout_width="150px"
+                                    android:layout_height="60px"
+                                    android:textColor="@color/TITLE_BACKCOLOR"
+                                    android:layout_marginRight="30px"
+                                    android:textSize="30px"
+                                    android:text="@string/STR_PASSMEMO_COMMIT"
+                                    android:background="@drawable/bk_smallwhite_normal"
+                                    android:id="@+id/confirm"/>
+                            <Button android:layout_width="150px"
+                                    android:layout_height="60px"
+                                    android:textColor="@color/WHITE_COLOR"
+                                    android:textSize="30px"
+                                    android:text="@string/STR_PASSMEMO_CANCEL"
+                                    android:id="@+id/cancel"
+                                    android:background="@drawable/btn_green_normal"/>
+                </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
+	

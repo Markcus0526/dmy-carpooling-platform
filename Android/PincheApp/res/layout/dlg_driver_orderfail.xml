@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center"
+                android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="250px"
+            android:background="@drawable/roundwhitewhite_frame">
+        <ImageView
+                android:layout_width="154px"
+                android:layout_height="119px"
+                android:id="@+id/imgIcon" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:layout_marginTop="30px" android:scaleType="fitCenter" android:src="@drawable/failicon"/>
+        <TextView
+                android:layout_width="440px"
+                android:layout_height="40px"
+                android:text="@string/STR_ORDERFAIL_HINT"
+                android:id="@+id/lblTitle" android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" android:layout_marginBottom="20px" android:gravity="center"
+                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+    </RelativeLayout>
+</RelativeLayout>

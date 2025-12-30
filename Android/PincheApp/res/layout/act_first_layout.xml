@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout"
+                android:background="@drawable/main_background">
+
+	<Button
+			android:layout_width="170px"
+			android:layout_height="170px"
+			android:id="@+id/btn_passenger" android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true" android:layout_marginLeft="40px" android:layout_marginBottom="140px"
+			android:background="@drawable/btn_main_customer"/>
+	<Button
+			android:layout_width="170px"
+			android:layout_height="170px"
+			android:id="@+id/btn_driver" android:layout_alignParentBottom="true" android:layout_alignParentLeft="false"
+			android:layout_alignParentRight="true" android:layout_marginRight="40px"
+			android:layout_marginBottom="140px" android:background="@drawable/btn_main_driver"/>
+</RelativeLayout>

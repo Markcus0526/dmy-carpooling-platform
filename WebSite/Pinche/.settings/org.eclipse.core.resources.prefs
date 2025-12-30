@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/spread/number/index2.jsp=UTF-8
+encoding//src/com/nmdy/financial/account/action/AccountAction.java=UTF-8
+encoding//src/com/nmdy/financial/manage/action/MyFormAction.java=UTF-8
+encoding//src/com/nmdy/financial/manage/dao/MyFormMapper.java=UTF-8
+encoding//src/com/nmdy/financial/manage/dao/OrderEntity.java=UTF-8
+encoding//src/com/nmdy/financial/manage/dao/UsersEntity.java=UTF-8
+encoding//src/com/nmdy/financial/manage/service/MyFormService.java=UTF-8
+encoding/<project>=UTF-8

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.customerManage.groupself.dao.GroupSelfNewMapper" >
+
+    <!-- 常用的查询结果集 -->
+
+    <resultMap
+        id="Base_Column_List_Type"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="person_verified"
+            property="person_verified" />
+    </resultMap>
+
+    <!-- 按照ID，用户名，姓名，电话 四种条件查询 -->
+
+    <select
+        id="findUsersByCondition"
+        parameterType="java.util.Map"
+        resultMap="Base_Column_List_Type" >
+		select
+			u.id, 
+			u.usercode, 
+			u.username,
+			u.phone
+		from 
+			user u
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;person_verified&apos; " >
+				AND person_verified = 1
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;driver_verified&apos; " >
+				AND driver_verified = 1
+            </if>
+        </where>
+		LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 获得条件查询的总记录数 -->
+
+    <select
+        id="getCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		select count(*) from user
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;person_verified&apos; " >
+				AND person_verified = 1
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;driver_verified&apos; " >
+				AND driver_verified = 1
+            </if>
+        </where>
+    </select>
+
+    <!-- 集团客户查询结果集 -->
+
+    <resultMap
+        id="Group_Info"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="create_date"
+            property="create_date" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="active_as_driver_self"
+            property="active_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+    </resultMap>
+
+    <select
+        id="getGroupInfo"
+        parameterType="long"
+        resultMap="Group_Info" >
+		SELECT
+			id,
+			groupid,
+			group_name,
+			date_format(create_date,'%Y-%m-%d') as create_date,
+			linkname,
+			linkphone,
+			group_property,
+			contract_no,
+			fix_phone,
+			email,
+			fax,
+			group_address,
+			invitecode_self,
+			remark,
+			date_format(sign_time,'%Y-%m-%d') as sign_time,
+			active_as_driver_self,
+			integer_as_driver_self,
+			ratio_as_driver_self
+			
+		FROM
+			group_
+		WHERE
+			id=#{id}
+    </select>
+
+    <update
+        id="updateGroupInfo"
+        parameterType="java.util.Map" >
+		update group_
+
+        <set>
+
+            <if test="groupid != null" >
+				groupid = #{groupid},
+            </if>
+
+            <if test="group_name != null" >
+				group_name = #{group_name},
+            </if>
+
+            <if test="linkname != null" >
+				linkname = #{linkname},
+            </if>
+
+            <if test="linkphone != null" >
+				linkphone = #{linkphone},
+            </if>
+
+            <if test="group_property != null" >
+				group_property = #{group_property},
+            </if>
+
+            <if test="contract_no != null" >
+				contract_no = #{contract_no},
+            </if>
+
+            <if test="fix_phone != null" >
+				fix_phone = #{fix_phone},
+            </if>
+
+            <if test="email != null" >
+				email = #{email},
+            </if>
+
+            <if test="fax != null" >
+				fax = #{fax},
+            </if>
+
+            <if test="group_address != null" >
+				group_address = #{group_address},
+            </if>
+
+            <if test="invitecode_self != null" >
+				invitecode_self = #{invitecode_self},
+            </if>
+
+            <if test="active_as_driver_self != null" >
+				active_as_driver_self = #{active_as_driver_self},
+            </if>
+
+            <if test="integer_as_driver_self != null" >
+				integer_as_driver_self = #{integer_as_driver_self},
+            </if>
+
+            <if test="ratio_as_driver_self != null" >
+				ratio_as_driver_self = #{ratio_as_driver_self},
+            </if>
+
+            <if test="remark != null" >
+				remark = #{remark}
+            </if>
+        </set>
+		where id = #{id}
+    </update>
+
+    <!-- 常用的查询结果集 -->
+
+    <resultMap
+        id="users"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="integer_as_driver"
+            property="integer_as_driver" />
+
+        <result
+            column="activeway_as_driver"
+            property="activeway_as_driver" />
+
+        <result
+            column="ratio_as_driver"
+            property="ratio_as_driver" />
+
+        <result
+            column="reallocateProfit"
+            property="reallocateProfit" />
+    </resultMap>
+
+    <!-- 按照ID，用户名，姓名，电话 四种条件查询 -->
+
+    <select
+        id="getUsersByCondition"
+        parameterType="java.util.Map"
+        resultMap="users" >
+		SELECT 
+			u.id,
+			u.usercode,
+			u.username,
+			u.phone,
+			u.integer_as_driver,   
+			u.activeway_as_driver,
+			u.ratio_as_driver,  
+			CASE WHEN activeway_as_driver=0 THEN CONCAT(ratio_as_driver,'%') ELSE CONCAT(integer_as_driver,'点')   END  reallocateProfit   
+		FROM 
+			user u LEFT JOIN group_details gd  ON u.id = gd.userid 
+
+        <where>
+
+            <if test="conditionSelect != null or conditionSelect == null or conditionInput != null or conditionInput == null" >
+				gd.groupid  = #{id}
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				AND u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				AND u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				AND u.id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				AND u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;person_verified&apos; " >
+				AND person_verified = 1
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;driver_verified&apos; " >
+				AND driver_verified = 1
+            </if>
+        </where>
+		LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 获得条件查询的总记录数 -->
+
+    <select
+        id="getUserCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		select count(*) 
+		FROM 
+		    user u LEFT JOIN group_details gd  ON u.id = gd.userid 
+
+        <where>
+
+            <if test="conditionSelect != null or conditionSelect == null or conditionInput != null or conditionInput == null" >
+				gd.groupid  = #{id}
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				AND u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				AND u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				AND u.id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				AND u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;person_verified&apos; " >
+				AND person_verified = 1
+            </if>
+
+            <if test="verifiedStaus != null and  verifiedStaus == &apos;driver_verified&apos; " >
+				AND driver_verified = 1
+            </if>
+        </where>
+    </select>
+
+    <!-- 将指定用户从集团中移除 -->
+
+    <delete
+        id="removeUserFromGroup"
+        parameterType="java.util.Map" >
+		DELETE   FROM group_details WHERE groupid=#{groupid} AND userid = #{userid}
+    </delete>
+
+    <!-- 更改用户的分成比例 -->
+
+    <update id="setReallocateProfit" >
+			UPDATE 
+				user
+
+        <set>
+
+            <if test="activeway_as_driver != null" >
+					activeway_as_driver = #{activeway_as_driver},
+            </if>
+
+            <if test="integer_as_driver != null" >
+					integer_as_driver = #{integer_as_driver},
+            </if>
+
+            <if test="ratio_as_driver != null" >
+					ratio_as_driver = #{ratio_as_driver},
+            </if>
+        </set>
+			where id = #{userid}
+    </update>
+    <!-- 更改用户的分成比例 为默认值 -->
+
+    <update id="setReallocateProfitDefault" >
+			UPDATE 
+				user u
+			SET 
+				u.integer_as_driver = (SELECT g.integer_as_driver_self FROM group_ g WHERE g.id = #{groupid}),
+			  	u.activeway_as_driver = (SELECT g.active_as_driver_self FROM group_ g WHERE g.id = #{groupid}),
+			  	u.ratio_as_driver = (SELECT g.ratio_as_driver_self FROM group_ g WHERE g.id = #{groupid})
+			WHERE 
+				u.id = #{userid}
+    </update>
+
+    <!-- 将指定用户的注册邀请码置空，表明没有任何人或集团与他产生返利关系 -->
+
+    <update id="setInvitecodeRegistNull" >
+    </update>
+
+</mapper>

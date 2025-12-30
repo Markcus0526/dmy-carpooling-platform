@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1F1F1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_ABOUT_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout">
+		<ImageView
+				android:layout_width="440px"
+				android:layout_height="250px"
+				android:id="@+id/img_logo" android:layout_centerHorizontal="true" android:layout_marginTop="30px"
+				android:background="@drawable/img_about_oo"/>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="60px" android:id="@+id/rel_story" android:layout_below="@+id/img_logo"
+				android:layout_alignLeft="@+id/img_logo" android:layout_alignRight="@+id/img_logo"
+				android:layout_marginTop="30px">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="60px"
+					android:id="@+id/img_story"
+					android:background="@drawable/img_txt_top"/>
+			<ImageView
+					android:layout_width="50px"
+					android:layout_height="match_parent"
+					android:id="@+id/imageView" android:layout_alignParentRight="true"
+					android:src="@drawable/img_right_arrow" android:scaleType="centerInside"/>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_ABOUT_OOSTORY"
+					android:id="@+id/textView" android:gravity="center_vertical" android:paddingLeft="30px"
+					android:textColor="#707070" android:textSize="23px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_story" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="60px" android:id="@+id/rel_version" android:layout_below="@+id/rel_story"
+				android:layout_alignLeft="@+id/rel_story" android:layout_alignRight="@+id/rel_story">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="60px"
+					android:id="@+id/img_version"
+					android:background="@drawable/img_txt_middle"/>
+			<ImageView
+					android:layout_width="fill_parent"
+					android:layout_height="1px"
+					android:id="@+id/img_separator"
+					android:layout_alignRight="@+id/img_version"
+					android:background="#D9D9D9" android:layout_alignParentBottom="true"/>
+			<ImageView android:layout_width="50px" android:layout_height="match_parent" android:id="@+id/imageView1"
+			           android:layout_alignParentRight="true" android:src="@drawable/img_right_arrow"
+			           android:scaleType="centerInside"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:text="@string/STR_ABOUT_VERSION"
+					android:id="@+id/textView1" android:gravity="center_vertical" android:paddingLeft="30px"
+					android:textColor="#707070" android:textSize="23px"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:id="@+id/txt_version" android:textColor="#707070" android:textSize="23px"
+					android:text="1.0" android:gravity="center_vertical" android:layout_toRightOf="@+id/textView1"
+					android:layout_marginLeft="10px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_version" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout android:layout_width="fill_parent" android:layout_height="60px" android:id="@+id/rel_agreement"
+		                android:layout_below="@+id/rel_version" android:layout_alignLeft="@+id/rel_version"
+		                android:layout_alignRight="@+id/rel_version">
+			<ImageView android:layout_width="wrap_content" android:layout_height="60px" android:id="@+id/imageView4"
+			           android:background="@drawable/img_txt_middle"/>
+			<ImageView android:layout_width="50px" android:layout_height="match_parent" android:id="@+id/imageView5"
+			           android:layout_alignParentRight="true" android:src="@drawable/img_right_arrow"
+			           android:scaleType="centerInside"/>
+			<ImageView android:layout_width="fill_parent" android:layout_height="1px" android:id="@+id/imageView6"
+			           android:layout_alignRight="@+id/img_version" android:background="#D9D9D9"
+			           android:layout_alignParentBottom="true"/>
+			<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+			          android:text="@string/STR_ABOUT_SERVICEAGREEMENT" android:id="@+id/textView4"
+			          android:gravity="center_vertical" android:paddingLeft="30px" android:textColor="#707070"
+			          android:textSize="23px"/>
+			<ImageButton android:layout_width="match_parent" android:layout_height="match_parent"
+			             android:id="@+id/btn_agreement" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="60px" android:id="@+id/rel_call" android:layout_below="@+id/rel_agreement"
+				android:layout_alignLeft="@+id/rel_agreement" android:layout_alignRight="@+id/rel_agreement">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="60px"
+					android:id="@+id/img_call"
+					android:background="@drawable/img_txt_middle"/>
+			<ImageView android:layout_width="50px" android:layout_height="match_parent" android:id="@+id/imageView2"
+			           android:layout_alignParentRight="true" android:src="@drawable/img_right_arrow"
+			           android:scaleType="centerInside"/>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_ABOUT_CALLCUSTOMERSERVICE"
+					android:id="@+id/textView2" android:gravity="center_vertical" android:paddingLeft="30px"
+					android:textColor="#707070" android:textSize="23px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_call" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="60px" android:id="@+id/rel_feedback" android:layout_below="@+id/rel_call"
+				android:layout_alignLeft="@+id/rel_call" android:layout_alignRight="@+id/rel_call">
+			<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="60px"
+					android:id="@+id/img_feedback"
+					android:background="@drawable/img_txt_bottom"/>
+			<ImageView android:layout_width="50px" android:layout_height="match_parent" android:id="@+id/imageView3"
+			           android:layout_alignParentRight="true" android:src="@drawable/img_right_arrow"
+			           android:scaleType="centerInside"/>
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_ABOUT_FEEDBACK"
+					android:id="@+id/textView3" android:gravity="center_vertical" android:paddingLeft="30px"
+					android:textColor="#707070" android:textSize="23px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_feedback" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.operation.cityparam.dao.CityParamMapper" >
+
+    <select
+        id="find"
+        parameterType="java.lang.String"
+        resultType="CityParam" >
+
+        <if test="_parameter!=null and _parameter !=&apos;&apos;" >
+       select * from city where name=#{name,jdbcType=VARCHAR}
+        </if>
+
+        <if test="_parameter==null or _parameter==&apos;&apos;" >
+             select * from city where id =1
+        </if>
+    </select>
+
+    <select
+        id="findglobal"
+        resultType="CityParam" >
+    select *  from global_params where id=1 and deleted=0
+    </select>
+
+    <update
+        id="save"
+        parameterType="java.util.Map" >
+  update city  set
+
+        <if test="total_time!=null and &apos;&apos;!=total_time" >
+         total_time=#{total_time},
+        </if>
+
+        <if test="driver_lock_time!=null and &apos;&apos;!=driver_lock_time" >
+           driver_lock_time=#{driver_lock_time},
+        </if>
+
+        <if test="range1!=null and &apos;&apos;!=range1" >
+            range1=#{range1},
+        </if>
+
+        <if test="range2!=null and &apos;&apos;!=drange2" >
+            range2=#{range2},
+        </if>
+
+        <if test="range3!=null and &apos;&apos;!=drange3" >
+           range3=#{range3},
+        </if>
+
+        <if test="turn1_time!=null and &apos;&apos;!=turn1_time" >
+             turn1_time=#{turn1_time},
+        </if>
+
+        <if test="turn2_time!=null and &apos;&apos;!=turn2_time" >
+           turn2_time=#{turn2_time},
+        </if>
+
+        <if test="active !=-1" >
+            active=#{active},
+        </if>
+
+        <if test="points_per_add_active !=-1" >
+            points_per_add_active=#{points_per_add_active},
+        </if>
+
+        <if test="price_limit_active !=-1" >
+          price_limit_active=#{price_limit_active},
+        </if>
+
+        <if test="points_per_add_ratio !=null and &apos;&apos;!= points_per_add_ratio" >
+            points_per_add_ratio=#{points_per_add_ratio},
+        </if>
+
+        <if test="points_per_add_integer !=null and &apos;&apos;!= points_per_add_integer" >
+           points_per_add_integer=#{points_per_add_integer},
+        </if>
+
+        <if test="price_limit_ratio !=null and &apos;&apos;!= price_limit_ratio" >
+           price_limit_ratio=#{price_limit_ratio},
+        </if>
+
+        <if test="price_limit_integer !=null and &apos;&apos;!= price_limit_integer" >
+            price_limit_integer=#{price_limit_integer},
+        </if>
+
+        <if test="ratio !=null and &apos;&apos;!= ratio" >
+           ratio=#{ratio},
+        </if>
+
+        <if test="integer_ !=null and &apos;&apos;!= integer_" >
+            integer_ =#{integer_},
+        </if>
+
+        <if test="integer_ !=null and &apos;&apos;!= integer_" >
+            integer_ =# {integer_},
+        </if>
+
+        <if test="add_price_time1 !=null and &apos;&apos;!= add_price_time1" >
+            add_price_time1 =#{add_price_time1},
+        </if>
+
+        <if test="add_price_time2 !=null and &apos;&apos;!= add_price_time2" >
+            add_price_time2 =#{add_price_time2},
+        </if>
+
+        <if test="add_price_time3 !=null and &apos;&apos;!= add_price_time3" >
+            add_price_time3 =#{add_price_time3},
+        </if>
+
+        <if test="add_price_time4 !=null and &apos;&apos;!= add_price_time4" >
+            add_price_time4 =#{add_price_time4},
+        </if>
+
+        <if test="add_price_time5 !=null and &apos;&apos;!= add_price_time5" >
+            add_price_time5 =#{add_price_time5},
+        </if>
+
+        <if test="same_price_time1 !=null and &apos;&apos;!= same_price_time1" >
+            same_price_time1 =#{same_price_time1},
+        </if>
+
+        <if test="same_price_time12 !=null and &apos;&apos;!= same_price_time2" >
+            same_price_time2 =#{same_price_time2},
+        </if>
+
+        <if test="same_price_time3 !=null and &apos;&apos;!= same_price_time3" >
+            same_price_time3 =#{same_price_time3},
+        </if>
+
+        <if test="same_price_time4 !=null and &apos;&apos;!= same_price_time4" >
+            same_price_time4 =#{same_price_time4},
+        </if>
+
+        <if test="same_price_time5 !=null and &apos;&apos;!= same_price_time5" >
+            same_price_time5 =#{same_price_time5},
+        </if>
+
+        <if test="a1 !=null and &apos;&apos;!= a1" >
+            a1=#{a1},
+        </if>
+
+        <if test="a2 !=null and &apos;&apos;!= a2" >
+            a2=#{a2},
+        </if>
+
+        <if test="b1 !=null and &apos;&apos;!= b1" >
+            b1=#{b1},
+        </if>
+
+        <if test="b2 !=null and &apos;&apos;!= b2" >
+            b2=#{b2},
+        </if>
+
+        <if test="b4 !=null and &apos;&apos;!= b4" >
+           b4=#{b4},
+        </if>
+
+        <if test="c1 !=null and &apos;&apos;!= c1" >
+            c1=#{c1},
+        </if>
+
+        <if test="c2 !=null and &apos;&apos;!= c2" >
+            c2=#{c2},
+        </if>
+
+        <if test="e1 !=null and &apos;&apos;!= e1" >
+          e1=#{e1},
+        </if>
+
+        <if test="e2 !=null and &apos;&apos;!= e2" >
+           e2=#{e2},
+        </if>
+
+        <if test="d1 !=null and &apos;&apos;!= d1" >
+          d1=#{d1},
+        </if>
+
+        <if test="d2 !=null and &apos;&apos;!= d2" >
+           d2=#{d2},
+        </if>
+
+        <if test="e4 !=null and &apos;&apos;!= e4" >
+           e4=#{e4},
+        </if>
+
+        <if test="t1 !=null and &apos;&apos;!= t1" >
+            t1=CONVERT(#{t1}, TIME),
+        </if>
+
+        <if test="t2 !=null and &apos;&apos;!= t2" >
+           t2=CONVERT(#{t2} , TIME),
+        </if>
+
+        <if test="f1 !=null and &apos;&apos;!= f1" >
+          f1=#{f1},
+        </if>
+
+        <if test="f2 !=null and &apos;&apos;!= f2" >
+           f2=#{f2},
+        </if>
+
+        <if test="g1 !=null and &apos;&apos;!= g1" >
+           g1=#{g1},
+        </if>
+
+        <if test="g2 !=null and &apos;&apos;!= g2" >
+            g2=#{g2},
+        </if>
+
+        <if test="g3 !=null and &apos;&apos;!= g3" >
+           g3=#{g3},
+        </if>
+
+        <if test="g4 !=null and &apos;&apos;!= g4" >
+            g4=#{g4},
+        </if>
+
+        <if test="g5 !=null and &apos;&apos;!= g5" >
+            g5=#{g5},
+        </if>
+        id=id
+        where name=#{name}
+    </update>
+
+    <update
+        id="saveGloble"
+        parameterType="java.util.Map" >
+   update global_params  set
+
+        <if test="total_time!=null and &apos;&apos;!=total_time" >
+         total_time=#{total_time},
+        </if>
+
+        <if test="driver_lock_time!=null and &apos;&apos;!=driver_lock_time" >
+           driver_lock_time=#{driver_lock_time},
+        </if>
+
+        <if test="range1!=null and &apos;&apos;!=range1" >
+            range1=#{range1},
+        </if>
+
+        <if test="range2!=null and &apos;&apos;!=drange2" >
+            range2=#{range2},
+        </if>
+
+        <if test="range3!=null and &apos;&apos;!=drange3" >
+           range3=#{range3},
+        </if>
+
+        <if test="turn1_time!=null and &apos;&apos;!=turn1_time" >
+             turn1_time=#{turn1_time},
+        </if>
+
+        <if test="turn2_time!=null and &apos;&apos;!=turn2_time" >
+           turn2_time=#{turn2_time},
+        </if>
+
+        <if test="active !=-1" >
+            active=#{active},
+        </if>
+
+        <if test="points_per_add_active !=-1" >
+            points_per_add_active=#{points_per_add_active},
+        </if>
+
+        <if test="price_limit_active !=-1" >
+          price_limit_active=#{price_limit_active},
+        </if>
+
+        <if test="points_per_add_ratio !=null and &apos;&apos;!= points_per_add_ratio" >
+            points_per_add_ratio=#{points_per_add_ratio},
+        </if>
+
+        <if test="points_per_add_integer !=null and &apos;&apos;!= points_per_add_integer" >
+           points_per_add_integer=#{points_per_add_integer},
+        </if>
+
+        <if test="price_limit_ratio !=null and &apos;&apos;!= price_limit_ratio" >
+           price_limit_ratio=#{price_limit_ratio},
+        </if>
+
+        <if test="price_limit_integer !=null and &apos;&apos;!= price_limit_integer" >
+            price_limit_integer=#{price_limit_integer},
+        </if>
+
+        <if test="ratio !=null and &apos;&apos;!= ratio" >
+           ratio=#{ratio},
+        </if>
+
+        <if test="integer_ !=null and &apos;&apos;!= integer_" >
+            integer_ =#{integer_},
+        </if>
+
+        <if test="integer_ !=null and &apos;&apos;!= integer_" >
+            integer_ =# {integer_},
+        </if>
+
+        <if test="add_price_time1 !=null and &apos;&apos;!= add_price_time1" >
+            add_price_time1 =#{add_price_time1},
+        </if>
+
+        <if test="add_price_time2 !=null and &apos;&apos;!= add_price_time2" >
+            add_price_time2 =#{add_price_time2},
+        </if>
+
+        <if test="add_price_time3 !=null and &apos;&apos;!= add_price_time3" >
+            add_price_time3 =#{add_price_time3},
+        </if>
+
+        <if test="add_price_time4 !=null and &apos;&apos;!= add_price_time4" >
+            add_price_time4 =#{add_price_time4},
+        </if>
+
+        <if test="add_price_time5 !=null and &apos;&apos;!= add_price_time5" >
+            add_price_time5 =#{add_price_time5},
+        </if>
+
+        <if test="same_price_time1 !=null and &apos;&apos;!= same_price_time1" >
+            same_price_time1 =#{same_price_time1},
+        </if>
+
+        <if test="same_price_time12 !=null and &apos;&apos;!= same_price_time2" >
+            same_price_time2 =#{same_price_time2},
+        </if>
+
+        <if test="same_price_time3 !=null and &apos;&apos;!= same_price_time3" >
+            same_price_time3 =#{same_price_time3},
+        </if>
+
+        <if test="same_price_time4 !=null and &apos;&apos;!= same_price_time4" >
+            same_price_time4 =#{same_price_time4},
+        </if>
+
+        <if test="same_price_time5 !=null and &apos;&apos;!= same_price_time5" >
+            same_price_time5 =#{same_price_time5},
+        </if>
+
+        <if test="a1 !=null and &apos;&apos;!= a1" >
+            a1=#{a1},
+        </if>
+
+        <if test="a2 !=null and &apos;&apos;!= a2" >
+            a2=#{a2},
+        </if>
+
+        <if test="b1 !=null and &apos;&apos;!= b1" >
+            b1=#{b1},
+        </if>
+
+        <if test="b2 !=null and &apos;&apos;!= b2" >
+            b2=#{b2},
+        </if>
+
+        <if test="b4 !=null and &apos;&apos;!= b4" >
+           b4=#{b4},
+        </if>
+
+        <if test="c1 !=null and &apos;&apos;!= c1" >
+            c1=#{c1},
+        </if>
+
+        <if test="c2 !=null and &apos;&apos;!= c2" >
+            c2=#{c2},
+        </if>
+
+        <if test="e1 !=null and &apos;&apos;!= e1" >
+          e1=#{e1},
+        </if>
+
+        <if test="e2 !=null and &apos;&apos;!= e2" >
+           e2=#{e2},
+        </if>
+
+        <if test="d1 !=null and &apos;&apos;!= d1" >
+          d1=#{d1},
+        </if>
+
+        <if test="d2 !=null and &apos;&apos;!= d2" >
+           d2=#{d2},
+        </if>
+
+        <if test="e4 !=null and &apos;&apos;!= e4" >
+           e4=#{e4},
+        </if>
+
+        <if test="t1 !=null and &apos;&apos;!= t1" >
+            t1=CONVERT(#{t1}, TIME),
+        </if>
+
+        <if test="t2 !=null and &apos;&apos;!= t2" >
+           t2=CONVERT(#{t2} , TIME),
+        </if>
+
+        <if test="f1 !=null and &apos;&apos;!= f1" >
+          f1=#{f1},
+        </if>
+
+        <if test="f2 !=null and &apos;&apos;!= f2" >
+           f2=#{f2},
+        </if>
+
+        <if test="g1 !=null and &apos;&apos;!= g1" >
+           g1=#{g1},
+        </if>
+
+        <if test="g2 !=null and &apos;&apos;!= g2" >
+            g2=#{g2},
+        </if>
+
+        <if test="g3 !=null and &apos;&apos;!= g3" >
+           g3=#{g3},
+        </if>
+
+        <if test="g4 !=null and &apos;&apos;!= g4" >
+            g4=#{g4},
+        </if>
+
+        <if test="g5 !=null and &apos;&apos;!= g5" >
+            g5=#{g5},
+        </if>
+        id=id
+    </update>
+
+</mapper>

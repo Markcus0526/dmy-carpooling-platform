@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="300px"
+            android:background="@android:color/transparent">
+       <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="收取费用详情"
+                android:id="@+id/lblTitle"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:background="@drawable/roundgreen_frame"
+                android:textColor="@color/WHITE_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INFO_COST_TIP1"
+                android:id="@+id/info_cost_tip1"
+                android:layout_below="@+id/lblTitle"
+                android:paddingBottom="10px"
+                android:paddingTop="20px"
+                android:layout_marginLeft="130px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XXX"
+                android:id="@+id/info_cost_detial"
+                android:layout_toRightOf="@+id/info_cost_tip1"
+                android:layout_below="@+id/lblTitle"
+                android:paddingBottom="10px"
+                android:paddingTop="20px"
+                android:textColor="@color/RED_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INFO_COST_TIP2"
+                android:id="@+id/info_cost_tip2"
+                android:layout_toRightOf="@+id/info_cost_detial"
+                android:layout_below="@+id/lblTitle"
+                android:paddingBottom="10px"
+                android:paddingTop="20px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INSURANCE_FEE_TIP1"
+                android:id="@+id/insurance_tip1"
+                android:layout_below="@+id/info_cost_detial"
+                android:layout_marginLeft="130px"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XXX"
+                android:id="@+id/insurance_detail"
+                android:layout_below="@+id/info_cost_detial"
+                android:layout_toRightOf="@+id/insurance_tip1"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:textColor="@color/RED_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INFO_COST_TIP2"
+                android:id="@+id/insurance_tip2"
+                android:layout_below="@+id/info_cost_detial"
+                android:layout_toRightOf="@+id/insurance_detail"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <Button
+                android:layout_width="150px"
+                android:layout_height="60px"
+                android:text="@string/STR_QUEDING"
+                android:layout_marginLeft="120px"
+                android:id="@+id/btnOk"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="30px"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                android:textSize="21px"/>
+    </RelativeLayout>
+</RelativeLayout>

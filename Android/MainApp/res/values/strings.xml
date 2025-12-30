@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">OO快拼尊享版</string>
+    <string name="MAIN_DOWNLOAD_TITLE">OO快拼</string>
+    <string name="MAIN_DOWNLOAD_CONTENT">用OO快拼，为生活提速！</string>
+    <string name="SHARE_TITLE">加入OO大家庭，赢取千万大奖</string>
+    <string name="SHARE_CONTENT">你离千万大奖就差一“点”了</string>
+	<string name="STR_CONFIRM_LOGOUT_WITHLOGIN">确定退出当前登录吗？</string>
+	<string name="STR_CONFIRM_NOTREGISTERED_NOWREGISTER">您尚未登录，首先需要登录</string>
+	<string name="STR_QUEDING">确定</string>
+	<string name="STR_QUEREN">确认</string>
+	<string name="STR_QUXIAO">取消</string>
+	<string name="STR_SHI">是</string>
+	<string name="STR_FOU">否</string>
+	<string name="STR_FANHUI">返回</string>
+	<string name="STR_KAISHITIYAN">开始体验</string>
+	<string name="STR_QINGSHAOHOU">请稍候...</string>
+	<string name="STR_CONN_ERROR">网络不给力，稍后再试吧</string>
+	<string name="STR_PRESS_ONCEMORE_EXIT">再按一次退出OO车生活</string>
+	<string name="STR_NOTE">提示</string>
+	<string name="STR_CONFIRM_INSTALL">您确定要安装该软件吗?</string>
+	<string name="STR_INSTALL_PINCHE">您首先需要安装拼车软件</string>
+	<string name="STR_DOWNLOAD_OK">下载完成</string>
+	<string name="STR_ERR_VERSION_INFO">版本错误</string>
+	<string name="STR_LOGOUT_SUCCESS">退出成功</string>
+	<string name="STR_NOW_LATESTVERSION">已经是最新版本啦</string>
+	<string name="STR_CANNOT_INPUTMORE">不能再次输入了</string>
+
+	<!-- Main Activiy -->
+	<!-- Application tab -->
+	<string name="STR_MAIN_TITLE">OO车</string>
+	<string name="STR_TAB_APP">应用</string>
+	<string name="STR_TAB_NEWS">消息中心</string>
+	<string name="STR_TAB_PERSON">个人中心</string>
+	<string name="STR_TAB_SHARE">分享</string>
+	<string name="STR_INSTALLED_APPS">已安装应用</string>
+	<string name="STR_NOTINSTALLED_APPS">未安装应用</string>
+	<string name="STR_CONFIRM_TO_DOWNLOAD">是否开始下载</string>
+	<string name="STR_CONFIRM_TO_CONTINUE">是否继续下载</string>
+	<string name="STR_CONFIRM_TO_UPGRADE1">发现新版本</string>
+	<string name="STR_CONFIRM_TO_UPGRADE2">是否升级</string>
+	<string name="STR_CONFIRM_TO_REMOVE">您确定要删除已经下载的内容?</string>
+	<!-- News tab -->
+	<string name="STR_GONGGAO">公告</string>
+	<string name="STR_DINGDANXIAOXI">订单消息</string>
+	<string name="STR_TONGZHI">通知</string>
+	<!-- Tab person -->
+	<string name="STR_WODEGERENXINXI">我的个人信息</string>
+	<string name="STR_WODEJIANPAILVDIAN">我的减排绿点</string>
+	<string name="STR_WODEDIANQUAN">我的点券</string>
+	<string name="STR_GUANYUOO">关于OO</string>
+	<string name="STR_TUICHUDENGLU">退出登录</string>
+	<string name="STR_CONFIRM_LOGOUT">您确定要退出登录吗?</string>
+    <string name="STR_HINT_COUPONPWD">点券密码</string>
+	<!-- Tab share -->
+	<string name="STR_WODEYAOQINGMA">我的邀请码</string>
+	<string name="STR_DOWNLOADQRCODE">APP下载二维码</string>
+	<string name="STR_SHARE_SMS">短信</string>
+	<string name="STR_SHARE_EMAIL">邮件</string>
+	<string name="STR_SHARE_SINA">微博</string>
+	<string name="STR_SHARE_TENGXUN">腾讯微博</string>
+	<string name="STR_SHARE_WEIXIN">微信</string>
+	<string name="STR_SHARE_WEIPENGYOUQUAN">朋友圈</string>
+	<string name="STR_SHARE_QQKONGJIAN">QQ空间</string>
+	<string name="STR_SHARE_QQHAOYOU">QQ好友</string>
+	<string name="STR_SHARE_MOMO">陌陌</string>
+	<string name="STR_SHARE_YIXIN">易信</string>
+
+	<!-- Register Activiy -->
+	<string name="STR_REGISTER_TITLE">用户注册</string>
+	<string name="STR_REGISTER_USERNAME">用户名</string>
+	<string name="STR_REGISTER_MOBILE">手机号</string>
+	<string name="STR_REGISTER_GETVERIFYKEY">获取验证码</string>
+	<string name="STR_REGISTER_VERIFYKEY">验证码</string>
+	<string name="STR_REGISTER_NICKNAME">称呼</string>
+	<string name="STR_REGISTER_PASSWORD">密码</string>
+	<string name="STR_REGISTER_CONFIRMPWD">再次输入</string>
+	<string name="STR_REGISTER_REQCODE">邀请码</string>
+	<string name="STR_REGISTER_SELECT">( 可选 )</string>
+	<string name="STR_REGISTER_MALE">先生</string>
+	<string name="STR_REGISTER_FEMALE">女士</string>
+	<string name="STR_REGISTER_MOBILE_CANNOT_EMPTY">手机号码不能为空</string>
+    <string name="STR_MSG_PHONENUM_LEN">手机号码必须是11位数字</string>
+	<string name="STR_REGISTER_USERNAME_CANNOT_EMPTY">用户名不能为空</string>
+	<string name="STR_REGISTER_NICKNAME_CANNOT_EMPTY">称呼不能为空</string>
+	<string name="STR_REGISTER_PWD_TOO_SHORT">密码要至少6个字</string>
+	<string name="STR_REGISTER_PWD_CANNOT_EMPTY">密码不能为空</string>
+	<string name="STR_REGISTER_PWDCONF_NOTMATCH">密码输入得不正确</string>
+	<string name="STR_REGISTER_VERIFYKEY_NOTMATCH">验证码不正确</string>
+	<string name="STR_REGISTER_SUCCESS">注册成功</string>
+
+
+	<!-- Login Activiy -->
+	<string name="STR_LOGIN_TITLE">登录</string>
+	<string name="STR_LOGIN_INPUTUSERNAME">请输入用户名</string>
+	<string name="STR_LOGIN_INPUTPWD">请输入密码</string>
+	<string name="STR_LOGIN_AUTOLOGIN">自动登录</string>
+	<string name="STR_LOGIN_REMEMPWD">记住密码</string>
+	<string name="STR_LOGIN_LOGIN">登录</string>
+	<string name="STR_LOGIN_REGISTER">注册</string>
+	<string name="STR_LOGIN_FORGETPWD">忘记密码?</string>
+	<string name="STR_LOGIN_USERNAME_CANNOT_EMPTY">用户名不能为空</string>
+	<string name="STR_LOGIN_PASSWORD_CANNOT_EMPTY">密码不能为空</string>
+
+	<!-- Forget password activity -->
+	<string name="STR_FORGETPWD_TITLE">忘记密码</string>
+	<string name="STR_FORGETPWD_USERNAME">用户名</string>
+	<string name="STR_FORGETPWD_MOBILE">手机号</string>
+	<string name="STR_FORGETPWD_GETVERIFKEY">获取验证码</string>
+	<string name="STR_FORGETPWD_VERIFKEY">验证码</string>
+	<string name="STR_FORGETPWD_NEWPWD">输入新密码</string>
+	<string name="STR_FORGETPWD_CONFIRMPWD">再次输入新密码</string>
+	<string name="STR_FORGETPWD_USERNAME_CANNOTEMPTY">用户名不能为空</string>
+	<string name="STR_FORGETPWD_MOBILE_CANNOTEMPTY">手机号不能为空</string>
+	<string name="STR_FORGETPWD_VERIFKEY_CANNOTEMPTY">验证码不能为空</string>
+	<string name="STR_FORGETPWD_NEWPWD_CANNOTEMPTY">密码不能为空</string>
+	<string name="STR_FORGETPWD_PWD_NOTMATCH">密码不一致</string>
+	<string name="STR_FORGETPWD_SUCCESS">重置密码成功</string>
+
+	<!-- Person info activity -->
+	<string name="STR_PERSONINFO_TITLE">我的个人信息</string>
+	<string name="STR_PERSONINFO_USERINFO">用户信息</string>
+	<string name="STR_PERSONINFO_PHONE">手机号</string>
+	<string name="STR_PERSONINFO_GETVERIFKEY">获取验证码</string>
+	<string name="STR_PERSONINFO_VERIFKEY">验证码</string>
+	<string name="STR_PERSONINFO_NICKNAME">称呼</string>
+	<string name="STR_PERSONINFO_BIRTHDAY">出生日期</string>
+	<string name="STR_PERSONINFO_GERENSHENFENYANZHENG">&#160;&#160;&#160;个人身份验证 :&#160;</string>
+	<string name="STR_PERSONINFO_QUYANZHENG">去验证</string>
+	<string name="STR_PERSONINFO_XIUGAI">修改</string>
+	<string name="STR_PERSONINFO_MALE">先生</string>
+	<string name="STR_PERSONINFO_FEMALE">女士</string>
+    <string name="STR_REGISTER_MOBILE_LENGTH_NOTMATCH">手机号码需要11位数字</string>
+    <string name="STR_REGISTER_FORMAT_ERROR">用户名仅支持英文或数字,并使用英文开头</string>
+    <string name="STR_REGISTER_NICKNAME_FORMAT_ERROR">昵称格式不准确</string>
+    <string name="STR_REGISTER_USERNAME_TOO_SHORT">用户名长度必须在2-20位之间</string>
+    <string name="STR_REGISTER_NICKNAME_LENGTH">昵称长度必须在2-10位之间</string>
+    <string name="STR_NEWPWD_EMPTY">请再次输入新密码</string>
+	<string name="STR_PERSONINFO_CHANGEPWD">修改密码</string>
+	<string name="STR_PERSONINFO_OLDPWD">原密码</string>
+	<string name="STR_PERSONINFO_NEWPWD">新密码</string>
+	<string name="STR_PERSONINFO_CONFPWD">再次输入</string>
+	<string name="STR_PERSONINFO_SUBMIT">提交</string>
+	<string name="STR_PERSONINFO_MOBILE_CANNOT_EMPTY">手机号码不能为空</string>
+	<string name="STR_PERSONINFO_NICKNAME_CANNOT_EMPTY">称呼不能为空</string>
+	<string name="STR_PERSONINFO_VERIFYKEY_CANNOT_EMPTY">验证码不能为空</string>
+	<string name="STR_PERSONINFO_VERIFYKEY_NOTMATCH">验证码不正确</string>
+	<string name="STR_PERSONINFO_BIRTHDAY_CANNOT_EMPTY">出生日期不能为空</string>
+	<string name="STR_PERSONINFO_STATE_NOTPASS">未验证</string>
+	<string name="STR_PERSONINFO_STATE_PASSED">已验证</string>
+	<string name="STR_PERSONINFO_STATE_INREVIEW">审核中</string>
+	<string name="STR_PERSONINFO_CHANGE_SUCCESS">修改成功</string>
+	<string name="STR_PERSONINFO_OLDPWD_CANNOT_EMPTY">原密码不能为空</string>
+	<string name="STR_PERSONINFO_NEWPWD_CANNOT_EMPTY">新密码不能为空</string>
+	<string name="STR_PERSONINFO_PASSWORD_NOTMATCH">密码不一致</string>
+    <string name="STR_PERSONINFO_PASSWORD_LENGTH_ERROR">密码位数应为6至16</string>
+	<string name="STR_PERSONINFO_CHANGEPWD_SUCCESS">修改密码成功</string>
+
+	<!--> Select photo activity <-->
+	<string name="STR_TAKE_PHOTO_TITLE">修改头像</string>
+	<string name="STR_TAKE_PHOTO">拍照</string>
+	<string name="STR_SELECT_IMAGE">相册</string>
+	<string name="STR_LOADING_IMAGE_FAILED">读取照片失败</string>
+	<string name="STR_TAKING_PHOTO_FAILED">拍照失败</string>
+
+	<!--> Verify person activity <-->
+	<string name="STR_VERIFYPERSON_TITLE">个人身份验证</string>
+	<string name="STR_VERIFYPERSON_MSG1">请尽量确保照片信息完整清晰</string>
+	<string name="STR_VERIFYPERSON_MSG2">提交后x个工作日内完成验证</string>
+	<string name="STR_VERIFYPERSON_MSG3">验证身份后才能进行减排绿点提现</string>
+	<string name="STR_VERIFYPERSON_MSG4">验证身份后小伙伴们抢着和你拼车</string>
+	<string name="STR_VERIFYPERSON_MSG5">验证通过后仅会显示性别及年龄，不会泄露其他个人关键信息</string>
+	<string name="STR_VERIFYPERSON_TIJIAO">提交</string>
+	<string name="STR_VERIFYPERSON_FOREIMAGE_EMPTY">需要上传身份证正面图</string>
+	<string name="STR_VERIFYPERSON_BACKIMAGE_EMPTY">需要上传身份证反面图</string>
+	<string name="STR_VERIFYPERSON_APPLY_SUCCESS">邀请身份认证成功</string>
+
+
+	<!--> Balance activity <-->
+	<string name="STR_BALANCE_TITLE">我的减排绿点</string>
+	<string name="STR_BALANCE_MYBALANCE">我的余额</string>
+	<string name="STR_BALANCE_JIAOYIID">交易ID</string>
+	<string name="STR_BALANCE_JIAOYISHIJIAN">交易时间</string>
+	<string name="STR_BALANCE_JINCHUZHANG">进出帐</string>
+	<string name="STR_BALANCE_LAIYUAN">来源</string>
+	<string name="STR_BALANCE_YUE">余额</string>
+	<string name="STR_BALANCE_GENGDUO">更多</string>
+	<string name="STR_BALANCE_CHAXUN">查询</string>
+	<string name="STR_BALANCE_CHONGZHI">充值</string>
+	<string name="STR_BALANCE_TIXIAN">提现</string>
+	<string name="STR_BALANCE_DIAN">点</string>
+	<string name="STR_BALANCE_CHARGE_BALANCE">充值点数</string>
+	<string name="STR_BALANCE_QUEDINGCHONGZHI">确定充值</string>
+	<string name="STR_BALANCE_CANNOT_EMPTY">充值点数不能为空</string>
+	<string name="STR_BALANCE_FORMAT_ERROR">充值点数不准确</string>
+	<string name="STR_BALANCE_CHARGE_SUCCESS">充值成功</string>
+	<string name="STR_BALANCE_ZHANGHUXINGMING">账户姓名</string>
+	<string name="STR_BALANCE_TIXIANZHANGHU">提现账户</string>
+	<string name="STR_BALANCE_XIUGAIBANGDINGZHANGHU">修改绑定账户</string>
+	<string name="STR_BALANCE_MSG1">单笔提现不得超过X元, Y个工作日内到账</string>
+	<string name="STR_BALANCE_TIXIANDIANSHU">提现点数</string>
+	<string name="STR_BALANCE_DENGLUMIMA">登录密码</string>
+	<string name="STR_BALANCE_WANGJIMIMA">忘记密码</string>
+	<string name="STR_BALANCE_PERSON_NOTVERIFY">未通过个人身份认证，暂时不能提现</string>
+	<string name="STR_BALANCE_NOTBIND">道歉, 您还没有绑定提现账户</string>
+	<string name="STR_BALANCE_INPUTBALANCE">请输入提现点数</string>
+	<string name="STR_BALANCE_INPUTLOGINPWD">请输入登录密码</string>
+	<string name="STR_BALANCE_WITHDRAW_SUCCESS">提现成功</string>
+	<string name="STR_BALANCE_QURENZHENG">去认证</string>
+
+    <string name="STR_PAY_SUCCESS">支付成功</string>
+    <string name="STR_PAY_FAIL">支付失败</string>
+    <string name="STR_ORDER_DESC">OO拼车测试</string>
+
+    <!--> Change account activity <-->
+	<string name="STR_CHANGEACCOUNT_TITLE">修改提现账户</string>
+	<string name="STR_CHANGEACCOUNT_OLDACCOUNT">原账户 :</string>
+	<string name="STR_CHANGEACCOUNT_NEWACCOUNT">新账户</string>
+	<string name="STR_CHANGEACCOUNT_BANK">银行</string>
+	<string name="STR_CHANGEACCOUNT_SUBBRANCH">开户支行</string>
+	<string name="STR_CHANGEACCOUNT_BIND">绑定</string>
+	<string name="STR_CHANGEACCOUNT_RELEASEBIND">解除绑定</string>
+	<string name="STR_CHANGEACCOUNT_SELBANKTITLE">请选择银行</string>
+	<string name="STR_CHANGEACCOUNT_BANKNAMES">工商银行,建设银行,农业银行,兴业银行</string>
+	<string name="STR_CHANGEACCOUNT_NEWACCOUNT_CANNOTEMPTY">新账户不能为空</string>
+    <string name="STR_CHANGEACCOUNT_NEWACCOUNT_ERROR_LENGHT">新帐户长度需要为16~19位</string>
+	<string name="STR_CHANGEACCOUNT_BANK_CANNOTEMPTY">银行不能为空</string>
+	<string name="STR_CHANGEACCOUNT_SUBBRANCH_CANNOTEMPTY">开户支行不能为空</string>
+	<string name="STR_CHANGEACCOUNT_BANKSUCCESS">绑定成功</string>
+	<string name="STR_CHANGEACCOUNT_RELEASESUCCESS">解除成功</string>
+	<string name="STR_CHANGEACCOUNT_NOBINDACCOUNT">没有绑定的账户</string>
+	<string name="STR_CHANGEACCOUNT_CONFIRM_RELEASE">您确定要解除开户账户吗?</string>
+
+
+	<!--> Coupon activity <-->
+	<string name="STR_COUPON_TITLE">我的点券</string>
+	<string name="STR_COUPON_INPUTCOUPONCODE">请输入点券密码</string>
+	<string name="STR_COUPON_XUHAO">序号</string>
+	<string name="STR_COUPON_SHIYONGFANWEI">范围</string>
+	<string name="STR_COUPON_NEIRONG">内容</string>
+	<string name="STR_COUPON_SHIYONGXIANZHI">使用限制</string>
+	<string name="STR_COUPON_YOUXIANQIJIAN">有限期间</string>
+	<string name="STR_COUPON_ADDED">恭喜获得一张点券</string>
+
+
+	<!--> About activity <-->
+	<string name="STR_ABOUT_TITLE">关于OO</string>
+	<string name="STR_ABOUT_OOSTORY">OO的故事</string>
+	<string name="STR_ABOUT_VERSION">当前版本 :</string>
+	<string name="STR_ABOUT_CALLCUSTOMERSERVICE">致电OO客服MM</string>
+	<string name="STR_ABOUT_FEEDBACK">有话对OO说 ?</string>
+	<string name="STR_ABOUT_CONFIRM_CALL">您确定要呼叫客服中心吗?</string>
+	<string name="STR_ABOUT_UPDATABLE1">最新版本</string>
+	<string name="STR_ABOUT_UPDATABLE2">能更新</string>
+	<string name="STR_ABOUT_UPDATE">去更新</string>
+
+	<!--> Story activity <-->
+	<string name="STR_STORY_TITLE">OO故事</string>
+	<string name="STR_STORY_CONTENT">你好,我们公司已经上线了OO拼车手机端软件. 请多关照 !</string>
+
+	<!--> Feedback activity <-->
+	<string name="STR_FEEDBACK_TITLE">给OO写信</string>
+	<string name="STR_FEEDBACK_HINT">有什么话相对OO说吗? 在这里写下来吧</string>
+	<string name="STR_FEEDBACK_SEND">发送</string>
+	<string name="STR_FEEDBACK_INPUTCONTENT">请输入内容</string>
+    <string name="STR_FEEDBACK_ERROR_LENGTH">请输入限制在1000个字</string>
+	<string name="STR_FEEDBACK_SENDSUCCESS">OO已经接收到您的信啦，非常感谢您的积极参与！</string>
+	<string name="STR_FEEDBACK_SENDFAILURE">网络不给力，等等再试吧</string>
+
+    <string name="STR_COMMON_MIAO">秒</string>
+
+    <string name="STR_YEAR">年</string>
+    <string name="STR_MONTH">月</string>
+    <string name="STR_DAY">日</string>
+    <string name="STR_HOUR">时</string>
+    <string name="STR_MINUTE">分</string>
+    <string name="STR_SHEZHI">设置</string>
+
+    <string name="STR_NO_CHANGE_BIRTHDAY">验证过后不能修改出生日期</string>
+    <string name="STR_NO_CHANGE_SEX">验证过后不能修改性别</string>
+
+    <string name="STR_CANNOT_TAKEPHOTO">抱歉，您的手机不会保存照片!</string>
+	<string name="STR_WITHDRAWLOG_TITLE">我的提现记录</string>
+
+	<string name="STR_BALANCE_DEICHULI">待处理</string>
+	<string name="STR_BALANCE_YICHULI">已处理</string>
+	<string name="STR_BALANCE_YIGUANBI">已关闭</string>
+	<string name="STR_BALANCE_YICHEXIAO">已撤销</string>
+	<string name="STR_BALANCE_CHULIZHONG">处理中</string>
+	<string name="STR_BALANCE_WITHDRAW_CANCELSUCCESS">提现撤销成功</string>
+	<string name="STR_WITHDRAWLOG_TIXIANDIANSHU">我的待提现点数 ：</string>
+	<string name="STR_WITHDRAWLOG_SHENQINGRIQI">申请日期</string>
+	<string name="STR_WITHDRAWLOG_DIANSHU">点数</string>
+	<string name="STR_WITHDRAWLOG_ZHUANGTAI">状态</string>
+	<string name="STR_WITHDRAWLOG_CAOZUO">操作</string>
+	<string name="STR_WITHDRAWLOG_CHEXIAO">撤销</string>
+	<string name="STR_WITHDRAW_TITLE">是否确定撤销？</string>
+	<string name="STR_QQ_NOTINSTALLED">未安装QQ. 请下载手机QQ吧</string>
+
+</resources>
+

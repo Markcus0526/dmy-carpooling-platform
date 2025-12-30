@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame">
+
+    <RelativeLayout
+            android:layout_width="360px"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" android:paddingLeft="20px" android:paddingRight="20px"
+            android:paddingTop="20px" android:paddingBottom="20px">
+	    <RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" android:id="@+id/notify_layout">
+		    <RelativeLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+			    <ImageView
+		                android:layout_width="40px"
+		                android:layout_height="40px"
+		                android:id="@+id/imgHelp" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		                android:scaleType="fitCenter"
+		                android:src="@drawable/bk_help" android:layout_centerVertical="true"/>
+			    <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lbl_message"
+		                android:layout_toRightOf="@+id/imgHelp"
+		                android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="22px" android:layout_centerVertical="true"
+		                android:layout_marginLeft="15px" android:text="message"/>
+		    </RelativeLayout>
+	    </RelativeLayout>
+	    <RelativeLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" android:id="@+id/button_layout"
+			    android:layout_centerHorizontal="true" android:layout_below="@+id/notify_layout"
+			    android:layout_marginTop="20px">
+		    <Button
+	                android:layout_width="120px"
+	                android:layout_height="46px"
+	                android:text="@string/STR_QUEDING"
+	                android:id="@+id/btnOk" android:layout_alignParentLeft="false"
+	                android:background="@drawable/btn_smallgreen" android:textColor="@color/WHITE_COLOR"
+	                android:textSize="21px"/>
+		    <Button
+	                android:layout_width="120px"
+	                android:layout_height="wrap_content"
+	                android:text="@string/STR_QUXIAO"
+	                android:id="@+id/btnCancel" android:layout_alignParentRight="false"
+	                android:textSize="21px" android:textColor="@color/TITLE_BACKCOLOR"
+	                android:background="@drawable/btn_smallwhite" android:layout_toRightOf="@+id/btnOk"
+	                android:layout_alignTop="@+id/btnOk" android:layout_alignBottom="@+id/btnOk"
+	                android:layout_marginLeft="40px"/>
+	    </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

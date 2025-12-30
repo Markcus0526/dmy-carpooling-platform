@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+    	android:layout_height="fill_parent" 
+    	>
+    	<ScrollView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:scrollbarStyle="outsideOverlay" 
+			android:background="@android:drawable/edit_text"
+			android:layout_marginTop="20dip"
+   			android:layout_marginBottom="50dip"
+    		android:layout_gravity="center"> 
+    		<WebView 
+	         	android:id="@+id/wb_treaty"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent">
+	    	</WebView>
+	    </ScrollView>
+    
+       <Button
+	        android:id="@+id/buttonReturn"
+	        android:layout_width="fill_parent"
+	        android:layout_height="45dip"
+	        android:layout_marginLeft="20dip"
+    		android:layout_marginRight="20dip"
+	        android:textStyle="bold"	
+    		android:text="返回 "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+    		android:layout_marginBottom="10dip"
+    		android:layout_gravity="bottom|center"
+            android:background="@drawable/btn_green"
+           />
+	   
+    
+    </FrameLayout>
+
+</LinearLayout>

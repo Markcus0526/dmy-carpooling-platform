@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_LONGCONFIRM_TITLE"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                     android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+
+        <view android:layout_width="100px"
+              android:layout_height="100px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewPhoto"
+              android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+              android:layout_marginLeft="40px" android:layout_marginTop="30px" android:scaleType="fitXY"
+                />
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPhoto" android:layout_alignTop="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+                android:layout_alignBottom="@+id/viewPhoto"
+                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+                android:layout_marginBottom="-5px" android:background="@drawable/btn_frame"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+                android:id="@+id/relativeLayout1">
+            <ImageView
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/imgSex" android:layout_marginLeft="26px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="35px"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true" android:layout_marginRight="10px"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:text="张先生"
+                android:id="@+id/lblName" android:layout_below="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/btnPhoto"
+                android:layout_marginTop="20px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px"/>
+        <TextView
+                android:layout_width="130px"
+                android:layout_height="30px"
+                android:text="驾龄:"
+                android:id="@+id/lblDriverYears" android:layout_alignTop="@+id/btnPhoto"
+                android:layout_toRightOf="@+id/lblName" android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <view android:layout_width="100px"
+              android:layout_height="100px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewCar"
+              android:layout_alignTop="@+id/viewPhoto" android:layout_alignParentRight="true"
+              android:layout_marginRight="40px" android:scaleType="fitXY"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCar" android:layout_alignTop="@+id/viewCar"
+                android:layout_alignLeft="@+id/viewCar" android:layout_alignBottom="@+id/viewCar"
+                android:layout_alignRight="@+id/viewCar" android:background="@drawable/btn_frame"
+                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+                android:layout_marginBottom="-5px"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="30px"
+                android:text="99%"
+                android:id="@+id/lblEval"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+                android:layout_alignRight="@+id/lblDriverYears" android:layout_alignBaseline="@+id/btnCar"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:text="服务次数:"
+                android:textSize="18px" android:textColor="@color/GRAY_COLOR" android:gravity="center_vertical|left"
+                android:id="@+id/textView"
+                android:layout_alignLeft="@+id/lblDriverYears" android:layout_alignBottom="@+id/viewPhoto"/>
+        <TextView android:layout_width="82dp" android:layout_height="30px" android:text="100次"
+                  android:id="@+id/lblHistoryCount"
+                  android:textColor="@color/LIGHT_YELLOW_COLOR"
+                  android:textSize="18px"
+                  android:gravity="center_vertical|left"
+                  android:layout_toRightOf="@+id/textView" android:layout_alignTop="@+id/textView"
+                  android:layout_toLeftOf="@+id/viewCar"/>
+        <ImageView
+                android:layout_width="60px"
+                android:layout_height="25px"
+                android:id="@+id/imgCarType" android:layout_above="@+id/rlShangBian"
+                android:layout_toRightOf="@+id/lblName" android:layout_marginLeft="20px" android:scaleType="fitCenter"
+                android:src="@drawable/luxurycar_sel"/>
+        <ImageView
+                android:layout_width="25px"
+                android:layout_height="25px"
+                android:id="@+id/imgBrand" android:layout_alignTop="@+id/imgCarType"
+                android:layout_toRightOf="@+id/imgCarType" android:layout_marginLeft="10px"
+                android:scaleType="fitCenter" android:src="@drawable/bk_carbrand1"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="25px"
+                android:text="帕萨特"
+                android:id="@+id/lblBrandName" android:layout_alignTop="@+id/imgBrand"
+                android:layout_toRightOf="@+id/imgBrand" android:layout_marginLeft="10px" android:gravity="center"
+                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                android:textSize="14px"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="25px"
+                android:text="白色"
+                android:id="@+id/lblColor" android:layout_alignTop="@+id/lblBrandName"
+                android:layout_toRightOf="@+id/lblBrandName" android:layout_marginLeft="10px" android:gravity="center"
+                android:textColor="@color/TITLE_BACKCOLOR" android:textSize="18px"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="200px" android:layout_below="@+id/lblName"
+                android:layout_centerHorizontal="true" android:layout_marginTop="20px"
+                android:background="#F1F1F1" android:id="@+id/rlShangBian">
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px" android:layout_marginLeft="30px" android:layout_marginRight="30px"
+                    android:background="@color/GRAY_COLOR" android:id="@+id/relativeLayout">
+            </RelativeLayout>
+            <TextView
+                    android:layout_width="300px"
+                    android:layout_height="35px"
+                    android:id="@+id/lblCityPath" android:layout_below="@+id/relativeLayout"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="20px" android:gravity="center"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:text="asdf"/>
+            <TextView
+                    android:layout_width="400px"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lblAddrPath" android:layout_below="@+id/lblCityPath"
+                    android:layout_centerHorizontal="true" android:textSize="21px"
+                    android:textColor="@color/GRAY_COLOR" android:layout_marginTop="10px" android:gravity="center"
+                    android:singleLine="false" android:ellipsize="end" android:text="asdfasdf"/>
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="30px"
+                    android:text="7:00出发"
+                    android:id="@+id/lblTime"
+                    android:layout_marginLeft="30px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                    android:textSize="18px" android:layout_marginTop="10px"
+                    android:layout_centerHorizontal="true" android:layout_below="@+id/lblAddrPath"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="40px"
+                    android:text="New Text"
+                    android:id="@+id/lblSeats" android:layout_below="@+id/lblTime"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="10px" android:gravity="center"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_below="@+id/rlShangBian"
+                android:background="@color/BASE_BACK_COLOR" android:id="@+id/rlXiaBian">
+            <view android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  class="com.baidu.mapapi.map.MapView" android:id="@+id/viewMap" android:layout_alignParentTop="true"
+                  android:layout_alignParentLeft="true" android:layout_marginBottom="80px"/>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/rlMapView"
+                    android:layout_marginBottom="80px">
+            </RelativeLayout>
+            <Button
+                    android:layout_width="150px"
+                    android:layout_height="60px"
+                    android:text="@string/STR_LONGCONFIRM_QIANGZUO"
+                    android:id="@+id/btnGrab" android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="10px"
+                    android:background="@drawable/btn_smallgreen" android:textColor="@color/WHITE_COLOR"
+                    android:textSize="24px" android:layout_marginRight="20px" android:layout_alignParentRight="true"/>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_alignTop="@+id/btnGrab"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="20px"
+                    android:layout_toLeftOf="@+id/btnGrab" android:layout_alignBottom="@+id/btnGrab"
+                    android:layout_marginRight="20px" android:background="@drawable/roundlightgraywhite_frame">
+                <TextView
+                        android:layout_width="200px"
+                        android:layout_height="fill_parent"
+                        android:text="抢1座 80点"
+                        android:id="@+id/lblPrice" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:gravity="center"
+                        android:textColor="@color/GRAY_COLOR" android:textSize="25px"/>
+                <ImageView
+                        android:layout_width="40px"
+                        android:layout_height="30px"
+                        android:id="@+id/imgPriceDetail" android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true" android:layout_marginRight="15px"
+                        android:scaleType="fitCenter" android:src="@drawable/down_arrow"/>
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/btnPriceSeat" android:background="@drawable/btn_empty"/>
+            </RelativeLayout>
+        </RelativeLayout>
+        <TextView android:layout_width="60px" android:layout_height="30px" android:text="好评率:" android:id="@+id/textView1"
+                  android:gravity="center_vertical|left"
+                  android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+                  android:layout_alignLeft="@+id/lblDriverYears" android:layout_alignBaseline="@+id/btnCar"
+                  android:layout_toLeftOf="@+id/imgBrand" android:layout_alignRight="@+id/textView"/>
+
+    </RelativeLayout>
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+	                android:id="@+id/relativeLayout2" android:clickable="true" android:background="#A0000000">
+		<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+		                android:layout_centerInParent="true">
+			<TextView android:layout_width="300px" android:layout_height="90px" android:text="选择座位数"
+			          android:id="@+id/txt_listtitle" android:background="@drawable/roundsolidgreen_frame"
+			          android:textColor="#FFFFFF" android:textSize="30px" android:gravity="center"
+			          android:paddingBottom="20px" android:textStyle="bold"/>
+			<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+			                android:background="@drawable/roundrect_white_layout"
+			                android:layout_centerInParent="true"
+			                android:layout_alignTop="@+id/listPriceSeats" android:layout_marginBottom="-20px"
+			                android:layout_alignBottom="@+id/listPriceSeats"
+			                android:layout_alignLeft="@+id/txt_listtitle"
+			                android:layout_alignRight="@+id/txt_listtitle"/>
+			<ListView android:layout_width="wrap_content" android:layout_height="350px" android:id="@+id/listPriceSeats"
+		              android:layout_alignParentTop="false" android:layout_centerInParent="true"
+		              android:layout_alignParentLeft="false" android:layout_alignParentBottom="false"
+		              android:layout_alignParentRight="false" android:layout_alignWithParentIfMissing="false"
+		              android:layout_marginTop="-20px" android:background="@drawable/roundrect_white_layout"
+		              android:layout_alignLeft="@+id/txt_listtitle" android:layout_alignRight="@+id/txt_listtitle"
+		              android:layout_below="@+id/txt_listtitle" android:layout_marginLeft="1px"
+		              android:layout_marginRight="1px"/>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>
+	

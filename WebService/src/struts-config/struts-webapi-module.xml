@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!--This Configuration is for struts framework-->
+
+<struts>
+	<package name="mainwebservice" extends="struts-default, json-default" namespace="/webservice">
+
+		<!-- 1 用户注册-->
+		<action name="registerUser" class="com.webapi.user.action.SVCUserAction" method="registerUser">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 2 用户登录-->
+		<action name="loginUser" class="com.webapi.user.action.SVCUserAction" method="loginUser">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 3 这个方法里的url_scheme是做什么用的-->
+		<action name="getChildAppList" class="com.webapi.app.action.SVCAppAction" method="childAppList">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 4 这个方法里的source参数是做什么用的，token是干什么用的-->
+		<action name="getLatestAnnouncements" class="com.webapi.announcement.action.SVCAnnouncementAction" method="latestAnnouncements">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 5 这个方法里的source参数是做什么用的，token是干什么用的-->
+		<action name="getAnnouncementsPage" class="com.webapi.announcement.action.SVCAnnouncementAction" method="pagedAnnouncements">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 6 source和devtoken都是干什么用的,还有limitid是做什么用的-->
+		<action name="getLatestOrderInfos" class="com.webapi.notifyorder.action.SVCNotifyOrderAction" method="latestNotifyOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 7 source,devtoken是干什么用的-->
+		<action name="getOrderInfosPage" class="com.webapi.notifyorder.action.SVCNotifyOrderAction" method="pagedNotifyOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 8 source和limitid,devtoken都是干什么用的-->
+		<action name="getLatestNotifications" class="com.webapi.notifyperson.action.SVCNotifyPersonAction" method="latestNotifications">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 9 source和devtoken都是干什么用的-->
+		<action name="getNotificationsPage" class="com.webapi.notifyperson.action.SVCNotifyPersonAction" method="pagedNotifications">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 10 -->
+		<action name="getCouponDetails" class="com.webapi.coupon.singlecoupon.action.SVCSingleCouponAction" method="couponDetails">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 11 -->
+		<action name="recordDownload" class="com.webapi.app.action.SVCAppAction" method="recordDownload">
+			<result type="json"/>
+		</action>
+
+		<!-- 12 -->
+		<action name="getVerifKey" class="com.webapi.user.action.SVCUserAction" method="verifyKey">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 13 -->
+		<action name="forgetPassword" class="com.webapi.user.action.SVCUserAction" method="forgetPassword">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 14 -->
+		<action name="getUserInfo" class="com.webapi.user.action.SVCUserAction" method="userInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 15 -->
+		<action name="changeUserInfo" class="com.webapi.user.action.SVCUserAction" method="changeUserInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 16 -->
+		<action name="changePassword" class="com.webapi.user.action.SVCUserAction" method="changePassword">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 17 保存乘客身份证的正面和反面照片-->
+		<action name="verifyPersonInfo" class="com.webapi.user.action.SVCUserAction" method="verifyPersonInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 18 这个函数的lastannounceid是什么意思-->
+		<action name="hasNews" class="com.webapi.announcement.action.SVCAnnouncementAction" method="hasNews">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 19 函数有问题，ordernotifid参数没有在sql语句中用到-->
+		<action name="readOrderNotifs" class="com.webapi.notifyorder.action.SVCNotifyOrderAction" method="readOrderNotifs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 20 函数有问题，personnotifid参数在sql语句中没有用到-->
+		<action name="readPersonNotifs" class="com.webapi.notifyperson.action.SVCNotifyPersonAction" method="readPersonNotifs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 21 -->
+		<action name="getTsLogsPage" class="com.webapi.ts.action.SVCTsAction" method="pagedTsLogs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 22 该接口是读取最新的交易记录，为什么返回是个列表？-->
+		<action name="getLatestTsLogs" class="com.webapi.ts.action.SVCTsAction" method="latestTsLogs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 23 -->
+		<action name="charge" class="com.webapi.user.action.SVCUserAction" method="charge">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 24 -->
+		<action name="getAccount" class="com.webapi.user.action.SVCUserAction" method="accountInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 25 -->
+		<action name="withdraw" class="com.webapi.user.action.SVCUserAction" method="withdraw">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 26 -->
+		<action name="bindBankCard" class="com.webapi.user.action.SVCUserAction" method="bindBankCard">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 27 -->
+		<action name="releaseBankCard" class="com.webapi.user.action.SVCUserAction" method="releaseBankCard">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 28 -->
+		<action name="getLatestCoupon" class="com.webapi.coupon.singlecoupon.action.SVCSingleCouponAction" method="latestCoupon">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 29 这个函数可能有性能问题，2个sql语句可以合并成一个-->
+		<action name="getPagedCoupon" class="com.webapi.coupon.singlecoupon.action.SVCSingleCouponAction" method="pagedCoupon">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 30 -->
+		<action name="addCoupon" class="com.webapi.coupon.singlecoupon.action.SVCSingleCouponAction" method="addCoupon">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 31 -->
+		<action name="advanceOpinion" class="com.webapi.feedback.action.SVCFeedbackAction" method="advanceOpinion">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 32 -->
+		<action name="defaultShareContents" class="com.webapi.environment.action.SVCEnvAction" method="defaultShareContents">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 33 user_login表的设计可能有问题，原意是取当前登录的用户，问题是此表没有最后的心跳信息，取出来的信息可能是用户昨天的登录的时候信息，另外2个sql可以连成一个，性能可能会有问题-->
+		<action name="getLoginInfoFromDevToken" class="com.webapi.user.action.SVCUserAction" method="loginInfoFromDevtoken">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 34 不是最优实现，两个sql可以合并成一个-->
+		<action name="getLatestAppVersion" class="com.webapi.app.action.SVCAppAction" method="latestAppVersion">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 35 -->
+		<action name="getMoney" class="com.webapi.user.action.SVCUserAction" method="latestBalance">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 36 -->
+		<action name="verifyDriver" class="com.webapi.user.action.SVCUserAction" method="verifyDriver">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 37 这个函数没有看懂-->
+		<action name="latestWithdrawLogs" class="com.webapi.reqoper.action.SVCReqOperAction" method="latestWithdrawLogs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 38 -->
+		<action name="pagedWithdrawLogs" class="com.webapi.reqoper.action.SVCReqOperAction" method="pagedWithdrawLogs">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 39  此函数没有看懂，流程已经通过并且执行过打款的单子能否撤销？这个函数支持此功能的撤销，函数功能是否正确-->
+		<action name="cancelWithdraw" class="com.webapi.reqoper.action.SVCReqOperAction" method="cancelWithdraw">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 40 -->
+		<action name="addRoute" class="com.webapi.routes.action.SVCRoutesAction" method="addRoute">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 41 此接口在文档里没有说明-->
+		<action name="getRoutes" class="com.webapi.routes.action.SVCRoutesAction" method="routesList">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 42 -->
+		<action name="removeRoute" class="com.webapi.routes.action.SVCRoutesAction" method="removeRoute">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 43 -->
+		<action name="changeRoute" class="com.webapi.routes.action.SVCRoutesAction" method="changeRoute">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 44 *这个是取某个时间点之后全部的订单，取出来全部放到内存中，有可能引起内存溢出-->
+		<action name="getLatestDriverOrders" class="com.webapi.order.action.SVCOrderAction" method="latestDriverOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 45 *分页处理的不对，现有处理方式是单次上下班长途各取10条，假如需要向手机端返回10条数据，应该是查询出所有记录并且按距离或者时间排序之后，返回10条记录-->
+		<action name="getPagedDriverOrders" class="com.webapi.order.action.SVCOrderAction" method="pagedDriverOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 46 *这个是取某个时间点之后全部的订单，取出来全部放到内存中，有可能引起内存溢出-->
+		<action name="getLatestPassengerOrders" class="com.webapi.order.action.SVCOrderAction" method="latestPassengerOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 47 *分页处理的不对，现有处理方式是单次上下班长途各取10条，假如需要向手机端返回10条数据，应该是查询出所有记录并且按距离或者时间排序之后，返回10条记录-->
+		<action name="getPagedPassengerOrders" class="com.webapi.order.action.SVCOrderAction" method="pagedPassengerOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 48 现有实现方式是取得order_temp_details表所有的订单，然后进行左右链接其他表，再根据距离车主远近排序，这样会比较慢；应该先根据距离远近取得订单(也就是说取一定地理范围内的订单，而不是取全部订单)，再进行左右链接-->
+		<action name="getLatestAcceptableOnceOrders" class="com.webapi.order.action.SVCOrderAction" method="latestAcceptableOnceOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 49 问题同48-->
+		<action name="getPagedAcceptableOnceOrders" class="com.webapi.order.action.SVCOrderAction" method="pagedAcceptableOnceOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 50 问题同48-->
+		<action name="getLatestAcceptableOnOffOrders" class="com.webapi.order.action.SVCOrderAction" method="latestAcceptableOnOffOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 51 问题同48-->
+		<action name="getPagedAcceptableOnOffOrders" class="com.webapi.order.action.SVCOrderAction" method="pagedAcceptableOnOffOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 52 问题同48-->
+		<action name="getLatestAcceptableLongOrders" class="com.webapi.order.action.SVCOrderAction" method="latestAcceptableLongOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 53 问题同48-->
+		<action name="getPagedAcceptableLongOrders" class="com.webapi.order.action.SVCOrderAction" method="pagedAcceptableLongOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 54 -->
+		<action name="reportDriverPos" class="com.webapi.useronline.action.SVCUserOnlineAction" method="reportDriverPos">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 55 sql性能可能会有问题，应该先选定一定范围内的车主，然后再链接其他表-->
+		<action name="getNearbyDrivers" class="com.webapi.user.action.SVCUserAction" method="nearbyDrivers">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 56 -->
+		<action name="getSystemPriceInfo" class="com.webapi.environment.action.SVCEnvAction" method="sysPriceInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 57 -->
+		<action name="getBrandsAndColors" class="com.webapi.environment.action.SVCEnvAction" method="brandsAndColors">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 58 -->
+		<action name="getPassengerInfo" class="com.webapi.order.action.SVCOrderAction" method="passengerInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 59 -->
+		<action name="getDriverInfo" class="com.webapi.order.action.SVCOrderAction" method="driverInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 60 *sql语句会有性能问题，应该先选择出该用户的评论信息然后再链接user表 ，另外limitid的方式不理解，为什么不直接传时间而传一个limitid,再由limitid反推出时间？-->
+		<action name="getPassengerLatestEvalInfo" class="com.webapi.evaluation.action.SVCEvalAction" method="passengerLatestEvalInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 61 同60-->
+		<action name="getPassengerPagedEvalInfo" class="com.webapi.evaluation.action.SVCEvalAction" method="passengerPagedEvalInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 62 同60-->
+		<action name="getDriverLatestEvalInfo" class="com.webapi.evaluation.action.SVCEvalAction" method="driverLatestEvalInfo">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 63 同60-->
+		<action name="getDriverPagedEvalInfo" class="com.webapi.evaluation.action.SVCEvalAction" method="driverPagedEvalInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 64 *函数1000多行，不易读，有待于优化-->
+		<action name="getDetailedDriverOrderInfo" class="com.webapi.order.action.SVCOrderAction" method="detailedDriverOrderInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 65 *函数1500多行，不易读，使用sql语句过多，有些sql语句可以考虑合并成一个-->
+		<action name="getDetailedPassengerOrderInfo" class="com.webapi.order.action.SVCOrderAction" method="detailedPassengerOrderInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 66 -->
+		<action name="getDriverPos" class="com.webapi.useronline.action.SVCUserOnlineAction" method="driverPos">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 67 获取长途订单退票信息,没看懂-->
+		<action name="getLongOrderCancelInfo" class="com.webapi.order.action.SVCOrderAction" method="longOrderCancelInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 68 车主获取市内订单详细信息，实现较复杂，考虑优化-->
+		<action name="getAcceptableInCityOrderDetailInfo" class="com.webapi.order.action.SVCOrderAction" method="acceptableInCityOrderDetailInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 69 实现较复杂，考虑优化-->
+		<action name="getAcceptableLongOrderDetailInfo" class="com.webapi.order.action.SVCOrderAction" method="acceptableLongOrderDetailInfo">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 70 **隐含的问题：1，获取周边车主的sql语句，当用户多的时候，可能产生严重的性能问题；2，三个定时器，在多并发量的时候可能会出现严重的稳定性问题。-->
+		<action name="publishOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="publishOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 71 -->
+		<action name="publishOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="publishOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 72 -->
+		<action name="publishLongOrder" class="com.webapi.order.action.SVCOrderAction" method="publishLongOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 73 **最后一个sql语句没有看懂-->
+		<action name="acceptOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="acceptOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 74 **上下班接单的具体实现逻辑没有搞懂-->
+		<action name="acceptOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="acceptOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 75 -->
+		<action name="acceptLongOrder" class="com.webapi.order.action.SVCOrderAction" method="acceptLongOrder">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 76 -->
+		<action name="setLongOrderPassword" class="com.webapi.order.action.SVCOrderAction" method="setLongOrderPassword">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 77 可能有潜在问题-->
+		<action name="confirmOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="confirmOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 78 第一条sql语句有问题，应该是更新order_temp_grab里所有相关记录的状态，这里只更新了一条，考虑只更新order_temp_details和order_exec_cs表的状态，其余的不管-->
+		<action name="cancelOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="cancelOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 79 感觉order_onoffduty_exec_details这给表没有用处，可以去掉。另外感觉函数实现过分复杂，应该简化-->
+		<action name="confirmOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="confirmOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 80  更新order_onoffduty_grab表，设置状态，感觉处理的不对。还是应该对上下班的接单实现逻辑和金学敏讨论一下-->
+		<action name="refuseOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="refuseOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 81 -->
+		<action name="cancelOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="cancelOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 82 -->
+		<action name="executeOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="executeOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 83 -->
+		<action name="executeOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="executeOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 84 -->
+		<action name="executeLongOrder" class="com.webapi.order.action.SVCOrderAction" method="executeLongOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 85 乘客每三秒轮询是否有车主抢单-->
+		<action name="checkOnceOrderAcceptance" class="com.webapi.order.action.SVCOrderAction" method="checkOnceOrderAcceptance">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 86-->
+		<action name="checkOnceOrderAgree" class="com.webapi.order.action.SVCOrderAction" method="checkOnceOrderAgree">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 87 -->
+		<action name="signOnceOrderDriverArrival" class="com.webapi.order.action.SVCOrderAction" method="signOnceOrderDriverArrival">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 88 -->
+		<action name="signOnOffOrderDriverArrival" class="com.webapi.order.action.SVCOrderAction" method="signOnOffOrderDriverArrival">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 89 -->
+		<action name="signLongOrderDriverArrival" class="com.webapi.order.action.SVCOrderAction" method="signLongOrderDriverArrival">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 90 -->
+		<action name="signOnceOrderPassengerUpload" class="com.webapi.order.action.SVCOrderAction" method="signOnceOrderPassengerUpload">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 91 -->
+		<action name="signOnOffOrderPassengerUpload" class="com.webapi.order.action.SVCOrderAction" method="signOnOffOrderPassengerUpload">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 92 -->
+		<action name="signLongOrderPassengerUpload" class="com.webapi.order.action.SVCOrderAction" method="signLongOrderPassengerUpload">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 93 乘客主动退票;或者过出发时间15分钟后乘客还没有来，车主强制乘客弃票-->
+		<action name="signLongOrderPassengerGiveup" class="com.webapi.order.action.SVCOrderAction" method="signLongOrderPassengerGiveup">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 94 查询该长途订单还有哪些乘客没有上车也没有放弃车票，有的话则直接返回；没有的话则标记该订单status=5，所有乘客都已经上车的状态-->
+		<action name="startLongOrderDriving" class="com.webapi.order.action.SVCOrderAction" method="startLongOrderDriving">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 95 -->
+		<action name="endOnceOrder" class="com.webapi.order.action.SVCOrderAction" method="endOnceOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 96 -->
+		<action name="endOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="endOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 97 -->
+		<action name="endLongOrder" class="com.webapi.order.action.SVCOrderAction" method="endLongOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 98 -->
+		<action name="evaluateOnceOrderPass" class="com.webapi.order.action.SVCOrderAction" method="evaluateOnceOrderPass">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 99 -->
+		<action name="evaluateOnOffOrderPass" class="com.webapi.order.action.SVCOrderAction" method="evaluateOnOffOrderPass">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 100 -->
+		<action name="evaluateLongOrderPass" class="com.webapi.order.action.SVCOrderAction" method="evaluateLongOrderPass">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 101 -->
+		<action name="evaluateOnceOrderDriver" class="com.webapi.order.action.SVCOrderAction" method="evaluateOnceOrderDriver">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 102 -->
+		<action name="evaluateOnOffOrderDriver" class="com.webapi.order.action.SVCOrderAction" method="evaluateOnOffOrderDriver">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 103 -->
+		<action name="evaluateLongOrderDriver" class="com.webapi.order.action.SVCOrderAction" method="evaluateLongOrderDriver">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 104 如果要连续暂停三天的话，需要点击三次“暂停明天出行”按钮，这个函数是否支持这个功能有待验证-->
+		<action name="pauseOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="pauseOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 105 -->
+		<action name="reserveNextOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="reserveNextOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 106 结算的时候用-->
+		<action name="getUsableCoupons" class="com.webapi.order.action.SVCOrderAction" method="usableCoupons">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 107 单次订单再次发布-->
+		<action name="changeOnceOrderPrice" class="com.webapi.order.action.SVCOrderAction" method="changeOnceOrderPrice">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 108 这个应该是单次支付，函数没怎么看懂，freeze_points表如何使用？-->
+		<action name="payNormalOrder" class="com.webapi.order.action.SVCOrderAction" method="payNormalOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 109 这个应该是预约支付，实现逻辑108接口-->
+		<action name="payReserveOrder" class="com.webapi.order.action.SVCOrderAction" method="payReserveOrder">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 110 本应该是判断是否订单关闭-->
+		<action name="orderCancelled" class="com.webapi.order.action.SVCOrderAction" method="orderCancelled">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 111 -->
+		<action name="getInfoFeeCalcMethod" class="com.webapi.environment.action.SVCEnvAction" method="infoFeeMethod">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 112 -->
+		<action name="getShareLinkAddr" class="com.webapi.environment.action.SVCEnvAction" method="shareLinkAddr">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 113 -->
+		<action name="cancelLongOrder" class="com.webapi.order.action.SVCOrderAction" method="cancelLongOrder">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 114 -->
+		<action name="stopOnOffOrder" class="com.webapi.order.action.SVCOrderAction" method="stopOnOffOrder">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 115 -->
+		<action name="setOnceOrderPassword" class="com.webapi.order.action.SVCOrderAction" method="setOnceOrderPassword">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 116 -->
+		<action name="setOnoffOrderPassword" class="com.webapi.order.action.SVCOrderAction" method="setOnoffOrderPassword">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 117 -->
+		<action name="sendNotificationToDrivers" class="com.webapi.order.action.SVCOrderAction" method="sendOnceOrderNotification">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 118 -->
+		<action name="insertDriverAcceptableOrders" class="com.webapi.order.action.SVCOrderAction" method="insertDriverAcceptableOrders">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 119 -->
+		<action name="logoutUser" class="com.webapi.user.action.SVCUserAction" method="logoutUser">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 120 -->
+		<action name="checkOrderNotifRead" class="com.webapi.notifyorder.action.SVCNotifyOrderAction" method="checkOrderNotifRead">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 121 -->
+		<action name="checkPersonNotifRead" class="com.webapi.notifyperson.action.SVCNotifyPersonAction" method="checkPersonNotifRead">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 122 -->
+		<action name="changeUserPhoto" class="com.webapi.user.action.SVCUserAction" method="changeUserPhoto">
+			<result type="json"/>
+		</action>
+
+
+
+		<!-- 123 -->
+		<action name="changeCarImage" class="com.webapi.user.action.SVCUserAction" method="changeCarImage">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 124 -->
+		<action name="getOnceOrderDriverPos" class="com.webapi.order.action.SVCOrderAction" method="onceOrderDriverPos">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 125 -->
+		<action name="readAnnouncement" class="com.webapi.announcement.action.SVCAnnouncementAction" method="readAnnouncement">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 126 -->
+		<action name="chargeWithBaidu" class="com.webapi.user.action.SVCUserAction" method="chargeWithBaidu">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 127 用户点击了去充值按钮-->
+		<action name="clickchargingbtn" class="com.webapi.order.action.SVCOrderAction" method="clickchargingbtn">
+			<result type="json"/>
+		</action>
+		
+		
+		<!-- 128  车主获得用户是否点击了去充值按钮-->
+		<action name="has_clickedchargingbtn" class="com.webapi.order.action.SVCOrderAction" method="has_clickedchargingbtn">
+			<result type="json"/>
+		</action>
+
+
+	</package>
+</struts>
+
+
+
+
+

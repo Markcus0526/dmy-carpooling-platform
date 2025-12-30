@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="wrap_content" android:background="@drawable/roundgraywhite_frame">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:text="New Text"
+                android:id="@+id/lbl_address" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:gravity="center" android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="25px" android:singleLine="true" android:layout_marginLeft="10px"
+                android:layout_marginRight="10px" android:ellipsize="end"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1px" android:layout_below="@+id/lbl_address"
+                android:layout_centerHorizontal="true" android:layout_marginLeft="25px" android:layout_marginTop="1px"
+                android:layout_marginRight="25px" android:background="@color/GRAY_COLOR"
+                android:id="@+id/rel_separator">
+        </RelativeLayout>
+        <view android:layout_width="120px"
+              android:layout_height="120px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/img_psg_photo"
+              android:layout_below="@+id/rel_separator" android:layout_alignParentLeft="true"
+              android:layout_marginTop="30px" android:layout_marginLeft="10px" android:scaleType="fitXY"
+		        />
+	    <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/img_psg_photo"
+                android:layout_alignLeft="@+id/img_psg_photo" android:layout_alignRight="@+id/img_psg_photo"
+                android:id="@+id/info_layout">
+            <ImageView
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:id="@+id/img_gender" android:layout_marginLeft="33px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="30px"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lbl_age" android:layout_marginRight="27px" android:gravity="center_vertical|left"
+                    android:layout_alignParentRight="true" android:textColor="@color/TAB_NORMAL_COLOR"
+                    android:textSize="23px"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:text="张先生"
+                android:id="@+id/lbl_name" android:layout_below="@+id/btn_psg_photo"
+                android:layout_alignLeft="@+id/info_layout" android:layout_marginTop="10px"
+                android:layout_alignRight="@+id/info_layout" android:gravity="center"
+                android:textColor="@color/GRAY_COLOR" android:textSize="20px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:text="1000点"
+                android:id="@+id/lbl_price" android:layout_alignTop="@+id/btn_psg_photo"
+                android:layout_toRightOf="@+id/btn_psg_photo" android:layout_marginLeft="15px"
+                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="29px" android:gravity="center"
+                android:layout_marginTop="15px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:id="@+id/lbl_date" android:layout_below="@+id/lbl_price" android:layout_alignLeft="@+id/lbl_price"
+                android:layout_marginTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="22px" android:gravity="center"
+                android:paddingLeft="5px" android:paddingRight="10px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上下班"
+                android:id="@+id/lbl_ordertype" android:layout_alignTop="@+id/lbl_price"
+                android:layout_toRightOf="@+id/lbl_price" android:layout_alignBottom="@+id/lbl_price"
+                android:layout_marginLeft="10px" android:gravity="center" android:textColor="@color/WHITE_COLOR"
+                android:textSize="21px" android:background="@drawable/roundsolidyellow_frame"
+                android:paddingLeft="5px" android:paddingRight="5px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18:00"
+                android:id="@+id/lbl_time" android:layout_alignTop="@+id/lbl_date"
+                android:layout_toRightOf="@+id/lbl_date" android:layout_alignBottom="@+id/lbl_date"
+                android:textColor="@color/GRAY_COLOR"
+                android:gravity="center_vertical|left" android:textSize="20px" android:layout_toLeftOf="@+id/img_operation"
+                android:layout_marginRight="5px"/>
+        <ImageView
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:id="@+id/img_operation" android:layout_alignTop="@+id/img_psg_photo"
+                android:layout_alignParentRight="true" android:layout_marginRight="10px"
+                android:focusableInTouchMode="false" android:scaleType="fitCenter"
+                android:src="@drawable/yellowcircle"/>
+	    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="@string/STR_KAISHIZHIXING"
+			    android:id="@+id/txt_operation" android:layout_alignTop="@+id/img_operation"
+			    android:layout_alignLeft="@+id/img_operation" android:layout_alignBottom="@+id/img_operation"
+			    android:layout_alignRight="@+id/img_operation" android:gravity="center" android:textColor="#ffa043"
+			    android:textSize="24px"/>
+	    <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="已预约/待执行 wefwefwef"
+                android:id="@+id/lbl_state"
+                android:layout_alignRight="@+id/img_operation" android:layout_alignLeft="@+id/img_operation"
+                android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px" android:layout_alignTop="@+id/lbl_name"/>
+	    <ImageButton
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:id="@+id/btn_background" android:background="@drawable/bk_empty"
+			    android:layout_alignBottom="@+id/lbl_state" android:layout_marginBottom="-10px"/>
+	    <ImageButton
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/btn_operation" android:layout_alignTop="@+id/img_operation"
+			    android:layout_alignLeft="@+id/img_operation" android:layout_alignBottom="@+id/img_operation"
+			    android:layout_alignRight="@+id/img_operation" android:background="@drawable/btn_frame"/>
+	    <ImageButton
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/btn_psg_photo" android:layout_alignTop="@+id/img_psg_photo"
+	            android:layout_alignLeft="@+id/img_psg_photo" android:layout_alignBottom="@+id/img_psg_photo"
+	            android:layout_alignRight="@+id/img_psg_photo"
+	            android:background="@drawable/btn_frame" android:layout_marginLeft="-5px"
+	            android:layout_marginTop="-5px" android:layout_marginRight="-5px" android:layout_marginBottom="-5px"
+	            android:visibility="visible"/>
+        <Button
+                android:layout_width="120px"
+                android:layout_height="30px"
+                android:text="费用详情"
+                android:id="@+id/txt_info_fee" android:layout_alignLeft="@+id/lbl_price"
+                android:layout_below="@+id/img_psg_photo"
+                android:textSize="19px" android:textColor="@color/TITLE_BACKCOLOR"
+                android:gravity="center"
+                android:paddingLeft="5px"
+                android:drawableLeft="@drawable/fee_icon"
+                android:background="@drawable/btn_fee"/>
+    </RelativeLayout>
+</RelativeLayout>

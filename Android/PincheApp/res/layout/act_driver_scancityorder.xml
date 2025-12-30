@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_CITYCARPOOLSEARCH_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="#F1F1F1">
+        <RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+                >
+            <RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/rlOnce" android:visibility="visible"
+                    android:background="@color/LIGHT_GRAY_COLOR">
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="750px">
+                    <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="60px" android:id="@+id/paixu_layout"
+android:visibility="visible" android:background="@android:color/transparent">
+<ImageView
+android:layout_width="25px"
+android:layout_height="25px"
+android:id="@+id/imgPaiXu_Distance" android:layout_centerVertical="true"
+android:layout_alignParentLeft="true" android:layout_marginLeft="10px"
+android:scaleType="fitCenter" android:src="@drawable/radiobox_roundsel"/>
+<TextView
+android:layout_width="115px"
+android:layout_height="fill_parent"
+android:text="@string/STR_CITYCARPOOLSEARCH_DISTANCE"
+android:id="@+id/lblPaiXu_Distance" android:layout_centerVertical="true"
+android:layout_toRightOf="@+id/imgPaiXu_Distance" android:layout_marginLeft="10px"
+android:gravity="center_vertical|left" android:textColor="@color/BASE_TEXT_COLOR"
+android:textSize="@dimen/BASE_TEXT_SIZE"/>
+<ImageView
+android:layout_width="25px"
+android:layout_height="25px"
+android:id="@+id/imgPaiXu_Price" android:layout_centerVertical="true"
+android:layout_toRightOf="@+id/lblPaiXu_Distance" android:layout_marginLeft="10px"
+android:scaleType="fitCenter" android:src="@drawable/radiobox_roundnormal"/>
+<TextView
+android:layout_width="115px"
+android:layout_height="fill_parent"
+android:text="@string/STR_CITYCARPOOLSEARCH_PRICE"
+android:id="@+id/lblPaiXu_Price" android:layout_centerVertical="true"
+android:layout_toRightOf="@+id/imgPaiXu_Price" android:layout_marginLeft="10px"
+android:gravity="center_vertical|left" android:textColor="@color/BASE_TEXT_COLOR"
+android:textSize="@dimen/BASE_TEXT_SIZE"/>
+<ImageView
+android:layout_width="25px"
+android:layout_height="25px"
+android:id="@+id/imgPaiXu_Time" android:layout_centerVertical="true"
+android:layout_toRightOf="@+id/lblPaiXu_Price" android:layout_marginLeft="10px"
+android:scaleType="fitCenter" android:src="@drawable/radiobox_roundnormal"/>
+<TextView
+android:layout_width="115px"
+android:layout_height="fill_parent"
+android:text="@string/STR_CITYCARPOOLSEARCH_TIME"
+android:id="@+id/lblPaiXu_Time" android:layout_centerVertical="true"
+android:layout_toRightOf="@+id/imgPaiXu_Time" android:layout_marginLeft="10px"
+android:gravity="center_vertical|left" android:textColor="@color/BASE_TEXT_COLOR"
+android:textSize="@dimen/BASE_TEXT_SIZE"/>
+</RelativeLayout>
+                    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                                    android:id="@+id/paixu_order_layout" android:layout_below="@+id/paixu_layout">
+<view android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView"
+android:id="@+id/viewOnce_Data" android:layout_alignParentTop="true"
+android:layout_alignParentLeft="true"
+        />
+</RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

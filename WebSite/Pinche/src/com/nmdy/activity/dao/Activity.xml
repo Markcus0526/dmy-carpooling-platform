@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.activity.dao.ActivityDao">
+<resultMap id="SyscouponResult" type="java.util.Map">
+		<id column="id" property="id" />
+		<result column="syscoupon_code" property="syscoupon_code" />
+		<result column="active_code" property="active_code" />
+		<result column="password" property="password" />
+		<result column="sc_date" property="sc_date" />
+		<result column="remark" property="remark" />
+		<result column="release_channel" property="release_channel" />
+		<result column="app_spread_unit_id" property="app_spread_unit_id" />
+		<result column="goods_or_cash" property="goods_or_cash" />
+		<result column="sum" property="sum" />
+		<result column="goods" property="goods" />
+		<result column="apply_source" property="apply_source" />
+		<result column="coupon_type" property="coupon_type" />
+		<result column="limit_val" property="limit_val" />
+		<result column="valid_period_unit" property="valid_period_unit" />
+		<result column="valid_period" property="valid_period" />
+		<result column="limit_count" property="limit_count" />
+		<result column="isenabled" property="isenabled" />
+		<result column="deleted" property="deleted" />
+		<result column="app_spread_unit_name" property="app_spread_unit_name" />
+		<result column="deploy_cnt" property="deploy_cnt" />
+		<result column="use_cnt" property="use_cnt" />
+	</resultMap>
+	
+	<resultMap id="activitySyscouponMap" type="ActivitySyscoupon">
+		<id property="id" column="id" />
+		<result property="activityId" column="activity_id" />
+		<result property="sysCouponId" column="sys_coupon_id" />
+		<result property="num" column="num" />
+		<result property="syscouponCode" column="syscoupon_code" />
+		<association property="activyityRule" javaType="ActivityRule">
+			<result property="id" column="activity_role_id" />
+			<result property="sysCouponId" column="sys_coupon_id" />
+			<result property="syscouponCode" column="syscoupon_code" />
+		</association>
+	</resultMap>
+
+	<resultMap id="fullActivityMap" type="Activity">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+		<result property="shareTime" column="share_time" />
+		<result property="sharePeople" column="share_people" />
+		<result property="prizeType" column="prize_type" />
+		<result property="lotteryName" column="lottery_name" />
+		<result property="joinPeople" column="join_people" />
+		<result property="giveGiftNum" column="give_gift_num" />
+		<result property="status" column="status" />
+		<result property="userdPeople" column="userd_people" />
+		<collection property="listActivitySyscoupon" ofType="com.nmdy.entity.ActivitySyscoupon"
+			column="id">
+			<result property="id" column="activity_coupon_id" />
+			<result property="activityId" column="activity_id" />
+			<result property="sysCouponId" column="sys_coupon_id" />
+			<result property="syscouponCode" column="syscoupon_code" />
+			<association property="activyityRule" javaType="ActivityRule">
+				<result property="id" column="activity_role_id" />
+				<result property="activityCouponId" column="activity_coupon_id" />
+				<result property="syscouponCode" column="syscoupon_code" />
+			</association>
+		</collection>
+	</resultMap>
+
+	<resultMap id="ActivityMap" type="Activity">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="startTime" column="start_time" />
+		<result property="endTime" column="end_time" />
+		<result property="shareTime" column="share_time" />
+		<result property="sharePeople" column="share_people" />
+		<result property="prizeType" column="prize_type" />
+		<result property="lotteryName" column="lottery_name" />
+		<result property="joinPeople" column="join_people" />
+		<result property="giveGiftNum" column="give_gift_num" />
+		<result property="status" column="status" />
+		<result property="userdPeople" column="userd_people" />
+	</resultMap>
+
+		<resultMap id="activityRuleMap" type="ActivityRule">
+			<result column="activity_role_id" property="id" />
+			<result column="activity_coupon_id" property="activityCouponId" />
+			<result column="num" property="num" />
+			<result column="start_num" property="startNum" />
+			<result column="end_num" property="endNum" />
+			<result column="syscoupon_code" property="syscouponCode" />
+			<result column="couponId" property="couponId" />
+		</resultMap>
+		
+		<resultMap id="activityUserMap" type="ActivityUser">
+			<result column="usercode" property="usercode" />
+			<result column="type" property="type" />
+		</resultMap>
+		
+		<resultMap id="activityGiftMap" type="hashmap">
+			<result column="name" property="name" />
+			<result column="addtime" property="addtime" />
+		</resultMap>
+		
+			<resultMap id="userMap" type="User">
+			<result column="id" property="id" />
+		</resultMap>
+		
+			<resultMap id="TipMap" type="Tip">
+			<result column="id" property="id" />
+		</resultMap>
+		
+		<select id="findById" parameterType="long" resultMap="fullActivityMap">
+			select
+			a.id,a.name,a.start_time,a.end_time,a.share_time,a.share_people,a.prize_type,a.lottery_name,a.join_people,a.give_gift_num,
+			a.status,a.userd_people,
+			b.id as
+			activity_coupon_id,b.activity_id,b.sys_coupon_id,c.syscoupon_code,d.id
+			as activity_role_id
+			from cs_lottery_activity a left join cs_lotteryactivity_syscoupon_rel b
+			on a.id = b.activity_id
+			left join sys_coupon c on b.sys_coupon_id = c.id
+			left join cs_lotteryactivity_syscoupon_rule d on b.id =
+			d.activity_coupon_id
+			where a.id=#{id}
+		</select>
+
+		<select id="findActivity" resultMap="fullActivityMap">
+			select
+			a.id,a.name,a.start_time,a.end_time,a.share_time,a.share_people,a.prize_type,a.lottery_name,a.join_people,a.give_gift_num,
+			a.status,a.userd_people,
+			b.id as
+			activity_coupon_id,b.activity_id,b.sys_coupon_id,c.syscoupon_code,d.id
+			as activity_role_id
+			from cs_lottery_activity a left join cs_lotteryactivity_syscoupon_rel b
+			on a.id = b.activity_id
+			left join sys_coupon c on b.sys_coupon_id = c.id
+			left join cs_lotteryactivity_syscoupon_rule d on b.id =
+			d.activity_coupon_id
+			where a.status=0
+			limit 1;  <!-- 临时措施，防止多条数据使app抛异常 -->
+		</select>
+		
+		<select id="listALl" parameterType="hashmap" resultMap="ActivityMap">
+			select * from cs_lottery_activity where 1=1
+			<if test='id != 0 and id!=null'> and id=#{id}</if>
+			<if test='type ==1'> and status=0</if>
+			<if test='name != null'> and name like '%${name}%'</if>
+			<if test='page != null'>
+				<if test='rows != null'>
+					LIMIT #{page},#{rows}
+				</if>
+			</if>
+		</select>
+
+		<select id="countListALl" parameterType="hashmap" resultType="int">
+			select count(*) from cs_lottery_activity where 1=1
+			<if test='id != 0'> and id=#{id}</if>
+			<if test='type==1'> and status=0</if>
+			<if test='name != null'> and name like '%${name}%'</if>
+		</select>
+	
+	<select id="listActivityRole" parameterType="long" resultMap="activityRuleMap">
+		select a.id as
+		activity_role_id,a.activity_coupon_id,b.used_num,d.syscoupon_code,a.start_num,a.end_num,d.id as couponId
+		from cs_lotteryactivity_syscoupon_rule a
+		left join cs_lotteryactivity_syscoupon_rel b
+		on a.activity_coupon_id = b.id
+		left join cs_lottery_activity c
+		on b.activity_id = c.id
+		left join sys_coupon d
+		on b.sys_coupon_id = d.id
+		where b.activity_id=#{id}
+	</select>
+
+	<insert id="insertActivityReturnId" parameterType="Activity">
+		insert into cs_lottery_activity
+		values(
+		#{id},
+		#{name},
+		#{startTime},
+		#{endTime},
+		#{shareTime},
+		#{sharePeople},
+		#{prizeType},
+		#{lotteryName},
+		#{joinPeople},
+		#{giveGiftNum},
+		0,
+		0
+		)
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	</insert>
+
+	<insert id="insertActivityCouponReturnId" useGeneratedKeys="true"
+		parameterType="ActivitySyscoupon">
+		insert into cs_lotteryactivity_syscoupon_rel
+		(
+		id,
+		activity_id,
+		sys_coupon_id
+		)
+		values(
+		#{id},
+		#{activityId},
+		#{sysCouponId}
+		)
+		<selectKey resultType="java.lang.Long" order="AFTER"
+			keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	</insert>
+
+	<!-- 删除活动所有的奖品 -->
+	<delete id="deleteCouponByActivityId" parameterType="Long">
+		delete from cs_lotteryactivity_syscoupon_rel where activity_id = #{id}
+	</delete>
+
+	<!-- 插入活动规则表 -->
+	<insert id="insertActivityRule" useGeneratedKeys="true"
+		parameterType="ActivityRule">
+		insert into cs_lotteryactivity_syscoupon_rule
+		(end_num,start_num,activity_coupon_id)
+		values
+		(#{endNum},#{startNum},#{activityCouponId})
+	</insert>
+
+	<!-- 修改活动状态 -->
+	<update id="udpateActivityStop" parameterType="long">
+		update
+		cs_lottery_activity set status=1 where id = #{id}
+	</update>
+
+	<!-- 删除活动规则 -->
+	<delete id="deleteActivityRule" parameterType="Long">
+		delete from
+		cs_lotteryactivity_syscoupon_rule where id = #{id}
+	</delete>
+
+	<!-- 批量插入活动奖品 -->
+	<insert id="insertBatchActivityCoupon" useGeneratedKeys="true"
+		parameterType="java.util.List">
+		insert into cs_lotteryactivity_syscoupon_rel
+		(
+		activity_id,
+		sys_coupon_id
+		)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.activityId},#{item.sysCouponId})
+		</foreach>
+	</insert>
+
+	<!-- 修改活动 -->
+	<update id="updateActivity" parameterType="Activity">
+		update cs_lottery_activity
+		set name =
+		#{name},start_time=#{startTime},end_time=#{endTime},share_time=#{shareTime},share_people=#{sharePeople},
+		prize_type=#{prizeType},
+		lottery_name=#{lotteryName},
+		join_people=#{joinPeople},give_gift_num=#{giveGiftNum} where id=#{id}
+	</update>
+	
+<!-- 查询活动已领取奖品的3位用户 -->	
+<select id="findActivityUser" parameterType="long" resultMap="activityUserMap">
+<!-- 	select b.usercode,a.type from cs_lottery_activity_tip_user a -->
+<!-- 	left join user b on a.user_id = b.id -->
+<!-- 	where a.activity_id=#{id} -->
+<!-- 	limit 3 -->
+<!-- 	union all -->
+<!-- 	select c.usercode,b.type from cs_lotteryactivity_syscoupon_rel a -->
+<!-- 	left join single_coupon b on a.sys_coupon_id = b.syscoupon_id -->
+<!-- 	left join user c on b.userid = c.id -->
+<!-- 	where a.activity_id=#{id} -->
+<!-- 	limit 3 -->
+		select b.usercode,a.style as type from cs_lottery_activity_huojiang_user a left join user b
+		on a.huojiang_userid = b.id
+		where faqi_id = #{fid}
+</select>
+
+
+<!-- 查询我的奖品 -->	
+<select id="findMyGift" parameterType="long" resultMap="activityGiftMap">
+	select b.syscoupon_code as name,a.ps_date as addtime from single_coupon a 
+left join sys_coupon b on a.syscoupon_id = b.id
+where userid=#{userid}
+union all
+select b.lottery_name as name,a.add_time as addtime from cs_lottery_activity_tip_user a
+left join cs_lottery_activity b on a.activity_id = b.id
+where a.huojiang_id=#{userid}
+</select>
+
+
+<!-- 发布我的活动 -->
+<insert id="insertUserActivityReturnId" parameterType="ActivityDto">
+	insert into cs_lottery_activity_faqi_user(
+		faqi_userid,
+		activity_id,
+		type,
+		status,
+		add_time
+	)
+	values(
+		#{faqiId},
+		#{activityId},
+		0,
+		0,
+		#{addtime}
+	)
+	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="myFaqiId">
+		SELECT LAST_INSERT_ID() AS myFaqiId
+	</selectKey>
+</insert>
+
+<!-- 注册 -->
+<insert id="insertUserForReturnId" parameterType="ActivityDto">
+	insert into user(
+		usercode,
+		phone,
+		password,
+		invitecode_self,
+		sex,
+		reg_date,
+		last_login_time,
+		nickname
+	)
+	values(
+		#{usercode},
+		#{usercode},
+		#{password},
+		#{invitecode_self},
+		#{sex},
+		#{addtime},
+		#{addtime},
+		#{nickname}
+	)
+	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="huojiangId">
+		SELECT LAST_INSERT_ID() AS huojiangId
+	</selectKey>
+</insert>
+
+<!-- 查询我的活动的获奖的个数 -->	
+<select id="countUserActivity" parameterType="long" resultType="int">
+select count(*) from cs_lottery_activity_faqi_user a
+inner join cs_lottery_activity_huojiang_user b on a.id = b.faqi_id
+where a.faqi_userid = #{faqiId} and a.status=0
+<!-- SELECT count(*) FROM `cs_lottery_activity_huojiang_user` where -->
+<!-- faqi_id=#{faqiId} -->
+</select>
+
+<!-- 查询我的活动的获奖的个数 ,含过期的 -->
+<select id="countAllUserActivity" parameterType="long" resultType="int">
+select count(*) from user where invitecode_regist=
+   (select invitecode_self from user where id= #{faqiId} )
+<!-- SELECT count(*) FROM `cs_lottery_activity_huojiang_user` where -->
+<!-- faqi_id=#{faqiId} -->
+</select>
+
+<!-- 插入获奖的用户 -->
+<insert id="insertActivityHuojiangUser" parameterType="ActivityDto">
+	insert into cs_lottery_activity_huojiang_user(
+		faqi_id,
+		huojiang_userid,
+		style,
+		gift_name
+	)
+	values(
+		#{fid},
+		#{huojiangId},
+		#{style},
+		#{giftName}
+	)
+	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="activityUserId">
+		SELECT LAST_INSERT_ID() AS activityUserId
+	</selectKey>
+</insert>
+
+<!-- 插入彩票 -->
+<insert id="insertTip" parameterType="ActivityDto">
+	insert into cs_lottery_activity_tip_user(
+		activity_id,
+		faqi_id,
+		huojiang_id,
+		type,
+		add_time
+	)
+	values(
+		#{activityId},
+		#{faqiId},
+		#{huojiangId},
+		#{type},
+		#{addtime}
+	)
+</insert>
+
+<!-- 修改用户对应的活动状态为停止 -->
+<update id="updateUserActivity" parameterType="long">
+	update cs_lottery_activity_faqi_user set status=1 where faqi_userid = #{faqiId} and status=0
+</update>
+
+<!-- 查询我的活动的获奖的个数 -->	
+<select id="booleanFaqiActivity" parameterType="ActivityDto" resultType="long">
+select id from cs_lottery_activity_faqi_user a
+where faqi_userid=#{faqiId} and activity_id=#{activityId} and status=0
+</select>
+
+<!-- 查询发起活动的ID-->	
+<select id="findFaqiId" parameterType="long" resultType="long">
+select id from cs_lottery_activity_faqi_user where faqi_userid = #{faqiId} and status=0
+</select>
+
+<select id="findPagination" parameterType="hashmap" resultMap="SyscouponResult">
+	SELECT SC.*, ASU.name AS app_spread_unit_name, DC.deploy_cnt,
+	UC.use_cnt
+	FROM sys_coupon AS SC
+	LEFT JOIN app_spread_unit AS ASU
+	ON SC.app_spread_unit_id=ASU.id
+	LEFT JOIN (SELECT coupon_code, COUNT(id) AS deploy_cnt FROM single_coupon
+	GROUP BY coupon_code) AS DC
+	ON SC.syscoupon_code=DC.coupon_code
+	LEFT JOIN (SELECT coupon_code, COUNT(id) AS use_cnt FROM single_coupon
+	WHERE isused=1 GROUP BY coupon_code) AS UC
+	ON SC.syscoupon_code=UC.coupon_code
+	where 1=1 
+	<if test="id != null and id !=0">
+		AND SC.id = #{id}
+	</if>
+	<if test="limit_count != null and limit_count !=0">
+		AND SC.limit_count = #{limit_count}
+	</if>
+	<if test="valid_period != null and valid_period !=0">
+		AND SC.valid_period = #{valid_period}
+	</if>
+	ORDER BY SC.id  
+	<if test="start != null">
+
+		<if test="limit != null">
+			LIMIT #{start},#{limit}
+		</if>
+	</if>
+</select>
+	
+	<!-- 查询发起活动的ID-->	
+<select id="login" parameterType="hashmap" resultType="int">
+	select count(*) from user where usercode = #{usercode} and password = #{password}
+</select>
+
+<!-- 查询发起活动的ID-->	
+<select id="countFaqi" parameterType="long" resultType="int">
+	select count(*) from cs_lottery_activity_faqi_user where faqi_userid = #{userId}
+</select>
+
+<!-- 查找发起活动的时间-->	
+<select id="findFaqiTime" parameterType="long" resultType="Date">
+	select add_time from cs_lottery_activity_faqi_user where faqi_userid = #{userId} and status=0
+</select>
+
+<select id="findUser" parameterType="String" resultType="User">
+	select * from user where usercode = #{usercode}
+</select>
+
+<select id="findMaxId" resultType="int">
+		select max(id) from group_
+    </select>
+    
+    <!-- 注册 -->
+<insert id="insertUserForDriver" parameterType="hashmap">
+	insert into user(
+		usercode,
+		username,
+		drivinglicence_num,
+		id_card_num,
+		birthday,
+		drlicence_ti,
+		reg_date
+	)
+	values(
+		#{usercode},
+		#{username},
+		#{drivinglicence_num},
+		#{id_card_num},
+		#{birthday},
+		#{drlicence_ti},
+		#{reg_date}
+	)
+	<selectKey resultType="java.lang.Long" order="AFTER" keyProperty="userId">
+		SELECT LAST_INSERT_ID() AS userId
+	</selectKey>
+</insert>
+
+	<!-- 查询发起活动的ID-->	
+<select id="findIsUserByUsercode" parameterType="String" resultType="int">
+	select count(*) from user where usercode = #{usercode}
+</select>
+
+<select id="findRegistCode" parameterType="long" resultType="String">
+	select invitecode_regist from user where id = #{id}
+</select>
+
+<select id="findTip"  parameterType="int" resultMap="TipMap">
+	select  * from cs_lottery_activity_tip where user_id is null and type=#{type}
+	limit 1 
+</select>
+
+<update id="updateTip" parameterType="hashmap">
+	update cs_lottery_activity_tip set user_id = #{userId} where id = #{id}
+</update>
+
+<select id="countUserFx" parameterType="String" resultType="int">
+	select count(*) from user where invitecode_regist = #{invitecode_self}
+</select>
+</mapper>
+
+

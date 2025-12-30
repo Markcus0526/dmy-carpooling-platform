@@ -1,0 +1,13 @@
+body {
+	background: #fff url('images/toolbarBg.png') repeat-x;
+	height: 100%;
+	width: 100%;
+}
+
+.split {
+	width: 3px;
+	height: 28px;
+	border: none;
+	background: url('images/splitBg.png') no-repeat;
+	margin: 0 3px;
+}

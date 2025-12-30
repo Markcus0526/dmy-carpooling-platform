@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.customer.user.dao.CustomerMapper" >
+
+    <resultMap
+        id="CustomerResult"
+        type="Customer" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="nickname"
+            property="nickname" />
+
+        <result
+            column="password"
+            property="password" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="balance_ts"
+            property="balance_ts" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="invitecode_regist"
+            property="invitecode_regist" />
+
+        <result
+            column="app_register"
+            property="app_register" />
+
+        <result
+            column="bankcard"
+            property="bankcard" />
+
+        <result
+            column="bankname"
+            property="bankname" />
+
+        <result
+            column="subbranch"
+            property="subbranch" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="sex"
+            property="sex" />
+
+        <result
+            column="age"
+            property="age" />
+
+        <result
+            column="id_card1"
+            property="id_card1" />
+
+        <result
+            column="driver_license1"
+            property="driver_license1" />
+
+        <result
+            column="driving_license1"
+            property="driving_license1" />
+
+        <result
+            column="id_card2"
+            property="id_card2" />
+
+        <result
+            column="driver_license2"
+            property="driver_license2" />
+
+        <result
+            column="driving_license2"
+            property="driving_license2" />
+
+        <result
+            column="img"
+            property="img" />
+
+        <result
+            column="car_img"
+            property="car_img" />
+
+        <result
+            column="person_verified"
+            property="person_verified" />
+
+        <result
+            column="driver_verified"
+            property="driver_verified" />
+
+        <result
+            column="plate_num"
+            property="plate_num" />
+
+        <result
+            column="plat_num_last3"
+            property="plat_num_last3" />
+
+        <result
+            column="provide_profitsharing_time_as_passenger"
+            property="provide_profitsharing_time_as_passenger" />
+
+        <result
+            column="provide_profitsharing_count_as_passenger"
+            property="provide_profitsharing_count_as_passenger" />
+
+        <result
+            column="provide_profitsharing_time_as_driver"
+            property="provide_profitsharing_time_as_driver" />
+
+        <result
+            column="provide_profitsharing_count_as_driver"
+            property="provide_profitsharing_count_as_driver" />
+
+        <result
+            column="city_register"
+            property="city_register" />
+
+        <result
+            column="city_cur"
+            property="city_cur" />
+
+        <result
+            column="ratio_as_passenger"
+            property="ratio_as_passenger" />
+
+        <result
+            column="integer_as_passenger"
+            property="integer_as_passenger" />
+
+        <result
+            column="activeway_as_passenger"
+            property="activeway_as_passenger" />
+
+        <result
+            column="ratio_as_driver"
+            property="ratio_as_driver" />
+
+        <result
+            column="integer_as_driver"
+            property="integer_as_driver" />
+
+        <result
+            column="activeway_as_driver"
+            property="activeway_as_driver" />
+
+        <result
+            column="inviter_type"
+            property="inviter_type" />
+
+        <result
+            column="is_platform"
+            property="is_platform" />
+
+        <result
+            column="ratio_as_passenger_self"
+            property="ratio_as_passenger_self" />
+
+        <result
+            column="integer_as_passenger_self"
+            property="integer_as_passenger_self" />
+
+        <result
+            column="active_as_passenger_self"
+            property="active_as_passenger_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="active_as_driver_self"
+            property="active_as_driver_self" />
+
+        <result
+            column="limit_month_as_passenger_self"
+            property="limit_month_as_passenger_self" />
+
+        <result
+            column="limit_month_as_driver_self"
+            property="limit_month_as_driver_self" />
+
+        <result
+            column="limit_count_as_passenger_self"
+            property="limit_count_as_passenger_self" />
+
+        <result
+            column="limit_count_as_driver_self"
+            property="limit_count_as_driver_self" />
+
+        <result
+            column="phone_system"
+            property="phone_system" />
+
+        <result
+            column="device_token"
+            property="device_token" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <resultMap
+        id="UserBasicInfoResult"
+        type="UserBasicInfo" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="nickname"
+            property="nickname" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="person_verified"
+            property="personVerified" />
+
+        <result
+            column="driver_verified"
+            property="driverVerified" />
+
+        <result
+            column="groupid"
+            property="groupId" />
+
+        <result
+            column="group_name"
+            property="groupName" />
+
+        <result
+            column="reg_date"
+            property="regDate" />
+
+        <result
+            column="last_login_time"
+            property="lastLoginTime" />
+    </resultMap>
+
+    <select
+        id="findAll"
+        resultMap="CustomerResult" >
+		SELECT * FROM user WHERE deleted=0
+    </select>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultType="Customer" >
+		SELECT * FROM user WHERE id=#{id} AND deleted=0
+    </select>
+
+    <select
+        id="findOneByGid"
+        parameterType="int"
+        resultType="Customer" >
+		SELECT a.* FROM `user` a
+		LEFT JOIN group_details b ON a.id=b.userid
+		LEFT JOIN group_ c ON c.groupid=b.groupid
+		WHERE b.userid is not null AND c.id=#{gid}
+    </select>
+
+    <select
+        id="findOneByUsercode"
+        parameterType="string"
+        resultType="Customer" >
+		SELECT * FROM user WHERE usercode=#{usercode} AND deleted=0
+    </select>
+
+    <select
+        id="findOneByUsername"
+        parameterType="hashmap"
+        resultMap="CustomerResult" >
+		SELECT * FROM user WHERE username=#{username} AND deleted=0
+    </select>
+
+    <select
+        id="findUserBasicInfo"
+        parameterType="hashmap"
+        resultMap="UserBasicInfoResult" >
+		SELECT u.id, u.usercode, u.username, u.nickname, phone,
+			u.person_verified, u.driver_verified, 
+			g.groupid, g.group_name, u.reg_date, u.last_login_time
+		FROM `user` u
+		LEFT JOIN `group_details` gd ON gd.userid = u.id
+		LEFT JOIN `group_` g ON gd.groupid = g.groupid
+		LEFT JOIN `group_association_details` gad ON gad.groupid = g.id
+		LEFT JOIN `group_association` ga ON ga.id = gad.associd
+		LEFT JOIN `city` cr ON u.city_register = cr.`code`
+		LEFT JOIN `city` cc ON u.city_cur = cc.`code`
+		WHERE u.deleted = 0
+
+        <if test="regCity != null" >
+			AND cr.`name` LIKE #{regCity}
+        </if>
+
+        <if test="lastLoginCity != null" >
+			AND cc.`name` LIKE #{lastLoginCity}
+        </if>
+
+        <if test="groupid != null" >
+			AND g.groupid LIKE #{groupid}
+        </if>
+
+        <if test="groupName != null" >
+			AND g.group_name LIKE #{groupName}
+        </if>
+
+        <if test="usercode != null" >
+			AND u.usercode LIKE #{usercode}
+        </if>
+
+        <if test="username != null" >
+			AND u.username LIKE #{username}
+        </if>
+
+        <if test="phone != null" >
+			AND u.phone LIKE #{phone}
+        </if>
+
+        <if test="fromRegTime != null" >
+			AND u.reg_date >= #{fromRegTime} 
+        </if>
+
+        <if test="toRegTime != null" >
+			AND #{endTime} >= u.reg_date
+        </if>
+
+        <if test="fromLoginTime != null" >
+			AND u.last_login_time >= #{fromLoginTime} 
+        </if>
+
+        <if test="toLoginTime != null" >
+			AND #{toLoginTime} >= u.last_login_time 
+        </if>
+
+        <if test="getPage != null" >
+			ORDER BY u.id LIMIT #{page}, #{rows}
+        </if>
+    </select>
+
+    <select
+        id="findAllUsers"
+        resultMap="CustomerResult" >
+		SELECT * FROM user WHERE deleted=0 AND is_platform=0
+    </select>
+
+    <select
+        id="searchNumberspread"
+        parameterType="hashmap"
+        resultMap="CustomerResult" >
+		 SELECT * FROM `user` WHERE deleted=0 AND is_platform=0
+        <!--
+        SELECT id,usercode,username,nickname,password,phone,
+		invitecode_self,invitecode_regist,provide_profitsharing_time_as_passenger,
+		provide_profitsharing_count_as_passenger,provide_profitsharing_time_as_driver,
+		provide_profitsharing_count_as_driver,ratio_as_passenger,integer_as_driver,
+		activeway_as_driver,inviter_type,ratio_as_passenger_self,integer_as_passenger_self,
+		active_as_passenger_self,ratio_as_driver_self,integer_as_driver_self,
+		active_as_driver_self,limit_month_as_passenger_self,limit_month_as_driver_self,
+		limit_count_as_passenger_self,limit_count_as_driver_self,
+		CASE WHEN  sex = 0  THEN '男' ELSE '女' END  性别 
+		FROM `user` WHERE deleted=0 AND is_platform=0
+        -->
+
+        <if test="searchType == 1" >
+			AND username LIKE #{searchValue}
+        </if>
+
+        <if test="searchType == 2" >
+			AND invitecode_self LIKE #{searchValue}
+        </if>
+
+        <if test="searchType == 3" >
+			AND id LIKE #{searchValue}
+        </if>
+
+        <if test="page != null" >
+			ORDER BY id LIMIT #{page}, #{rows}
+        </if>
+    </select>
+
+    <update
+        id="updateNumberspread"
+        parameterType="Customer" >
+		UPDATE `user` SET
+		activeway_as_passenger=#{activeway_as_passenger},
+		ratio_as_passenger=#{ratio_as_passenger},
+		integer_as_passenger=#{integer_as_passenger},
+		provide_profitsharing_time_as_passenger=#{provide_profitsharing_time_as_passenger},
+		provide_profitsharing_count_as_passenger=#{provide_profitsharing_count_as_passenger},
+		
+		activeway_as_driver=#{activeway_as_driver},
+		ratio_as_driver=#{ratio_as_driver},
+		integer_as_driver=#{integer_as_driver},
+		provide_profitsharing_time_as_driver=#{provide_profitsharing_time_as_driver},
+		provide_profitsharing_count_as_driver=#{provide_profitsharing_count_as_driver}
+		
+		WHERE id=#{id}
+    </update>
+
+    <update
+        id="updateTsid"
+        parameterType="hashmap" >
+		UPDATE `user` SET balance_ts=#{ts_id} WHERE id=#{id}
+    </update>
+
+</mapper>

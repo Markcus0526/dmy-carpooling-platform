@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" android:paddingBottom="30px">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="保单详情"
+                android:id="@+id/lblTitle"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:background="@drawable/roundgreen_frame"
+                android:textColor="@color/WHITE_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="保单单号：XXXXXXXXXXXXXX"
+                android:id="@+id/insurance_num"
+                android:layout_below="@+id/lblTitle"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="10px"
+                android:paddingTop="20px"
+                android:paddingLeft="50px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="被保人姓名：XXXXXX"
+                android:id="@+id/insurance_user"
+                android:layout_below="@+id/insurance_num"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:paddingLeft="50px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="保单生效时间：XXXXXX"
+                android:id="@+id/insurance_start_time"
+                android:layout_below="@+id/insurance_user"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:paddingLeft="50px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="保单中止日期：XXXXXX"
+                android:id="@+id/insurance_end_time"
+                android:layout_below="@+id/insurance_start_time"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:paddingLeft="50px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INSURANCE_TIP1"
+                android:id="@+id/insurance_tip1"
+                android:layout_below="@+id/insurance_end_time"
+                android:gravity="center_vertical|left"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:paddingLeft="50px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XXX"
+                android:id="@+id/insurance_detail"
+                android:layout_below="@+id/insurance_end_time"
+                android:layout_toRightOf="@+id/insurance_tip1"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:textColor="@color/RED_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/INFO_COST_TIP2"
+                android:id="@+id/insurance_tip2"
+                android:layout_toRightOf="@+id/insurance_detail"
+                android:layout_below="@+id/insurance_end_time"
+                android:paddingBottom="10px"
+                android:paddingTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <Button
+                android:layout_width="150px"
+                android:layout_height="50px"
+                android:text="@string/STR_QUEDING"
+                android:id="@+id/btnOk" android:layout_alignParentLeft="false"
+                android:layout_alignParentBottom="false"
+                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                android:textSize="21px" android:layout_centerHorizontal="true"
+                android:layout_below="@+id/insurance_tip2" android:layout_marginTop="30px"/>
+    </RelativeLayout>
+</RelativeLayout>

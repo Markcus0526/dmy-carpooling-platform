@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_COMMONROUTE_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="#F1F1F1">
+        <TextView
+                android:layout_width="460px"
+                android:layout_height="40px"
+                android:text="@string/STR_COMMONROUTE_HINT"
+                android:id="@+id/lblHint" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:layout_marginTop="18px" android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+                android:gravity="center"/>
+        <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="525px"
+                android:id="@+id/listRoutes" android:layout_below="@+id/lblHint"
+                android:layout_marginTop="15px" android:layout_alignRight="@+id/lblHint"
+                android:layout_alignLeft="@+id/lblHint"/>
+        <Button
+                android:layout_width="440px"
+                android:layout_height="60px"
+                android:text="@string/STR_COMMONROUTE_ADDROUTE"
+                android:id="@+id/btnAddRoute" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30px" android:background="@drawable/btn_green"
+                android:textColor="@color/WHITE_COLOR" android:textSize="24px"/>
+    </RelativeLayout>
+</RelativeLayout>

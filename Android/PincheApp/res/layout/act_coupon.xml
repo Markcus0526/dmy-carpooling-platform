@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1f1f1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_COUPON_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout">
+		<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="50px"
+				android:id="@+id/img_coupon_code" android:layout_marginLeft="30px"
+				android:layout_alignTop="@+id/btn_add_coupon" android:layout_toLeftOf="@+id/btn_add_coupon"
+				android:layout_alignParentLeft="true" android:layout_marginRight="20px"
+                android:visibility="gone"
+				android:background="@drawable/img_txtback"/>
+        <EditText
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/edt_coupon_code" android:layout_alignTop="@+id/img_coupon_code"
+                android:layout_alignBottom="@+id/img_coupon_code"
+				android:layout_alignRight="@+id/img_coupon_code" android:textColor="#707070" android:textSize="23px"
+				android:singleLine="true" android:paddingLeft="5px" android:background="@drawable/bk_empty"
+                android:layout_alignLeft="@+id/img_coupon_code" android:layout_marginLeft="20px"
+                android:layout_marginRight="20px" android:hint="请输入点券密码" android:maxLength="20"
+                android:visibility="gone"
+                android:inputType="textCapCharacters"/>
+		<ImageButton
+				android:layout_width="70px"
+				android:layout_height="50px"
+				android:layout_marginTop="50px" android:layout_marginRight="30px"
+				android:layout_alignParentRight="true" android:background="@drawable/btn_plus"
+                android:visibility="gone"
+				android:id="@+id/btn_add_coupon"/>
+		<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="50px"
+				android:id="@+id/img_scroll_header" android:layout_alignLeft="@+id/img_coupon_code"
+				android:layout_alignRight="@+id/btn_add_coupon" android:layout_below="@+id/img_coupon_code"
+				android:layout_marginTop="50px" android:background="@drawable/lvdian_header"
+				android:layout_marginLeft="-15px" android:layout_marginRight="-15px"/>
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_alignLeft="@+id/img_scroll_header"
+				android:layout_alignRight="@+id/img_scroll_header" android:layout_alignBottom="@+id/img_scroll_header"
+				android:layout_alignTop="@+id/img_scroll_header" android:id="@+id/scroll_header_layout"
+				>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="10">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_COUPON_XUHAO"
+						android:id="@+id/textView" android:textSize="19px" android:textColor="#FFFFFF"
+						android:gravity="center"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="match_parent"
+						android:id="@+id/imageView" android:layout_alignParentRight="true"
+						android:background="#505050"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="10">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_COUPON_SHIYONGFANWEI"
+						android:id="@+id/textView1" android:textSize="19px" android:textColor="#FFFFFF"
+						android:gravity="center"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="match_parent"
+						android:id="@+id/imageView1" android:background="#505050"
+						android:layout_alignParentRight="true"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="20">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_COUPON_NEIRONG"
+						android:id="@+id/textView2" android:textSize="19px" android:textColor="#FFFFFF"
+						android:gravity="center"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="match_parent"
+						android:id="@+id/imageView2" android:background="#505050"
+						android:layout_alignParentRight="true"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="25">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_COUPON_SHIYONGXIANZHI"
+						android:id="@+id/textView3" android:textSize="19px" android:textColor="#FFFFFF"
+						android:gravity="center"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="match_parent"
+						android:id="@+id/imageView3" android:background="#505050"
+						android:layout_alignParentRight="true"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="25">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_COUPON_YOUXIANQIJIAN"
+						android:id="@+id/textView4" android:textSize="19px" android:textColor="#FFFFFF"
+						android:gravity="center"/>
+			</RelativeLayout>
+		</LinearLayout>
+		<view android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView" android:id="@+id/scroll_view"
+		      android:layout_below="@+id/scroll_header_layout" android:layout_alignLeft="@+id/scroll_header_layout"
+		      android:layout_alignRight="@+id/scroll_header_layout" android:layout_marginBottom="30px"
+		      android:layout_alignParentBottom="true"/>
+		<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+		                android:layout_centerInParent="true" android:background="#70000000"
+		                android:id="@+id/coupon_detail_layout" android:visibility="gone">
+			<Button android:layout_width="match_parent" android:layout_height="match_parent"
+			        android:id="@+id/btn_coupon_content" android:background="@drawable/bk_empty"/>
+			<RelativeLayout android:layout_width="350px" android:layout_height="350px"
+			                android:id="@+id/coupon_content_layout" android:layout_centerInParent="true"
+			                android:background="@drawable/roundrect_white_layout" android:clickable="true">
+				<ImageView android:layout_width="300px" android:layout_height="110px" android:id="@+id/img_coupon"
+				           android:layout_centerHorizontal="true" android:layout_marginTop="30px"
+				           android:background="@drawable/coupon_tmp"/>
+				<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+				          android:id="@+id/txt_coupon_content" android:layout_below="@+id/img_coupon"
+				          android:gravity="center"
+				          android:textColor="#808080" android:textSize="29px" android:layout_marginTop="20px"/>
+				<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+				          android:id="@+id/txt_coupon_code" android:layout_below="@+id/txt_coupon_content"
+				          android:layout_centerHorizontal="true"
+				          android:textColor="#E7A93A" android:textSize="25px"
+				          android:layout_above="@+id/txt_spreadunit_name" android:gravity="center"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+				          android:id="@+id/txt_spreadunit_name" android:layout_alignParentBottom="true"
+				          android:layout_alignParentRight="true" android:layout_marginBottom="20px"
+				          android:layout_marginRight="20px" android:textSize="23px" android:textColor="#A0A0A0"/>
+			</RelativeLayout>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

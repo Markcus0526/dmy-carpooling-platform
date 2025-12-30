@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_WAITORDER_TITLE"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <Button
+                android:layout_width="100px"
+                android:layout_height="40px"
+                android:text="@string/STR_WAITORDER_CANCEL"
+                android:id="@+id/btn_cancel_order" android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bk_smallgreen_sel"
+                android:textSize="@dimen/BASE_TEXT_SIZE"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="450px"
+                      android:id="@+id/fail_layout"
+                      android:layout_alignParentTop="true"
+                      android:background="@color/WHITE_COLOR"
+                      android:padding="10px"
+                      android:orientation="vertical"
+                      android:gravity="center_horizontal">
+                    <ImageView android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:id="@+id/logo"
+                               android:layout_marginTop="50px"
+                               android:background="@drawable/failicon"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="10px"
+                              android:text="@string/STR_UPPRICE_NOTE1"
+                              android:textSize="30px"
+                              android:textColor="@color/LIGHT_YELLOW_COLOR"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginTop="10px"
+                              android:text="@string/STR_UPPRICE_NOTE2"
+                              android:textSize="30px"
+                              android:textColor="@color/LIGHT_YELLOW_COLOR"/>
+
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="20px"
+                  android:layout_marginTop="15px"
+                  android:textColor="@color/GRAY_COLOR"
+                  android:textSize="23px"
+                  android:layout_below="@+id/fail_layout"
+                  android:id="@+id/tip1"
+                  android:text="@string/STR_UPPRICE_TIP"
+                />
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="50px"
+                      android:id="@+id/setPriceLayout"
+                      android:orientation="horizontal"
+                      android:layout_marginLeft="20px"
+                      android:layout_marginTop="15px"
+                      android:layout_below="@+id/tip1"
+		        >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50px"
+                    android:text="@string/STR_UPPRICE_SETPRICE"
+                    android:id="@+id/lblPrice"
+                    android:gravity="center_vertical|left"
+                    android:layout_marginRight="30px"
+                    android:layout_weight="1.0"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="25px"/>
+            <ImageView
+                    android:layout_width="56px"
+                    android:layout_height="50px"
+                    android:layout_weight="1.0"
+                    android:layout_marginRight="20px"
+                    android:id="@+id/imgPriceMinus"  android:scaleType="fitCenter"
+                    android:src="@drawable/btn_roundminus"/>
+            <EditText
+                    android:layout_width="100px"
+                    android:layout_height="match_parent"
+                    android:text="@string/STR_UPPRICE_PRICE"
+                    android:id="@+id/lblPriceVal"
+                    android:paddingLeft="15px"
+                    android:paddingRight="15px"
+                    android:background="@drawable/roundlightgraywhite_frame" android:textColor="@color/BLACK_COLOR"
+                    android:textSize="25px"
+                    android:singleLine="true"
+                    android:numeric="decimal"
+                    android:gravity="center_vertical|right" android:inputType="numberSigned" android:maxLength="4"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:text="@string/STR_UPPRICE_PRICEMARK"
+                    android:id="@+id/lblPriceUnit" android:gravity="center_vertical|left"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="25px"/>
+            <ImageView
+                    android:layout_width="56px"
+                    android:layout_height="50px"
+                    android:layout_weight="1.0"
+                    android:id="@+id/imgPricePlus" android:scaleType="fitCenter"
+                    android:src="@drawable/btn_roundplus" android:layout_marginLeft="10px"/>
+
+        </LinearLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OO贴士：上周车主平均接单时间15分钟。"
+                android:textColor="@color/GRAY_COLOR"
+                android:layout_centerHorizontal="true"
+                android:textSize="20px"
+                android:layout_above="@+id/btn_send_again"
+                android:layout_margin="10px"/>
+
+
+        <Button
+                android:layout_width="400px"
+                android:layout_height="60px"
+                android:text="@string/STR_UPPRICE_SEND"
+                android:id="@+id/btn_send_again"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20px"
+                android:background="@drawable/roundsolidgreen_frame"
+                android:textColor="@color/WHITE_COLOR"
+                android:textSize="24px"
+                />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+	

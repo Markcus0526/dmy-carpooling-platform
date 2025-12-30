@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="TAG_KEY_WIDTH">resolution_set_key_width</string>
+    <string name="TAG_KEY_HEIGHT">resolution_set_key_height</string>
+    <string name="TAG_KEY_MINWIDTH">resolution_set_key_minwidth</string>
+    <string name="TAG_KEY_MINHEIGHT">resolution_set_key_minheight</string>
+    <string name="TAG_KEY_PADDINGLEFT">resolution_set_key_pleft</string>
+    <string name="TAG_KEY_PADDINGTOP">resolution_set_key_ptop</string>
+    <string name="TAG_KEY_PADDINGRIGHT">resolution_set_key_pright</string>
+    <string name="TAG_KEY_PADDINGBOTTOM">resolution_set_key_pbottom</string>
+    <string name="TAG_KEY_MARGINLEFT">resolution_set_key_mleft</string>
+    <string name="TAG_KEY_MARGINTOP">resolution_set_key_mtop</string>
+    <string name="TAG_KEY_MARGINRIGHT">resolution_set_key_mtop</string>
+    <string name="TAG_KEY_MARGINBOTTOM">resolution_set_key_mbottom</string>
+    <string name="TAG_KEY_FONTSIZE">resolution_set_key_fontsize</string>
+</resources>

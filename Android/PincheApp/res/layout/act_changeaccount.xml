@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1F1F1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_CHANGEACCOUNT_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout">
+		<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/scrollView">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/STR_CHANGEACCOUNT_OLDACCOUNT"
+						android:id="@+id/lbl_old_account" android:layout_marginLeft="40px" android:layout_marginTop="50px"
+						android:textColor="#707070" android:gravity="center_vertical" android:textSize="23px"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="8088 8888 8888 8888 8888"
+						android:id="@+id/txt_old_account" android:layout_alignTop="@+id/lbl_old_account"
+						android:layout_toRightOf="@+id/lbl_old_account"
+						android:layout_alignBottom="@+id/lbl_old_account" android:layout_marginLeft="15px"
+						android:textColor="#FFAC40" android:gravity="center_vertical" android:textSize="23px"
+						android:layout_marginRight="20px" android:layout_alignParentRight="true"/>
+				<ImageView android:layout_width="400px" android:layout_height="56px" android:id="@+id/img_new_account"
+				           android:layout_centerHorizontal="true" android:background="@drawable/img_txtback"
+				           android:layout_marginTop="30px" android:layout_below="@+id/txt_old_account"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+				          android:text="@string/STR_CHANGEACCOUNT_NEWACCOUNT" android:id="@+id/txt_new_account"
+				          android:textSize="23px"
+				          android:layout_alignBottom="@+id/img_new_account" android:gravity="center_vertical"
+				          android:layout_alignLeft="@+id/img_new_account" android:layout_marginLeft="20px"
+				          android:textColor="#707070" android:layout_alignTop="@+id/img_new_account"/>
+				<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+				           android:id="@+id/img_sep_account" android:layout_alignTop="@+id/txt_new_account"
+				           android:layout_alignBottom="@+id/txt_new_account" android:layout_marginTop="10px"
+				           android:layout_marginBottom="10px" android:layout_toRightOf="@+id/txt_new_account"
+				           android:layout_marginLeft="16px" android:background="#D0D0D0"/>
+				<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/edt_account"
+                        android:layout_alignTop="@+id/img_new_account"
+						android:layout_alignBottom="@+id/img_new_account"
+						android:layout_toRightOf="@+id/img_sep_account"
+						android:layout_alignRight="@+id/img_new_account"
+                        android:background="@drawable/bk_empty"
+						android:textColor="#707070"
+                        android:textSize="23px"
+                        android:paddingLeft="10px"
+						android:paddingRight="10px"
+                        android:digits="1234567890"
+                        android:maxLength="19"/>
+				<ImageView android:layout_width="wrap_content" android:layout_height="56px"
+				           android:id="@+id/img_bank" android:layout_alignLeft="@+id/img_new_account"
+				           android:layout_alignRight="@+id/img_new_account" android:layout_below="@+id/img_new_account"
+				           android:background="@drawable/img_txtback" android:layout_marginTop="30px"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+				          android:text="@string/STR_CHANGEACCOUNT_BANK" android:id="@+id/lbl_bank"
+				          android:textSize="23px" android:gravity="center_vertical" android:textColor="#707070"
+				          android:layout_alignTop="@+id/img_bank"
+				          android:layout_alignBottom="@+id/img_bank"
+				          android:layout_alignLeft="@+id/img_bank" android:layout_marginLeft="20px"/>
+				<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+				           android:id="@+id/img_sep_bank" android:layout_marginTop="10px"
+				           android:layout_marginBottom="10px" android:layout_alignTop="@+id/lbl_bank"
+				           android:layout_alignBottom="@+id/lbl_bank"
+				           android:layout_toRightOf="@+id/lbl_bank" android:layout_marginLeft="16px"
+				           android:background="#D0D0D0"/>
+				<ImageView
+						android:layout_width="40px"
+						android:layout_height="wrap_content"
+						android:id="@+id/img_downarrow" android:layout_alignTop="@+id/img_bank"
+						android:layout_alignBottom="@+id/img_bank" android:layout_alignRight="@+id/img_bank"
+						android:scaleType="centerInside" android:src="@drawable/down_arrow"
+						android:layout_marginRight="10px"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+				          android:id="@+id/txt_bank" android:layout_alignTop="@+id/img_bank"
+				          android:layout_alignBottom="@+id/img_bank"
+				          android:textColor="#707070"
+				          android:textSize="23px"
+				          android:layout_toRightOf="@+id/img_sep_bank" android:layout_toLeftOf="@+id/img_downarrow"
+				          android:gravity="center"/>
+				<ImageButton
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/btn_select_bank" android:layout_alignTop="@+id/img_bank"
+						android:layout_alignRight="@+id/img_bank" android:layout_alignBottom="@+id/img_bank"
+						android:layout_toRightOf="@+id/img_sep_bank" android:background="@drawable/btn_empty"/>
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="56px"
+						android:id="@+id/img_subbranch" android:layout_below="@+id/img_bank"
+						android:layout_alignLeft="@+id/img_bank" android:layout_alignRight="@+id/img_bank"
+						android:layout_marginTop="30px" android:background="@drawable/img_txtback"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/STR_CHANGEACCOUNT_SUBBRANCH"
+						android:id="@+id/txt_subbranch" android:gravity="center_vertical"
+						android:layout_alignTop="@+id/img_subbranch" android:layout_alignBottom="@+id/img_subbranch"
+						android:layout_alignLeft="@+id/img_subbranch" android:layout_marginLeft="20px"
+						android:textColor="#707070" android:textSize="23px"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="wrap_content"
+						android:id="@+id/img_sep_subbranch" android:layout_alignTop="@+id/txt_subbranch"
+						android:layout_alignBottom="@+id/txt_subbranch" android:layout_toRightOf="@+id/txt_subbranch"
+						android:layout_marginLeft="16px" android:layout_marginTop="10px"
+						android:layout_marginBottom="10px" android:background="#D0D0D0"/>
+				<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/edt_subbranch" android:layout_alignTop="@+id/img_subbranch"
+						android:layout_alignBottom="@+id/img_subbranch"
+						android:layout_toRightOf="@+id/img_sep_subbranch"
+						android:layout_alignRight="@+id/img_subbranch" android:autoText="false"
+						android:background="@drawable/bk_empty" android:textColor="#707070" android:textSize="23px"
+						android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="100"/>
+				<Button
+						android:layout_width="140px"
+						android:layout_height="50px"
+						android:text="@string/STR_CHANGEACCOUNT_BIND"
+						android:id="@+id/btn_bind" android:background="@drawable/btn_smallgreen"
+						android:layout_below="@+id/img_sep_subbranch" android:layout_marginTop="60px"
+						android:layout_marginLeft="20px" android:layout_alignLeft="@+id/img_subbranch"
+						android:textSize="23px" android:textColor="#FFFFFF"/>
+				<Button
+						android:layout_width="140px"
+						android:layout_height="50px"
+						android:text="@string/STR_CHANGEACCOUNT_RELEASEBIND"
+						android:id="@+id/btn_release" android:background="@drawable/btn_smallwhite"
+						android:layout_marginRight="20px" android:layout_alignRight="@+id/img_subbranch"
+						android:layout_alignTop="@+id/btn_bind" android:textSize="23px" android:textColor="#4db47d"/>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="30px" android:layout_below="@+id/btn_bind">
+				</RelativeLayout>
+			</RelativeLayout>
+		</ScrollView>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/select_banks_layout"
+				android:background="#70000000" android:clickable="true" android:visibility="gone">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="80px" android:id="@+id/select_bank_title_layout"
+					android:layout_alignLeft="@+id/scrollView1" android:layout_alignRight="@+id/scrollView1"
+					android:layout_above="@+id/scrollView1">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_CHANGEACCOUNT_SELBANKTITLE"
+						android:id="@+id/txt_selbank_title" android:gravity="center" android:background="#E5E5E5"
+						android:textColor="#707070" android:textSize="27px"/>
+			</RelativeLayout>
+			<ScrollView
+					android:layout_width="300px"
+					android:layout_height="300px"
+					android:id="@+id/scrollView1" android:layout_centerInParent="true">
+				<LinearLayout
+						android:orientation="vertical"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:id="@+id/bank_item_layout">
+				</LinearLayout>
+			</ScrollView>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

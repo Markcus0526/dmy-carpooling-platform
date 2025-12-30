@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.spread.loan.dao.GlobalParamsMapper" >
+
+    <resultMap
+        id="GlobalParamsResult"
+        type="GlobalParams" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="register_syscoupon_id"
+            property="registerSyscouponId" />
+
+        <result
+            column="verified_syscoupon_id"
+            property="verifiedSyscouponId" />
+
+        <result
+            column="num_order_finished"
+            property="numOrderFinished" />
+
+        <result
+            column="finishorders_syscoupon_id"
+            property="finishordersSyscouponId" />
+
+        <result
+            column="num_reigistermonth"
+            property="numRegistermonth" />
+
+        <result
+            column="registermonth_syscoupon_id"
+            property="registermonthSyscouponId" />
+    </resultMap>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultMap="GlobalParamsResult" >
+		SELECT * FROM global_params 
+		WHERE id=#{id} AND deleted=0 ORDER BY id
+    </select>
+
+    <update
+        id="update"
+        parameterType="java.util.Map" >
+		UPDATE global_params 
+		SET register_syscoupon_id=#{registerSyscouponId}, 
+		verified_syscoupon_id=#{verifiedSyscouponId},
+		 num_order_finished=#{numOrderFinished}, 
+		finishorders_syscoupon_id=#{finishordersSyscouponId},
+		 num_registermonth=#{numRegistermonth},
+		  registermonth_syscoupon_id=#{registermonthSyscouponId}
+		WHERE id=1
+    </update>
+
+</mapper>

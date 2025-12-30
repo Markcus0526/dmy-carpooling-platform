@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.spread.loan.dao.SyscouponMapper">
+
+	<resultMap id="SyscouponResult" type="java.util.Map">
+
+		<id column="id" property="id" />
+
+		<result column="syscoupon_code" property="syscoupon_code" />
+
+		<result column="active_code" property="active_code" />
+
+		<result column="password" property="password" />
+
+		<result column="sc_date" property="sc_date" />
+
+		<result column="remark" property="remark" />
+
+		<result column="release_channel" property="release_channel" />
+
+		<result column="app_spread_unit_id" property="app_spread_unit_id" />
+
+		<result column="goods_or_cash" property="goods_or_cash" />
+
+		<result column="sum" property="sum" />
+
+		<result column="goods" property="goods" />
+
+		<result column="apply_source" property="apply_source" />
+
+		<result column="coupon_type" property="coupon_type" />
+
+		<result column="limit_val" property="limit_val" />
+
+		<result column="valid_period_unit" property="valid_period_unit" />
+
+		<result column="valid_period" property="valid_period" />
+
+		<result column="limit_count" property="limit_count" />
+
+		<result column="isenabled" property="isenabled" />
+
+		<result column="deleted" property="deleted" />
+
+		<result column="app_spread_unit_name" property="app_spread_unit_name" />
+
+		<result column="deploy_cnt" property="deploy_cnt" />
+
+		<result column="use_cnt" property="use_cnt" />
+	</resultMap>
+
+	<resultMap id="SyscouponResult1" type="com.nmdy.spread.loan.dao.Syscoupon1">
+
+		<id column="id" property="id" />
+
+		<result column="syscoupon_code" property="sysCouponCode" />
+
+		<result column="active_code" property="activeCode" />
+
+		<result column="password" property="password" />
+
+		<result column="sc_date" property="scDate" />
+
+		<result column="remark" property="remark" />
+
+		<result column="release_channel" property="releaseChannel" />
+
+		<result column="app_spread_unit_id" property="appSpreadUnitId" />
+
+		<result column="goods_or_cash" property="goodsOrCash" />
+
+		<result column="sum" property="sum" />
+
+		<result column="goods" property="goods" />
+
+		<result column="apply_source" property="applySource" />
+
+		<result column="coupon_type" property="couponType" />
+
+		<result column="limit_val" property="limit_val" />
+
+		<result column="valid_period_unit" property="validPeriodUnit" />
+
+		<result column="valid_period" property="validPeriod" />
+
+		<result column="limit_count" property="limitCount" />
+
+		<result column="isenabled" property="isenabled" />
+
+		<result column="deleted" property="deleted" />
+	</resultMap>
+
+	<select id="findOneById" parameterType="long"
+		resultType="com.nmdy.spread.loan.dao.Syscoupon">
+		SELECT * FROM
+		sys_coupon WHERE id=#{syscouponId} and deleted=0
+	</select>
+
+	<select id="findSyscouponById" parameterType="long" resultMap="SyscouponResult1">
+		SELECT * FROM sys_coupon WHERE id=#{id} and deleted=0
+	</select>
+
+	<select id="getSys_couponCountbyCondition" parameterType="hashmap"
+		resultType="int">
+		SELECT count(*)
+		FROM sys_coupon AS SC
+		LEFT JOIN app_spread_unit AS ASU
+		ON SC.app_spread_unit_id=ASU.id
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS deploy_cnt FROM single_coupon
+		GROUP BY coupon_code) AS DC
+		ON SC.syscoupon_code=DC.coupon_code
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS use_cnt FROM single_coupon
+		WHERE isused=1 GROUP BY coupon_code) AS UC
+		ON SC.syscoupon_code=UC.coupon_code
+
+		<where>
+				1
+			<if test="conditionSelect != null and conditionSelect == 0">
+				and (SC.release_channel = 0 or SC.release_channel = 1 or SC.release_channel = 2) 
+			</if>
+
+			<if test="conditionSelect != null and conditionSelect != 0">
+				and SC.release_channel = #{conditionSelect} 
+			</if>
+			<!-- 三者全选 和三者全不选的结果一样 -->
+			<if test="bnocondcash == '' and bcondcash == '' and bgood == ''">	
+			and ( 1=0 or (SC.goods_or_cash = 1 AND SC.coupon_type = 0)	or (SC.goods_or_cash = 1 AND	SC.coupon_type != 0)
+			or SC.goods_or_cash = 2)
+			</if>
+			<if test="bnocondcash != '' or bcondcash != '' or bgood != ''">
+			<!-- 无条件绿点-->
+			 and ( 1=0 
+			<if test="bnocondcash != ''">
+				or (SC.goods_or_cash = 1 AND
+				SC.coupon_type = 0)
+			</if>
+			<!-- 只选有条件绿点 -->
+
+			<if test="bcondcash != ''">
+				or (SC.goods_or_cash = 1 AND
+				SC.coupon_type != 0)
+			</if>
+			<!-- 只选实物 -->
+
+			<if test="bgood != '' ">
+				or SC.goods_or_cash = 2
+			</if>
+			) 
+			</if>
+			<if test="conditionSelect != '' or conditionSelect == '' ">
+				AND SC.deleted=0
+			</if>
+			
+				<if test="id != null and id !=0">
+				AND SC.id = #{id}
+			</if>
+			<if test="limit_count != null and limit_count !=0">
+				AND SC.limit_count = #{limit_count}
+			</if>
+			<if test="valid_period != null and valid_period !=0">
+				AND SC.valid_period = #{valid_period}
+			</if>
+		</where>
+	</select>
+
+	<!-- parameter map key : start, end, irelease_channel, bnocondcash, bcondcash, 
+		bgood -->
+
+	<select id="findPagination" parameterType="java.util.Map" resultMap="SyscouponResult">
+		SELECT SC.*, ASU.name AS app_spread_unit_name, DC.deploy_cnt,
+		UC.use_cnt
+		FROM sys_coupon AS SC
+		LEFT JOIN app_spread_unit AS ASU
+		ON SC.app_spread_unit_id=ASU.id
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS deploy_cnt FROM single_coupon
+		GROUP BY coupon_code) AS DC
+		ON SC.syscoupon_code=DC.coupon_code
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS use_cnt FROM single_coupon
+		WHERE isused=1 GROUP BY coupon_code) AS UC
+		ON SC.syscoupon_code=UC.coupon_code
+
+		<where>
+				1
+			<if test="conditionSelect != '' and conditionSelect == 0">
+			and	(SC.release_channel = 0 or SC.release_channel = 1 or
+				SC.release_channel = 2)
+			</if>
+
+			<if test="conditionSelect != '' and conditionSelect != 0">
+				and SC.release_channel = #{conditionSelect}
+			</if>
+			<!-- 三者全选 和三者全不选的结果一样 -->
+	<!-- 三者全选 和三者全不选的结果一样 -->
+			<if test="bnocondcash == '' and bcondcash == '' and bgood == ''">	
+			and ( 1=0 or (SC.goods_or_cash = 1 AND SC.coupon_type = 0)	or (SC.goods_or_cash = 1 AND	SC.coupon_type != 0)
+			or SC.goods_or_cash = 2)
+			</if>
+			<if test="bnocondcash != '' or bcondcash != '' or bgood != ''">
+			<!-- 无条件绿点-->
+			and ( 1=0 
+			<if test="bnocondcash != null and ''!= bnocondcash">
+				or (SC.goods_or_cash = 1 AND
+				SC.coupon_type = 0)
+			</if>
+			<!-- 只选有条件绿点 -->
+
+			<if test="bcondcash != null and ''!= bcondcash">
+				or (SC.goods_or_cash = 1 AND
+				SC.coupon_type != 0)
+			</if>
+			<!-- 只选实物 -->
+
+			<if test="bgood != null and ''!= bgood">
+				or SC.goods_or_cash = 2
+			</if>
+			)
+			</if>
+			<if test="conditionSelect != '' or conditionSelect == '' ">
+				AND SC.deleted=0 
+			</if>
+			<if test="id != null and id !=0">
+				AND SC.id = #{id}
+			</if>
+			<if test="limit_count != null and limit_count !=0">
+				AND SC.limit_count = #{limit_count}
+			</if>
+			<if test="valid_period != null and valid_period !=0">
+				AND SC.valid_period = #{valid_period}
+			</if>
+			ORDER BY SC.id  
+			<if test="start != null">
+
+				<if test="limit != null">
+					LIMIT #{start},#{limit}
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<resultMap id="userListResult" type="hashmap">
+
+		<id column="id" property="id" />
+
+		<result column="username" property="username" />
+
+		<result column="phone" property="phone" />
+
+		<result column="person_verified" property="person_verified" />
+
+		<result column="driver_verified" property="driver_verified" />
+
+		<result column="city_register" property="city_register" />
+
+		<result column="city_cur" property="city_cur" />
+
+		<result column="reg_date" property="reg_date" />
+
+		<result column="last_login_time" property="last_login_time" />
+
+		<result column="groupid" property="groupid" />
+
+		<result column="gid" property="gid" />
+
+		<result column="group_name" property="group_name" />
+
+		<result column="userid" property="userid" />
+	</resultMap>
+
+	<select id="getUserBasicInfoList" parameterType="java.util.Map"
+		resultMap="userListResult">
+		SELECT
+		u.id as id,
+		u.username as username,
+		u.phone as phone,
+		u.person_verified as
+		person_verified,
+		u.driver_verified as driver_verified,
+		u.city_register
+		as city_register,
+		u.city_cur as city_cur,
+		u.reg_date as reg_date,
+		u.last_login_time as last_login_time,
+		a.groupid as groupid,
+		a.gid as
+		gid,
+		a.group_name as group_name,
+		a.userid as userid
+		FROM user u
+		LEFT JOIN
+		(SELECT g.id AS gid ,g.groupid AS groupid, g.group_name AS group_name
+		,gd.userid AS userid FROM group_ g LEFT JOIN group_details gd ON g.id
+		= gd.groupid) AS a
+		ON u.id = a.userid
+
+		<where>
+
+			<if test="userType != null and userType == &apos;driver&apos;">
+				u.person_verified = 1
+			</if>
+
+			<if test="userType != null and userType == &apos;passenger&apos;">
+				u.driver_verified = 1
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;city_register&apos; and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%'
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;city_cur&apos; and cityItemInput != null">
+				AND u.city_cur LIKE '%${cityItemInput}%'
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;register_or_cur&apos; and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%' or u.city_cur LIKE
+				'%${cityItemInput}%'
+			</if>
+
+			<if
+				test="groupItemSelect != null and groupItemSelect == &apos;groupid&apos; and groupItemInput != null">
+				AND u.groupid LIKE '%${groupItemInput}%'
+			</if>
+
+			<if
+				test="groupItemSelect != null and groupItemSelect == &apos;city_cur&apos; and groupItemInput != null">
+				AND u.city_cur LIKE '%${groupItemInput}%'
+			</if>
+
+			<if
+				test="cityItegroupItemSelectmSelect != null and groupItemSelect == &apos;register_or_cur&apos; and groupItemInput != null">
+				AND u.city_register LIKE '%${groupItemInput}%' or u.city_cur LIKE
+				'%${groupItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;id&apos; and userItemInput != null">
+				AND u.id LIKE '%${userItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;username&apos; and userItemInput != null">
+				AND u.username LIKE '%${userItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;phone&apos; and userItemInput != null">
+				AND u.phone LIKE '%${userItemInput}%'
+			</if>
+
+			<if test="fromRegTime != null and &apos;&apos;!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime}
+			</if>
+
+			<if test="toRegTime != null and &apos;&apos; != toRegTime">
+				AND
+				#{toRegTime} >= u.reg_date
+			</if>
+
+			<if test="fromLoginTime != null and &apos;&apos; != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime}
+			</if>
+
+			<if test="toLoginTime != null and &apos;&apos;!= toLoginTime">
+				AND
+				#{toLoginTime} >= u.last_login_time
+			</if>
+		</where>
+		LIMIT #{start},#{limit}
+	</select>
+
+	<select id="getUserCountByCondition" parameterType="hashmap"
+		resultType="int">
+		SELECT
+		count(*)
+		FROM user u
+		LEFT JOIN
+		(SELECT g.id AS gid ,g.groupid AS groupid, g.group_name AS group_name
+		,gd.userid AS userid FROM group_ g LEFT JOIN group_details gd ON g.id
+		= gd.groupid) AS a
+		ON u.id = a.userid
+
+		<where>
+
+			<if test="userType != null and userType == &apos;driver&apos;">
+				u.person_verified = 1
+			</if>
+
+			<if test="userType != null and userType == &apos;passenger&apos;">
+				u.driver_verified = 1
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;city_register&apos; and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%'
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;city_cur&apos; and cityItemInput != null">
+				AND u.city_cur LIKE '%${cityItemInput}%'
+			</if>
+
+			<if
+				test="cityItemSelect != null and cityItemSelect == &apos;register_or_cur&apos; and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%' or u.city_cur LIKE
+				'%${cityItemInput}%'
+			</if>
+
+			<if
+				test="groupItemSelect != null and groupItemSelect == &apos;groupid&apos; and groupItemInput != null">
+				AND u.groupid LIKE '%${groupItemInput}%'
+			</if>
+
+			<if
+				test="groupItemSelect != null and groupItemSelect == &apos;city_cur&apos; and groupItemInput != null">
+				AND u.city_cur LIKE '%${groupItemInput}%'
+			</if>
+
+			<if
+				test="cityItegroupItemSelectmSelect != null and groupItemSelect == &apos;register_or_cur&apos; and groupItemInput != null">
+				AND u.city_register LIKE '%${groupItemInput}%' or u.city_cur LIKE
+				'%${groupItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;id&apos; and userItemInput != null">
+				AND u.id LIKE '%${userItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;username&apos; and userItemInput != null">
+				AND u.username LIKE '%${userItemInput}%'
+			</if>
+
+			<if
+				test="userItemSelect != null and userItemSelect == &apos;phone&apos; and userItemInput != null">
+				AND u.phone LIKE '%${userItemInput}%'
+			</if>
+
+			<if test="fromRegTime != null and &apos;&apos;!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime}
+			</if>
+
+			<if test="toRegTime != null and &apos;&apos; != toRegTime">
+				AND
+				#{toRegTime} >= u.reg_date
+			</if>
+
+			<if test="fromLoginTime != null and &apos;&apos; != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime}
+			</if>
+
+			<if test="toLoginTime != null and &apos;&apos;!= toLoginTime">
+				AND
+				#{toLoginTime} >= u.last_login_time
+			</if>
+		</where>
+	</select>
+
+	<select id="search4autoSend" parameterType="java.util.Map"
+		resultType="com.nmdy.spread.loan.dao.Syscoupon">
+		SELECT * FROM sys_coupon
+		WHERE 1
+
+		<if test="couponCode  != null and ''!= couponCode">
+			AND syscoupon_code LIKE
+			#{couponCode}
+		</if>
+
+		<if test="point != null and ''!= point">
+			AND sum = #{point}
+		</if>
+
+		<if test="validPeriod != ''">
+			AND valid_period =
+			#{validPeriod}
+		</if>
+
+		<if test="valid_period_unit != 0 ">
+			AND valid_period_unit =
+			#{valid_period_unit}
+		</if>
+		AND deleted=0 
+		and isenabled=1
+		ORDER BY id
+
+		<if test="searchall == 0">
+			LIMIT #{page},#{rows}
+		</if>
+	</select>
+
+	<select id="getMaxId" resultType="int">
+		SELECT MAX(id) AS
+		appSpreadUnitId FROM sys_coupon
+	</select>
+
+	<insert id="insert" keyProperty="id" parameterType="Syscoupon"
+		useGeneratedKeys="true">
+		INSERT INTO
+		sys_coupon (syscoupon_code,
+		password, sc_date, remark,
+		release_channel, app_spread_unit_id, goods_or_cash, sum, goods,
+		apply_source, coupon_type, limit_val, valid_period, valid_period_unit,
+		limit_count, isenabled, deleted)
+		VALUES(#{syscoupon_code}, #{password}, #{sc_date},
+		#{remark},
+		#{release_channel}, #{app_spread_unit_id}, #{goods_or_cash}, #{sum}, #{goods},
+		#{apply_source},#{coupon_type}, #{limit_val}, #{valid_period},
+		#{valid_period_unit},
+		#{limit_count}, #{isenabled}, #{deleted})
+	</insert>
+
+	<update id="update" parameterType="Syscoupon">
+		UPDATE sys_coupon
+		SET syscoupon_code=#{syscoupon_code},
+		password=#{password}, sc_date=#{sc_date}, remark=#{remark},
+		release_channel=#{release_channel},
+		app_spread_unit_id=#{app_spread_unit_id},
+		goods_or_cash=#{goods_or_cash}, sum=#{sum}, goods=#{goods},
+		apply_source=#{apply_source},
+		coupon_type=#{coupon_type},limit_val=#{limit_val},
+		valid_period=#{valid_period}, valid_period_unit=#{valid_period_unit},
+		limit_count=#{limit_count}, isenabled=#{isenabled}, deleted=#{deleted}
+		WHERE id=#{id}
+		<!-- UPDATE sys_coupon SET isenabled=#{isenabled} WHERE id=#{id} -->
+	</update>
+
+	<insert id="insertNotifyPersion" parameterType="java.util.Map">
+		insert into notify_person (msg,ps_date,couponid,receiver)
+		values(#{msg},#{ps_date},#{id},#{reciver})
+	</insert>
+
+	<insert id="insertCouponSendLog" parameterType="java.util.Map">
+		insert into
+		coupon_send_log(coupon_code,operator,send_type,num,sendtime,msg,remark,deleted)
+		values(#{coupon_code},#{operator},#{send_type},#{num},#{ps_date},#{msg},#{remark},0)
+	</insert>
+
+
+	<!-- 王锦成 加 根据条件搜索点卷 -->
+	<select id="findByConditionForGame" resultType="com.nmdy.spread.loan.dao.Syscoupon"
+		parameterType="hashmap">
+		SELECT * FROM sys_coupon where deleted=0
+		<if test="id!=null and id!=0"> and id=#{id}</if>
+		<if test="code!=null and code!=''"> and syscoupon_code=#{code}</if>
+		<if test="num!=null and num!=0"> and sum=#{sum}</if>
+		<if test="month!=null and month!=0"> and valid_period_unit=3 and valid_period=#{month}</if>
+	</select>
+
+</mapper>

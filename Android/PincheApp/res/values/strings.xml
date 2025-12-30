@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">OO快拼</string>
+
+    <string name="MAIN_DOWNLOAD_TITLE">OO快拼</string>
+    <string name="MAIN_DOWNLOAD_CONTENT">用OO快拼，为生活提速！</string>
+    <string name="SHARE_TITLE">加入OO大家庭，赢取千万大奖</string>
+    <string name="SHARE_CONTENT">你离千万大奖就差一“点”了</string>
+    <string name="INSURANCE_TIP1">保险额度： </string>
+    <string name="INFO_COST_TIP1">平台信息费： </string>
+    <string name="INFO_COST_TIP2">点</string>
+    <string name="INSURANCE_FEE_TIP1">保险费：</string>
+    <string name="PUBLONG_TIP1">(平台信息费 : </string>
+    <string name="PUBLONG_TIP2">保险费 : </string>
+    <string name="PUBLONG_TIP3">点/座</string>
+    <string name="NO_INSURARANCE">由于您未通过身份验证，本单不提供保险!</string>
+    <string name="INSURANCE_IN_PROCESS">保单信息正在生成!</string>
+    <string name="INSURANCE_CLOSED">订单已关闭，保单已失效！</string>
+	<string name="STR_CANNOT_TAKEPHOTO">抱歉，您的手机不会保存照片!</string>
+	<string name="STR_SUCCESS">操作成功</string>
+	<string name="STR_FAILURE">操作失败</string>
+	<string name="STR_CONFIRM_LOGOUT_WITHLOGIN">确定退出当前登录吗？</string>
+	<string name="STR_CONFIRM_NOTREGISTERED_NOWREGISTER">您尚未登录，首先需要登录</string>
+	<string name="STR_QUEDING">确定</string>
+	<string name="STR_QUEREN">确认</string>
+	<string name="STR_QUXIAO">取消</string>
+	<string name="STR_SHI">是</string>
+	<string name="STR_FOU">否</string>
+	<string name="STR_FANHUI">返回</string>
+	<string name="STR_KAISHITIYAN">开始体验</string>
+	<string name="STR_QINGSHAOHOU">请稍候...</string>
+	<string name="STR_CONN_ERROR">网络不给力，稍后再试吧</string>
+	<string name="STR_DRIVER_NOTVERIFIED">必须验证车主身份才能接单</string>
+	<string name="STR_PRESS_ONCEMORE_EXIT">再按一次退出OO车生活</string>
+	<string name="STR_NOTE">提示</string>
+	<string name="STR_CONFIRM_INSTALL">您确定要安装该软件吗?</string>
+	<string name="STR_CONFIRM_CNCEL">您确定要取消吗?</string>
+	<string name="STR_DOWNLOAD_OK">下载完成</string>
+	<string name="STR_ERR_VERSION_INFO">版本错误</string>
+	<string name="STR_CONFIRM_LOGOUT">您确定要退出登录吗?</string>
+	<string name="STR_UPLOAD_PHOTO">上传图片</string>
+    <string name="STR_UPLOAD_DRIVER_PHOTO">上传车主头像</string>
+    <string name="STR_UPLOAD_CAR_PHOTO">上传爱车靓照</string>
+    <string name="STR_ORDERING">抢单正在提交，请稍后.....</string>
+    <string name="STR_MON">周一</string>
+    <string name="STR_TUE">周二</string>
+    <string name="STR_WED">周三</string>
+    <string name="STR_THR">周四</string>
+    <string name="STR_FRI">周五</string>
+    <string name="STR_SAT">周六</string>
+    <string name="STR_SUN">周日</string>
+    <string name="STR_COMMUTEORDERING_HINT1">接单请求已发送</string>
+    <string name="STR_COMMUTEORDERING_HINT2">请耐心等待拼友响应</string>
+    <string name="STR_COMMUTEORDERING_HINT3">请耐心等待车主响应</string>
+    <string name="STR_INSERT_FINDSTRING">请输入要搜索的单次</string>
+    <string name="STR_SHEZHI">设置</string>
+    <string name="STR_SELECT_COLOR">请选择颜色</string>
+    <string name="STR_SELECT_BRAND">请选择品牌</string>
+    <string name="STR_SELECT_TYPE">请选择车型</string>
+	<string name="STR_KAISHIZHIXING">开 始\n执 行</string>
+	<string name="STR_ZHIXINGZHONG">执行中</string>
+	<string name="STR_QUPINGJIA">去评价</string>
+	<string name="STR_QUZHIFU">去支付</string>
+	<string name="STR_HAOPINGLV">好评率 :</string>
+	<string name="STR_PINCHECISHU">拼车次数 :</string>
+    <string name="STR_PINGTAI">平台</string>
+    <string name="STR_ZHONGTUDIAN">中途点 :</string>
+    <string name="STR_CHUDANSHIJIAN">出单时间 :</string>
+	<string name="STR_YUYUESHIJIAN">预约时间 :</string>
+	<string name="STR_NOTSELECTDAYS">没有选择出行日</string>
+	<string name="STR_CHENGKEMEIYOUQUEREN">拼友没有确认订单, 试试下一个吧！</string>
+	<string name="STR_CONTENTEMPTY">中评,差评需要输入内容</string>
+	<string name="STR_PINGJIACHEZHU">评价车主</string>
+	<string name="STR_PINGJIACHENGKE">评价拼友</string>
+	<string name="STR_QUXIAODINGDANCHENGGONG">取消订单成功!</string>
+	<string name="STR_TUIPIAO">退订</string>
+	<string name="STR_CHEPAIHAO">车牌号 :</string>
+	<string name="STR_DIANZICHEPIAO">拼车码 :</string>
+	<string name="STR_QUXIAOCHENGGONG">取消订单成功!</string>
+	<string name="STR_CHAKANCHEZHUWEIZHI">查看车主位置</string>
+	<string name="STR_ZHIFULVDIAN">支付绿点</string>
+	<string name="STR_BENCIPINCHELVDIAN">本次拼车绿点</string>
+	<string name="STR_ZHIFU_NOTE">现在支付，车主将立即收到绿点\n24小时内，若未主动支付或投诉，系统将使用冻结绿点自动支付。</string>
+	<string name="STR_SYDQZF">使用点券支付 :</string>
+	<string name="STR_QUERENZHIFU">确认支付</string>
+	<string name="STR_SHIJIZHIFU">实际支付</string>
+	<string name="STR_HAIXUZHIFU">还需支付</string>
+	<string name="STR_DIANQUANZHIFU">点券支付</string>
+	<string name="STR_RESERVE_ORDER_XIAOTISHI">小提示 : 上下班拼车将自动预约下一出行日</string>
+	<string name="STR_ZHIFUCHENGGONG">支付成功</string>
+	<string name="STR_LVDIANBUZU">绿点不足</string>
+	<string name="STR_WODEJINE">我的绿点 :</string>
+	<string name="STR_QIANGZUOXUYAO">抢座需要 :</string>
+	<string name="STR_FADANXUYAO">发单需要 :</string>
+	<string name="STR_CHONGZHI">充值</string>
+	<string name="STR_DQSJJFC">当前时间距发车</string>
+	<string name="STR_BCTPJCSTPLD">本次退订将收取绿点</string>
+	<string name="STR_TIAN">天</string>
+	<string name="STR_TPLDSQGZ">退订绿点收取规则 :</string>
+	<string name="STR_CHANGTUDINGDAN">长途订单</string>
+	<string name="STR_XUYAOTUIPIAO">需要退订</string>
+	<string name="STR_GONXIQIANGZUOCHENGGONG">恭喜抢座成功</string>
+	<string name="STR_NDDZCPMM">您的拼车码 :</string>
+	<string name="STR_QINGJILAO">请记牢!</string>
+	<string name="STR_WJKZWDDDZCK">忘记可在我的订单中查看</string>
+	<string name="STR_WANGQIANWODEDINGDAN">往前我的订单</string>
+	<string name="STR_QZCFSJQDDZDDD">请在出发时间前到达指定地点</string>
+	<string name="STR_YUYUE">预约</string>
+	<string name="STR_SXBPCYY">上下班拼车预约</string>
+    <string name="STR_DEFAULT_CITY">北京</string>
+	<string name="STR_STARTDATE_PASSED">出发时间已经过了，超过1天才可发布</string>
+	<string name="STR_FASONG">发送</string>
+	<string name="STR_QQ_NOTINSTALLED">未安装QQ. 请下载手机QQ吧</string>
+    <string name="STR_GIVEUP_CONFIRM">您确定要放弃吗?</string>
+    <string name="STR_MSG_LAST_VERSION">已经是最新版本啦</string>
+    <string name="STR_EVAL_HINT">详细评语</string>
+	<string name="STR_ORDERTYPE_ONCE">同城</string>
+	<string name="STR_ORDERTYPE_ONOFF">上下班</string>
+	<string name="STR_ORDERTYPE_LONG">长途</string>
+    <string name="STR_MSG_NO_ORDERS">暂时没有订单，现在去拼车吧</string>
+	<string name="STR_PRICE_TOOLOW">抱歉,订单价格不能低于</string>
+    <string name="STR_INPUT_COUPON_PASSWORD">请输入点券密码</string>
+	<string name="chexing">车类型</string>
+	<string name="chepaixing">车牌型</string>
+	<string name="yanse">颜色</string>
+    <string name="cheng_shi">市</string>
+
+
+    <string name="STR_YEAR">年</string>
+    <string name="STR_MONTH">月</string>
+    <string name="STR_DAY">日</string>
+    <string name="STR_HOUR">时</string>
+    <string name="STR_MINUTE">分</string>
+	<string name="STR_LOGOUT_SUCCESS">退出成功</string>
+
+    <string name="STR_YUYUECHUFASHIJIAN">预订出发时间 ：</string>
+    <string name="STR_ZONGYONGSHI">总用时：</string>
+    <string name="STR_FENZHONG">分钟</string>
+    <string name="STR_PINCHELICHENG">拼车里程：</string>
+    <string name="STR_GONGLI">公里</string>
+    <string name="STR_NO_ALIVE_PASS">所有的拼友都弃票了.该订单自动被关闭</string>
+
+    <string name="STR_INSERT_STARTCITY">先输入起始城市</string>
+    <string name="STR_INSERT_ENDCITY">先输入目的城市</string>
+    
+    <string name="STR_ERROR_PASSWORD_LENGTH">请输入密码</string>
+    <string name="STR_DRVLONG_NO_PASSENGER">还没有拼友拼车呢</string>
+
+    <string name="STR_REGISTE_AGREEMENT"><u>同意OO快拼协议</u></string>
+
+	<!--> Passenger Main Activity <-->
+    <string name="STR_PASSENGER_MAIN_VALIDATION_INFO">验证身份后小伙伴抢着和你拼车！</string>
+	<string name="STR_PASSENGER_MAIN_VALIDATION_BUTTON">立刻去验证</string>
+	<string name="STR_SEND_CITYORDER">同城快拼</string>
+	<string name="STR_SEND_TRIPORDER">长途抢座</string>
+    <string name="STR_PASSENGER_MAIN_NOTIF1">您周围有</string>
+    <string name="STR_PASSENGER_MAIN_NOTIF2">0</string>
+    <string name="STR_PASSENGER_MAIN_NOTIF3">位待拼车主</string>
+
+    <string name="STR_END_SERVICE_CONFIRM">是否确定完成订单？</string>
+
+    <string name="STR_WAIT_CHARGE">拼友正在充值，请稍等</string>
+	
+	<!--> Main Activity <-->
+	<string name="STR_MAIN_TITLE_DRIVER">OO快拼-车主</string>
+	<string name="STR_MAIN_TITLE_PASSENGER">OO快拼-拼友</string>
+	<string name="STR_MAIN_TITLE">OO快拼</string>
+	<string name="STR_MAIN_GOTOVERIFY">去认证</string>
+	<string name="STR_MAIN_PERSON_NOTVERIFIED">未验证个人身份不能提现</string>
+	<string name="STR_MAIN_DRIVER_NOTVERIFIED">验证完，小伙伴才能抢着和你拼哦！</string>
+
+	<string name="STR_MAIN_TAB_SHOUYE">首页</string>
+	<string name="STR_MAIN_TAB_WODEDINGDAN">我的订单</string>
+	<string name="STR_MAIN_TAB_GERENZHONGXIN">个人中心</string>
+	<string name="STR_MAIN_TAB_FENXIANG">分享</string>
+
+	<string name="STR_MAIN_WODEGERENXINXI">我的个人信息</string>
+	<string name="STR_MAIN_SHEZHIRICHANGLUXIAN">设置日常路线</string>
+    <string name="STR_MAIN_SETLONGROUTE">设置长途路线</string>
+	<string name="STR_MAIN_WODEJIANPAILVDIAN">我的减排绿点</string>
+	<string name="STR_MAIN_WODEDIANQUAN">我的点券</string>
+	<string name="STR_MAIN_PINCHEGONGLVE">拼车攻略</string>
+	<string name="STR_MAIN_GUANYUOO">关于OO</string>
+	<string name="STR_MAIN_TUICHUDENGLU">退出登录</string>
+	<string name="STR_MAIN_WODEYAOQINGMA">我的邀请码</string>
+	<string name="STR_MAIN_DOWNLOADQRCODE">APP下载二维码</string>
+	<string name="STR_MAIN_SHARE_SMS">短信</string>
+	<string name="STR_MAIN_SHARE_EMAIL">邮件</string>
+	<string name="STR_MAIN_SHARE_SINA">微博</string>
+	<string name="STR_MAIN_SHARE_TENGXUN">腾讯微博</string>
+	<string name="STR_MAIN_SHARE_WEIXIN">微信</string>
+	<string name="STR_MAIN_SHARE_WEIPENGYOUQUAN">朋友圈</string>
+	<string name="STR_MAIN_SHARE_QQKONGJIAN">QQ空间</string>
+	<string name="STR_MAIN_SHARE_QQHAOYOU">QQ好友</string>
+	<string name="STR_MAIN_SHARE_MOMO">陌陌</string>
+	<string name="STR_MAIN_SHARE_YIXIN">易信</string>
+
+	<!-- News Activiy -->
+	<string name="STR_NEWSCENTER_TITLE">消息中心</string>
+	<string name="STR_GONGGAO">公告</string>
+	<string name="STR_DINGDANXIAOXI">订单消息</string>
+	<string name="STR_TONGZHI">通知</string>
+
+	<!-- Register Activiy -->
+	<string name="STR_REGISTER_TITLE">用户注册</string>
+	<string name="STR_REGISTER_USERNAME">用户名</string>
+	<string name="STR_REGISTER_MOBILE">手机号</string>
+	<string name="STR_REGISTER_GETVERIFYKEY">获取验证码</string>
+	<string name="STR_REGISTER_VERIFYKEY">验证码</string>
+	<string name="STR_REGISTER_NICKNAME">称呼</string>
+	<string name="STR_REGISTER_PASSWORD">密码</string>
+	<string name="STR_REGISTER_CONFIRMPWD">再次输入</string>
+	<string name="STR_REGISTER_REQCODE">邀请码</string>
+	<string name="STR_REGISTER_SELECT">( 选填 )</string>
+	<string name="STR_REGISTER_MALE">先生</string>
+	<string name="STR_REGISTER_FEMALE">女士</string>
+	<string name="STR_REGISTER_MOBILE_CANNOT_EMPTY">手机号码不能为空</string>
+	<string name="STR_REGISTER_MOBILE_LENGTH_NOTMATCH">手机号码需要11位数字</string>
+	<string name="STR_REGISTER_USERNAME_CANNOT_EMPTY">用户名不能为空</string>
+	<string name="STR_REGISTER_FORMAT_ERROR">用户名仅支持英文或数字,并使用英文开头</string>
+	<string name="STR_REGISTER_NICKNAME_FORMAT_ERROR">昵称格式不准确</string>
+    <string name="STR_REGISTER_USERNAME_TOO_SHORT">用户名长度必须在2-20位之间</string>
+	<string name="STR_REGISTER_NICKNAME_CANNOT_EMPTY">昵称不能为空</string>
+    <string name="STR_REGISTER_REQUEST_CODE_EMPTY">验证码不能为空</string>
+	<string name="STR_REGISTER_NICKNAME_LENGTH">昵称长度必须在2-10位之间</string>
+	<string name="STR_REGISTER_PWD_TOO_SHORT">密码长度必须在6-16位之间</string>
+	<string name="STR_REGISTER_PWD_CANNOT_EMPTY">密码不能为空</string>
+	<string name="STR_REGISTER_PWDCONF_NOTMATCH">密码输入得不正确</string>
+	<string name="STR_REGISTER_VERIFYKEY_NOTMATCH">验证码不正确</string>
+    <string name="STR_REGISTER_VERIFYKEY_TIMEOUT">验证码超时了，重新获取</string>
+	<string name="STR_REGISTER_REVERIFY">您需要重新获取验证码</string>
+	<string name="STR_REGISTER_NO_VERIFYKEY">还没有获取验证码</string>
+	<string name="STR_REGISTER_SUCCESS">注册成功</string>
+
+    <string name="STR_NO_NETWORK">网络不给力，请稍后再试</string>
+    <string name="STR_NOT_OPENGPS">请打开GPS</string>
+
+	<!-- Login Activiy -->
+	<string name="STR_LOGIN_TITLE">登录</string>
+	<string name="STR_LOGIN_INPUTUSERNAME">请输入手机号</string>
+	<string name="STR_LOGIN_INPUTPWD">请输入密码</string>
+	<string name="STR_LOGIN_AUTOLOGIN">自动登录</string>
+	<string name="STR_LOGIN_REMEMPWD">记住密码</string>
+	<string name="STR_LOGIN_LOGIN">登录</string>
+	<string name="STR_LOGIN_REGISTER">注册</string>
+	<string name="STR_LOGIN_FORGETPWD">忘记密码?</string>
+	<string name="STR_LOGIN_USERNAME_CANNOT_EMPTY">用户名不能为空</string>
+    <string name="STR_LOGIN_USERNAME_CANNOT_LENGTH">手机号码长度不正确</string>
+	<string name="STR_LOGIN_PASSWORD_CANNOT_EMPTY">密码不能为空</string>
+
+	<!-- Forget password activity -->
+	<string name="STR_FORGETPWD_TITLE">忘记密码</string>
+	<string name="STR_FORGETPWD_USERNAME">用户名</string>
+	<string name="STR_FORGETPWD_MOBILE">手机号</string>
+	<string name="STR_FORGETPWD_GETVERIFKEY">获取验证码</string>
+	<string name="STR_FORGETPWD_VERIFKEY">验证码</string>
+	<string name="STR_FORGETPWD_NEWPWD">输入新密码</string>
+	<string name="STR_FORGETPWD_CONFIRMPWD">再次输入新密码</string>
+	<string name="STR_FORGETPWD_USERNAME_CANNOTEMPTY">用户名不能为空</string>
+	<string name="STR_FORGETPWD_MOBILE_CANNOTEMPTY">手机号不能为空</string>
+	<string name="STR_FORGETPWD_VERIFKEY_CANNOTEMPTY">验证码不能为空</string>
+	<string name="STR_FORGETPWD_NEWPWD_CANNOTEMPTY">密码不能为空</string>
+	<string name="STR_FORGETPWD_PWD_NOTMATCH">密码不一致</string>
+	<string name="STR_FORGETPWD_SUCCESS">重置密码成功</string>
+
+	<!-- Person info activity -->
+	<string name="STR_PERSONINFO_TITLE">我的个人信息</string>
+	<string name="STR_PERSONINFO_USERINFO">用户信息</string>
+	<string name="STR_PERSONINFO_PHONE">手机号</string>
+	<string name="STR_PERSONINFO_GETVERIFKEY">获取验证码</string>
+	<string name="STR_PERSONINFO_VERIFKEY">验证码</string>
+	<string name="STR_PERSONINFO_NICKNAME">称呼</string>
+	<string name="STR_PERSONINFO_BIRTHDAY">出生日期</string>
+	<string name="STR_PERSONINFO_GERENSHENFENYANZHENG">&#160;&#160;&#160;个人身份验证 :&#160;</string>
+    <string name="STR_PERSONINFO_CHEZHUSHENFENYANZHENG">&#160;&#160;&#160;车主身份验证 :&#160;</string>
+	<string name="STR_PERSONINFO_QUYANZHENG">去验证</string>
+	<string name="STR_PERSONINFO_XIUGAI">修改</string>
+	<string name="STR_PERSONINFO_MALE">先生</string>
+	<string name="STR_PERSONINFO_FEMALE">女士</string>
+	<string name="STR_PERSONINFO_CHANGEPWD">修改密码</string>
+	<string name="STR_PERSONINFO_OLDPWD">原密码</string>
+	<string name="STR_PERSONINFO_NEWPWD">新密码</string>
+	<string name="STR_PERSONINFO_CONFPWD">再次输入</string>
+	<string name="STR_PERSONINFO_SUBMIT">提交</string>
+	<string name="STR_PERSONINFO_MOBILE_CANNOT_EMPTY">手机号码不能为空</string>
+	<string name="STR_PERSONINFO_NICKNAME_CANNOT_EMPTY">称呼不能为空</string>
+	<string name="STR_PERSONINFO_VERIFYKEY_CANNOT_EMPTY">验证码不能为空</string>
+	<string name="STR_PERSONINFO_VERIFYKEY_NOTMATCH">验证码不正确</string>
+	<string name="xuyaochongxinhuoquyanzhengma">需要重新获取验证码</string>
+	<string name="xuyaohuoquyanzhengma">需要获取验证码</string>
+	<string name="STR_PERSONINFO_BIRTHDAY_CANNOT_EMPTY">出生日期不能为空</string>
+	<string name="STR_PERSONINFO_STATE_NOTPASS">未验证</string>
+	<string name="STR_PERSONINFO_STATE_PASSED">已验证</string>
+	<string name="STR_PERSONINFO_STATE_INREVIEW">审核中</string>
+	<string name="STR_PERSONINFO_CHANGE_SUCCESS">修改成功</string>
+	<string name="STR_PERSONINFO_OLDPWD_CANNOT_EMPTY">原密码不能为空</string>
+	<string name="STR_PERSONINFO_NEWPWD_CANNOT_EMPTY">新密码不能为空</string>
+	<string name="STR_NEWPWD_EMPTY">请再次输入新密码</string>
+	<string name="STR_PERSONINFO_PASSWORD_NOTMATCH">请再次输入新密码</string>
+	<string name="STR_PERSONINFO_CHANGEPWD_SUCCESS">修改密码成功</string>
+    <string name="STR_XIAWU">下午</string>
+    <string name="STR_SHANGWU">上午</string>
+    <string name="STR_NIAN">年</string>
+    <string name="STR_YUE">月</string>
+    <string name="STR_RI">日</string>
+
+	<!--> Select photo activity <-->
+	<string name="STR_TAKE_PHOTO_TITLE">选择图片</string>
+	<string name="STR_TAKE_PHOTO">拍照</string>
+	<string name="STR_SELECT_IMAGE">相册</string>
+	<string name="STR_LOADING_IMAGE_FAILED">读取照片失败</string>
+	<string name="STR_TAKING_PHOTO_FAILED">拍照失败</string>
+
+	<!--> Verify person activity <-->
+	<string name="STR_VERIFYPERSON_TITLE">个人身份验证</string>
+	<string name="STR_VERIFYPERSON_MSG1">请尽量确保照片信息完整清晰</string>
+	<string name="STR_VERIFYPERSON_MSG2">提交后2个工作日内完成验证</string>
+	<string name="STR_VERIFYPERSON_MSG3">验证身份后才能进行减排绿点提现</string>
+	<string name="STR_VERIFYPERSON_MSG4">验证身份后小伙伴们抢着和你拼车</string>
+	<string name="STR_VERIFYPERSON_MSG5">验证通过后仅会显示性别及年龄，不会泄露其他个人关键信息</string>
+	<string name="STR_VERIFYPERSON_TIJIAO">提交</string>
+	<!--<string name="STR_VERIFYPERSON_FOREIMAGE_EMPTY">需要上传身份证正面图</string>-->
+	<!--<string name="STR_VERIFYPERSON_BACKIMAGE_EMPTY">需要上传身份证后面图</string>-->
+    <string name="STR_VERIFYPERSON_FOREIMAGE_EMPTY">主页和副页都要选择哦</string>
+    <string name="STR_VERIFYPERSON_BACKIMAGE_EMPTY">主页和副页都要选择哦</string>
+	<string name="STR_VERIFYPERSON_APPLY_SUCCESS">资料已上传完成，请耐心等待回复</string>
+    <string name="STR_VERIFYPERSON_APPLY_WAIT">验证信息已提交，请耐心等待回复</string>
+
+	<!--> Balance activity <-->
+	<string name="STR_BALANCE_TITLE">我的减排绿点</string>
+	<string name="STR_BALANCE_MYBALANCE">我的绿点</string>
+    <string name="STR_BALANCE_MYBALANCE_DES">(每个绿点等于一元)</string>
+	<string name="STR_BALANCE_JIAOYIID">交易ID</string>
+	<string name="STR_BALANCE_JIAOYISHIJIAN">交易时间</string>
+	<string name="STR_BALANCE_JINCHUZHANG">进出帐</string>
+	<string name="STR_BALANCE_LAIYUAN">来源</string>
+	<string name="STR_BALANCE_YUE">余额</string>
+	<string name="STR_BALANCE_GENGDUO">更多</string>
+	<string name="STR_BALANCE_CHAXUN">查询</string>
+	<string name="STR_BALANCE_CHONGZHI">充值</string>
+	<string name="STR_BALANCE_TIXIAN">提现</string>
+	<string name="STR_BALANCE_DIAN">点</string>
+	<string name="STR_BALANCE_CHARGE_BALANCE">充值点数</string>
+	<string name="STR_BALANCE_QUEDINGCHONGZHI">确定充值</string>
+	<string name="STR_BALANCE_CANNOT_EMPTY">充值点数不能为空</string>
+	<string name="STR_BALANCE_FORMAT_ERROR">充值点数不准确</string>
+	<string name="STR_BALANCE_BIGGERTHAN_0">充值金额需大于0</string>
+	<string name="STR_BALANCE_CHARGE_TOBIG">单笔充值最大9999</string>
+	<string name="STR_BALANCE_CHARGE_SUCCESS">充值成功</string>
+	<string name="STR_BALANCE_ZHANGHUXINGMING">账户姓名</string>
+	<string name="STR_QUEDING_QUXIAODINGDAN">是否确定终止？</string>
+	<string name="STR_BALANCE_TIXIANZHANGHU">提现账户</string>
+	<string name="STR_BALANCE_XIUGAIBANGDINGZHANGHU">修改绑定账户</string>
+	<string name="STR_BALANCE_MSG1">单笔提现3个工作日内到账</string>
+	<string name="STR_BALANCE_TIXIANDIANSHU">提现点数</string>
+	<string name="STR_BALANCE_DENGLUMIMA">登录密码</string>
+	<string name="STR_BALANCE_WANGJIMIMA">忘记密码</string>
+	<string name="STR_BALANCE_PERSON_NOTVERIFY">被拒绝了，别桑心，简单几步，验证完身份马上好！</string>
+	<string name="STR_BALANCE_NOTBIND">道歉, 您还没有绑定提现账户</string>
+	<string name="STR_BALANCE_INPUTBALANCE">请输入提现点数</string>
+	<string name="STR_BALANCE_INPUTLOGINPWD">请输入登录密码</string>
+	<string name="STR_BALANCE_WITHDRAW_SUCCESS">提现成功</string>
+    <string name="STR_BALANCE_WITHDRAW_CANCELSUCCESS">提现撤销成功</string>
+	<string name="STR_BALANCE_QURENZHENG">去认证</string>
+    <string name="STR_BALANCE_DEICHULI">待处理</string>
+    <string name="STR_BALANCE_YICHULI">已处理</string>
+    <string name="STR_BALANCE_YIGUANBI">已关闭</string>
+    <string name="STR_BALANCE_YITUIPIAO">已退订</string>
+    <string name="STR_BALANCE_YICHEXIAO">已撤销</string>
+    <string name="STR_BALANCE_CHULIZHONG">处理中</string>
+	<string name="STR_CANNOT_INPUTMORE">不能再次输入了</string>
+
+
+	<!--> Change account activity <-->
+	<string name="STR_CHANGEACCOUNT_TITLE">修改提现账户</string>
+	<string name="STR_CHANGEACCOUNT_OLDACCOUNT">原账户 :</string>
+	<string name="STR_CHANGEACCOUNT_NEWACCOUNT">新账户</string>
+	<string name="STR_CHANGEACCOUNT_BANK">银行</string>
+	<string name="STR_CHANGEACCOUNT_SUBBRANCH">开户支行</string>
+	<string name="STR_CHANGEACCOUNT_BIND">绑定</string>
+	<string name="STR_CHANGEACCOUNT_RELEASEBIND">解除绑定</string>
+	<string name="STR_CHANGEACCOUNT_SELBANKTITLE">请选择银行</string>
+	<string name="STR_CHANGEACCOUNT_BANKNAMES">中国工商银行,中国建设银行,中国银行,中国农业银行,
+        交通银行,招商银行,中国邮政储蓄银行,中信银行,光大银行,民生银行,兴业银行,华夏银行,
+        浦东发展银行,深圳发展银行,广东发展银行,平安银行,北京银行,北京农村商业银行股份</string>
+	<string name="STR_CHANGEACCOUNT_NEWACCOUNT_CANNOTEMPTY">新账户不能为空</string>
+	<string name="STR_CHANGEACCOUNT_ACCOUNTLEN">账户长度需16-19位之间</string>
+	<string name="STR_CHANGEACCOUNT_BANK_CANNOTEMPTY">银行不能为空</string>
+	<string name="STR_CHANGEACCOUNT_SUBBRANCH_CANNOTEMPTY">开户支行不能为空</string>
+	<string name="STR_CHANGEACCOUNT_SUBBRANCH_TOOLONG">开户支行之多100位</string>
+	<string name="STR_CHANGEACCOUNT_BANKSUCCESS">绑定成功</string>
+	<string name="STR_CHANGEACCOUNT_RELEASESUCCESS">解除成功</string>
+	<string name="STR_CHANGEACCOUNT_NOBINDACCOUNT">您还未绑定提现账户</string>
+	<string name="STR_CHANGEACCOUNT_CONFIRM_RELEASE">您确定要解除开户账户吗?</string>
+
+
+	<!--> Coupon activity <-->
+	<string name="STR_COUPON_TITLE">我的点券</string>
+	<string name="STR_COUPON_INPUTCOUPONCODE">请输入点券密码</string>
+	<string name="STR_COUPON_XUHAO">序号</string>
+	<string name="STR_COUPON_SHIYONGFANWEI">范围</string>
+	<string name="STR_COUPON_NEIRONG">内容</string>
+	<string name="STR_COUPON_SHIYONGXIANZHI">使用限制</string>
+	<string name="STR_COUPON_YOUXIANQIJIAN">有限期间</string>
+	<string name="STR_COUPON_ADDED">恭喜获得一张点券</string>
+
+
+	<!--> About activity <-->
+	<string name="STR_ABOUT_TITLE">关于OO</string>
+	<string name="STR_ABOUT_OOSTORY">OO的故事</string>
+    <string name="STR_ABOUT_OO">OO快拼，以追求“迅速响应，快速到达”为第一目标，汲取国内外优秀拼车应用理念精髓，采用互联网先进技术，致力打造国内响应速度快、用户体验棒、安全高效的拼车平台。着力克服拼车安全问题，车主身份证、驾驶证双重实名认证，解决拼车前的信任机制；提供高额保险，保障拼车后可能出现的人身风险。完善安全体制，让出行全程无忧、更加简单美好。</string>
+	<string name="STR_ABOUT_VERSION">当前版本 :</string>
+	<string name="STR_ABOUT_SERVICEAGREEMENT">服务协议</string>
+	<string name="STR_ABOUT_CALLCUSTOMERSERVICE">致电OO客服MM</string>
+	<string name="STR_ABOUT_FEEDBACK">有话对OO说 ?</string>
+	<string name="STR_ABOUT_CONFIRM_CALL">您确定要呼叫客服中心吗?</string>
+	<string name="STR_ABOUT_UPDATABLE1">最新版本</string>
+	<string name="STR_ABOUT_UPDATABLE2">能更新</string>
+	<string name="STR_ABOUT_UPDATE">去更新</string>
+    <string name="STR_OOSTRATEGY_DETAIL">1、科学设置起始地
+        设置识别性强的起始地，系统推荐给更多车主，速速有人来接驾！\n
+        2、完善身份认证
+        车主身份证、驾驶证双重实名认证后，才会有小伙伴抢着和你拼！\n
+        3、设置常用路线
+        如上下班路线，系统会自动推荐匹配订单，从此体验 “晚点出门，早点回家”的从容人生。\n
+        4、参考诚信选车
+        车主抢单时，可查看车主资料，根据好评率及拼车次数，决定是否与其共度旅程。\n
+        5、快速找到车主
+        出单成功后，牢记车主车牌号、车型、颜色，即能在车海中一眼认准TA！\n
+        6、不迟到早出发
+        订单成功后，提前10分钟到达拼车地点，早点找到彼此，就能早点出发！\n
+        7、适当加点价
+        如果长时间无人抢单，可考虑适当加价，尽快把车主从别人手中抢回来！\n
+        8、及时充值减排绿点
+        在线支付，可提前充值，确保有足够的绿点支付，以便马上被车主抢座！\n
+        9、意见反馈
+        在使用app过程中，有任何让您不爽的BUG，可私信给OO，我们会第一时间消灭它！\n
+    </string>
+
+
+	<!--> Story activity <-->
+	<string name="STR_STORY_TITLE">OO故事</string>
+	<string name="STR_STORY_CONTENT">OO，英文名叫“OO”，中文名也叫“OO”。小名“蛋蛋”，别名“圈圈”、“圆圆”……\n
+        OO，不仅名字多样，长相也令人遐想。有人说，它像一幅眼镜，有人说，它是两个鸡蛋。\n
+        其实，OO，真正的含义有四个：\n
+        1、两个飞转的车轮。\n
+        无论晴天雨霾，无论远山人海，都会以最快的速度，滚到您的身边。\n
+        2、一双智能的大眼。\n
+        只需在人群中望上一眼，就能发现身边一路同行的拼友。 \n
+        3、两张圆圆的笑脸。\n
+        互助出行，相互温暖，每一个同路人，都带给你愉悦惊喜。\n
+        4、世界是一个大圆圈。\n
+        全民共建平台，大家共同建设，当身边的人都在快拼，无论在任何角落，都有相同的起点和终点，彼此交互，有幸同路而行。\n
+        以最快的速度，发现身边的拼友，带给大家愉快的合乘体验，这就是OO快拼的理想和使命，
+        未来的OO属于大家，全民共建，让这个圆越来越大，让我们的出行更美好，让城市更健康。
+    </string>
+
+	<!--> Agreement activity <-->
+	<string name="STR_AGREEMENT_TITLE">服务协议</string>
+	<string name="STR_AGREEMENT_CONTENT">OO车服务协议\n最新修订日期 : 2014年4月11日\n欢迎您使用OO车服务!\n特别提示 :\n在使用OO车服务之前, 您应该当认真阅读并遵守《OO车服务协议》( 以下简称“本协议”), 请您务必审慎阅读, 充分理解各条款内容, 特别是免除或者限制责任的条款, 争议解决和法律适用条款。 免除或者限制责任的条款可将以加粗字体显示, 您应重点阅读。如您对协议有任何疑问的, 应向OO车客服咨询。\n一. 协议范围\n1. 本协议由您与OO车平台的经营者共同缔结, 本协议具有合同效力。</string>
+
+	<!--> Feedback activity <-->
+	<string name="STR_FEEDBACK_TITLE">给OO写信</string>
+	<string name="STR_FEEDBACK_HINT">有什么话想对OO说吗? 在这里写下来吧</string>
+	<string name="STR_FEEDBACK_SEND">发送</string>
+	<string name="STR_FEEDBACK_INPUTCONTENT">请输入内容</string>
+	<string name="STR_FEEDBACK_CONTENTLEN">内容最长为1000位</string>
+	<string name="STR_FEEDBACK_SENDSUCCESS">OO已经接收到您的信啦，非常感谢您的积极参与！</string>
+	<string name="STR_FEEDBACK_SENDFAILURE">网络不给力，等等再试吧</string>
+
+
+	<!--> Streategy activity <-->
+	<string name="STR_STRATEGY_TITLE">拼车攻略</string>
+
+    <!--> CityCarpoolSearch activity <-->
+    <string name="STR_CITYCARPOOLSEARCH_TITLE">同城抢单</string>
+    <string name="STR_CITYCARPOOLSEARCH_ONCE">同城快拼</string>
+    <string name="STR_CITYCARPOOLSEARCH_COMMUTE">上下班拼车</string>
+    <string name="STR_CITYCARPOOLSEARCH_DISTANCE">按距离排序</string>
+    <string name="STR_CITYCARPOOLSEARCH_PRICE">按价格排序</string>
+    <string name="STR_CITYCARPOOLSEARCH_TIME">按时间排序</string>
+
+    <!--> PassSetPointsActivity <-->
+    <string name="STR_SETPOINTS_TITLE">设置中途点</string>
+    <string name="STR_SETPOINTS_CANCEL">取消</string>
+    <string name="STR_SETPOINTS_SET">设置</string>
+
+    <!--> PassWaitForOrderActivity <-->
+    <string name="STR_WAITORDER_TITLE">同城快拼订单发布</string>
+    <string name="STR_WAITORDER_CANCEL">取消订单</string>
+    <string name="STR_WAITORDER_NOTIF1">已发送给附近</string>
+    <string name="STR_WAITORDER_NOTIF2">20</string>
+    <string name="STR_WAITORDER_NOTIF3">位车主，请等待接单...</string>
+
+    <!--> PassSingleOrderMainActivity <-->
+    <string name="STR_SINGLEORDERMAIN_TITLE">发布市内拼车</string>
+    <string name="STR_SINGLEORDERMAIN_START">起始详细地点</string>
+    <string name="STR_SINGLEORDERMAIN_END">目的详细地点</string>
+    <string name="STR_SINGLEORDERMAIN_SEND">发布</string>
+    <string name="STR_SINGLEORDERMAIN_DATE">选择出发时间</string>
+    <string name="STR_SINGLEORDERMAIN_POINT">中途点（单人拼车非必填项）：0</string>
+    <string name="STR_SINGLEORDERMAIN_MEMO">备注（非必填项）</string>
+    <string name="STR_SINGLEORDERMAIN_FIRSTCAR">经济型</string>
+    <string name="STR_SINGLEORDERMAIN_SECONDCAR">舒适型</string>
+    <string name="STR_SINGLEORDERMAIN_THIRDCAR">豪华型</string>
+    <string name="STR_SINGLEORDERMAIN_FOURTHCAR">商务型</string>
+    <string name="STR_SINGLEORDERMAIN_TIP1">玩命计算中…</string>
+    <string name="STR_SINGLEORDERMAIN_PRICETIP">100点/次</string>
+    <string name="STR_SINGLEORDERMAIN_TIP2">联系小伙伴合拼分摊价格，拼车成本能大幅降低哦！</string>
+    <string name="STR_SINGLEORDERMAIN_SETPRICE">您的报价</string>
+    <string name="STR_SINGLEORDERMAIN_PRICE">30</string>
+    <string name="STR_SINGLEORDERMAIN_PRICEMARK">点/次</string>
+    <string name="STR_SINGLEORDERMAIN_SINGLE">同城快拼</string>
+    <string name="STR_SINGLEORDERMAIN_NORMAL">上下班拼车</string>
+
+    <!--> TOAST INFO<-->
+    <string name="STR_TOAST_LATEMESSAGE">出发时间已经过啦</string>
+    <string name="STR_TOAST_NOSTARTMESSAGE">起始详细地点尚未填写</string>
+    <string name="STR_TOAST_NOENDTEMESSAGE">目的详细地点尚未填写</string>
+    <string name="STR_TOAST_NOPRICEMESSAGE">报价尚未填写</string>
+
+
+    <!--> PassOrderConfirm activity <-->
+    <string name="STR_ORDERCONFIRM_CONFIRM">确认</string>
+    <string name="STR_ORDERCONFIRM_DRIVERNAME">名字</string>
+    <string name="STR_ORDERCONFIRM_DRIVERAGE">年龄</string>
+    <string name="STR_ORDERCONFIRM_DRIVERDUR">驾龄 </string>
+    <string name="STR_ORDERCONFIRM_DRIVEREVA">好评率: </string>
+    <string name="STR_ORDERCONFIRM_DRIVERTIME">服务次数：</string>
+    <string name="STR_ORDERCONFIRM_DRIVERACTTIME">次</string>
+    <string name="STR_ORDERCONFIRM_CARNAME">车牌</string>
+    <string name="STR_ORDERCONFIRM_CARCOLOR">颜色</string>
+    <string name="STR_ORDERCONFIRM_ADDRESS">出发地 — 目的地 </string>
+    <string name="STR_ORDERCONFIRM_POINTS">中途点：</string>
+    <string name="STR_ORDERCONFIRM_DISTANCE">距您：</string>
+	<string name="STR_ORDERSTATE_CLOSED">已关闭</string>
+
+    <!--> PASS MEMO <-->
+    <string name="STR_PASSMEMO_TITLE">备注</string>
+    <string name="STR_PASSMEMO_DETAIL">备注详情</string>
+    <string name="STR_PASSMEMO_COMMIT">提交</string>
+    <string name="STR_PASSMEMO_CANCEL">取消</string>
+
+    <!--> PassOrderSuccess activity <-->
+    <string name="STR_CHECKDRIVER_TITLE">查看车主信息</string>
+
+    <!--> PassSingleDetail activity <-->
+    <string name="STR_SINGLEDETAIL_TITLE">同城快拼详情</string>
+    <string name="STR_SINGLEDETAIL_ORDERNUM">订单编号：</string>
+    <string name="STR_SINGLEDETAIL_ORDERSTATE">订单状态</string>
+    <string name="STR_SINGLEDETAIL_ORDERTIME">出单时间：</string>
+    <string name="STR_SINGLEDETAIL_WORKTIME">执行时间：</string>
+    <string name="STR_SINGLEDETAIL_ADDRESS">出发地 — 目的地</string>
+    <string name="STR_SINGLEDETAIL_POINTS">中途点：</string>
+    <string name="STR_SINGLEDETAIL_CARINFO">车牌号：</string>
+    <string name="STR_SINGLEDETAIL_TICKT">拼车码：</string>
+    <string name="STR_SINGLEDETAIL_LEFTBUTTON">拨打车主电话</string>
+    <string name="STR_SINGLEDETAIL_RIGHTBUTTON">查看车主位置</string>
+    <string name="STR_SINGLEDETAIL_CANCEL">取消订单</string>
+    <string name="STR_SINGLEDETAIL_CALL">投诉</string>
+    <!--> PassSingleDetail States strings<-->
+    <string name="STR_SINGLEDETAIL_WAITFOR_PROCESS">待执行</string>
+    <string name="STR_SINGLEDETAIL_IN_PROCESS">开始执行</string>
+    <string name="STR_SINGLEDETAIL_PROCESS_DONE">执行结束</string>
+    <string name="STR_SINGLEDETAIL_PAY_DONE">已结算</string>
+    <string name="STR_SINGLEDETAIL_EVALUE_DONE">已评价</string>
+    <string name="STR_SINGLEDETAIL_ORDER_CLOSE">已关闭</string>
+
+
+    <!--> PassOrderSuccess activity <-->
+    <string name="STR_EVALUEDRIVER_TITLE">评价车主</string>
+    <string name="STR_EVALUEDRIVER_GOOD">好评</string>
+    <string name="STR_EVALUEDRIVER_MIDDLE">中评</string>
+    <string name="STR_EVALUEDRIVER_BAD">差评</string>
+    <string name="STR_EVALUEDRIVER_PHRAZEBAR">常用短语</string>
+    <string name="STR_EVALUEDRIVER_PHRAZE1">不经允许抽烟</string>
+    <string name="STR_EVALUEDRIVER_PHRAZE2">语言骚扰</string>
+    <string name="STR_EVALUEDRIVER_PHRAZE3">迟到或不发车</string>
+    <string name="STR_EVALUEDRIVER_PHRAZE4">不经允许绕路</string>
+    <string name="STR_EVALUEDRIVER_DETAIL">评价详情</string>
+    <string name="STR_EVALUEDRIVER_COMMIT">提交</string>
+    <string name="STR_EVALUEDRIVER_CANCEL">取消</string>
+
+    <!--> PassOrderSuccess activity <-->
+    <string name="STR_PAY_TITLE">支付绿点</string>
+    <string name="STR_PAY_NAME">本次拼车绿点</string>
+    <string name="STR_PAY_MOUNT">100点</string>
+    <string name="STR_PAY_DETAIL">现在支付可使车主立即到绿点收\n已完成的服务将在3天内使用冻结绿点自动支付</string>
+    <string name="STR_PAY_LISTNAME">使用点券支付：</string>
+    <string name="STR_PAY_CHOOSE1">5点点券 不与其他点券公用</string>
+    <string name="STR_PAY_CHOOSE2">10点点券 满100使用1张</string>
+    <string name="STR_PAY_CHOOSE3">2点点券 无限制条件</string>
+    <string name="STR_PAY_NEED">还需支付：90点</string>
+    <string name="STR_PAY_ALREADY">点券支付：10点</string>
+    <string name="STR_PAY_TIP">小提示：上下班拼车将自动预约下一出行日</string>
+    <string name="STR_PAY_CONFIRM">确认支付</string>
+
+    <!--> PassOrderSuccess activity <-->
+    <string name="STR_SINGERSUCCESS_TITLE">市内同城快拼</string>
+    <string name="STR_SINGERSUCCESS_DRIVERAGE">29</string>
+    <string name="STR_SINGERSUCCESS_SECCUSS">欧耶！出单成功！</string>
+    <string name="STR_SINGERSUCCESS_PASSWORDTIP1">您的拼车码 ：</string>
+    <string name="STR_SINGERSUCCESS_PASSWORD">1234</string>
+    <string name="STR_SINGERSUCCESS_PASSWORDTIP2">请牢记!</string>
+    <string name="STR_SINGERSUCCESS_FORGETINFO">忘记可在我的订单中查看</string>
+    <string name="STR_SINGERSUCCESS_HINT">上下班订单为长期有效\n未匹配出行日，系统将自动发布临拼车订单\n请提前1小时打开APP</string>
+    <string name="STR_SINGERSUCCESS_DRIVERNAME">刘师傅</string>
+    <string name="STR_SINGERSUCCESS_CARNAME">帕萨特</string>
+    <string name="STR_SINGERSUCCESS_CARCOLOR">白色</string>
+    <string name="STR_SINGERSUCCESS_TIME">2014年6月20日 18：00出发</string>
+    <string name="STR_SINGERSUCCESS_LOCATION">三元桥地铁站</string>
+    <string name="STR_SINGERSUCCESS_CARINFO">车牌号 ：</string>
+    <string name="STR_SINGERSUCCESS_CARDISTANCE">距您500米</string>
+    <string name="STR_SINGERSUCCESS_NOTIFICATION">一定要在上车前15分钟打开APP哦！</string>
+    <string name="STR_SINGERSUCCESS_TODETAIL">前往我的订单</string>
+    <string name="STR_SINGERSUCCESS_BENCICHUCHE">本次出车 ：</string>
+    <string name="STR_SINGERSUCCESS_CHUFA">出发</string>
+    <string name="STR_SINGERSUCCESS_CHUDANSHIJIAN">本次出车时间 ：</string>
+    <string name="STR_SINGERSUCCESS_DIANZICHEPIAO">拼车码 ：</string>
+
+    <!--> PassOrderConfirm activity <-->
+    <string name="STR_NOCOUNTER_TIP1">绿点不足，赶紧充值吧！</string>
+    <string name="STR_NOCOUNTER_TIP2">可能影响你的行程</string>
+    <string name="STR_NOCOUNTER_ACCOUNT">您的余额：</string>
+    <string name="STR_NOCOUNTER_ACCOUNTDETAIL">50</string>
+    <string name="STR_NOCOUNTER_COST">拼车需要：</string>
+    <string name="STR_NOCOUNTER_COSTDETAIL">100</string>
+    <string name="STR_NOCOUNTER_CONFIRM">仍然发布</string>
+    <string name="STR_NOCOUNTER_FILLIN">先去充值</string>
+    <string name="STR_NOCOUNTER_POINTS">中途点：西直门 东直门</string>
+
+    <!--> PassUpPrice activity <-->
+    <string name="STR_UPPRICE_SETPRICE">您的报价</string>
+    <string name="STR_UPPRICE_PRICE">100</string>
+    <string name="STR_UPPRICE_PRICEMARK">点/次</string>
+    <string name="STR_UPPRICE_SEND">再次发布</string>
+    <string name="STR_UPPRICE_TIP">平台推荐价：110点/次</string>
+    <string name="STR_UPPRICE_NOTE1">无车主应答，可能报价太低，</string>
+    <string name="STR_UPPRICE_NOTE2">不如多打赏点给车主？</string>
+    <string name="STR_TIMEOUT_CONFIRM">订单确认已超时，本订单取消</string>
+
+    <!--> LongDistanceOrder activity <-->
+    <string name="STR_LONGDISTANCE_TITLE">发布长途订单</string>
+    <string name="STR_LONGDISTANCE_QISHICHENGSHI">起始城市</string>
+    <string name="STR_LONGDISTANCE_QISHIXIANGXIDIDIAN">起始详细地点</string>
+    <string name="STR_LONGDISTANCE_MUDECHENGSHI">目的城市</string>
+    <string name="STR_LONGDISTANCE_MUDEXIANGXIDIDIAN">目的详细地点</string>
+    <string name="STR_LONGDISTANCE_XUANZECHUFARIQI">选择出发日期</string>
+    <string name="STR_LONGDISTANCE_TIGONGZUOWEISHU">提供座位数</string>
+    <string name="STR_LONGDISTANCE_NINDEBAOJIA">您的报价</string>
+    <string name="STR_LONGDISTANCE_BEIZHU">备注 ：</string>
+    <string name="STR_LONGDISTANCE_DIANZUO">点/座</string>
+    <string name="STR_LONGDISTANCE_FEIBITIANXIANG">非必填项</string>
+    <string name="STR_LONGDISTANCE_FABU">发布</string>
+    <string name="STR_LONGDISTANCE_ZUO">座</string>
+    <string name="STR_LONGDISTANCE_PINGTAIXINXIFEI">平台信息费</string>
+	<string name="STR_LONGDISTANCE_DIANMEIZUO">点/座</string>
+	<string name="STR_LONGDISTANCE_STARTCITY_EMPTY">起始城市不能为空</string>
+	<string name="STR_LONGDISTANCE_ENDCITY_EMPTY">目的城市不能为空</string>
+	<string name="STR_LONGDISTANCE_STARTADDR_EMPTY">起始地点不能为空</string>
+	<string name="STR_LONGDISTANCE_ENDADDR_EMPTY">目的地点不能为空</string>
+    <string name="STR_LONGDISTANCE_CITYSAME">起始和目的城市不能一致</string>
+	<string name="STR_LONGDISTANCE_STARTTIME_EMPTY">出发时间不能为空</string>
+	<string name="STR_LONGDISTANCE_SEATSCOUNT_EMPTY">座位数不能为空</string>
+	<string name="STR_LONGDISTANCE_PRICE_EMPTY">价格不能为空</string>
+	<string name="STR_LONGDISTANCE_PRICE_ZERO">价格不能为0</string>
+	<string name="STR_LONGDISTANCE_SEATS_ZERO">座位数不能为0</string>
+    <string name="STR_LONGDISTANCE_SEATS_MAX">座位数不能大于30</string>
+	<string name="STR_LONGDISTANCE_SEATS_OVER100">座位数不能为大于30</string>
+    <string name="STR_LONGDISTANCE_PRICE_OVERFLOW">报价支持两位小数，不得小于1点，最大9999.99</string>
+	<string name="STR_LONGDISTANCE_PRICE_FORMATERROR">价格输入错误</string>
+    <string name="STR_LONGDISTANCE_SEATS_FORMATERROR">座位数输入错误</string>
+	<string name="STR_LONGDISTANCE_SEATS_TOOMUCH">输入座位数不能大于30</string>
+	<string name="STR_LONGDISTANCE_GONG">共</string>
+    <string name="STR_LONGDISTANCE_QIANG">抢</string>
+
+    <string name="STR_WITHDRAW_SUCCESS">您的提现申请已提交，预计3个工作日内到账，请耐心等待！提现进度可在我的提现记录查看</string>
+
+
+    <!--> PassengerInfo activity <-->
+    <string name="STR_PASSENGERINFO_TITLE">查看拼友信息</string>
+    <string name="STR_PASSENGERINFO_AUTHENTICATED">身份已认证</string>
+    <string name="STR_PASSENGERINFO_EVALRATIO">好评率</string>
+    <string name="STR_PASSENGERINFO_CARPOOLCOUNT">拼车次数</string>
+    <string name="STR_PASSENGERINFO_GOODEVAL">好评！</string>
+    <string name="STR_PASSENGERINFO_BADEVAL">差评！</string>
+    <string name="STR_PASSENGERINFO_NORMALEVAL">中评！</string>
+    <string name="STR_PASSENGERINFO_CI">次</string>
+
+    <!--> OrderSuccess activity <-->
+    <string name="STR_ORDERSUCCESS_SUCCESS">欧耶！抢单成功！</string>
+    <string name="STR_ORDERSUCCESS_HINT">加油！请提前10分钟到达指定地点！</string>
+    <string name="STR_ORDERSUCCESS_NEXT">前往我的订单</string>
+
+    <!--> OrderFail Dialog <-->
+    <string name="STR_ORDERFAIL_HINT">订单被抢，没关系，试试下一个吧！</string>
+
+    <!--> OrderFail Activity <-->
+    <string name="STR_CONFIRMORDER_TITLE">确认订单</string>
+    <string name="STR_CONFIRMORDER_QIANGDAN">抢单</string>
+
+    <!--> OrderFail Activity <-->
+    <string name="STR_TEXTADDRSEARCH_TITLE">输入地址</string>
+
+    <!--> MyOrderList Activity <-->
+    <string name="STR_MYORDERLIST_TITLE">我的订单</string>
+    <string name="STR_MYORDERLIST_ALL">全部</string>
+    <string name="STR_MYORDERLIST_REQOPR">待操作</string>
+    <string name="STR_MYORDERLIST_ONCE">同城</string>
+    <string name="STR_MYORDERLIST_COMMUTE">上下班</string>
+    <string name="STR_MYORDERLIST_LONGDIST">长途</string>
+    <string name="STR_MYORDERLIST_START">开始\n执行</string>
+    <string name="STR_MYORDERLIST_EVAL">去评价</string>
+
+    <!--> MyOrderList Activity <-->
+    <string name="STR_ONCEORDERDETAIL_TITLE">同城快拼详情</string>
+    <string name="STR_ONCEORDERDETAIL_TOUSU">投诉</string>
+
+    <!--> EvalPass Dialog<-->
+    <string name="STR_EVALPASS_TITLE">评价拼友</string>
+    <string name="STR_EVALPASS_GOOD">好评</string>
+    <string name="STR_EVALPASS_NORMAL">中评</string>
+    <string name="STR_EVALPASS_BAD">差评</string>
+    <string name="STR_EVALPASS_COMMONWORD">常用短语</string>
+    <string name="STR_EVALPASS_FINISH">完成</string>
+    <string name="STR_EVALPASS_CANCEL">取消</string>
+
+    <!--> CommuteOrderDetail Activity<-->
+    <string name="STR_COMMUTEORDERDETAIL_TITLE">上下班拼车详情</string>
+    <string name="STR_COMMUTEORDERDETAIL_FINISH">终止服务</string>
+    <string name="STR_COMMUTEORDERDETAIL_OK">投诉</string>
+
+    <!--> CommuteOrderFinish Dialog<-->
+    <string name="STR_COMMUTEORDERFINISH_TITLE">是否确定终止服务？</string>
+    <string name="STR_COMMUTEORDERFINISH_HINT">小提示 ：</string>
+    <string name="STR_COMMUTEORDERFINISH_HINTVAL">建议您提前和拼友沟通，如果对方已预约，您单方终止服务，对方有权给您差评或发起投诉</string>
+
+    <!--> CityCarpoolRun Activity<-->
+    <string name="STR_CITYCARPOOLRUN_TITLE">订单执行中</string>
+    <string name="STR_CITYCARPOOLRUN_HINT">OO贴士 ：</string>
+    <string name="STR_CITYCARPOOLRUN_HINTVAL">订单执行过程中您不能执行其他操作，必须完成订单，请勿退出本应用。</string>
+    <string name="STR_CITYCARPOOLRUN_BTNVAL1">标记到达</string>
+    <string name="STR_CITYCARPOOLRUN_BTNVAL2">验证上车</string>
+    <string name="STR_CITYCARPOOLRUN_BTNVAL3">完成订单</string>
+    <string name="STR_CITYCARPOOLRUN_CALLPHONE">拨打拼友电话</string>
+
+    <!--> ConfirmPassword Dialog<-->
+    <string name="STR_CONFIRMPASSWORD_TITLE">请输入四位拼车码</string>
+    <string name="STR_CONFIRMPASSWORD_CLEAR">清空</string>
+    <string name="STR_CONFIRMPASSWORD_HINT">OO贴士 ：拼友上车后，要输入四位电子拼车码哦，密码拼友确定，请勿自行破解。</string>
+
+    <!--> LongDistanceRun Activity<-->
+    <string name="STR_LONGDISTANCEORDER_TITLE">订单执行中</string>
+    <string name="STR_LONGDISTANCEORDER_SHENGYU">剩余</string>
+    <string name="STR_LONGDISTANCEORDER_JINYU">仅余</string>
+    <string name="STR_LONGDISTANCEORDER_TIMEOUT">预定出发时间已到</string>
+    <string name="STR_LONGDISTANCEORDER_YANPIAO">验证</string>
+    <string name="STR_LONGDISTANCEORDER_QIPIAO">放弃</string>
+    <string name="STR_LONGDISTANCEORDER_YIYANPIAO">已验证上车</string>
+    <string name="STR_LONGDISTANCEORDER_RETURNLIST">返回我的订单</string>
+    <string name="STR_LONGDISTANCEORDER_OUTCAR">立即发车</string>
+
+    <!--> LongDistanceDetail Activity<-->
+    <string name="STR_LONGDISTANCEDETAIL_TITLE">长途拼车详情</string>
+    <string name="STR_LONGDISTANCEDETAIL_DINGDANBIANHAO">订单编号</string>
+    <string name="STR_LONGDISTANCEDETAIL_CHUDANSHIJIAN">出单时间</string>
+    <string name="STR_LONGDISTANCEDETAIL_YUYUESHIJIAN">预约时间</string>
+    <string name="STR_LONGDISTANCEDETAIL_QUXIAODINGDAN">取消订单</string>
+    <string name="STR_LONGDISTANCEDETAIL_ZHIXINGDINGDAN">执行订单</string>
+    <string name="STR_LONGDISTANCEDETAIL_TOUSU">投诉</string>
+    <string name="STR_LONGDISTANCEDETAIL_QIEIHUAN">切换到执行页面</string>
+
+    <!--> VerifyDriver Activity<-->
+    <string name="STR_VERIFYDRIVER_TITLE">车主身份验证</string>
+    <string name="STR_VERIFYDRIVER_HINT1">第一步 上传驾驶证（共3步）</string>
+    <string name="STR_VERIFYDRIVER_HINT2">第二步 选择车型（共3步）</string>
+    <string name="STR_VERIFYDRIVER_HINT3">第三步 上传行驶证（共3步）</string>
+    <string name="STR_VERIFYDRIVER_BRAND">品牌</string>
+    <string name="STR_VERIFYDRIVER_TYPE">车型</string>
+    <string name="STR_VERIFYDRIVER_COLOR">颜色</string>
+    <string name="STR_VERIFYDRIVER_NEXT">下一步</string>
+    <string name="STR_VERIFYDRIVER_IDFOREIMAGE_EMPTY">需要上传身份证正面图</string>
+    <string name="STR_VERIFYDRIVER_IDBACKIMAGE_EMPTY">需要上传身份证后面图</string>
+    <string name="STR_VERIFYDRIVER_CARIMAGE_EMPTY">需要上传爱车图</string>
+    <!--<string name="STR_VERIFYDRIVER_LICENSEFOREIMAGE_EMPTY">需要上传行驶证正面图</string>-->
+    <!--<string name="STR_VERIFYDRIVER_LICENSEBACKIMAGE_EMPTY">需要上传行驶证后面图</string>-->
+    <string name="STR_VERIFYDRIVER_LICENSEFOREIMAGE_EMPTY">主页和副页都要选择哦</string>
+    <string name="STR_VERIFYDRIVER_LICENSEBACKIMAGE_EMPTY">主页和副页都要选择哦</string>
+    <string name="STR_VERIFYDRIVER_APPLY_SUCCESS">资料已上传完成，请耐心等待回复</string>
+
+    <!--> WithDrawFinish Dialog<-->
+    <string name="STR_WITHDRAW_TITLE">是否确定撤销？</string>
+
+    <!--> WithDrawLog Activity<-->
+    <string name="STR_WITHDRAWLOG_TITLE">我的提现记录</string>
+    <string name="STR_WITHDRAWLOG_TIXIANDIANSHU">我的待提现点数 ：</string>
+    <string name="STR_WITHDRAWLOG_SHENQINGRIQI">申请日期</string>
+    <string name="STR_WITHDRAWLOG_DIANSHU">点数</string>
+    <string name="STR_WITHDRAWLOG_ZHUANGTAI">状态</string>
+    <string name="STR_WITHDRAWLOG_CAOZUO">操作</string>
+    <string name="STR_WITHDRAWLOG_CHEXIAO">撤销</string>
+
+    <!--> CommonRoute Activity<-->
+    <string name="STR_COMMONROUTE_TITLE">设置日常线路</string>
+    <string name="STR_COMMONROUTE_HINT">设置日常线路后，系统可自动推送匹配的上下班订单</string>
+	<string name="STR_COMMONLONGROUTE_HINT">设置长途线路后，系统可自动推送匹配的长途订单</string>
+	<string name="STR_COMMONROUTE_HINT_HASDATA">长按可删除不需要的线路</string>
+    <string name="STR_COMMONROUTE_ADDROUTE">添加新路线</string>
+    <string name="STR_COMMONROUTE_DELROUTE">是否确定删除路线？</string>
+	<string name="STR_COMMONLONGROUTE_TITLE">设置长途线路</string>
+    <string name="STR_STARTENDADDR_CANNOT_EQUAL">起止点不能设置为同一地址</string>
+    <string name="STR_STARTENDCITY_CANNOT_EQUAL">起止点不能设置为同一城市</string>
+
+    <!--> CommonRouteAdd Activity<-->
+    <string name="STR_COMMONROUTEADD_STARTPOS">出发地</string>
+    <string name="STR_COMMONROUTEADD_ENDPOS">目的地</string>
+    <string name="STR_COMMONROUTEADD_WORKDAY">工作日</string>
+    <string name="STR_COMMONROUTEADD_WEEKEND">周末</string>
+    <string name="STR_COMMONROUTEADD_ALLDAY">每日</string>
+    <string name="STR_COMMONROUTEADD_DATE">出发时间</string>
+    <string name="STR_COMMONROUTEADD_HINT">不输入表示随意</string>
+    <string name="STR_COMMONROUTETIMEADD_HINT">请设置出发时间</string>
+    <string name="STR_COMMONROUTEADD_SAVE">保存</string>
+    <string name="STR_COMMONROUTEADD_INSERTSTARTPOS">请选择出发地</string>
+    <string name="STR_COMMONROUTEADD_INSERTENDPOS">请选择目的地</string>
+    <string name="STR_COMMONROUTEADD_INSERTTIME">请输入出发时间</string>
+    <string name="STR_COMMONROUTEADD_SUCCESSADD">添加新路线成功</string>
+    <string name="STR_COMMONROUTEADD_SUCCESSUPDATE">路线更新成功</string>
+
+    <!--> PassNormalOrderMain Activity <-->
+    <string name="STR_PASSNORMALORDER_POSTCITYCARPOOL">发布市内拼车</string>
+    <string name="STR_PASSNORMALORDER_ECONCARTYPE">经济型</string>
+    <string name="STR_PASSNORMALORDER_SAFECARTYPE">舒适型</string>
+    <string name="STR_PASSNORMALORDER_LUXURYCARTYPE">豪华型</string>
+    <string name="STR_PASSNORMALORDER_BUSINESSCARTYPE">商务型</string>
+    <string name="STR_PASSNORMALORDER_HINT">联系小伙伴和拼分摊价格，拼车成本能大幅降低哦！</string>
+    <string name="STR_PASSNORMALORDER_ORDERFAIL">绿点不足，赶紧充值吧！</string>
+    <string name="STR_PASSNORMALORDER_NINDEYUE">您的余额 ：</string>
+    <string name="STR_PASSNORMALORDER_PINCHEYAOQIU">拼车要求 ：</string>
+    <string name="STR_PASSNORMALORDER_FABU">仍然发布</string>
+    <string name="STR_PASSNORMALORDER_CHONGZHI">先去充值</string>
+
+    <!--> PassNormalConfirm Activity <-->
+    <string name="STR_PASSNORMALCONFIRM_TITLE">上下班拼车确认订单</string>
+    <string name="STR_PASSNORMALCONFIRM_JIALING">驾龄</string>
+    <string name="STR_PASSNORMALCONFIRM_FUWUCISHU">服务次数</string>
+    <string name="STR_PASSNORMALCONFIRM_JUJUE">拒绝</string>
+    <string name="STR_PASSNORMALCONFIRM_JIESHOU">接受</string>
+
+    <!--> PassSetPoint Activity <-->
+    <string name="STR_SETPOINT_TITLE">设定中途点</string>
+
+    <!--> PassLongConfirm Activity <-->
+    <string name="STR_LONGCONFIRM_TITLE">长途拼车确认订单</string>
+    <string name="STR_LONGCONFIRM_QIANGZUO">抢座</string>
+
+    <string name="STR_PASSLONGORDERFINISH_HINT">如果车主已到达预定地点，您单方终止服务，系统将扣除已冻结减排绿点的x%支付给车主作为补偿，且对方有权给您的差评或发起投诉。</string>
+	<string name="STR_DRVLONGORDERFINISH_HINT">OO贴士：酱紫终止服务，拼友造吗？建议您提前和TA沟通，如果单方违约，得了差评或投诉，后果很严重哦！</string>
+
+    <!--> PassLongOrderDetail Activity <-->
+    <string name="STR_PASSLONGORDERDETAIL_TITLE">长途拼车详情</string>
+
+    <!--> PassLongQuit Activity <-->
+    <string name="STR_PASSLONGQUIT_TITLE">退订</string>
+    <string name="STR_PASSLONGQUIT_REMOVEOK">确认退订</string>
+
+    <string name="STR_PASSONOFFORDERPAUSE_TITLE">将%1$d月%2$d日的出行顺延至%3$d月%4$d日，是否确定？</string>
+    <string name="STR_PASSONOFFORDERCANCEL_TITLE">订单暂时无人接单，是否确定取消发布？</string>
+
+    <string name="STR_SHENYANG">沈阳</string>
+    <string name="STR_DRV_EXPRESSION1">被吸了一路二手烟</string>
+    <string name="STR_DRV_EXPRESSION2">说话把人气到内伤</string>
+    <string name="STR_DRV_EXPRESSION3">说好的准点发车呢</string>
+    <string name="STR_DRV_EXPRESSION4">当偶是路痴啊</string>
+    <string name="STR_PASS_EXPRESSION1">吃货根本停不下来</string>
+    <string name="STR_PASS_EXPRESSION2">座椅靠垫无辜被虐</string>
+    <string name="STR_PASS_EXPRESSION3">等得花儿都谢了</string>
+    <string name="STR_PASS_EXPRESSION4">上车就脱鞋</string>
+
+    <!-- BaiduQianbao Releation -->
+    <string name="bind_service">绑定支付服务</string>
+    <string name="unbind_service">解绑支付服务</string>
+    <string name="pay">确认支付</string>
+    <string name="check_version_ebpay">正在检测安全支付服务版本</string>
+    <string name="error_release_ebpay">释放移动收银台安装包错误，请重试或尝试手动下载</string>
+    <string name="ok">确定</string>
+
+    <string name="STR_PAY_SUCCESS">支付成功</string>
+    <string name="STR_PAY_FAIL">支付失败</string>
+    <string name="STR_ORDER_DESC">OO快拼</string>
+
+    <!--<string name="cancel">取消</string>-->
+    <string name="config_partner">请先正确配置Partner和Seller</string>
+    <string name="prompt">提示</string>
+    <string name="error">错误</string>
+    <string name="confirm_exit">确定退出？</string>
+    <string name="paying">正在支付中&#8230;</string>
+    <string name="pay_failed">支付失败，请重试！</string>
+    <string name="pay_end">支付完成</string>
+    <string name="confirm_install_hint">"安装提示"</string>
+    <string name="confirm_install">"为保证您的交易安全，需要您安装百度安全支付服务，才能进行付款。\n\n点击确定，立即安装。"</string>
+    <string name="oauth_Str">oauth登陆</string>
+	<string name="publongorder_success">您的长途订单已发布，详细信息可在我的订单中查看</string>
+	<string name="shiyongxianzhi">使用限制：</string>
+	<string name="youxiaoqizhi">有效期至</string>
+	<string name="quedingzhixing">订单开始执行后无法进行其他操作，是否继续？</string>
+	<string name="miaohouchongxinhuoqu">秒后重新获取</string>
+	<string name="mustopengps">市内接单必须开启GPS</string>
+	<string name="mustopengps_ok">立即开启</string>
+	<string name="mustopengps_cancel">暂不开启</string>
+	<string name="addr_separator">---</string>
+
+    <string name="STR_ORDERCANCEL_TITLE">是否要拨打客服电话？</string>
+    <string name="STR_ORDERCANCEL_MSG">是否是否确定取消该订单？</string>
+    <string name="STR_ORDER_NOUPPRICE">不发</string>
+    <string name="STR_ORDER_UPPRICE">加价再发</string>
+    <string name="STR_ORDER_COMPANY_PHONE"><u>OO客服</u></string>
+</resources>

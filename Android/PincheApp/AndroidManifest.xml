@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		  package="com.damytech.PincheApp"
+		  android:installLocation="preferExternal"
+		  android:versionCode="1007"
+		  android:versionName="1.07">
+
+	<uses-sdk android:minSdkVersion="9"/>
+
+	<!-- Permission list start -->
+	<uses-permission android:name="android.permission.GET_TASKS"/>
+	<uses-permission android:name="android.permission.CAMERA"/>
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+	<uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+	<uses-permission android:name="android.permission.DELETE_PACKAGES"/>
+	<uses-permission android:name="android.permission.CONTROL_LOCATION_UPDATES"/>
+
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-feature android:name="android.hardware.camera" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+
+	<uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+	<uses-permission android:name="android.permission.ACCESS_GPS" />
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+	<uses-permission android:name="android.permission.READ_LOGS" />
+	<uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	<!-- Permission list end -->
+
+	<!--Baidu permissions-->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.USE_CREDENTIALS" />
+	<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.BROADCAST_STICKY" />
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+
+
+
+    <application
+        android:name="com.baidu.frontia.FrontiaApplication"
+		android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar"
+		android:largeHeap="true">
+
+		<service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"/>
+        <!--
+			正式打包使用baidukey:GH7ZgZ7kZfcT32XY0eoeQl9f
+			测试打包使用baiduke:NU4LktAExAgEfcTPHdufW4f1
+		 -->
+		<meta-data
+				android:name="com.baidu.lbsapi.API_KEY"
+				android:value="GH7ZgZ7kZfcT32XY0eoeQl9f" />
+
+        <receiver android:name="com.damytech.PincheApp.receiver.MyPushMessageReceiver" >
+            <intent-filter>
+                <!-- 接收push消息 -->
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <!-- 接收bind、setTags等method的返回结果 -->
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <!-- 可选。接受通知点击事件，和通知自定义内容 -->
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- push service start -->
+        <!-- 用于接收系统消息以保证PushService正常运行 -->
+        <receiver
+                android:name="com.baidu.android.pushservice.PushServiceReceiver"
+                android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+            </intent-filter>
+        </receiver>
+        <!-- Push服务接收客户端发送的各种请求 -->
+        <!-- 注意：RegistrationReceiver 在2.1.1及之前版本有拼写失误，为RegistratonReceiver ，用新版本SDK时请更改为如下代码 -->
+        <receiver
+                android:name="com.baidu.android.pushservice.RegistrationReceiver"
+                android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <!-- Push 服务 -->
+        <!-- 注意：在4.0 (包含)之后的版本需加上如下所示的intent-filter action -->
+        <service
+                android:name="com.baidu.android.pushservice.PushService"
+                android:exported="true"
+                android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
+            </intent-filter>
+        </service>
+        <!-- push service end -->
+
+		<!-- Logo Activity -->
+		<activity android:name=".LogoActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+
+        <!-- Pass Activities -->
+        <activity android:name=".PassPersonInfoActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".PassNoCounterAgainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".AgreeActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassMainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"
+                  android:launchMode="singleTask"/>
+
+        <activity android:name=".PassPubCityOrderActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassSetPointsActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassWaitOnceOrderAcceptanceActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassWaitOnceOrderAcceptanceAgainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassUpPriceActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnceOrderConfirmActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassNoCounterActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnceOrderSuccessActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassCheckDriverActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderConfirmActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderSuccessActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongOrderMainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongOrderConfirmActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongOrderSuccessActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+         <activity android:name=".PassLongOrderQuitRuleActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongOrderFailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnceOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderProcessActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderDoneActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderStopActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderSetActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".PassLongRouteMainActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassLongSetRouteActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".PassOnOffOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden"/>
+        <!-- Pass Activities -->
+
+		<activity android:name=".FirstActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".NewsActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".DrvMainActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"
+                  android:launchMode="singleTask"/>
+
+		<activity android:name=".AboutActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".BalanceActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".ChangeAccountActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".CouponActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".FeedbackActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".ForgetPwdActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".LoginActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".RegisterActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".SelectPhotoActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"
+		          android:theme="@style/TransStyle_Theme"/>
+
+		<activity android:name=".StoryActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".VerifyPersonActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".AgreementActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".DrvPersonInfoActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+		<activity android:name=".StrategyActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"/>
+
+        <activity android:name=".DrvScanCityOrderActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvPubLongOrderActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".PassEvalInfoActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvOnceOrderSuccessActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".TextAddrSearchActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvConfOnoffOrdActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvOnceOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvOnoffOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvOnoffOrderFinishActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvCityOrderExeActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvLongOrderExeActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvLongOrderDetailActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".VerifyDriverActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".WithdrawLogActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvDailyRouteActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name=".DrvDailyRouteAddActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".DrvConfOnceOrdActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".OrderRouteActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".EvaluateActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden"
+		          android:theme="@style/TransStyle_Theme"/>
+
+		<activity android:name=".DrvEvalInfoActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".DrvRealTimePosActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".PassPayOrderActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".PassCancelLongOrderActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".PassOnOffOrderReserveActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".DisplayCarImgActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+
+		<activity android:name=".WapPayActivity"
+		          android:screenOrientation="portrait"
+		          android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".GuideActivity"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden" />
+
+		<!-- YouMeng -->
+		<meta-data
+				android:name="UMENG_APPKEY"
+				android:value="546abf95fd98c56573002d80" >
+		</meta-data>
+
+		<!-- *************************    分享相关的注册 START **************************** -->
+		<!-- 分享内容编辑页 -->
+		<activity
+				android:name="com.umeng.socialize.view.ShareActivity"
+				android:configChanges="orientation|keyboard"
+				android:launchMode="singleTask"
+				android:noHistory="true"
+				android:theme="@style/Theme.UMDialog"
+				android:windowSoftInputMode="stateVisible|adjustResize" >
+		</activity>
+
+		<!-- 腾讯SSO授权的Activity注册 -->
+		<activity
+				android:name="com.tencent.tauth.AuthActivity"
+				android:launchMode="singleTask"
+				android:noHistory="true" >
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="tencent100424468" />
+			</intent-filter>
+		</activity>
+		<activity
+				android:name="com.tencent.connect.common.AssistActivity"
+				android:screenOrientation="portrait"
+				android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+		<!-- 微信回调activity -->
+		<activity
+				android:name=".wxapi.WXEntryActivity"
+				android:configChanges="keyboardHidden|orientation|screenSize"
+				android:exported="true"
+				android:screenOrientation="portrait"
+				android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<!-- **************************************************************************** -->
+        <receiver android:name=".receiver.AlarmReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.alarm.action"/>
+            </intent-filter>
+        </receiver>
+	</application>
+</manifest>

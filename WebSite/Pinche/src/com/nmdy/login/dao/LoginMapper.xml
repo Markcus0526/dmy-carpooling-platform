@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.login.dao.LoginMapper">
+
+	<resultMap id="menu" type="com.nmdy.login.pojo.Menu">
+
+		<result column="pfunccode" property="pFuncCode" />
+
+		<result column="pfuncname" property="pFuncName" />
+
+		<result column="ptype" property="pType" />
+
+		<result column="picon" property="pIcon" />
+
+		<result column="sfunccode" property="sFuncCode" />
+
+		<result column="sfuncname" property="sFuncName" />
+
+		<result column="stype" property="sType" />
+
+		<result column="sicon" property="sIcon" />
+
+		<result column="surl" property="url" />
+
+		<result column="sparent" property="sParent" />
+	</resultMap>
+
+	<select id="isUserPasswordRight" parameterType="hashmap"
+		resultType="int">
+		select count(*) cnt from administrator where
+		usercode=#{userName} and password=#{password}
+	</select>
+
+	<select id="getMenusOfLevel12" parameterType="hashmap"
+		resultMap="menu">
+		select
+		pfunccode,pfuncname,ptype,picon,sfunccode,sfuncname,surl,stype,sicon,sparent
+		from
+		(
+		select b.func_code pfunccode,c.func_name pfuncname,c.url purl,c.type_
+		ptype,c.icon picon,c.parent pparent
+		from administrator_operrole_rel_zyl a
+		left join role_oper_func_rel_zyl b on a.role_oper_id=b.role_oper_id
+		left join func_point_zyl c on b.func_code=c.code
+		where administrator_code=#{userId} and type_='1'
+		)parent left join
+		(
+		select b.func_code sfunccode,c.func_name sfuncname,c.url surl,c.type_
+		stype,c.icon sicon,c.parent sparent
+		from administrator_operrole_rel_zyl a
+		left join role_oper_func_rel_zyl b on a.role_oper_id=b.role_oper_id
+		left join func_point_zyl c on b.func_code=c.code
+		where administrator_code=#{userId} and type_='2'
+		)son
+		on parent.pfunccode=son.sparent
+		group by surl
+	</select>
+
+<!-- 	<select id="getMenusByUser" resultMap="menu" parameterType="hashmap"> -->
+<!-- 		on parent.pfunccode=son.sparent order by sparent --><!-- 	</select> -->
+	<select id="getMenusByUser" parameterType="hashmap" resultMap="menu">
+		select c.code sfunccode,c.func_name sfuncname,c.url surl from
+		administrator_operrole_rel_zyl a
+		left join role_oper_func_rel_zyl b on a.role_oper_id=b.role_oper_id
+		left join func_point_zyl c on b.func_code=c.code
+		where administrator_code=#{userId} and c.type_ not in('1','2')
+		group by surl
+	</select>
+	
+	<select id="isUserPassword" parameterType="hashmap" resultType="int">
+		select count(*) from user where usercode=#{userName} and password=#{password}
+	</select>
+	
+	<update id="updatePass" parameterType="hashmap">
+		update administrator set password = #{newPass} where usercode = #{usercode}
+	</update>
+</mapper>

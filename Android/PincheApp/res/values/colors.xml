@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="TITLE_FORECOLOR">#FFFFFF</color>
+	<color name="TITLE_BACKCOLOR">#4DB47D</color>
+	<color name="TABCOLOR">#4DB47D</color>
+	<color name="TAB_NORMAL_COLOR">#278551</color>
+	<color name="TAB_SEL_COLOR">#FFFFFF</color>
+    <color name="LIGHT_GRAY_COLOR">#EEEEEE</color>
+    <color name="BASE_BACK_COLOR">#CCCCCC</color>
+    <color name="BASE_TEXT_COLOR">#A5A5A5</color>
+    <color name="WHITE_COLOR">#FFFFFF</color>
+    <color name="TRANS_COLOR">#7F808080</color>
+    <color name="GRAY_COLOR">#808080</color>
+    <color name="LIGHT_YELLOW_COLOR">#F0AF44</color>
+    <color name="BLACK_COLOR">#000000</color>
+    <color name="GOODEVAL_COLOR">#FF6C6C</color>
+    <color name="NORMALEVAL_COLOR">#F0AF44</color>
+    <color name="BADEVAL_COLOR">#4C4C4C</color>
+    <color name="RED_COLOR">#FF0000</color>
+    <color name="BTN_GREEN_COLOR">#86ce61</color>
+    <color name="BTN_RED_COLOR">#fc7273</color>
+    <color name="BTN_BROWN_COLOR">#d79b76</color>
+    <color name="BTN_BLUE_COLOR">#30c3e1</color>
+    <color name="BTN_GRAY_COLOR">#d6d6d6</color>
+
+	<color name="NEWS_TITLE_NORMAL_COLOR">#404040</color>
+	<color name="NEWS_TITLE_SEL_COLOR">#4EB680</color>
+</resources>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_PASSLONGORDERDETAIL_TITLE"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                     android:layout_centerVertical="true" android:background="@drawable/btn_back"
+                />
+	    <ImageButton
+			    android:layout_width="36px"
+			    android:layout_height="36px"
+			    android:id="@+id/btn_refresh" android:layout_alignParentRight="true"
+			    android:layout_centerVertical="true" android:layout_marginRight="20px"
+			    android:src="@drawable/bk_refresh" android:scaleType="fitXY" android:background="@null"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/scrollView" android:layout_below="@+id/title_layout">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+			<RelativeLayout
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:id="@+id/content_layout" android:paddingBottom="30px">
+		        <view android:layout_width="100px"
+		              android:layout_height="100px"
+		              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewPhoto"
+		              android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		              android:layout_marginLeft="40px" android:layout_marginTop="30px" android:scaleType="fitXY"
+				        />
+		        <ImageButton
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/btnPhoto" android:layout_alignTop="@+id/viewPhoto"
+		                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+		                android:layout_alignBottom="@+id/viewPhoto" android:background="@drawable/btn_frame"
+		                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+		                android:layout_marginBottom="-5px"/>
+		        <RelativeLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="30px" android:layout_alignBottom="@+id/viewPhoto"
+		                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto">
+		            <ImageView
+		                    android:layout_width="20px"
+		                    android:layout_height="20px"
+		                    android:id="@+id/imgSex" android:layout_marginLeft="26px" android:layout_centerVertical="true"
+		                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+		            <TextView
+		                    android:layout_width="35px"
+		                    android:layout_height="fill_parent"
+		                    android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+		                    android:layout_alignParentRight="true" android:layout_marginRight="10px"
+		                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+		        </RelativeLayout>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="30px"
+		                android:id="@+id/lblName" android:layout_below="@+id/viewPhoto"
+		                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/btnPhoto"
+		                android:layout_marginTop="10px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="18px"/>
+		        <TextView
+		                android:layout_width="130px"
+		                android:layout_height="30px"
+		                android:id="@+id/lblDriverYears" android:layout_alignTop="@+id/btnPhoto"
+		                android:layout_toRightOf="@+id/lblName" android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+		        <view android:layout_width="100px"
+		              android:layout_height="100px"
+		              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewCar"
+		              android:layout_alignTop="@+id/viewPhoto" android:layout_alignParentRight="true"
+		              android:layout_marginRight="40px" android:scaleType="fitXY"/>
+		        <Button
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/btnCar" android:layout_alignTop="@+id/viewCar"
+		                android:layout_alignLeft="@+id/viewCar" android:layout_alignBottom="@+id/viewCar"
+		                android:layout_alignRight="@+id/viewCar" android:background="@drawable/btn_frame"
+		                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+		                android:layout_marginBottom="-5px"/>
+		        <TextView
+		                android:layout_width="150px"
+		                android:layout_height="30px"
+		                android:id="@+id/lblEval" android:layout_below="@+id/lblDriverYears"
+		                android:layout_alignLeft="@+id/lblDriverYears" android:layout_marginTop="10px" android:gravity="center_vertical|left"
+		                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"/>
+		        <TextView
+		                android:layout_width="130px"
+		                android:layout_height="30px"
+		                android:id="@+id/lblHistoryCount" android:layout_below="@+id/lblEval" android:layout_alignLeft="@+id/lblEval"
+		                android:textSize="18px" android:textColor="@color/GRAY_COLOR" android:gravity="center_vertical|left"
+		                android:layout_marginTop="10px"/>
+		        <ImageView
+		                android:layout_width="60px"
+		                android:layout_height="25px"
+		                android:id="@+id/imgCarType"
+		                android:layout_toRightOf="@+id/lblName" android:scaleType="fitCenter"
+		                android:src="@drawable/luxurycar_sel" android:layout_below="@+id/viewPhoto"
+		                android:layout_marginTop="25px"/>
+				<RelativeLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:layout_alignTop="@+id/imgCarType"
+						android:layout_toRightOf="@+id/imgCarType" android:layout_marginLeft="10px"
+						android:id="@+id/carlogo_layout">
+					<ImageView
+			                android:layout_width="25px"
+			                android:layout_height="25px"
+			                android:id="@+id/imgBrand" android:layout_alignTop="@+id/imgCarType"
+			                android:layout_toRightOf="@+id/imgCarType"
+			                android:scaleType="fitCenter" android:src="@drawable/bk_carbrand1"
+			                android:layout_centerInParent="true"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/txtBrand" android:textSize="19px" android:textColor="#707070"/>
+				</RelativeLayout>
+				<TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="25px"
+		                android:id="@+id/lblBrandName" android:layout_alignTop="@+id/carlogo_layout"
+		                android:layout_toRightOf="@+id/carlogo_layout" android:layout_marginLeft="10px" android:gravity="center"
+		                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+		                android:textSize="14px" android:paddingLeft="5px" android:paddingRight="5px"/>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="25px"
+		                android:id="@+id/lblColor" android:layout_alignTop="@+id/lblBrandName"
+		                android:layout_toRightOf="@+id/lblBrandName" android:layout_marginLeft="10px" android:gravity="center"
+		                android:textColor="@color/TITLE_BACKCOLOR" android:textSize="18px"/>
+		        <RelativeLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="1px" android:layout_below="@+id/imgCarType"
+		                android:layout_marginLeft="20px" android:layout_marginRight="20px"
+		                android:layout_marginTop="10px" android:background="@color/GRAY_COLOR"
+		                android:id="@+id/rlSeparate">
+		        </RelativeLayout>
+		        <TextView
+		                android:layout_width="300px"
+		                android:layout_height="35px"
+		                android:id="@+id/lblCardno" android:layout_alignLeft="@+id/rlSeparate"
+		                android:layout_below="@+id/rlSeparate" android:layout_marginTop="10px" android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+                <TextView android:layout_width="400px" android:layout_height="wrap_content" android:id="@+id/lblStartPath"
+                          android:gravity="center|center_vertical" android:textColor="@color/GRAY_COLOR"
+                          android:textSize="24px"
+                          android:layout_below="@+id/lblCardno"
+                          android:singleLine="false" android:layout_centerHorizontal="true"
+                          />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" - "
+                        android:id="@+id/lblPathMark"
+                        android:gravity="center" android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+                        android:layout_centerHorizontal="true" android:layout_below="@+id/lblCardno"
+                        android:visibility="invisible"/>
+                <TextView android:layout_width="240px" android:layout_height="wrap_content" android:id="@+id/lblEndPath"
+                          android:gravity="center_vertical|left" android:textColor="@color/GRAY_COLOR"
+                          android:textSize="24px"
+                          android:layout_alignTop="@+id/lblPathMark" android:layout_toRightOf="@+id/lblPathMark"
+                          android:layout_alignRight="@+id/insurance_detail" android:singleLine="true"
+                          android:visibility="invisible"/>
+                <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lblRunTime" android:layout_marginTop="30px" android:layout_below="@+id/lblEndPath"
+                        android:gravity="center"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="21px"
+                       android:layout_centerHorizontal="true"/>
+                <TextView
+		                android:layout_width="fill_parent"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lblStatus" android:layout_marginTop="20px"
+		                android:layout_below="@+id/lblRunTime" android:layout_centerHorizontal="true"
+		                android:gravity="center" android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+                <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="40px"
+                        android:text="保单详情"
+                        android:id="@+id/insurance_detail" android:layout_toRightOf="@+id/lblCardno"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20px"
+                        android:layout_marginLeft="10px"
+                        android:layout_alignTop="@+id/lblCardno"
+                        android:textSize="19px" android:textColor="@color/TITLE_BACKCOLOR"
+                        android:gravity="center"
+                        android:paddingLeft="5px"
+                        android:drawableLeft="@drawable/insurance_icon"
+                        android:background="@drawable/btn_fee"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/lblStatus2"
+                        android:layout_below="@+id/lblRunTime"
+						android:gravity="center"
+                        android:layout_centerHorizontal="true"
+						android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"
+						/>
+				<RelativeLayout
+                        android:layout_width="fill_parent"
+						android:layout_height="wrap_content"
+                        android:layout_below="@+id/lblStatus"
+                        android:id="@+id/carno_layout">
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/txtCarNo" android:gravity="center_vertical"
+							android:layout_marginLeft="20px" android:textColor="#707070" android:textSize="24px"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/txtPassword" android:layout_alignParentRight="true"
+							android:layout_toRightOf="@+id/txtCarNo" android:gravity="center_vertical|right"
+							android:layout_marginRight="20px" android:textColor="#707070" android:textSize="24px"/>
+				</RelativeLayout>
+				<RelativeLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="170px" android:layout_below="@+id/carno_layout"
+		                android:background="@color/LIGHT_GRAY_COLOR" android:id="@+id/operation_layout"
+		                android:layout_marginTop="10px">
+					<RelativeLayout
+					        android:layout_width="fill_parent"
+					        android:layout_height="1px" android:layout_marginLeft="20px" android:layout_marginRight="20px"
+					        android:background="@color/GRAY_COLOR">
+					</RelativeLayout>
+					<TextView
+				            android:layout_width="330px"
+				            android:layout_height="120px"
+				            android:id="@+id/lblCarpool" android:layout_marginTop="25px"
+				            android:layout_centerHorizontal="true" android:gravity="center"
+				            android:textSize="24px"/>
+					<ImageView
+					        android:layout_width="120px"
+					        android:layout_height="120px"
+					        android:id="@+id/imgButton1" android:layout_marginTop="25px"
+					        android:layout_marginLeft="75px" android:scaleType="fitCenter"
+                            android:src="@drawable/bk_driverphone"/>
+					<ImageView
+		                    android:layout_width="120px"
+		                    android:layout_height="120px"
+		                    android:id="@+id/imgButton2" android:layout_marginRight="75px"
+		                    android:layout_alignTop="@+id/imgButton1" android:layout_alignParentRight="true"
+		                    android:scaleType="fitCenter" android:src="@drawable/bk_driverpos"/>
+					<ImageButton
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/btn_oper1" android:layout_alignTop="@+id/imgButton1"
+							android:layout_alignLeft="@+id/imgButton1" android:layout_alignBottom="@+id/imgButton1"
+							android:layout_alignRight="@+id/imgButton1"
+							android:background="@null"/>
+					<ImageButton
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/btn_oper2" android:layout_alignTop="@+id/imgButton2"
+							android:layout_alignLeft="@+id/imgButton2" android:layout_alignBottom="@+id/imgButton2"
+							android:layout_alignRight="@+id/imgButton2" android:background="@null"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:layout_below="@+id/operation_layout"
+						android:id="@+id/operation_layout2">
+					<RelativeLayout
+							android:layout_width="fill_parent"
+							android:layout_height="wrap_content" android:layout_centerVertical="true">
+						<Button
+								android:layout_width="440px"
+								android:layout_height="60px"
+								android:text="@string/STR_TUIPIAO"
+								android:id="@+id/btn_CancelTicket" android:layout_centerHorizontal="true"
+								android:background="@drawable/btn_white"
+								android:layout_marginBottom="10px" android:textSize="24px"
+								android:textColor="@color/TITLE_BACKCOLOR" android:layout_marginTop="20px"/>
+						<Button
+			                    android:layout_width="440px"
+			                    android:layout_height="60px"
+			                    android:text="@string/STR_LONGDISTANCEDETAIL_TOUSU"
+			                    android:id="@+id/btn_TouSu"
+			                    android:background="@drawable/btn_green"
+			                    android:textColor="@color/WHITE_COLOR" android:textSize="24px"
+			                    android:layout_centerHorizontal="true"
+			                    android:layout_below="@+id/btn_CancelTicket"/>
+					</RelativeLayout>
+				</RelativeLayout>
+            </RelativeLayout>
+		</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>
+	

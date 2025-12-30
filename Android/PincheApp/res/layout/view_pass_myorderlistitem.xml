@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="wrap_content" android:background="@drawable/roundgraywhite_frame">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:text="New Text"
+                android:id="@+id/lblDest" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:gravity="center" android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="25px" android:singleLine="true" android:layout_marginLeft="10px"
+                android:layout_marginRight="10px"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1px" android:layout_below="@+id/lblDest"
+                android:layout_centerHorizontal="true" android:layout_marginLeft="25px" android:layout_marginTop="1px"
+                android:layout_marginRight="25px" android:background="@color/GRAY_COLOR"
+                android:id="@+id/relativeLayout">
+        </RelativeLayout>
+        <view android:layout_width="120px"
+              android:layout_height="120px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/imgPhoto"
+              android:layout_below="@+id/relativeLayout" android:layout_alignParentLeft="true"
+              android:layout_marginTop="20px" android:layout_marginLeft="10px" android:scaleType="fitXY"
+		        />
+	    <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/imgPhoto"
+                android:layout_alignLeft="@+id/imgPhoto" android:layout_alignRight="@+id/imgPhoto"
+                android:id="@+id/relativeLayout2">
+            <ImageView
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:id="@+id/imgSex" android:layout_marginLeft="33px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="30px"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lblAge" android:layout_marginRight="27px" android:gravity="center_vertical|left"
+                    android:layout_alignParentRight="true" android:textColor="@color/TAB_NORMAL_COLOR"
+                    android:textSize="23px"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:text="张先生"
+                android:id="@+id/lblName" android:layout_below="@+id/btnPhoto"
+                android:layout_alignLeft="@+id/relativeLayout2" android:layout_marginTop="10px"
+                android:layout_alignRight="@+id/relativeLayout2" android:gravity="center"
+                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:text="100点"
+                android:id="@+id/lblMark" android:layout_alignTop="@+id/btnPhoto"
+                android:layout_toRightOf="@+id/btnPhoto" android:layout_marginLeft="15px"
+                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="28px" android:gravity="center"
+                android:layout_marginTop="15px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:text="6月20日"
+                android:id="@+id/lblDate" android:layout_below="@+id/lblMark" android:layout_alignLeft="@+id/lblMark"
+                android:layout_marginTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="20px" android:gravity="center"/>
+        <TextView
+                android:layout_width="80px"
+                android:layout_height="wrap_content"
+                android:text="同城"
+                android:id="@+id/lblSiteMark" android:layout_alignTop="@+id/lblMark"
+                android:layout_toRightOf="@+id/lblMark" android:layout_alignBottom="@+id/lblMark"
+                android:layout_marginLeft="5px" android:gravity="center" android:textColor="@color/WHITE_COLOR"
+                android:textSize="18px" android:background="@drawable/roundsolidyellow_frame"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblTime" android:layout_alignTop="@+id/lblDate"
+                android:layout_toRightOf="@+id/lblDate" android:layout_alignBottom="@+id/lblDate"
+                android:layout_alignRight="@+id/lblSiteMark" android:textColor="@color/GRAY_COLOR"
+                android:gravity="center" android:textSize="20px"/>
+        <ImageView
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:id="@+id/imgState" android:layout_alignTop="@+id/imgPhoto"
+                android:layout_alignParentRight="true" android:layout_marginRight="10px"
+                android:focusableInTouchMode="false" android:scaleType="fitCenter" android:src="@drawable/yellowcircle"
+		        />
+	    <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/lblState" android:layout_alignTop="@+id/imgState"
+	            android:layout_alignBottom="@+id/imgState" android:layout_alignLeft="@+id/imgState"
+	            android:layout_alignRight="@+id/imgState" android:gravity="center"
+	            android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"/>
+	    <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.5Kma wefawef "
+                android:id="@+id/lblProcess"
+                android:layout_alignRight="@+id/imgState"
+                android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                android:textSize="@dimen/BASE_TEXT_SIZE" android:layout_alignLeft="@+id/imgState"
+                android:layout_below="@+id/imgState" android:layout_marginTop="10px"/>
+	    <ImageButton
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/btn_background" android:background="@drawable/bk_empty"
+			    android:layout_alignParentBottom="false" android:layout_alignParentTop="true"
+			    android:layout_alignBottom="@+id/lblProcess" android:layout_marginBottom="-10px"/>
+	    <ImageButton
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/btn_operate" android:layout_alignTop="@+id/lblState"
+			    android:layout_alignLeft="@+id/lblState" android:layout_alignBottom="@+id/lblState"
+			    android:layout_alignRight="@+id/lblState" android:background="@drawable/btn_frame"
+			    />
+	    <ImageButton
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/btnPhoto" android:layout_alignTop="@+id/imgPhoto"
+	            android:layout_alignLeft="@+id/imgPhoto" android:layout_alignBottom="@+id/imgPhoto"
+	            android:layout_alignRight="@+id/imgPhoto"
+	            android:background="@drawable/btn_frame" android:layout_marginLeft="-5px"
+	            android:layout_marginTop="-5px" android:layout_marginRight="-5px" android:layout_marginBottom="-5px"/>
+    </RelativeLayout>
+</RelativeLayout>

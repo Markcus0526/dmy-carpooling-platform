@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.manager.dao.AuthorityMapper" >
+
+    <resultMap
+        id="AuthorityResult"
+        type="Authority" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="url"
+            property="url" />
+
+        <result
+            column="rid"
+            property="rid" />
+
+        <result
+            column="mid"
+            property="mid" />
+    </resultMap>
+
+    <select
+        id="getResourceList"
+        parameterType="int"
+        resultMap="AuthorityResult" >
+	SELECT ri.id as id, m.url as url, ur.role_id as rid , ri.mid as mid
+			FROM menu m
+			LEFT JOIN roleitem ri ON m.id=ri.mid
+			LEFT JOIN role r ON r.id=ri.rid
+			LEFT JOIN user_role ur ON ur.role_id=r.id
+			WHERE ur.user_id=#{id} AND ur.deleted = 0 AND r.deleted = 0 AND ri.chk > 0
+    </select>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="380px"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent" android:paddingBottom="30px">
+
+        <com.damytech.Utils.WheelPicker.WheelView android:id="@+id/hour"
+                                       android:layout_height="wrap_content"
+                                       android:layout_width="170px" android:layout_marginTop="30px"
+                                       android:layout_marginLeft="20px"/>
+        <com.damytech.Utils.WheelPicker.WheelView android:id="@+id/mins"
+                                       android:layout_height="wrap_content"
+                                       android:layout_width="170px" android:layout_alignParentTop="true"
+                                       android:layout_toRightOf="@+id/hour" android:layout_marginTop="30px"/>
+	    <RelativeLayout
+			    android:layout_width="350px"
+			    android:layout_height="wrap_content" android:id="@+id/operation_layout"
+			    android:layout_below="@+id/mins" android:layout_marginTop="30px" android:layout_centerHorizontal="true">
+		    <Button android:layout_width="150px" android:layout_height="60px" android:text="@string/STR_SHEZHI"
+	                android:id="@+id/btnSave"
+	                android:textColor="@color/WHITE_COLOR" android:textSize="24px"
+	                android:background="@drawable/btn_smallgreen"
+	                android:layout_alignParentLeft="true"/>
+		    <Button android:layout_width="150px" android:layout_height="60px" android:text="@string/STR_QUXIAO"
+	                android:id="@+id/btnCancel"
+	                android:background="@drawable/btn_smallwhite" android:textColor="@color/TITLE_BACKCOLOR"
+	                android:textSize="24px"
+	                android:layout_alignParentRight="true"/>
+	    </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_WAITORDER_TITLE"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <Button
+                android:layout_width="100px"
+                android:layout_height="40px"
+                android:text="@string/STR_WAITORDER_CANCEL"
+                android:id="@+id/btn_cancel_order" android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bk_smallgreen_sel"
+                android:textSize="@dimen/BASE_TEXT_SIZE"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <ScrollView android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/title_layout">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout"
+            android:layout_above="@+id/title_layout"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <LinearLayout android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/info_layout"
+                          android:orientation="horizontal">
+                         <LinearLayout android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="vertical"
+                                      android:id="@+id/driver_info_layout">
+                                 <RelativeLayout android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/driver_image_layout"
+                                            android:layout_marginLeft="20px"
+                                            android:layout_marginTop="20px">
+                                             <view android:layout_width="100px"
+                                                   android:layout_height="100px"
+                                                   class="com.damytech.Utils.image.SmartImageView"
+                                                   android:id="@+id/img_photo"
+                                                   android:scaleType="fitXY"/>
+                                             <ImageView android:layout_width="100px"
+                                                        android:layout_height="100px"
+                                                        android:id="@+id/image_around"
+                                                        android:background="@drawable/photo_frame"/>
+                                             <RelativeLayout
+                                                     android:layout_width="fill_parent"
+                                                     android:layout_height="30px"
+                                                     android:layout_alignBottom="@+id/img_photo"
+                                                     android:layout_alignLeft="@+id/img_photo"
+                                                     android:layout_alignRight="@+id/img_photo">
+                                                 <ImageView
+                                                         android:layout_width="20px"
+                                                         android:layout_height="20px"
+                                                         android:id="@+id/imgSex" android:layout_marginLeft="29px" android:layout_centerVertical="true"
+                                                         android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+                                                 <TextView
+                                                         android:layout_width="35px"
+                                                         android:layout_height="fill_parent"
+                                                         android:text="@string/STR_ORDERCONFIRM_DRIVERAGE"
+                                                         android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+                                                         android:layout_alignParentRight="true" android:layout_marginRight="15px"
+                                                         android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+                                             </RelativeLayout>
+                                 </RelativeLayout>
+                                 <TextView android:layout_width="wrap_content"
+                                           android:layout_height="wrap_content"
+                                           android:layout_marginBottom="10px"
+                                           android:layout_marginTop="10px"
+                                           android:layout_marginLeft="40px"
+                                            android:id="@+id/driver_name"
+                                            android:textColor="@color/GRAY_COLOR"
+                                            android:textSize="18px"
+                                            android:text="@string/STR_ORDERCONFIRM_DRIVERNAME"/>
+                         </LinearLayout>
+
+                          <LinearLayout android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="20px"
+                                        android:layout_marginTop="20px"
+                                        android:orientation="vertical"
+                                        android:id="@+id/detail_layout">
+                                      <TextView android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/STR_ORDERCONFIRM_DRIVERDUR"
+                                                android:textSize="20px"
+                                                android:textColor="@color/GRAY_COLOR"
+                                                android:id="@+id/driver_duration"/>
+                                      <TextView android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/STR_ORDERCONFIRM_DRIVEREVA"
+                                                android:textSize="28px"
+                                                android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                                android:layout_marginTop="10px"
+                                                android:id="@+id/driver_evaluation"/>
+                                      <LinearLayout android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="10px"
+                                                    android:orientation="horizontal"
+                                                    android:id="@+id/service_time">
+                                                  <TextView android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:text="@string/STR_ORDERCONFIRM_DRIVERTIME"
+                                                            android:textSize="20px"
+                                                            android:textColor="@color/GRAY_COLOR"
+                                                            android:id="@+id/service_time_note"/>
+                                                  <TextView android:layout_width="wrap_content"
+                                                            android:layout_height="wrap_content"
+                                                            android:text="@string/STR_ORDERCONFIRM_DRIVERACTTIME"
+                                                            android:textSize="20px"
+                                                            android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                                            android:id="@+id/service_time_detail"/>
+                                      </LinearLayout>
+                                      <LinearLayout android:layout_width="200px"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginTop="10px"
+                                                    android:orientation="horizontal"
+                                                    android:id="@+id/car_detail">
+                                                  <ImageView android:layout_width="50px"
+                                                             android:layout_height="25px"
+                                                             android:background="@drawable/first_car_green"
+                                                             android:id="@+id/car_type"/>
+                                                  <TextView android:layout_width="wrap_content"
+                                                             android:layout_height="25px"
+                                                             android:textSize="20px"
+                                                             android:textColor="@color/TITLE_BACKCOLOR"
+                                                             android:layout_marginLeft="10px"
+                                                             android:id="@+id/car_logo"/>
+                                                  <TextView android:layout_width="wrap_content"
+                                                            android:layout_height="25px"
+                                                            android:text="@string/STR_ORDERCONFIRM_CARNAME"
+                                                            android:textSize="15px"
+                                                            android:textColor="@color/WHITE_COLOR"
+                                                            android:padding = "2px"
+                                                            android:background="@color/TITLE_BACKCOLOR"
+                                                            android:layout_marginLeft="10px"
+                                                            android:id="@+id/car_name"/>
+                                                  <TextView android:layout_width="wrap_content"
+                                                            android:layout_height="25px"
+                                                            android:text="@string/STR_ORDERCONFIRM_CARCOLOR"
+                                                            android:textSize="20px"
+                                                            android:textColor="@color/TITLE_BACKCOLOR"
+                                                            android:layout_marginLeft="10px"
+                                                            android:id="@+id/car_color"/>
+                                      </LinearLayout>
+                          </LinearLayout>
+                          <RelativeLayout android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:id="@+id/car_image_layout"
+                                            android:layout_marginLeft="20px"
+                                            android:layout_marginTop="20px">
+                                            <view android:layout_width="100px"
+                                                  android:layout_height="100px"
+                                                  class="com.damytech.Utils.image.SmartImageView"
+                                                  android:id="@+id/img_car"
+                                                  android:scaleType="fitXY"/>
+                                            <ImageView android:layout_width="100px"
+                                                       android:layout_height="100px"
+                                                       android:id="@+id/image_around2"
+                                                       android:background="@drawable/photo_frame"/>
+
+                           </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                <LinearLayout android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"
+                              android:padding="20px"
+                              android:gravity="center"
+                              android:id="@+id/address_layout"
+                              android:orientation="vertical"
+                              android:layout_weight="1"
+                              >
+                            <ImageView android:layout_width="fill_parent"
+                                       android:layout_height="5px"
+                                       android:layout_marginBottom="10px"
+                                       android:background="@drawable/lvdian_header"
+                                       android:id="@+id/divider"/>
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="@string/STR_ORDERCONFIRM_ADDRESS"
+                                      android:textSize="20px"
+                                      android:textColor="@color/GRAY_COLOR"
+                                      android:layout_marginBottom="10px"
+                                      android:id="@+id/address_detail"
+                                      android:gravity="center_horizontal"
+                                      android:layout_marginLeft="30px"
+                                      android:layout_marginRight="30px"
+                                      />
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="@string/STR_ORDERCONFIRM_POINTS"
+                                      android:textSize="20px"
+                                      android:textColor="@color/GRAY_COLOR"
+                                      android:layout_marginBottom="10px"
+                                      android:id="@+id/address_points"
+                                      />
+                            <TextView android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:text="@string/STR_ORDERCONFIRM_DISTANCE"
+                                      android:textSize="28px"
+                                      android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                      android:layout_marginBottom="10px"
+                                      android:id="@+id/relative_distance"
+                                      />
+                </LinearLayout>
+
+            <LinearLayout android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/map_layout"
+                          android:gravity="center_horizontal"
+                          android:layout_weight="1"
+                          android:orientation="vertical">
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="300px"
+                        android:id="@+id/map_detail_layout"
+                        >
+                    <!--地图 -->
+                    <view
+                            class="com.baidu.mapapi.map.MapView"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/img_map"
+                            android:clickable="true"
+                            android:visibility="visible"/>
+                    <RelativeLayout android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/timer_layout"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="50px"
+                                    android:layout_centerHorizontal="true"
+                                    android:visibility="visible">
+                        <ImageView android:layout_width="70px "
+                                   android:layout_height="70px"
+                                   android:id="@+id/timer_image"
+                                   android:background="@drawable/bk_progress"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:id="@+id/timer_text"
+                                  android:textColor="@color/TITLE_BACKCOLOR"
+                                  android:layout_centerInParent="true"
+                                  android:textSize="30px"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <Button
+                        android:layout_width="400px"
+                        android:layout_height="70px"
+                        android:text="@string/STR_ORDERCONFIRM_CONFIRM"
+                        android:id="@+id/btn_send"
+                        android:layout_marginTop="20px"
+                        android:layout_marginBottom="20px"
+                        android:background="@drawable/roundsolidgreen_frame"
+                        android:textColor="@color/WHITE_COLOR"
+                        android:textSize="24px"/>
+            </LinearLayout>
+         </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+	

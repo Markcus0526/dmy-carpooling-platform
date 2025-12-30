@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55px" android:background="@drawable/rectgraywhite_frame" android:gravity="center">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1座"
+                android:id="@+id/lblSeatCount" android:layout_alignParentTop="false" android:layout_alignParentLeft="false"
+                android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:ellipsize="end"
+                android:singleLine="false" android:gravity="center" android:layout_centerInParent="true"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/btn_empty" android:background="@drawable/btn_empty"/>
+    </RelativeLayout>
+</RelativeLayout>

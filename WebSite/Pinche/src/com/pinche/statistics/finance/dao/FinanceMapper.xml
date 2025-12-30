@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.statistics.finance.dao.FinanceMapper" >
+
+    <resultMap
+        id="FinanceResult"
+        type="Finance" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="date"
+            property="date" />
+
+        <result
+            column="money_all"
+            property="money_all" />
+
+        <result
+            column="money_loan"
+            property="money_loan" />
+
+        <result
+            column="money_info"
+            property="money_info" />
+
+        <result
+            column="money_person"
+            property="money_person" />
+
+        <result
+            column="money_group"
+            property="money_group" />
+
+        <result
+            column="money_unit"
+            property="money_unit" />
+    </resultMap>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="FinanceResult" >
+		SELECT a.date, b.money_all, c.money_loan, d.money_info, e.money_person, f.money_group, g.money_unit FROM
+		
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`
+        </if>
+		FROM order_exec_cs a WHERE a.`status`=7
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+) a
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(a.price) money_all FROM order_exec_cs a WHERE a.`status`=7
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) b ON a.date=b.date
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(a.price) money_loan FROM order_exec_cs a
+		LEFT JOIN single_coupon b ON a.id=b.order_cs_id WHERE b.order_cs_id > 0 AND b.isused=1
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) c ON a.date=c.date
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(b.`value`) money_info FROM order_exec_cs a
+		LEFT JOIN profitsharing_tree b ON a.id=b.order_cs_id WHERE b.branch_no=1
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) d ON a.date=d.date
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(b.`value`) money_person FROM order_exec_cs a
+		LEFT JOIN profitsharing_tree b ON a.id=b.order_cs_id WHERE b.node2_source=1
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) e ON a.date=e.date
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(b.`value`) money_group FROM order_exec_cs a
+		LEFT JOIN profitsharing_tree b ON a.id=b.order_cs_id WHERE b.node2_source=2
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) f ON a.date=f.date
+		
+		LEFT JOIN(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time) `date`,
+        </if>
+		sum(b.`value`) money_unit FROM order_exec_cs a
+		LEFT JOIN profitsharing_tree b ON a.id=b.order_cs_id WHERE b.node2_source=3
+
+        <if test="order_1 == 1 || order_2 == 1 || order_3 == 1 || order_4 == 1" >
+			AND (1=0
+
+            <if test="order_1 == 1" >
+				OR a.order_type=1
+            </if>
+
+            <if test="order_2 == 1" >
+				OR a.order_type=2
+            </if>
+
+            <if test="order_3 == 1" >
+				OR a.order_type=3
+            </if>
+
+            <if test="order_4 == 1" >
+				OR a.order_type=4
+            </if>
+			)
+        </if>
+
+        <if test="staticsCity > 0" >
+			AND a.order_city=#{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND a.pay_time > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > a.pay_time
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(a.pay_time) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(a.pay_time)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(a.pay_time)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(a.pay_time)
+        </if>
+		) g ON a.date=g.date
+
+		ORDER BY a.date
+
+        <if test="page != null" >
+
+            <if test="page >= 0" >
+
+                <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+                </if>
+            </if>
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+                    android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+                  android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+                  android:text="@string/STR_SETPOINTS_TITLE"/>
+        <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                     android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+        <ListView
+                android:id="@+id/point_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:cacheColorHint="#00000000"
+                />
+
+    </RelativeLayout>
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true"
+                  android:paddingBottom="30px">
+        <Button
+                android:layout_width="170px"
+                android:layout_height="70px"
+                android:id="@+id/btn_cancel"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="20px"
+                android:scaleType="centerInside" android:background="@drawable/btn_smallwhite"
+                android:textColor="@color/TABCOLOR"
+                android:textSize="30px"
+                android:text="@string/STR_SETPOINTS_CANCEL"/>
+        <Button
+                android:layout_width="170px"
+                android:layout_height="70px"
+                android:id="@+id/btn_set"
+                android:layout_marginLeft="40px"
+                android:layout_marginRight="40px"
+                android:scaleType="centerInside"
+                android:background="@drawable/btn_green_normal"
+                android:textColor="@color/WHITE_COLOR"
+                android:textSize="30px"
+                android:text="@string/STR_SETPOINTS_SET"/>
+    </LinearLayout>
+</RelativeLayout>
+	

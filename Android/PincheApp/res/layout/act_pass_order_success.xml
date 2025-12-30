@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/parent_layout"
+                android:background="#FFFFFF"
+                android:orientation="vertical">
+                <!--标题 -->
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+                                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+                              android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+                              android:text="@string/STR_SINGERSUCCESS_TITLE"/>
+                    <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                                 android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+                </RelativeLayout>
+                <!--详情 -->
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title_layout">
+                <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/content_layout"
+                        android:orientation="vertical"
+                        android:padding="10px"
+                        android:gravity="center_horizontal">
+                        <ImageView android:layout_width="170px"
+                                   android:layout_height="140px"
+                                   android:id="@+id/logo"
+                                   android:layout_gravity="center_horizontal"
+                                   android:background="@drawable/icondemo"
+                                   android:layout_marginBottom="10px"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:textSize="25px"
+                                  android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                  android:id="@+id/success_info"
+                                  android:text="@string/STR_SINGERSUCCESS_SECCUSS"
+                                  android:layout_marginBottom="10px"
+                                  />
+                        <ImageView android:layout_width="fill_parent"
+                                   android:layout_height="5px"
+                                   android:layout_marginBottom="10px"
+                                   android:background="@drawable/lvdian_header"
+                                   android:id="@+id/divider1"/>
+                        <LinearLayout android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:id="@+id/pass_layout"
+                                      android:orientation="horizontal"
+                                      >
+                                        <TextView android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:textSize="25px"
+                                                  android:textColor="@color/GRAY_COLOR"
+                                                  android:id="@+id/pass_tip1"
+                                                  android:text="@string/STR_SINGERSUCCESS_PASSWORDTIP1"
+                                                  android:layout_marginBottom="10px"
+                                                  />
+                                        <TextView android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:textSize="25px"
+                                                  android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                                  android:id="@+id/password"
+                                                  android:text="@string/STR_SINGERSUCCESS_PASSWORD"
+                                                  android:layout_marginBottom="10px"/>
+                                        <TextView android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:textSize="25px"
+                                                  android:textColor="@color/GRAY_COLOR"
+                                                  android:id="@+id/pass_tip2"
+                                                  android:text="@string/STR_SINGERSUCCESS_PASSWORDTIP2"
+                                                  android:layout_marginBottom="10px"/>
+                        </LinearLayout>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:textSize="20px"
+                                  android:textColor="@color/GRAY_COLOR"
+                                  android:id="@+id/forget_info"
+                                  android:text="@string/STR_SINGERSUCCESS_FORGETINFO"
+                                  android:layout_marginBottom="10px"/>
+                        <ImageView android:layout_width="fill_parent"
+                                   android:layout_height="5px"
+                                   android:layout_marginBottom="10px"
+                                   android:background="@drawable/lvdian_header"
+                                   android:id="@+id/divider2"/>
+                        <LinearLayout android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="horizontal">
+                                    <LinearLayout android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:orientation="vertical"
+                                                  android:layout_marginRight="120px">
+                                                <RelativeLayout android:layout_width="wrap_content"
+                                                                android:layout_height="wrap_content"
+                                                                android:id="@+id/driver_image_layout"
+                                                                >
+                                                            <view android:layout_width="100px"
+                                                                  android:layout_height="100px"
+                                                                  class="com.damytech.Utils.image.SmartImageView"
+                                                                  android:id="@+id/img_photo"
+                                                                  android:scaleType="fitXY"/>
+                                                            <ImageView android:layout_width="100px"
+                                                                       android:layout_height="100px"
+                                                                       android:id="@+id/image_around"
+                                                                       android:background="@drawable/photo_frame"/>
+                                                            <RelativeLayout
+                                                                    android:layout_width="fill_parent"
+                                                                    android:layout_height="30px"
+                                                                    android:layout_alignBottom="@+id/img_photo"
+                                                                    android:layout_alignLeft="@+id/img_photo"
+                                                                    android:layout_alignRight="@+id/img_photo">
+                                                                        <ImageView
+                                                                                android:layout_width="20px"
+                                                                                android:layout_height="20px"
+                                                                                android:id="@+id/imgSex" android:layout_marginLeft="29px" android:layout_centerVertical="true"
+                                                                                android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+                                                                        <TextView
+                                                                                android:layout_width="35px"
+                                                                                android:layout_height="fill_parent"
+                                                                                android:text="@string/STR_SINGERSUCCESS_DRIVERAGE"
+                                                                                android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+                                                                                android:layout_alignParentRight="true" android:layout_marginRight="15px"
+                                                                                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+                                                            </RelativeLayout>
+                                                </RelativeLayout>
+                                                <TextView android:layout_width="wrap_content"
+                                                          android:layout_height="wrap_content"
+                                                          android:textSize="15px"
+                                                          android:textColor="@color/GRAY_COLOR"
+                                                          android:id="@+id/driver_name"
+                                                          android:text="@string/STR_SINGERSUCCESS_DRIVERNAME"
+                                                          android:layout_marginTop="10px"
+                                                          android:layout_marginLeft="25px"/>
+                                    </LinearLayout>
+                                    <LinearLayout android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:gravity="center_horizontal"
+                                                  android:orientation="vertical">
+                                                    <RelativeLayout android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:id="@+id/car_image_layout"
+                                                                    android:layout_marginLeft="10px"
+                                                                    >
+                                                                    <view android:layout_width="100px"
+                                                                          android:layout_height="100px"
+                                                                          class="com.damytech.Utils.image.SmartImageView"
+                                                                          android:id="@+id/img_car"
+                                                                          android:scaleType="fitXY"/>
+                                                                    <ImageView android:layout_width="100px"
+                                                                               android:layout_height="100px"
+                                                                               android:id="@+id/image_around2"
+                                                                               android:background="@drawable/photo_frame"/>
+
+                                                    </RelativeLayout>
+                                                    <LinearLayout android:layout_width="wrap_content"
+                                                                  android:layout_height="wrap_content"
+                                                                  android:layout_marginTop="10px"
+                                                                  android:orientation="horizontal">
+                                                                <TextView android:layout_width="wrap_content"
+                                                                           android:layout_height="25px"
+                                                                           android:textSize="20px"
+                                                                           android:textColor="@color/TITLE_BACKCOLOR"
+                                                                           android:layout_marginLeft="10px"
+                                                                           android:id="@+id/car_logo"/>
+                                                                <TextView android:layout_width="wrap_content"
+                                                                          android:layout_height="25px"
+                                                                          android:text="@string/STR_SINGERSUCCESS_CARNAME"
+                                                                          android:textSize="15px"
+                                                                          android:textColor="@color/WHITE_COLOR"
+                                                                          android:padding = "2px"
+                                                                          android:background="@color/TITLE_BACKCOLOR"
+                                                                          android:layout_marginLeft="10px"
+                                                                          android:id="@+id/car_name"/>
+                                                                <TextView android:layout_width="wrap_content"
+                                                                          android:layout_height="25px"
+                                                                          android:text="@string/STR_SINGERSUCCESS_CARCOLOR"
+                                                                          android:textSize="20px"
+                                                                          android:textColor="@color/TITLE_BACKCOLOR"
+                                                                          android:layout_marginLeft="10px"
+                                                                          android:id="@+id/car_color"/>
+                                                    </LinearLayout>
+                                    </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:orientation="vertical"
+                                      android:gravity="center_horizontal"
+                                      android:layout_marginBottom="5px"
+                                      android:layout_marginTop="5px">
+                                        <TextView android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:textSize="20px"
+                                                  android:textColor="@color/GRAY_COLOR"
+                                                  android:id="@+id/time"
+                                                  android:layout_gravity="center_horizontal"
+                                                  android:text="@string/STR_SINGERSUCCESS_TIME"
+                                                  />
+
+                                        <TextView android:layout_width="wrap_content"
+                                                  android:layout_height="wrap_content"
+                                                  android:textSize="23px"
+                                                  android:textColor="@color/GRAY_COLOR"
+                                                  android:id="@+id/location"
+                                                  android:layout_marginLeft="20px"
+                                                  android:layout_marginRight="20px"
+                                                  android:text="辽宁省沈阳市东软驱长白街172-2好-6门"
+                                                  android:gravity="center_horizontal"/>
+                                        <LinearLayout android:layout_width="wrap_content"
+                                                      android:layout_height="wrap_content"
+                                                      android:orientation="horizontal"
+                                                      android:gravity="center_horizontal"
+                                                      android:layout_marginBottom="15px">
+                                                        <TextView android:layout_width="wrap_content"
+                                                                  android:layout_height="wrap_content"
+                                                                  android:textSize="20px"
+                                                                  android:textColor="@color/GRAY_COLOR"
+                                                                  android:id="@+id/car_info"
+                                                                  android:text="@string/STR_SINGERSUCCESS_CARINFO"/>
+                                                        <TextView android:layout_width="wrap_content"
+                                                                  android:layout_height="wrap_content"
+                                                                  android:textSize="20px"
+                                                                  android:textColor="@color/GRAY_COLOR"
+                                                                  android:id="@+id/distance"
+                                                                  android:text="@string/STR_SINGERSUCCESS_CARDISTANCE"
+                                                                  android:layout_marginLeft="30px"/>
+                        </LinearLayout>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="fill_parent"
+                                      android:layout_height="match_parent"
+                                      android:orientation="vertical"
+                                      android:gravity="center_horizontal"
+		                        >
+                                        <TextView android:layout_width="wrap_content"
+                                                   android:layout_height="wrap_content"
+                                                   android:textSize="20px"
+                                                   android:textColor="@color/LIGHT_YELLOW_COLOR"
+                                                   android:id="@+id/notification"
+                                                   android:text="@string/STR_SINGERSUCCESS_NOTIFICATION"
+                                                   android:layout_margin="10px"/>
+                                        <Button android:layout_width="400px"
+                                                   android:layout_height="60px"
+                                                   android:textSize="25px"
+                                                   android:textColor="@color/WHITE_COLOR"
+                                                   android:id="@+id/to_detail"
+                                                   android:background="@drawable/roundsolidgreen_frame"
+                                                   android:text="@string/STR_SINGERSUCCESS_TODETAIL"/>
+                        </LinearLayout>
+                </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+	

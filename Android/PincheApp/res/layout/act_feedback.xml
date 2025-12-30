@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_FEEDBACK_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout" android:background="#F1F1F1">
+		<EditText
+				android:layout_width="440px"
+				android:layout_height="400px"
+				android:id="@+id/edt_content" android:layout_marginTop="30px" android:layout_centerHorizontal="true"
+				android:gravity="left|top" android:singleLine="false" android:background="@drawable/imgback"
+				android:hint="@string/STR_FEEDBACK_HINT" android:textSize="21px" android:textColor="#505050"
+				android:padding="10px" android:maxLength="1000"/>
+		<Button
+				android:layout_width="420px"
+				android:layout_height="60px"
+				android:text="@string/STR_FEEDBACK_SEND"
+				android:id="@+id/btn_send" android:layout_centerHorizontal="true"
+				android:layout_alignParentBottom="true" android:layout_marginBottom="30px" android:textColor="#FFFFFF"
+				android:textSize="23px" android:background="@drawable/btn_green"/>
+	</RelativeLayout>
+</RelativeLayout>

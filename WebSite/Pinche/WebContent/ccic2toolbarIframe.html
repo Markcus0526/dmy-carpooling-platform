@@ -1,0 +1,574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>对接</title>
+<link type="text/css" href="css/ccic2/toolbar.css" rel="stylesheet" />
+<script src="http://xa.ccic2.com/jws/sourceCode/jquery/jquery-1.6.2.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/code/md5.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/code/ccic2JwsPhone.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/code/jWebSocket.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/code/ccic2JwsClient.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/code/stateMachine.js"
+	charset="UTF-8"></script>
+<script src="http://xa.ccic2.com/jws/sourceCode/softphone/sipActive.js"
+	charset="UTF-8"></script>
+<style>
+*,html,body {
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+	font-size: 12px;
+}
+</style>
+
+<script type="text/javascript">
+	setServerUrl("xa.ccic2.com");
+	/*function ivrList(){
+	$.ajax({
+			type:'post',
+			url:"http://ccic2.ti-net.com.cn/interface/entrance/OpenInterfaceEntrance",
+			data:"interfaceType=1&enterpriseId=3000000&userName=admin&pwd=c33367701511b4f6020ec61ded352059",
+			dataType:'json',
+			success:function(msg){
+				alert(msg)
+			}
+	 	});
+}
+ivrList();*/
+</script>
+</head>
+<script type="text/javascript">
+$(document).ready(function(){//页面加载完毕
+	if(buttType){
+		if(typeof window.external.readyLoad != 'undefined'){
+			window.external.readyLoad("ready");
+		}
+	}else{
+		if(typeof window.parent.readyLoad != 'undefined'){
+			window.parent.readyLoad("ready");
+		}
+	}
+})
+function cbLogout(token) {//退出
+	if(buttType){
+		token=JSON.parse(token);
+	}
+	if(token.code == "0"){
+		typeButton.buttonDisabled();
+		$("#statusImg").css({"backgroundPosition":"0px 0px"});
+		$('#status').text("离线");
+	}
+}
+function cbWelcome(token) {//连接成功
+
+}
+var typeButton = {
+	phoneCallout : function(){//外呼
+		$("#phoneCallout").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#phoneCallout").unbind("mouseover mouseout click");
+		$("#phoneCallout").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				var params = {};
+				params.tel = $('#phoneCallText').val();
+				params.callType = '3'; //3点击外呼
+				executeAction('doPreviewOutCall', params);
+			}
+		});
+	},
+	phoneCallText : function(){
+		$("#phoneCallText").attr("disabled", false);
+	},
+	phoneCallCancel : function(){//外呼取消
+		$("#phoneCallCancel").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#phoneCallCancel").unbind("mouseover mouseout click");
+		$("#phoneCallCancel").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doPreviewOutcallCancel');
+			}
+		});
+	},
+	refused : function(){//拒接
+		$("#refused").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#refused").unbind("mouseover mouseout click");
+		$("#refused").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doRefuse');
+			}
+		});
+	},
+	unLink : function(){//挂断
+		
+		$("#unLink").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#unLink").unbind("mouseover mouseout click");
+		$("#unLink").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doUnLink');
+			}
+		});
+	},
+	hold : function(){//保持
+		$("#hold").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#hold").unbind("mouseover mouseout click");
+		$("#hold").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doHold');
+			}
+		});
+	},
+	unHold : function(){//保持接回
+	
+		$("#unHold").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#unHold").unbind("mouseover mouseout click");
+		$("#unHold").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doUnhold');
+			}
+		});
+	},
+	investigation : function(){//满意度调查
+		$("#investigation").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#investigation").unbind("mouseover mouseout click");
+		$("#investigation").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doInvestigation');
+			}
+		});
+	},
+	online : function(){//空闲
+		
+		$("#online").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#online").unbind("mouseover mouseout click");
+		$("#online").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doUnpause');
+			}
+		});
+	},
+	pause : function(){//置忙
+	
+		$("#pause").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#pause").unbind("mouseover mouseout click");
+		$("#pause").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				var param={};
+				param.description="置忙";
+				executeAction('doPause', param);
+				
+			}
+		});
+	},
+	buttonDisabled : function(){//按钮恢复状态
+		$("#consultBack,#consultTransfer,#consultThreeway").hide();
+		$("#toolbarButton input").css({"backgroundPosition":"0px 0px"});
+		$("#toolbarButton input").attr("disabled", true);
+		$("#toolbarButton input").unbind("mouseover mouseout click");
+		
+	},
+	consult : function(){//咨询
+		$("#consult").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#consult").unbind("mouseover mouseout click");
+		$("#consult").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				//咨询方法实现在此
+				
+			}
+		});
+	},
+	consultBack : function(){//咨询接回
+		$("#consultBack").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#consultBack").unbind("mouseover mouseout click");
+		$("#consultBack").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				 executeAction('doUnconsult');
+			}
+		});
+	},
+	consultTransfer : function(){//咨询转接
+		$("#consultTransfer").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#consultTransfer").unbind("mouseover mouseout click");
+		$("#consultTransfer").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doConsultTransfer');
+			}
+		});
+	},
+	consultThreeway : function(){//咨询三方
+		$("#consultThreeway").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#consultThreeway").unbind("mouseover mouseout click");
+		$("#consultThreeway").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				executeAction('doConsultThreeway');
+				
+			}
+		});
+	},
+	transfer : function(){//转移
+		$("#transfer").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+		$("#transfer").unbind("mouseover mouseout click");
+		$("#transfer").bind({
+			mouseover : function(){
+				$(this).css({"backgroundPosition":"0px -66px"});
+			},
+			mouseout : function(){
+				$(this).css({"backgroundPosition":"0px -33px"});
+			},
+			click : function(){
+				//转移方法实现在此
+			}
+		});
+	},
+	answer : function(){//接听 软电话功能
+		if(userBasic.getBindType() == '3'){
+			$("#answer").show().attr("disabled", false).css({"backgroundPosition":"0px -33px"});
+			$("#answer").unbind("mouseover mouseout click");
+			$("#answer").bind({
+				mouseover : function(){
+					$(this).css({"backgroundPosition":"0px -66px"});
+				},
+				mouseout : function(){
+					$(this).css({"backgroundPosition":"0px -33px"});
+				},
+				click : function(){
+					executeAction('doLink');
+				}
+			});
+		}
+		
+	}
+}
+function cbThisStatus(token){
+	if(buttType){
+		token=JSON.parse(token);
+	}
+	switch(token.eventName){
+		case 'outRinging' : //外呼座席响铃
+			if(token.name == "ringing"){
+				typeButton.buttonDisabled();
+				typeButton.answer(token);
+				//$("#phoneCallout").hide();
+				typeButton.phoneCallCancel();
+				//第三方代码
+				top.CTI_ID = token.uniqueId;//获取录音编号
+				//alert("呼出坐席响铃");
+			}
+		break;
+		case 'comeRinging' : //呼入座席响铃
+			if(token.name == "ringing"){
+				typeButton.buttonDisabled();
+				typeButton.answer(token);
+				typeButton.refused();
+				
+				//alert("呼入座席响铃!!");
+				//var cityName = parent.GetCityName(token.customerAreaCode);
+				//document.getElementById('phoneCallText').value = token.customerNumber;
+				//var phoneNumber = token.customerNumber;
+				//alert("来电号码： "+token.customerNumber);
+				//$('#phoneCallText').val(token.customerNumber);
+				//alert("this is in customerNumber :  " + token.customerNumber);
+				//window.top.location="order/recourse/add.do"
+				//parent.window.document.getElementById("nav").getElementsByTagName("li");
+					//$("#nav",window.parent.document).find($("[href='#']"));
+				//parent.callWorkForm(token.customerNumber);//main.jsp中的方法
+			}
+		break;
+		case 'normalBusy' : //呼入座席接听
+			typeButton.buttonDisabled();
+			typeButton.unLink();
+			typeButton.hold();
+			typeButton.investigation();
+			
+			typeButton.consult();
+			//typeButton.consultThreeway();
+			//typeButton.consultTransfer();
+			//typeButton.transfer();
+		break;
+		case 'outBusy' : //外呼客户接听 客户和座席通话
+			typeButton.buttonDisabled();
+			typeButton.unLink();
+			typeButton.hold();
+			typeButton.investigation();
+			
+			typeButton.consult();
+			//typeButton.consultThreeway();
+			//typeButton.consultTransfer();
+			//typeButton.transfer();
+		break;
+		case 'online' : //置闲
+			typeButton.buttonDisabled();
+			typeButton.phoneCallout();
+			typeButton.phoneCallText();
+			typeButton.pause();
+			//$("#phoneCallCancel").hide();
+			
+			
+			
+		break;
+		case 'pause' : //置忙
+			typeButton.buttonDisabled();
+			typeButton.phoneCallout();
+			typeButton.phoneCallText();
+			typeButton.online();
+			//$("#phoneCallCancel").hide();
+		break;
+		case 'waitLink' : //外呼座席接听等待客户接听
+			
+		break;
+		case 'neatenStart' : //整理开始（座席挂断）
+			typeButton.buttonDisabled();
+			typeButton.online();
+			typeButton.pause();
+		break;
+		case 'neatenEnd' : //整理结束
+			typeButton.buttonDisabled();
+			typeButton.phoneCallout();
+			typeButton.phoneCallText();
+			var s = deviceStatus.deviceStatusLoginStatus(token.deviceStatus+token.loginStatus, token.pauseDescription, token.busyDescription);
+			if(s == '空闲'){
+				typeButton.pause();
+			}else{
+				typeButton.online();
+			}
+		break;
+		case 'hold' : //保持开始
+			typeButton.buttonDisabled();
+			//$("#hold").hide();
+			typeButton.unLink();
+			typeButton.unHold();
+			typeButton.investigation();
+		break;
+		case 'unHold' : //保持结束
+			typeButton.buttonDisabled();
+			//$("#unHold").hide();
+			typeButton.unLink();
+			typeButton.hold();
+			typeButton.investigation();
+			
+			typeButton.consult();
+			//typeButton.consultThreeway();
+			//typeButton.consultTransfer();
+			//typeButton.transfer();
+			
+		break;
+		case 'onlineUnlink' : //挂断后置闲
+			typeButton.buttonDisabled();
+			typeButton.phoneCallout();
+			typeButton.phoneCallText();
+			typeButton.pause();
+		break;
+		case 'pauseUnlink' : //挂断后置忙
+			typeButton.buttonDisabled();
+			typeButton.phoneCallout();
+			typeButton.phoneCallText();
+			typeButton.online();
+		break;
+		case 'consultLink' : //咨询成功
+			$("#consult").hide();
+			typeButton.consultBack();
+			typeButton.consultThreeway();
+			typeButton.consultTransfer();
+			typeButton.transfer();
+		break;
+		case 'consulterOrTransferBusy' : //被咨询转接或转移的通话
+			typeButton.buttonDisabled();
+			typeButton.unLink();
+			typeButton.hold();
+		break;
+		
+		
+	}
+	var str = deviceStatus.deviceStatusLoginStatus(token.deviceStatus+token.loginStatus, token.pauseDescription, token.busyDescription);
+	//alert(JSON.stringify(token)+"===================="+str);
+	if(str != ""){
+		$("#status").text(str);
+	}
+	if(str == '空闲'){
+		$("#statusImg").css({"backgroundPosition":"0px -25px"});
+	}else if(str == '离线'){
+		$("#statusImg").css({"backgroundPosition":"0px 0px"});
+	}else{
+		$("#statusImg").css({"backgroundPosition":"0px -50px"});
+	}
+
+	//============================================================
+	//第三方代码写在下面
+	if(token.eventName=="outRinging"){//外呼座席响铃
+		//top.CTI_ID = token.uniqueId;//获取录音编号
+	}else if(token.eventName=="comeRinging"){//呼入座席响铃
+	
+	//alert("弹屏");
+	var number = token.customerNumber;
+		//alert("***"+number);
+		$('#phoneCallText').val(token.customerNumber);//获得来电号码，并将来电号码填入输入框中
+		parent.callWorkForm(token.customerNumber);//调用main.jsp中的方法
+
+	}else if(token.eventName=="normalBusy"){//呼入座席接听
+		
+	}else if(token.eventName=="outBusy"){//外呼客户接听
+		//if(top.CTI_ID == "") {
+		//	top.CTI_ID = token.uniqueId;
+		//}
+	}else if(token.eventName=="online"){//置闲
+		
+	}else if(token.eventName=="pause"){//置忙
+		
+	}else if(token.eventName=="waitLink"){//座席接听 等待客户接听
+		
+	}else if(token.eventName=="neatenStart"){//整理开始（座席挂断）
+		
+	}else if(token.eventName=="neatenEnd"){//整理结束
+		
+	}else if(token.eventName=="hold"){//保持开始
+		
+	}else if(token.eventName=="unHold"){//保持结束
+		
+	}else if(token.eventName=="consultLink"){//咨询成功
+		
+	}else if(token.eventName=="consulterOrTransferBusy"){//被咨询转接或转移的通话
+		
+	}
+	//============================================================
+}
+/* function test(){
+	parent.addTab("新建工单","order/recourse/add.do","");
+} */
+
+</script>
+
+<body>
+
+	<div style="position: absolute; left: 8px; top: 8px; height: 100%;">
+		<table border="0" cellspacing="0" cellpadding="0" style="margin: 0;">
+			<tr>
+				<td align="center"><span
+					style="background: url('css/ccic2/images/tb1.png') no-repeat; width: 24px; height: 24px; display: block;"
+					id="statusImg"></span></td>
+				<td align="center" id="status" width="40"
+					style="text-align: left; padding-left: 2px;">离线</td>
+				<td align="left" id="toolbarButton"><input type="button"
+					id="pause"
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_zm.png') no-repeat;" />
+					<input type="button" id="online"
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_zx.png') no-repeat;" />
+					<!--                <input type="button" class="split"/>--> <input
+					type="button" id="answer" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_link.png') no-repeat" />
+					<input type="button" id="unLink" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_gd.png') no-repeat" />
+					<input type="button" id="refused" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_jj.png') no-repeat;" />
+					<input type="button" id="hold" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_bc.png') no-repeat" />
+					<input type="button" id="unHold" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_bcjh.png') no-repeat;" />
+
+					<input type="button" id="consult" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_zixun.png') no-repeat;" />
+					<input type="button" id="consultBack" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_zixunjh.png') no-repeat; display: none;" />
+					<input type="button" id="consultTransfer" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_zixunzj.png') no-repeat; display: none;" />
+					<input type="button" id="consultThreeway" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_zixunsf.png') no-repeat; display: none;" />
+					<input type="button" id="transfer" value=""
+					style="border: none; width: 57px; height: 33px; background: url('css/ccic2/images/toobarBtn_zy.png') no-repeat;" />
+
+					<input type="button" id="investigation" value=""
+					style="border: none; width: 95px; height: 33px; background: url('css/ccic2/images/toobarBtn_myddc.png') no-repeat;" />
+					<!--                <input type="button" class="split"/>--> <input
+					type="text" id="phoneCallText" value="" maxlength="20"
+					style="display: inline-block; width: 100px; height: 28px; line-height: 28px; font-family: verdana; border: solid 1px #ddd; vertical-align: top; margin-top: 2px;" />
+					<input type="button" id="phoneCallout" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_wh.png') no-repeat;" />
+					<input type="button" id="phoneCallCancel" value=""
+					style="border: none; width: 80px; height: 33px; background: url('css/ccic2/images/toobarBtn_whqx.png') no-repeat;" />
+
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

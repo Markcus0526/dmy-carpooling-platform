@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1F1F1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_VERIFYDRIVER_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout">
+        <view android:layout_width="fill_parent"
+              android:layout_height="620px"
+              class="com.damytech.Utils.HorizontalPager" android:id="@+id/viewStages" android:visibility="gone"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="620px" android:id="@+id/rlStage1" android:visibility="gone">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="40px"
+                    android:text="@string/STR_VERIFYDRIVER_HINT1"
+                    android:id="@+id/lblHint1" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30px" android:layout_marginTop="30px" android:gravity="center_vertical|left"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:layout_marginRight="30px"
+                    android:singleLine="false"/>
+            <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    android:id="@+id/img_idcard_fore" android:layout_marginLeft="40px" android:layout_marginTop="30px"
+                    android:scaleType="fitXY" android:src="@drawable/bk_driverlicense_fore" android:layout_below="@+id/lblHint1"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_idcard_foreimage" android:layout_alignTop="@+id/img_idcard_fore"
+                    android:layout_alignLeft="@+id/img_idcard_fore" android:layout_alignBottom="@+id/img_idcard_fore"
+                    android:layout_alignRight="@+id/img_idcard_fore" android:background="@drawable/btn_empty"/>
+            <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    android:id="@+id/img_idcard_back" android:layout_marginRight="40px" android:layout_alignParentRight="true"
+                    android:scaleType="fitXY" android:src="@drawable/bk_driverlicense_back"
+                    android:layout_alignTop="@+id/img_idcard_fore"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_idcard_backimage" android:layout_alignTop="@+id/img_idcard_back"
+                    android:layout_alignLeft="@+id/img_idcard_back" android:layout_alignBottom="@+id/img_idcard_back"
+                    android:layout_alignRight="@+id/img_idcard_back" android:background="@drawable/btn_empty"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon1" android:layout_marginLeft="40px"
+                    android:layout_below="@+id/img_idcard_fore" android:layout_marginTop="60px"
+                    android:background="@drawable/idverify_icon1"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG1"
+                    android:id="@+id/txt_msg1" android:layout_alignTop="@+id/img_icon1"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@+id/img_icon1" android:textColor="#707070" android:textSize="21px"
+                    android:gravity="center_vertical|left" android:layout_marginTop="3px"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon2" android:layout_alignLeft="@+id/img_icon1"
+                    android:layout_below="@+id/txt_msg1" android:background="@drawable/idverify_icon2"
+                    android:layout_marginTop="30px"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG2"
+                    android:id="@+id/txt_msg2" android:layout_alignTop="@+id/img_icon2"
+                    android:layout_alignLeft="@+id/txt_msg1"
+                    android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+                    android:layout_marginTop="3px"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon4" android:layout_alignLeft="@+id/img_icon1"
+                    android:background="@drawable/idverify_icon4"
+                    android:layout_marginTop="30px" android:layout_below="@+id/txt_msg2"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG4"
+                    android:id="@+id/txt_msg4" android:layout_alignTop="@+id/img_icon4"
+                    android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+                    android:layout_marginTop="3px" android:layout_alignLeft="@+id/txt_msg2"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="620px" android:id="@+id/rlStage2" android:visibility="gone">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="40px"
+                    android:text="@string/STR_VERIFYDRIVER_HINT2"
+                    android:id="@+id/lblHint2" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30px" android:layout_marginTop="30px" android:gravity="center_vertical|left"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:layout_marginRight="30px"/>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60px" android:layout_below="@+id/lblHint2"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="30px"
+                    android:layout_marginLeft="30px" android:layout_marginRight="30px"
+                    android:background="@drawable/roundlightgraywhite_frame" android:id="@+id/relativeLayout">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/lblBrand" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:layout_marginLeft="30px"
+                        android:layout_marginRight="60px" android:gravity="center_vertical|left"
+                        android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+                        android:hint="@string/STR_VERIFYDRIVER_BRAND"/>
+                <ImageView
+                        android:layout_width="16px"
+                        android:layout_height="36px"
+                        android:id="@+id/imgBrand" android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true" android:layout_marginRight="22px"
+                        android:scaleType="fitCenter" android:src="@drawable/btn_rightarrow"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60px" android:layout_below="@+id/relativeLayout"
+                    android:layout_marginTop="20px" android:layout_alignRight="@+id/relativeLayout"
+                    android:layout_alignLeft="@+id/relativeLayout"
+                    android:background="@drawable/roundlightgraywhite_frame" android:id="@+id/relativeLayout2">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/lblCarType" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:layout_marginLeft="30px"
+                        android:layout_marginRight="60px" android:gravity="center_vertical|left"
+                        android:hint="@string/STR_VERIFYDRIVER_TYPE" android:textColor="@color/GRAY_COLOR"
+                        android:textSize="24px"/>
+                <ImageView
+                        android:layout_width="16px"
+                        android:layout_height="36px"
+                        android:id="@+id/imgCarType" android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true" android:layout_marginRight="22px"
+                        android:scaleType="fitCenter" android:src="@drawable/btn_rightarrow"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60px" android:layout_below="@+id/relativeLayout2"
+                    android:layout_marginTop="20px" android:layout_alignRight="@+id/relativeLayout2"
+                    android:layout_alignLeft="@+id/relativeLayout2"
+                    android:background="@drawable/roundlightgraywhite_frame" android:id="@+id/relativeLayout3">
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/lblColor" android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true" android:layout_marginLeft="30px"
+                        android:layout_marginRight="60px" android:gravity="center_vertical|left"
+                        android:hint="@string/STR_VERIFYDRIVER_COLOR" android:textColor="@color/GRAY_COLOR"
+                        android:textSize="24px"/>
+                <ImageView
+                        android:layout_width="16px"
+                        android:layout_height="36px"
+                        android:id="@+id/imgColor" android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true" android:layout_marginRight="22px"
+                        android:scaleType="fitCenter" android:src="@drawable/btn_rightarrow"/>
+            </RelativeLayout>
+            <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    android:id="@+id/imgCarPhoto" android:layout_below="@+id/relativeLayout3"
+                    android:layout_centerHorizontal="true" android:layout_marginTop="70px"
+                    android:scaleType="fitXY" android:src="@drawable/bk_carphoto"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnCarPhoto" android:layout_alignTop="@+id/imgCarPhoto"
+                    android:layout_alignLeft="@+id/imgCarPhoto" android:layout_alignBottom="@+id/imgCarPhoto"
+                    android:layout_alignRight="@+id/imgCarPhoto" android:background="@drawable/btn_empty"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="620px" android:id="@+id/rlStage3" android:visibility="gone">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="40px"
+                    android:text="第三步 上传行驶证（共3步）"
+                    android:id="@+id/lblHint3" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="30px" android:layout_marginTop="30px" android:gravity="center_vertical|left"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:layout_marginRight="30px"
+                    android:singleLine="false"/>
+            <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    android:id="@+id/img_licensecard_fore" android:layout_marginLeft="40px" android:layout_marginTop="30px"
+                    android:scaleType="fitXY" android:src="@drawable/bk_licensecard_fore" android:layout_below="@+id/lblHint3"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_licensecard_foreimage" android:layout_alignTop="@+id/img_licensecard_fore"
+                    android:layout_alignLeft="@+id/img_licensecard_fore" android:layout_alignBottom="@+id/img_licensecard_fore"
+                    android:layout_alignRight="@+id/img_licensecard_fore" android:background="@drawable/btn_empty"/>
+            <ImageView
+                    android:layout_width="180px"
+                    android:layout_height="180px"
+                    android:id="@+id/img_licensecard_back" android:layout_marginRight="40px" android:layout_alignParentRight="true"
+                    android:scaleType="fitXY" android:src="@drawable/bk_licensecard_back"
+                    android:layout_alignTop="@+id/img_licensecard_fore"/>
+            <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_licensecard_backimage" android:layout_alignTop="@+id/img_licensecard_back"
+                    android:layout_alignLeft="@+id/img_licensecard_back" android:layout_alignBottom="@+id/img_licensecard_back"
+                    android:layout_alignRight="@+id/img_licensecard_back" android:background="@drawable/btn_empty"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon3_1" android:layout_marginLeft="40px"
+                    android:layout_below="@+id/img_licensecard_fore" android:layout_marginTop="60px"
+                    android:background="@drawable/idverify_icon1"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG1"
+                    android:id="@+id/txt_msg3_1" android:layout_alignTop="@+id/img_icon3_1"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@+id/img_icon3_1" android:textColor="#707070" android:textSize="21px"
+                    android:gravity="center_vertical|left" android:layout_marginTop="3px"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon3_2" android:layout_alignLeft="@+id/img_icon3_1"
+                    android:layout_below="@+id/txt_msg3_1" android:background="@drawable/idverify_icon2"
+                    android:layout_marginTop="30px"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG2"
+                    android:id="@+id/txt_msg3_2" android:layout_alignTop="@+id/img_icon3_2"
+                    android:layout_alignLeft="@+id/txt_msg3_1"
+                    android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+                    android:layout_marginTop="3px"/>
+            <ImageView
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:id="@+id/img_icon3_4" android:layout_alignLeft="@+id/img_icon3_1"
+                    android:background="@drawable/idverify_icon4"
+                    android:layout_marginTop="30px" android:layout_below="@+id/txt_msg3_2"/>
+            <TextView
+                    android:layout_width="350px"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_VERIFYPERSON_MSG4"
+                    android:id="@+id/txt_msg3_4" android:layout_alignTop="@+id/img_icon3_4"
+                    android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+                    android:layout_marginTop="3px" android:layout_alignLeft="@+id/txt_msg3_2"/>
+        </RelativeLayout>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="54px"
+                android:text="@string/STR_VERIFYDRIVER_NEXT"
+                android:id="@+id/btn_next"
+                android:background="@drawable/btn_green"
+                android:textColor="#FFFFFF"
+                android:textSize="23px" android:layout_marginBottom="30px" android:layout_alignParentBottom="true"
+                android:layout_marginLeft="30px" android:layout_marginRight="30px"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:id="@+id/rlListData"
+            android:clickable="true" android:background="#A0000000">
+	    <RelativeLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" android:layout_centerInParent="true">
+		    <TextView
+				    android:layout_width="300px"
+				    android:layout_height="90px"
+				    android:text="New Text"
+				    android:id="@+id/txt_listtitle" android:background="@drawable/roundsolidgreen_frame"
+				    android:textColor="#FFFFFF" android:textSize="30px" android:gravity="center"
+				    android:paddingBottom="20px" android:textStyle="bold"/>
+		    <RelativeLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content" android:layout_alignTop="@+id/listData"
+				    android:layout_alignLeft="@+id/txt_listtitle" android:layout_alignRight="@+id/txt_listtitle"
+				    android:background="@drawable/roundrect_white_layout"
+				    android:layout_alignBottom="@+id/listData" android:layout_marginBottom="-20px"
+				    >
+		    </RelativeLayout>
+		    <ListView
+	                android:layout_width="wrap_content"
+	                android:layout_height="350px"
+	                android:id="@+id/listData" android:layout_centerInParent="true" android:background="#FFFFFF"
+	                android:layout_below="@+id/txt_listtitle" android:layout_alignLeft="@+id/txt_listtitle"
+	                android:layout_alignRight="@+id/txt_listtitle" android:layout_marginTop="-20px"
+	                android:layout_marginLeft="1px" android:layout_marginRight="1px"/>
+	    </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

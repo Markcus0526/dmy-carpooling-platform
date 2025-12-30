@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT"
+	        android:background="@color/TITLE_BACKCOLOR"
+            android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="搜索地点"/>
+		<ImageButton
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:id="@+id/btn_back"
+		        android:layout_centerVertical="true"
+                android:background="@drawable/btn_back"/>
+        <Button
+                android:id="@+id/bt_address_sumbit"
+                android:layout_width="80px"
+                android:layout_height="match_parent"
+                android:text="提交"
+                android:textSize="28px"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/btn_green"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                />
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="#F1F1F1">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60px" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" android:layout_marginTop="30px" android:layout_marginLeft="20px"
+                android:layout_marginRight="20px" android:background="@drawable/roundlightgraywhite_frame"
+                android:id="@+id/relativeLayout">
+            <ImageView
+                    android:layout_width="60px"
+                    android:layout_height="60px"
+                    android:id="@+id/imgSearch" android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="fitXY" android:src="@drawable/bk_searchwhite" android:padding="10px"/>
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/txtFindVal" android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/imgSearch" android:gravity="center_vertical|left"
+                    android:background="@android:color/transparent" android:textColor="@color/BLACK_COLOR"
+                    android:textSize="24px" android:layout_toLeftOf="@+id/imgClose" android:singleLine="true"/>
+            <ImageView
+                    android:layout_width="60px"
+                    android:layout_height="60px"
+                    android:id="@+id/imgClose" android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:scaleType="fitXY" android:src="@drawable/bk_close" android:visibility="visible"
+                    android:padding="20px"/>
+        </RelativeLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_marginTop="20px"
+                android:layout_alignLeft="@+id/relativeLayout"
+                android:layout_alignRight="@+id/relativeLayout"
+                android:layout_marginBottom="30px"
+                >
+            <Button
+                    android:id="@+id/bt_clearaddr"
+                    android:layout_width="match_parent"
+                    android:layout_height="90px"
+                    android:textColor="@color/TABCOLOR"
+                    android:text="清除历史目的地"
+                    android:textSize="@dimen/TITLE_FONTSIZE"
+                    android:background="@drawable/bg_clear_addr"
+                    android:visibility="gone"
+                    />
+            <view android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView"
+                  android:id="@+id/listview"
+                  android:paddingTop="1px"
+                  android:paddingBottom="1px"/>
+
+        </LinearLayout>
+
+	</RelativeLayout>
+</RelativeLayout>

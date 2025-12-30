@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_CITYCARPOOLRUN_TITLE"/>
+        <ImageView
+                android:layout_width="36px"
+                android:layout_height="36px"
+                android:id="@+id/imgRefresh"
+                android:layout_alignParentRight="true" android:layout_marginRight="10px"
+                android:layout_centerVertical="true" android:scaleType="fitCenter" android:src="@drawable/bk_refresh"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_back" android:layout_centerVertical="true"
+				android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="@color/LIGHT_GRAY_COLOR">
+        <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollView">
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="190px" android:id="@+id/relativeLayout2"
+                        android:background="@color/WHITE_COLOR">
+                    <TextView
+                            android:layout_width="400px"
+                            android:layout_height="wrap_content"
+                            android:text="@string/STR_CITYCARPOOLRUN_HINT"
+                            android:id="@+id/lblHint" android:layout_alignParentTop="true"
+                            android:layout_marginLeft="30px" android:layout_marginTop="20px"
+                            android:textColor="@color/GRAY_COLOR" android:textSize="18px" android:layout_centerHorizontal="true"
+                            android:gravity="center"/>
+                    <ImageView
+                            android:layout_width="400px"
+                            android:layout_height="100px"
+                            android:id="@+id/imgState" android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20px" android:scaleType="fitCenter" android:src="@drawable/bk_runstate0"
+                            android:layout_below="@+id/lblHint"/>
+                </RelativeLayout>
+	            <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="280px"
+                        android:layout_centerHorizontal="true" android:layout_marginTop="25px"
+                        android:layout_below="@+id/relativeLayout2"
+                        android:id="@+id/relativeLayout">
+                    <Button
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:text="@string/STR_LONGDISTANCEORDER_OUTCAR"
+                            android:id="@+id/btnFaChe" android:layout_centerHorizontal="true"
+                            android:layout_marginTop="30px" android:background="@drawable/roundgreenwhite_frame"
+                            android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"
+                            android:layout_below="@+id/relativeLayout1"/>
+                    <ImageView
+                            android:layout_width="26px"
+                            android:layout_height="47px"
+                            android:id="@+id/imgRightArrow1" android:layout_alignTop="@+id/btnFaChe"
+                            android:layout_toLeftOf="@+id/btnFaChe" android:layout_marginTop="37px"
+                            android:layout_marginRight="10px" android:scaleType="fitCenter"
+                            android:src="@drawable/btn_rightarrow"/>
+                    <Button
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:text="@string/STR_CITYCARPOOLRUN_BTNVAL1"
+                            android:id="@+id/btnDaoDa" android:layout_alignTop="@+id/btnFaChe"
+                            android:layout_toLeftOf="@+id/imgRightArrow1" android:layout_marginRight="10px"
+                            android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"
+                            android:background="@drawable/roundgreenwhite_frame"/>
+                    <ImageView
+                            android:layout_width="26px"
+                            android:layout_height="47px"
+                            android:id="@+id/imgRightArrow2" android:layout_alignTop="@+id/imgRightArrow1"
+                            android:layout_toRightOf="@+id/btnFaChe" android:layout_marginLeft="10px"
+                            android:scaleType="fitCenter" android:src="@drawable/btn_rightarrow"/>
+                    <Button
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:text="@string/STR_CITYCARPOOLRUN_BTNVAL3"
+                            android:id="@+id/btnJieshu" android:layout_alignTop="@+id/btnFaChe"
+                            android:layout_toRightOf="@+id/imgRightArrow2" android:layout_marginLeft="10px"
+                            android:background="@drawable/roundgreenwhite_frame" android:textColor="@color/TITLE_BACKCOLOR"
+                            android:textSize="21px"/>
+                    <Button
+                            android:layout_width="400px"
+                            android:layout_height="60px"
+                            android:text="@string/STR_LONGDISTANCEORDER_RETURNLIST"
+                            android:id="@+id/btnReturn" android:layout_below="@+id/btnFaChe"
+                            android:layout_centerHorizontal="true" android:layout_marginTop="40px"
+                            android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                            android:textSize="24px"/>
+                    <RelativeLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true" android:id="@+id/relativeLayout1"
+                            android:layout_marginTop="10px" android:layout_marginLeft="10px"
+                            android:layout_marginRight="10px">
+                    </RelativeLayout>
+                </RelativeLayout>
+	            <LinearLayout
+			            android:orientation="vertical"
+			            android:layout_width="fill_parent"
+			            android:layout_height="wrap_content" android:id="@+id/passlist_layout"
+			            android:layout_below="@+id/relativeLayout">
+	            </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

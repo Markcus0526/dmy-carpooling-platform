@@ -1,0 +1,112 @@
+div.btn-left .easyui-linkbutton {
+	text-align: left;
+	width: 100%;
+}
+
+.btn-main {
+	text-align: left;
+	background-color: #E0ECFF;
+	width: 100%;
+}
+
+.remove {
+	background: url('images/remove.png') no-repeat -32px right;
+}
+
+.login_alert {
+	/* 	background: url('../easyui/themes/black/images/validatebox_warning.png') no-repeat 0,0; */
+	border-color: #dd0000;
+	color: #880000;
+}
+
+.err_msg {
+	border-color: #dd0000;
+	color: #bb0000;
+}
+
+.label_ {
+	width: 60px;
+	float: left;
+}
+
+.label_large {
+	width: 120px;
+	float: left;
+}
+
+.check_ {
+	width: 100px;
+	float: left;
+}
+
+.text_ {
+	width: 200px;
+	float: left;
+}
+
+.text_mini {
+	width: 40px;
+	float: left;
+}
+
+.combo_ {
+	width: 50px;
+	float: left;
+}
+
+.control_group {
+	width: auto;
+	float: left;
+	margin-right: 20px;
+}
+
+.fix_group {
+	width: 200px;
+	float: left;
+	margin-right: 20px;
+}
+
+.fix_group_large {
+	width: 250px;
+	float: left;
+	margin-right: 20px;
+}
+
+.meselected {
+	background: #0285ff;
+	color: #fff;
+}
+
+.textbox {
+	height: 20px;
+	margin: 0;
+	padding: 0 2px;
+	box-sizing: content-box;
+}
+
+* {
+	font-size: 12px;
+}
+
+body {
+	font-family: verdana, helvetica, arial, sans-serif;
+	padding: 20px;
+	font-size: 12px;
+	margin: 0;
+}
+
+h2 {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.footer {
+	text-align: center;
+	color: #15428B;
+	margin: 0px;
+	padding: 0px;
+	line-height: 23px;
+	font-weight: bold;
+}

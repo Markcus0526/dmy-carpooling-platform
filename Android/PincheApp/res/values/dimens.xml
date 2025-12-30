@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="TITLE_HEIGHT">66px</dimen>
+	<dimen name="TITLE_FONTSIZE">28px</dimen>
+	<dimen name="ORDER_FONTSIZE">23px</dimen>
+    <dimen name="TITLE_FONTSIZE_SMALL">22px</dimen>
+	<dimen name="TAB_HEIGHT">80px</dimen>
+    <dimen name="BASE_TEXT_SIZE">21px</dimen>
+
+    <dimen name="indicator_right_padding">6dp</dimen>
+    <dimen name="indicator_corner_radius">8dp</dimen>
+    <dimen name="indicator_internal_padding">2dp</dimen>
+    <dimen name="header_footer_left_right_padding">16dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">8dp</dimen>
+
+    <dimen name="colorstrip_height">9px</dimen>
+    <dimen name="title_height">45dip</dimen>
+    <dimen name="now_playing_height">90dip</dimen>
+    <dimen name="text_size_extrasmall">10sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+    <dimen name="text_size_extralarge">26sp</dimen>
+    <dimen name="margin_size_small">4sp</dimen>
+    <dimen name="margin_size_medium">6sp</dimen>
+    <dimen name="margin_size_large">8sp</dimen>
+    <dimen name="margin_size_extralarge">12sp</dimen>
+</resources>

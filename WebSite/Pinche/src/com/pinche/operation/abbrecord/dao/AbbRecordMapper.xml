@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.pinche.operation.abbrecord.dao.AbbRecordMapper">
+   <resultMap type="AbbRecord" id="AbbRecordResult">
+   
+<!-- private long userid;
+	private String username;
+	private String phone;
+	private int abb_type;//"1,乘客一天内X次取消订单2,车主迟到X分钟3,乘客不去4,车主不去"
+	private Timestamp limit_days_begin;//加入黑名单起始日期
+	private long order_exec_id;//订单交易编号
+	private int status;//1,待处理，2已做警告处罚，3已做扣款处罚，4已做加入黑名单处罚
+	private long id;
+	private int limit_days;  //如果此值大于0，单表黑名单天数，如果为-1代表永久加入黑名单
+	 -->
+   
+      <result property="id" column="id"/>
+	  <result property="userid" column="userid"/>
+	  <result property="username" column="username"/>
+	  <result property="phone" column="phone"/>
+	  <result property="abb_type" column="abb_type"/>
+	  <result property="limit_days_begin" column="limit_days_begin"/>
+	  <result property="order_exec_id" column="order_exec_id"/>
+	  <result property="status" column="status"/>
+	  <result property="limit_days" column="limit_days"/>
+	  <result property="cancel_number" column="cancel_number"/>
+	   <result property="abb_time" column="abb_time"/>
+	</resultMap>     
+	
+	<select id="findpassenger" parameterType="java.util.Map" resultMap="AbbRecordResult">
+	select abb.id, abb.userid, abb.abb_type,abb.cancel_number, abb.abb_time,abb.limit_days_begin, abb.order_exec_id, abb.status, abb.limit_days, u.username,u.phone 
+	from abb_record abb,user u where abb.deleted =0 and abb.userid=u.id 
+		<if test="abb_type1 != null and '' != abb_type1 and abb_type2 != null and '' != abb_type2">
+		    and abb.abb_type in (#{abb_type1},#{abb_type2})
+	    </if>
+	    <if test="(abb_type1 == null or '' == abb_type1) and (abb_type2 != null and '' != abb_type2)">
+		    and abb.abb_type = #{abb_type2}
+	    </if>
+	     <if test="abb_type1 != null and '' != abb_type1 and (abb_type2 == null or '' == abb_type2)">
+		    and abb.abb_type = #{abb_type1}
+	     </if>
+	      <if test="(abb_type1 == null or '' == abb_type1) and (abb_type2 == null or '' == abb_type2)">
+		    and abb.abb_type = 0
+	    </if>
+	     <if test="status != null and '' != status">
+		    and abb.status in (2,3,5) 
+	    </if>
+	    <if test="status == null or '' == status">
+		    and abb.status = 1 
+	    </if>
+	    <if test="userid != null and '' != userid">
+		    and u.id=#{userid}
+	    </if>
+	    <if test="phone != null and '' != phone">
+		    and u.phone=#{phone}
+	    </if>
+	    <if test="username != null and '' != username">
+		    and u.username=#{username}
+	    </if>
+	   LIMIT #{start},#{limit};   
+	</select>
+		<select id="getCount" parameterType="java.util.Map" resultType="int">
+	  select count(*) from abb_record abb,user u where abb.deleted =0 and abb.userid=u.id 
+			<if test="abb_type1 != null and '' != abb_type1 and abb_type2 != null and '' != abb_type2">
+		    and abb.abb_type in (#{abb_type1},#{abb_type2})
+	    </if>
+	    <if test="(abb_type1 == null or '' == abb_type1) and (abb_type2 != null and '' != abb_type2)">
+		    and abb.abb_type = #{abb_type2}
+	    </if>
+	     <if test="abb_type1 != null and '' != abb_type1 and (abb_type2 == null or '' == abb_type2)">
+		    and abb.abb_type = #{abb_type1}
+	     </if>
+	      <if test="(abb_type1 == null or '' == abb_type1) and (abb_type2 == null or '' == abb_type2)">
+		    and abb.abb_type = 0
+	    </if>
+	     <if test="status != null and '' != status">
+		    and abb.status in (2,3,5) 
+	    </if>
+	    <if test="status == null or '' == status">
+		    and abb.status =1
+	    </if>
+	    <if test="userid != null and '' != userid">
+		    and u.id=#{userid}
+	    </if>
+	    <if test="phone != null and '' != phone">
+		    and u.phone=#{phone}
+	    </if>
+	    <if test="username != null and '' != username">
+		    and u.username=#{username}
+	    </if>
+	</select>
+	<select id="findById" parameterType="long" resultMap="AbbRecordResult">
+	   	select abb.id, abb.userid, abb.abb_type,abb.cancel_number, abb.abb_time,abb.limit_days_begin, abb.order_exec_id, abb.status, abb.limit_days, u.username,u.phone 
+	     from abb_record abb,user u where abb.deleted =0 and abb.userid=u.id and abb.id=#{id}
+	</select>
+    <update id="addblack" parameterType="java.util.Map" >
+      update abb_record set  limit_days=#{limit_days} ,limit_days_begin=#{limit_days_begin},status=4 where userid=#{userid}
+    </update>
+    <select id="findblack" parameterType="java.util.Map" resultMap="AbbRecordResult">
+      select  abb.id, abb.userid, abb.abb_type,abb.cancel_number,abb.abb_time, abb.limit_days_begin, abb.order_exec_id, abb.status, abb.limit_days, u.username,u.phone
+      from abb_record abb,user u where abb.deleted =0 and abb.userid=u.id and abb.status =4 
+      	  <if test="userid != null and '' != userid">
+		    and u.id=#{userid}
+	    </if>
+	    <if test="phone != null and '' != phone">
+		    and u.phone=#{phone}
+	    </if>
+	    <if test="username != null and '' != username">
+		    and u.username=#{username}
+	    </if>
+	    group by userid
+    </select>
+     <select id="getBlackCount" parameterType="java.util.Map" resultType="int">
+      select count(*) from abb_record abb,user u where abb.deleted =0 and abb.userid=u.id and abb.status =4
+      	  <if test="userid != null and '' != userid">
+		    and u.id=#{userid}
+	    </if>
+	    <if test="phone != null and '' != phone">
+		    and u.phone=#{phone}
+	    </if>
+	    <if test="username != null and '' != username">
+		    and u.username=#{username}
+	    </if>
+    </select>
+     <update id="removeBlack" parameterType="long" >
+      update abb_record set  status=5 where userid=#{userid}
+    </update>
+       <update id="addAbb1" parameterType="String" >
+           update environment set value=#{dailyCancelCount} where id=1; 
+        
+    </update>
+    <update id="addAbb2" parameterType="String">
+       update environment set value=#{driverLate}  where id=2;
+      </update>
+      <select id="findAbb" resultType="AbbLimit">
+      select code,value from environment where id in (1,2);
+      </select>
+
+	
+</mapper>

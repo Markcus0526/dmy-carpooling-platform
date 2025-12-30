@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2" >
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/TITLE_HEIGHT"
+        android:background="@color/TITLE_BACKCOLOR" >
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/STR_REGISTER_TITLE"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/TITLE_FONTSIZE" />
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_back" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_layout" >
+
+        <RelativeLayout
+            android:id="@+id/txt_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:id="@+id/img_username"
+                android:layout_width="400px"
+                android:layout_height="56px"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30px"
+                android:visibility="gone"
+                android:background="@drawable/img_txtback" />
+
+            <TextView
+                android:id="@+id/txt_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_username"
+                android:layout_alignLeft="@+id/img_username"
+                android:layout_alignTop="@+id/img_username"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_USERNAME"
+                android:textColor="#A0A0A0"
+                android:visibility="gone"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_username"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_username"
+                android:layout_alignTop="@+id/img_username"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_username"
+                android:visibility="gone"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_username"
+                android:layout_alignRight="@+id/img_username"
+                android:layout_alignTop="@+id/img_username"
+                android:layout_toRightOf="@+id/img_sep_username"
+                android:background="@drawable/bk_empty"
+                android:inputType="text"
+                android:maxLength="20"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:visibility="gone"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_username"
+                android:layout_alignRight="@+id/img_username"
+                android:layout_below="@+id/img_username"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback" />
+
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_phone"
+                android:layout_alignLeft="@+id/img_phone"
+                android:layout_alignTop="@+id/img_phone"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_MOBILE"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_mobile"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_phone"
+                android:layout_alignTop="@+id/img_phone"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_phone"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_phone"
+                android:layout_alignRight="@+id/img_phone"
+                android:layout_alignTop="@+id/img_phone"
+                android:layout_toRightOf="@+id/img_sep_mobile"
+                android:background="@drawable/bk_empty"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+
+            <Button
+                android:id="@+id/btn_verifykey"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_phone"
+                android:layout_alignRight="@+id/img_phone"
+                android:layout_below="@+id/img_phone"
+                android:layout_marginTop="30px"
+                android:background="@drawable/btn_green"
+                android:text="@string/STR_REGISTER_GETVERIFYKEY"
+                android:textColor="#FFFFFF"
+                android:textSize="24px"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/img_verifykey"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/btn_verifykey"
+                android:layout_alignRight="@+id/btn_verifykey"
+                android:layout_below="@+id/btn_verifykey"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback" />
+
+            <ImageView
+                android:id="@+id/img_verifkey_match"
+                android:layout_width="30px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_verifykey"
+                android:layout_alignRight="@+id/img_verifykey"
+                android:layout_alignTop="@+id/img_verifykey"
+                android:layout_marginRight="10px"
+                android:scaleType="centerInside"
+                android:src="@drawable/img_match_unchecked" />
+
+            <TextView
+                android:id="@+id/txt_verifykey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_verifykey"
+                android:layout_alignLeft="@+id/img_verifykey"
+                android:layout_alignTop="@+id/img_verifykey"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_VERIFYKEY"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_verifkey"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_verifykey"
+                android:layout_alignTop="@+id/img_verifykey"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_verifykey"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_verifkey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_verifykey"
+                android:layout_alignTop="@+id/img_verifykey"
+                android:layout_toLeftOf="@+id/img_verifkey_match"
+                android:layout_toRightOf="@+id/img_sep_verifkey"
+                android:background="@drawable/bk_empty"
+                android:inputType="number"
+                android:maxLength="4"
+                android:numeric="integer|signed"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_nickname"
+                android:layout_width="230px"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_verifykey"
+                android:layout_below="@+id/img_verifykey"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback2" />
+
+            <TextView
+                android:id="@+id/txt_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_nickname"
+                android:layout_alignLeft="@+id/img_nickname"
+                android:layout_alignTop="@+id/img_nickname"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_NICKNAME"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_nickname"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_nickname"
+                android:layout_alignTop="@+id/img_nickname"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_nickname"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_nickname"
+                android:layout_alignRight="@+id/img_nickname"
+                android:layout_alignTop="@+id/img_nickname"
+                android:layout_toRightOf="@+id/img_sep_nickname"
+                android:background="@drawable/bk_empty"
+                android:inputType="text"
+                android:maxLength="20"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_male"
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_alignTop="@+id/img_nickname"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="18px"
+                android:layout_toRightOf="@+id/img_nickname"
+                android:background="@drawable/radiobox_roundsel" />
+
+            <TextView
+                android:id="@+id/txt_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_nickname"
+                android:layout_alignTop="@+id/img_nickname"
+                android:layout_marginLeft="8px"
+                android:layout_toRightOf="@+id/img_male"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_MALE"
+                android:textColor="#A0A0A0"
+                android:textSize="21px" />
+
+            <ImageButton
+                android:id="@+id/btn_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_male"
+                android:layout_alignLeft="@+id/img_male"
+                android:layout_alignRight="@+id/txt_male"
+                android:layout_alignTop="@+id/txt_male"
+                android:background="@drawable/bk_empty"
+                android:focusableInTouchMode="false" />
+
+            <ImageView
+                android:id="@+id/img_female"
+                android:layout_width="20px"
+                android:layout_height="20px"
+                android:layout_alignTop="@+id/img_male"
+                android:layout_marginLeft="20px"
+                android:layout_toRightOf="@+id/txt_male"
+                android:background="@drawable/radiobox_roundnormal" />
+
+            <TextView
+                android:id="@+id/txt_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_male"
+                android:layout_alignTop="@+id/txt_male"
+                android:layout_marginLeft="8px"
+                android:layout_toRightOf="@+id/img_female"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_FEMALE"
+                android:textColor="#A0A0A0"
+                android:textSize="21px" />
+
+            <ImageButton
+                android:id="@+id/btn_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_female"
+                android:layout_alignLeft="@+id/img_female"
+                android:layout_alignRight="@+id/txt_female"
+                android:layout_alignTop="@+id/txt_female"
+                android:background="@drawable/bk_empty" />
+
+            <ImageView
+                android:id="@+id/img_password"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_verifykey"
+                android:layout_alignRight="@+id/img_verifykey"
+                android:layout_below="@+id/img_nickname"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback" />
+
+            <TextView
+                android:id="@+id/txt_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_password"
+                android:layout_alignLeft="@+id/img_password"
+                android:layout_alignTop="@+id/img_password"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_PASSWORD"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_password"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_password"
+                android:layout_alignTop="@+id/img_password"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_password"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_password"
+                android:layout_alignRight="@+id/img_password"
+                android:layout_alignTop="@+id/img_password"
+                android:layout_toRightOf="@+id/img_sep_password"
+                android:background="@drawable/bk_empty"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_confirm_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_password"
+                android:layout_alignRight="@+id/img_password"
+                android:layout_below="@+id/img_password"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback" />
+
+            <TextView
+                android:id="@+id/txt_confirm_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_confirm_pwd"
+                android:layout_alignLeft="@+id/img_confirm_pwd"
+                android:layout_alignTop="@+id/img_confirm_pwd"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_CONFIRMPWD"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_confirmpwd"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_confirm_pwd"
+                android:layout_alignTop="@+id/img_confirm_pwd"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_confirm_password"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_confirm_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_confirm_pwd"
+                android:layout_alignRight="@+id/img_confirm_pwd"
+                android:layout_alignTop="@+id/img_confirm_pwd"
+                android:layout_toRightOf="@+id/img_sep_confirmpwd"
+                android:background="@drawable/bk_empty"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_request_code"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:layout_alignLeft="@+id/img_confirm_pwd"
+                android:layout_alignRight="@+id/img_confirm_pwd"
+                android:layout_below="@+id/img_confirm_pwd"
+                android:layout_marginTop="30px"
+                android:background="@drawable/img_txtback" />
+
+            <TextView
+                android:id="@+id/txt_request_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_request_code"
+                android:layout_alignLeft="@+id/img_request_code"
+                android:layout_alignTop="@+id/img_request_code"
+                android:layout_marginLeft="20px"
+                android:gravity="center_vertical"
+                android:text="@string/STR_REGISTER_REQCODE"
+                android:textColor="#A0A0A0"
+                android:textSize="23px" />
+
+            <ImageView
+                android:id="@+id/img_sep_reqcode"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_request_code"
+                android:layout_alignTop="@+id/img_request_code"
+                android:layout_marginBottom="10px"
+                android:layout_marginLeft="16px"
+                android:layout_marginTop="10px"
+                android:layout_toRightOf="@+id/txt_request_code"
+                android:background="#D0D0D0" />
+
+            <EditText
+                android:id="@+id/edt_request_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_request_code"
+                android:layout_alignRight="@+id/img_request_code"
+                android:layout_alignTop="@+id/img_request_code"
+                android:layout_toRightOf="@+id/img_sep_reqcode"
+                android:background="@drawable/bk_empty"
+                android:hint="@string/STR_REGISTER_SELECT"
+                android:inputType="textCapCharacters"
+                android:maxLength="16"
+                android:paddingLeft="10px"
+                android:paddingRight="10px"
+                android:singleLine="true"
+                android:textColor="#505050"
+                android:textSize="23px" />
+            <TextView
+                    android:id="@+id/tv_prize_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="填邀请码，赢当月iPhone6大奖"
+                    android:textColor="#4DB47D"
+                    android:textSize="20px"
+                    android:layout_marginTop="10px"
+                    android:layout_below="@+id/img_request_code"
+                    android:layout_marginLeft="15px"
+                    android:layout_marginRight="15px"
+                    />
+            <LinearLayout 
+                android:id="@+id/ll_register_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="56px"
+                android:orientation="horizontal"
+                android:layout_marginTop="12px"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/tv_prize_hint"
+                android:layout_alignLeft="@+id/img_confirm_pwd"
+                android:paddingTop="5px"
+                android:paddingBottom="5px"
+                >
+                <ImageButton
+                    android:id="@+id/iv_register_agreement"
+                    android:layout_width="30px"
+                    android:layout_height="30px"
+                    android:background="@drawable/img_match_checked"
+                    android:layout_marginLeft="10px"
+                    />
+                <TextView 
+                    android:id="@+id/tv_register_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/STR_REGISTE_AGREEMENT"
+                    android:textSize="25px"
+                    android:textColor="#ffff2527"
+                    android:layout_marginLeft="5dip"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="150px"
+                android:layout_height="50px"
+                android:layout_alignLeft="@+id/img_request_code"
+                android:layout_below="@+id/ll_register_agreement"
+                android:layout_marginLeft="20px"
+                android:layout_marginTop="30px"
+                android:background="@drawable/btn_smallgreen"
+                android:text="@string/STR_QUEDING"
+                android:textColor="#FFFFFF"
+                android:textSize="25px" />
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="150px"
+                android:layout_height="50px"
+                android:layout_alignRight="@+id/img_request_code"
+                android:layout_alignTop="@+id/btn_register"
+                android:layout_marginRight="20px"
+                android:background="@drawable/btn_smallwhite"
+                android:text="@string/STR_QUXIAO"
+                android:textColor="#4DB47D"
+                android:textSize="25px" />
+
+            <RelativeLayout
+                android:id="@+id/space_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="30px"
+                android:layout_below="@+id/btn_register" >
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

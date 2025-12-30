@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+                    android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+                  android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+                  android:text="@string/STR_CHECKDRIVER_TITLE"/>
+        <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                     android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout"
+		    >
+	    <RelativeLayout
+			    android:layout_width="fill_parent"
+			    android:layout_height="190px" android:id="@+id/info_layout">
+		    <view android:layout_width="110px"
+		          android:layout_height="110px"
+		          class="com.damytech.Utils.image.SmartImageView"
+		          android:id="@+id/img_photo"
+		          android:layout_marginLeft="20px"
+		          android:layout_marginTop="10px" android:scaleType="fitXY" android:layout_marginRight="10px"/>
+		    <ImageView android:layout_width="wrap_content"
+	                   android:layout_height="wrap_content"
+	                   android:id="@+id/image_around"
+	                   android:background="@drawable/photo_frame" android:visibility="visible"
+	                   android:layout_alignTop="@+id/img_photo" android:layout_alignLeft="@+id/img_photo"
+	                   android:layout_alignBottom="@+id/img_photo" android:layout_alignRight="@+id/img_photo"/>
+		    <ImageView
+		            android:layout_width="20px"
+		            android:layout_height="20px"
+		            android:id="@+id/imgSex" android:layout_centerVertical="true"
+		            android:scaleType="fitCenter" android:src="@drawable/bk_manmark"
+		            android:layout_alignLeft="@+id/img_photo" android:layout_alignBottom="@+id/img_photo"
+		            android:layout_marginLeft="35px" android:layout_marginBottom="15px"/>
+		    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_ORDERCONFIRM_DRIVERAGE"
+                    android:id="@+id/lblAge" android:layout_alignParentBottom="false"
+                    android:layout_alignParentRight="false"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"
+                    android:layout_toRightOf="@+id/imgSex" android:layout_alignTop="@+id/imgSex"
+                    android:layout_marginLeft="5px"/>
+		    <TextView android:layout_width="wrap_content"
+	                  android:layout_height="wrap_content"
+	                  android:id="@+id/driver_name"
+	                  android:textColor="@color/GRAY_COLOR"
+	                  android:textSize="20px"
+	                  android:text="@string/STR_ORDERCONFIRM_DRIVERNAME" android:layout_below="@+id/image_around"
+	                  android:layout_alignLeft="@+id/image_around" android:layout_alignRight="@+id/image_around"
+	                  android:gravity="center_horizontal"/>
+		    <view android:layout_width="110px"
+		          android:layout_height="110px"
+		          class="com.damytech.Utils.image.SmartImageView"
+		          android:id="@+id/img_car"
+		          android:layout_marginRight="20px"
+		          android:layout_alignTop="@+id/img_photo" android:layout_alignParentRight="true"
+		          android:scaleType="fitXY" android:layout_marginLeft="19px"/>
+		    <ImageView android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/image_around2"
+android:background="@drawable/photo_frame" android:layout_alignTop="@+id/img_car"
+android:layout_alignLeft="@+id/img_car" android:layout_alignBottom="@+id/img_car"
+android:layout_alignRight="@+id/img_car"/>
+		    <RelativeLayout
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent" android:layout_alignTop="@+id/img_photo"
+				    android:layout_toRightOf="@+id/img_photo" android:layout_toLeftOf="@+id/img_car"
+				    android:id="@+id/detail_layout" android:layout_above="@+id/car_info"
+				    android:layout_marginTop="10px">
+			    <TextView android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:text="@string/STR_ORDERCONFIRM_DRIVERDUR"
+			              android:textSize="21px"
+			              android:textColor="@color/GRAY_COLOR"
+			              android:id="@+id/driver_duration" android:layout_marginLeft="10px"/>
+			    <TextView android:layout_width="match_parent"
+			              android:layout_height="wrap_content"
+			              android:text="@string/STR_ORDERCONFIRM_DRIVEREVA"
+			              android:textSize="23px"
+			              android:textColor="@color/LIGHT_YELLOW_COLOR"
+			              android:id="@+id/driver_evaluation" android:layout_below="@+id/driver_duration"
+			              android:layout_marginTop="10px" android:layout_marginLeft="10px"/>
+			    <TextView android:layout_width="wrap_content"
+			              android:layout_height="wrap_content"
+			              android:text="@string/STR_ORDERCONFIRM_DRIVERTIME"
+			              android:textSize="21px"
+			              android:textColor="@color/GRAY_COLOR"
+			              android:id="@+id/service_time_note" android:layout_below="@+id/driver_evaluation"
+			              android:layout_marginTop="10px" android:layout_marginLeft="10px"/>
+			    <TextView android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="@string/STR_ORDERCONFIRM_DRIVERACTTIME"
+	android:textSize="21px"
+	android:textColor="@color/LIGHT_YELLOW_COLOR"
+	android:id="@+id/service_time_detail" android:layout_toRightOf="@+id/service_time_note"
+	android:layout_alignTop="@+id/service_time_note"/>
+		    </RelativeLayout>
+		    <RelativeLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="30px" android:layout_alignParentBottom="true" android:id="@+id/car_info"
+				    android:layout_centerHorizontal="true" android:layout_marginBottom="15px">
+			    <ImageView android:layout_width="40px"
+			               android:layout_height="20px"
+			               android:background="@drawable/first_car_green"
+			               android:id="@+id/car_type" android:layout_below="@+id/service_time_note"
+			               android:layout_centerVertical="true"/>
+			    <RelativeLayout
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_toRightOf="@+id/car_type"
+					    android:id="@+id/carlogo_layout"
+					    android:layout_marginLeft="15px"
+					    android:layout_centerVertical="true">
+				    <ImageView android:layout_width="25px"
+			                   android:layout_height="25px"
+			                   android:background="@drawable/bk_refresh"
+			                   android:id="@+id/car_logo"
+			                   android:layout_centerHorizontal="true"/>
+				    <TextView
+						    android:layout_width="wrap_content"
+						    android:layout_height="wrap_content"
+						    android:text="dazhong"
+						    android:id="@+id/txt_carlogo" android:textColor="#000000" android:textSize="21px"
+						    android:layout_alignParentTop="false" android:layout_alignParentBottom="false"
+						    android:gravity="center"/>
+			    </RelativeLayout>
+			    <TextView android:layout_width="wrap_content"
+		                  android:layout_height="24px"
+		                  android:text="@string/STR_ORDERCONFIRM_CARNAME"
+		                  android:textSize="18px"
+		                  android:textColor="@color/WHITE_COLOR"
+		                  android:background="@drawable/roundsolidgreen_frame"
+		                  android:layout_marginLeft="15px"
+		                  android:id="@+id/car_name"
+		                  android:layout_toRightOf="@+id/carlogo_layout"
+		                  android:gravity="center" android:paddingLeft="5px" android:paddingRight="5px"
+		                  android:layout_centerVertical="true"/>
+			    <TextView android:layout_width="wrap_content"
+		                  android:layout_height="24px"
+		                  android:text="@string/STR_ORDERCONFIRM_CARCOLOR"
+		                  android:textSize="18px"
+		                  android:textColor="@color/TITLE_BACKCOLOR"
+		                  android:layout_marginLeft="15px"
+		                  android:id="@+id/car_color"
+		                  android:layout_toRightOf="@+id/car_name" android:layout_centerVertical="true"/>
+		    </RelativeLayout>
+	    </RelativeLayout>
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:layout_alignParentBottom="true"
+                      android:layout_below="@+id/info_layout"
+                      android:background="@color/LIGHT_GRAY_COLOR"
+			    >
+                    <!--下拉列表-->
+                    <view android:layout_width="fill_parent"
+                          android:layout_height="fill_parent"
+                          class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView"
+                          android:id="@+id/viewData"
+                          />
+        </LinearLayout>
+	    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+	                    android:background="#50000000" android:id="@+id/detailed_layout">
+		    <RelativeLayout android:layout_width="440px" android:layout_height="wrap_content"
+		                    android:background="@drawable/roundgreenwhite_frame" android:layout_centerInParent="true"
+		                    android:paddingBottom="30px">
+			    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			              android:id="@+id/txt_name" android:layout_marginLeft="20px" android:layout_marginTop="20px"
+			              android:textColor="#505050" android:textSize="25px" android:gravity="center_vertical"/>
+			    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			              android:id="@+id/txt_time" android:layout_alignTop="@+id/txt_name"
+			              android:layout_alignBottom="@+id/txt_name" android:layout_toRightOf="@+id/txt_name"
+			              android:layout_marginRight="20px" android:layout_alignParentRight="true"
+			              android:gravity="center_vertical|right" android:textColor="#505050" android:textSize="23px"/>
+			    <ImageView android:layout_width="24px" android:layout_height="24px" android:id="@+id/imgGoodEval"
+			               android:layout_below="@+id/txt_name" android:layout_alignParentLeft="true"
+			               android:layout_marginLeft="25px" android:layout_marginTop="30px"
+			               android:scaleType="fitCenter" android:src="@drawable/radiobox_roundsel"/>
+			    <ImageView android:layout_width="30px" android:layout_height="30px" android:id="@+id/imgGoodEvalIcon"
+			               android:layout_toRightOf="@+id/imgGoodEval" android:layout_marginLeft="5px"
+			               android:scaleType="fitCenter" android:src="@drawable/bk_goodsmalleval"
+			               android:layout_alignTop="@+id/imgGoodEval" android:layout_marginTop="-3px"/>
+			    <TextView android:layout_width="40px" android:layout_height="wrap_content"
+			              android:text="@string/STR_EVALPASS_GOOD" android:id="@+id/lblGoodEval"
+			              android:layout_alignTop="@+id/imgGoodEvalIcon" android:layout_toRightOf="@+id/imgGoodEvalIcon"
+			              android:layout_alignBottom="@+id/imgGoodEvalIcon" android:layout_marginLeft="5px"
+			              android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+			              android:gravity="center_vertical|left"/>
+			    <ImageView android:layout_width="24px" android:layout_height="24px" android:id="@+id/imgNormalEval"
+			               android:layout_toRightOf="@+id/lblGoodEval" android:scaleType="fitCenter"
+			               android:src="@drawable/radiobox_roundnormal" android:layout_marginLeft="40px"
+			               android:layout_alignTop="@+id/imgGoodEval"/>
+			    <ImageView android:layout_width="30px" android:layout_height="30px" android:id="@+id/imgNormalEvalIcon"
+			               android:layout_toRightOf="@+id/imgNormalEval" android:layout_marginLeft="5px"
+			               android:scaleType="fitCenter" android:src="@drawable/bk_normaleval"
+			               android:layout_marginTop="-3px" android:layout_alignTop="@+id/imgNormalEval"/>
+			    <TextView android:layout_width="40px" android:layout_height="wrap_content"
+			              android:text="@string/STR_EVALPASS_NORMAL" android:id="@+id/lblNormalEval"
+			              android:layout_alignTop="@+id/imgNormalEvalIcon"
+			              android:layout_toRightOf="@+id/imgNormalEvalIcon"
+			              android:layout_alignBottom="@+id/imgNormalEvalIcon" android:gravity="center_vertical|left"
+			              android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+			              android:layout_marginLeft="5px"/>
+			    <ImageView android:layout_width="24px" android:layout_height="24px" android:id="@+id/imgBadEval"
+			               android:layout_toRightOf="@+id/lblNormalEval" android:layout_marginLeft="40px"
+			               android:scaleType="fitCenter" android:src="@drawable/radiobox_roundnormal"
+			               android:layout_alignTop="@+id/lblGoodEval"/>
+			    <ImageView android:layout_width="30px" android:layout_height="30px" android:id="@+id/imgBadEvalIcon"
+			               android:layout_toRightOf="@+id/imgBadEval" android:scaleType="fitCenter"
+			               android:src="@drawable/bk_badeval" android:layout_marginLeft="5px"
+			               android:layout_marginTop="-3px" android:layout_alignTop="@+id/imgBadEval"/>
+			    <TextView android:layout_width="40px" android:layout_height="wrap_content"
+			              android:text="@string/STR_EVALPASS_BAD" android:id="@+id/lblBadEval"
+			              android:layout_alignTop="@+id/imgBadEvalIcon" android:layout_toRightOf="@+id/imgBadEvalIcon"
+			              android:layout_alignBottom="@+id/imgBadEvalIcon" android:layout_marginLeft="5px"
+			              android:gravity="center_vertical|left" android:textColor="@color/GRAY_COLOR"
+			              android:textSize="18px"/>
+			    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text=" "
+			              android:id="@+id/txt_content" android:textColor="#505050" android:textSize="23px"
+			              android:layout_below="@+id/imgGoodEval" android:layout_marginLeft="20px"
+			              android:layout_marginTop="30px" android:layout_marginRight="20px"/>
+            </RelativeLayout>
+	    </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车主还没有得到任何评价"
+                android:id="@+id/lblNoData" android:layout_below="@+id/info_layout" android:padding="10px"
+                android:layout_alignParentEnd="false" android:layout_centerInParent="true" android:textSize="25px"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+	

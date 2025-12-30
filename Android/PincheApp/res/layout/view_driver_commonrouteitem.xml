@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="80px" android:background="@drawable/roundlightgraywhite_frame"
+            android:id="@+id/relativeLayout">
+        <TextView
+                android:layout_width="280px"
+                android:layout_height="fill_parent"
+                android:id="@+id/lblPath" android:layout_centerVertical="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:ellipsize="end"
+                android:singleLine="true"/>
+        <TextView
+                android:layout_width="135px"
+                android:layout_height="30px"
+                android:id="@+id/lblDate" android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true" android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+                android:gravity="center_vertical|right" android:layout_marginRight="20px" android:ellipsize="end"
+                android:singleLine="true"/>
+	    <ImageButton
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:id="@+id/btn_item" android:background="@drawable/btn_empty"/>
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="3px" android:layout_below="@+id/relativeLayout"
+            android:layout_alignLeft="@+id/relativeLayout" android:layout_alignRight="@+id/relativeLayout">
+    </RelativeLayout>
+</RelativeLayout>

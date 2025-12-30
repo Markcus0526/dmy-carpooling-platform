@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="160px" android:background="@drawable/roundgraywhite_frame"
+            android:layout_marginLeft="10px" android:layout_marginTop="5px">
+        <view android:layout_width="120px"
+              android:layout_height="120px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewPhoto"
+              android:layout_alignParentLeft="true"
+              android:layout_marginLeft="10px" android:scaleType="fitXY"
+              android:layout_centerVertical="true"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPhoto" android:layout_alignTop="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+                android:layout_alignBottom="@+id/viewPhoto" android:background="@drawable/btn_frame"
+                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+                android:layout_marginBottom="-5px"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto">
+            <ImageView
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/imgSex" android:layout_marginLeft="36px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="35px"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true" android:layout_marginRight="25px"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="120px"
+                android:layout_height="60px"
+                android:text="李先生"
+                android:id="@+id/lblName" android:layout_alignTop="@+id/btnPhoto"
+                android:layout_toRightOf="@+id/viewPhoto" android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2座"
+                android:id="@+id/lblSeatCount" android:layout_below="@+id/lblName" android:layout_alignLeft="@+id/lblName"
+                android:layout_alignRight="@+id/lblName" android:layout_alignBottom="@+id/viewPhoto"
+                android:textSize="24px" android:textColor="@color/GRAY_COLOR" android:gravity="center_vertical|left"/>
+        <Button
+                android:layout_width="125px"
+                android:layout_height="50px"
+                android:text="@string/STR_LONGDISTANCEORDER_YANPIAO"
+                android:id="@+id/btnYanPiao" android:layout_alignTop="@+id/viewPhoto"
+                android:layout_toRightOf="@+id/lblName" android:layout_marginLeft="25px"
+                android:background="@drawable/roundgraywhite_frame" android:textColor="@color/TITLE_BACKCOLOR"
+                android:textSize="21px"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:text="@string/STR_LONGDISTANCEORDER_QIPIAO"
+                android:id="@+id/btnQiPiao" android:layout_alignBottom="@+id/btnPhoto"
+                android:layout_alignLeft="@+id/btnYanPiao" android:layout_alignRight="@+id/btnYanPiao"
+                android:textSize="21px" android:textColor="@color/TITLE_BACKCOLOR"
+                android:background="@drawable/roundgraywhite_frame"/>
+        <TextView android:layout_width="150px" android:layout_height="wrap_content"
+                  android:text="@string/STR_LONGDISTANCEORDER_YIYANPIAO" android:id="@+id/lblResult"
+                  android:gravity="center"
+                  android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"
+                  android:layout_centerVertical="true" android:layout_toRightOf="@+id/lblName"/>
+    </RelativeLayout>
+</RelativeLayout>

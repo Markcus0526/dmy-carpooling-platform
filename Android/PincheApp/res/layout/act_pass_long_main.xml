@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_CHANGTUDINGDAN"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+                     android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+                        android:id="@+id/relativeLayout">
+            <EditText
+                    android:layout_width="155px"
+                    android:layout_height="50px"
+                    android:id="@+id/txtStartCity" android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="25px"
+                    android:layout_marginTop="20px" android:gravity="center"
+                    android:maxLength="20"
+                    android:background="@drawable/roundlightgraywhite_frame" android:textSize="24px"
+                    android:textColor="@color/GRAY_COLOR"/>
+            <EditText
+                    android:layout_width="155px"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtEndCity" android:layout_alignTop="@+id/txtStartCity"
+                    android:layout_marginRight="25px"
+                    android:maxLength="20"
+                    android:layout_alignBottom="@+id/txtStartCity" android:gravity="center"
+                    android:background="@drawable/roundlightgraywhite_frame"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+                    android:layout_toRightOf="@+id/lblWith"/>
+            <TextView
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:text="到"
+                    android:id="@+id/lblWith" android:layout_alignTop="@+id/txtStartCity"
+                    android:layout_toRightOf="@+id/txtStartCity" android:gravity="center"
+                    android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+            <ImageView
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:id="@+id/imgSearch" android:layout_alignTop="@+id/txtEndCity"
+                    android:layout_alignParentRight="true" android:layout_marginRight="25px"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_search_sel"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_search" android:layout_alignLeft="@+id/imgSearch"
+                    android:layout_alignTop="@+id/txtStartCity" android:layout_alignBottom="@+id/txtStartCity"
+                    android:layout_alignRight="@+id/imgSearch" android:background="@drawable/btn_empty"/>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_below="@+id/txtStartCity"
+                    android:layout_marginTop="20px" android:background="@color/LIGHT_GRAY_COLOR">
+                <view android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView"
+                      android:id="@+id/longOrdersList"
+                      android:layout_alignParentLeft="true"
+                      android:layout_marginLeft="1px"
+                      android:layout_marginRight="1px"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/relativeLayout2"
+	                android:clickable="true" android:background="#A0000000">
+		<RelativeLayout android:layout_width="300px" android:layout_height="wrap_content"
+		                android:layout_centerInParent="true" android:background="#00000000">
+			<TextView android:layout_width="300px" android:layout_height="90px" android:text="选择座位数"
+			          android:id="@+id/txt_listtitle" android:background="@drawable/roundsolidgreen_frame"
+			          android:textColor="#FFFFFF" android:textSize="30px" android:gravity="center"
+			          android:paddingBottom="20px" android:textStyle="bold"/>
+			<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+			                android:background="@drawable/roundrect_white_layout"
+			                android:layout_centerInParent="true"
+			                android:layout_alignLeft="@+id/txt_listtitle"
+			                android:layout_alignRight="@+id/txt_listtitle" android:layout_alignTop="@+id/listSeats"
+			                android:layout_marginBottom="-20px" android:layout_alignBottom="@+id/listSeats"
+					/>
+			<ListView android:layout_width="wrap_content" android:layout_height="350px"
+		              android:id="@+id/listSeats"
+		              android:layout_alignParentTop="false"
+		              android:layout_centerInParent="true" android:layout_alignParentLeft="false"
+		              android:layout_alignParentBottom="false" android:layout_alignParentRight="false"
+		              android:layout_alignWithParentIfMissing="false" android:background="#FFFFFF"
+		              android:layout_below="@+id/txt_listtitle" android:layout_alignLeft="@+id/txt_listtitle"
+		              android:layout_alignRight="@+id/txt_listtitle" android:layout_marginTop="-20px"
+		              android:layout_marginLeft="1px" android:layout_marginRight="1px"/>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>
+	

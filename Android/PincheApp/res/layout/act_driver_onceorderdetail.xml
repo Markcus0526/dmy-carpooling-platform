@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/parent_layout"
+				android:background="@color/WHITE_COLOR">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+					android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+				  android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+				  android:text="@string/STR_ONCEORDERDETAIL_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+					 android:layout_centerVertical="true" android:background="@drawable/btn_back"
+				/>
+		<ImageView
+				android:layout_width="36px"
+				android:layout_height="36px"
+				android:id="@+id/imgRefresh"
+				android:layout_alignParentRight="true" android:layout_centerVertical="true"
+				android:layout_marginRight="10px" android:scaleType="fitCenter" android:src="@drawable/bk_refresh"/>
+	</RelativeLayout>
+	<ScrollView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/scrollView" android:layout_below="@+id/title_layout">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+				android:id="@+id/content_layout" android:background="#F1F1F1">
+<view android:layout_width="120px"
+android:layout_height="120px"
+class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewPhoto"
+android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+android:layout_marginLeft="40px" android:layout_marginTop="30px" android:scaleType="fitXY"
+					/>
+<ImageButton
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/btnPhoto" android:layout_alignTop="@+id/viewPhoto"
+android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+android:layout_alignBottom="@+id/viewPhoto" android:background="@drawable/btn_frame"
+android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+android:layout_marginBottom="-5px"/>
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="30px" android:layout_alignBottom="@+id/viewPhoto"
+android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto">
+<ImageView
+android:layout_width="20px"
+android:layout_height="20px"
+android:id="@+id/imgSex" android:layout_marginLeft="36px" android:layout_centerVertical="true"
+android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+<TextView
+android:layout_width="35px"
+android:layout_height="fill_parent"
+android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+android:layout_alignParentRight="true" android:layout_marginRight="25px"
+android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+</RelativeLayout>
+<ImageView
+android:layout_width="50px"
+android:layout_height="50px"
+android:id="@+id/is_verified"
+android:layout_marginLeft="30px" android:gravity="center_vertical|left"
+android:layout_alignTop="@+id/viewPhoto"
+android:layout_toRightOf="@+id/viewPhoto" android:scaleType="fitXY"
+android:src="@drawable/bk_person_verified"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/txt_verified" android:layout_alignTop="@+id/is_verified"
+					android:layout_alignBottom="@+id/is_verified" android:layout_toRightOf="@+id/is_verified"
+					android:gravity="center" android:textColor="#707070"
+					android:textSize="24px"/>
+			<TextView
+android:layout_width="wrap_content"
+android:layout_height="30px"
+android:text="@string/STR_PASSENGERINFO_EVALRATIO"
+android:id="@+id/lblRatio" android:layout_below="@+id/is_verified"
+android:layout_alignLeft="@+id/is_verified"
+android:layout_marginTop="10px" android:gravity="center_vertical|left"
+android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"/>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="30px"
+android:text="@string/STR_PASSENGERINFO_CARPOOLCOUNT"
+android:id="@+id/lblCarpoolCount" android:layout_below="@+id/lblRatio"
+android:layout_alignLeft="@+id/lblRatio"
+android:layout_marginTop="10px" android:gravity="center_vertical|left"
+android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"/>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="30px"
+android:id="@+id/lblName" android:layout_below="@+id/viewPhoto"
+android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/btnPhoto"
+android:layout_marginTop="10px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+android:textSize="18px"/>
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="300px" android:layout_below="@+id/lblName"
+android:layout_centerHorizontal="true" android:layout_marginTop="10px"
+android:background="#F1F1F1" android:id="@+id/rlShangBian">
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="1px" android:layout_marginLeft="30px" android:layout_marginRight="30px"
+android:background="@color/GRAY_COLOR" android:id="@+id/relativeLayout">
+</RelativeLayout>
+	<TextView
+			android:layout_width="300px"
+			android:layout_height="wrap_content"
+			android:id="@+id/lblOrderNo"
+			android:layout_marginLeft="10px" android:gravity="center_vertical|left"
+			android:textColor="@color/GRAY_COLOR" android:textSize="18px" android:layout_below="@+id/relativeLayout"
+			android:layout_marginTop="20px"/>
+	<Button
+			android:layout_width="120px"
+			android:layout_height="40px"
+			android:text="保单详情"
+			android:layout_marginTop="20px"
+			android:layout_alignParentRight="true"
+			android:id="@+id/insurance_detail" android:layout_toRightOf="@+id/lblOrderNo"
+			android:layout_marginRight="20px"
+			android:layout_marginLeft="10px"
+			android:layout_below="@+id/relativeLayout"
+			android:textSize="19px" android:textColor="@color/TITLE_BACKCOLOR"
+			android:gravity="center"
+			android:paddingLeft="5px"
+			android:drawableLeft="@drawable/insurance_icon"
+			android:background="@drawable/btn_fee"/>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/lblStartAddress" android:layout_below="@+id/lblOrderNo"
+android:layout_marginTop="20px"
+android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+android:layout_marginLeft="10px" android:gravity="center"
+android:layout_marginRight="10px"/>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="35px"
+android:id="@+id/lblPrecDate" android:layout_marginTop="10px"
+android:layout_below="@+id/lblStartAddress" android:layout_centerHorizontal="true"
+android:gravity="center" android:textColor="@color/GRAY_COLOR" android:textSize="21px"
+android:layout_marginLeft="10px" android:layout_marginRight="10px"/>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="30px"
+android:id="@+id/lblMidStation" android:layout_below="@+id/lblPrecDate"
+android:layout_centerHorizontal="true" android:textSize="21px"
+android:textColor="@color/GRAY_COLOR" android:layout_marginTop="20px" android:gravity="center"
+android:singleLine="true" android:ellipsize="end" android:layout_marginLeft="10px"
+android:visibility="gone"
+android:layout_marginRight="10px"/>
+<TextView
+android:layout_width="150px"
+android:layout_height="40px"
+android:id="@+id/lblMark" android:layout_below="@+id/lblMidStation"
+android:layout_marginTop="10px"
+android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"
+android:singleLine="true"
+android:layout_centerHorizontal="true"
+android:gravity="center"/>
+<TextView android:layout_width="200px" android:layout_height="40px"
+android:id="@+id/lblState"
+android:layout_below="@+id/lblMark" android:layout_marginTop="10px"
+android:textColor="@color/LIGHT_YELLOW_COLOR"
+android:textSize="24px" android:gravity="center"
+android:layout_centerHorizontal="true"
+android:singleLine="true"/>
+<TextView
+android:layout_width="300px"
+android:layout_height="35px"
+android:id="@+id/lblSiteMark"
+android:textSize="21px" android:textColor="@color/GRAY_COLOR"
+android:layout_below="@+id/lblMark"
+android:layout_marginTop="10px" android:layout_centerHorizontal="true"
+android:singleLine="true" android:gravity="center"/>
+</RelativeLayout>
+<RelativeLayout
+android:layout_width="fill_parent"
+android:layout_height="250px" android:layout_below="@+id/rlShangBian"
+android:background="@color/BASE_BACK_COLOR" android:id="@+id/rlXiaBian">
+<Button
+android:layout_width="440px"
+android:layout_height="60px"
+android:text="@string/STR_ONCEORDERDETAIL_TOUSU"
+android:id="@+id/btnComplain" android:layout_alignParentBottom="true"
+android:layout_marginBottom="20px" android:layout_centerHorizontal="true"
+android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+android:textSize="30px"/>
+<ImageView
+android:layout_width="120px"
+android:layout_height="120px"
+android:id="@+id/imgPassPhone" android:layout_alignParentTop="true"
+android:layout_alignParentLeft="true" android:layout_marginLeft="75px"
+android:layout_marginTop="20px" android:scaleType="fitCenter" android:src="@drawable/bk_passphone"/>
+<ImageView android:layout_width="120px" android:layout_height="120px" android:id="@+id/imgOrderCompleted"
+android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+android:layout_marginLeft="75px" android:layout_marginTop="20px" android:scaleType="fitCenter"
+android:src="@drawable/bk_completeorder" android:visibility="gone"/>
+<ImageView android:layout_width="120px" android:layout_height="120px" android:id="@+id/imgOrderExited"
+android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+android:layout_marginLeft="75px" android:layout_marginTop="20px" android:scaleType="fitCenter"
+android:src="@drawable/bk_exitorder" android:visibility="gone"/>
+<ImageView
+android:layout_width="120px"
+android:layout_height="120px"
+android:id="@+id/imgRunCard"
+android:layout_alignParentRight="true" android:layout_marginRight="75px"
+android:scaleType="fitCenter" android:src="@drawable/bk_runorder" android:layout_marginTop="20px"/>
+<ImageView android:layout_width="120px" android:layout_height="120px" android:id="@+id/imgEvalPass"
+android:layout_alignParentRight="true"
+android:layout_marginRight="75px" android:scaleType="fitCenter"
+android:src="@drawable/bk_passevalnormal" android:visibility="visible"
+android:layout_marginTop="20px"/>
+</RelativeLayout>
+</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>

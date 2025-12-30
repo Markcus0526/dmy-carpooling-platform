@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<style>
+.left_labelstyle {
+	width: 70px;
+	text-align: right;
+}
+
+.right_labelstyle {
+	width: 100px;
+	text-align: right;
+}
+</style>
+<div style="padding: 10px 20px 10px 10px">
+	<form id="addform" method="post">
+		<s:hidden id="id" name="role.id" />
+		<table cellpadding="5">
+			<tr>
+				<td style="width: 100px; text-align: right">角色名称：</td>
+				<td style="width: 200px"><input id="name" name="role.name"
+					class="easyui-validatebox textbox" type="text"
+					data-options="required:true"></input></td>
+			</tr>
+			<tr>
+				<td style="width: 100px; text-align: right">备注说明：</td>
+				<td style="width: 200px"><textarea id="remark"
+						name="role.remark" data-options="required:true"
+						style="width: 250px; height: 100px"></textarea></td>
+			</tr>
+		</table>
+	</form>
+</div>
+<script>
+// 	$(function() {
+		$('.easyui-linkbutton').linkbutton();
+		$('.easyui-validatebox').validatebox();
+		$('.easyui-numberbox').numberbox();
+		
+		addDlg.dialog({
+			title:'操作角色添加',
+			width: 500,
+			height: 265,
+			modal:true,
+			buttons: [{
+				text:'保存',
+				iconCls:'icon-ok',
+				handler:addRole,
+			}, {
+				text:'取消',
+				iconCls:'icon-cancel',
+				handler:closeForm		
+			}]
+		});
+// 	});
+	
+	function addRole(){
+		alert(type);
+		if (!$('#name').validatebox('isValid')) {
+			return;
+		}
+		
+		$("#addform").ajaxSubmit({
+			url: page_path + "add.do?type=" + type,
+            success : function(data){
+            	try {
+	            	var ret = data;
+	            	if (ret.err_code == 93) {
+	            		$.messager.alert("操作角色添加", ret.err_msg);
+	            	} else {
+	            		closeForm();
+	            		refreshList();
+	            	}
+            	} catch (e) {}
+            }
+        });
+	};
+	
+	
+	function closeForm() {
+		addDlg.dialog('close');
+		addDlg.html("");
+	}
+	
+//	showPath();
+</script>
+

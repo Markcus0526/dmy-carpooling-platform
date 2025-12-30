@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/parent_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+    <RelativeLayout
+            android:id="@+id/rl_orderitem_bg"
+            android:layout_width="460px"
+            android:layout_height="262px"
+            android:background="@drawable/roundgraywhite_frame" >
+
+        <TextView
+                android:id="@+id/lblDest"
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="10px"
+                android:layout_marginRight="10px"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="New Text"
+                android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="25px" />
+
+        <RelativeLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_below="@+id/lblDest"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="25px"
+                android:layout_marginRight="25px"
+                android:layout_marginTop="1px"
+                android:background="@color/GRAY_COLOR" >
+        </RelativeLayout>
+
+        <TextView
+                android:id="@+id/tv_destance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="总距离5KM"
+                android:textSize="25px"
+                android:textColor="@color/LIGHT_YELLOW_COLOR"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_marginTop="8px"
+                android:gravity="center_horizontal"
+                />
+
+        <view
+                android:id="@+id/imgPhoto"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/relativeLayout"
+                android:layout_marginLeft="10px"
+                android:layout_marginTop="38px"
+                class="com.damytech.Utils.image.SmartImageView"
+                android:scaleType="fitXY" />
+
+        <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="30px"
+                android:layout_alignBottom="@+id/imgPhoto"
+                android:layout_alignLeft="@+id/imgPhoto"
+                android:layout_alignRight="@+id/imgPhoto" >
+
+            <ImageView
+                    android:id="@+id/imgSex"
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="33px"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bk_manmark" />
+
+            <TextView
+                    android:id="@+id/lblAge"
+                    android:layout_width="30px"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="27px"
+                    android:gravity="center_vertical|left"
+                    android:text="29"
+                    android:textColor="@color/TAB_NORMAL_COLOR"
+                    android:textSize="23px" />
+        </RelativeLayout>
+
+        <TextView
+                android:id="@+id/lblName"
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:layout_alignLeft="@+id/relativeLayout2"
+                android:layout_alignRight="@+id/relativeLayout2"
+                android:layout_below="@+id/btnPhoto"
+                android:layout_marginTop="10px"
+                android:gravity="center"
+                android:text="张先生"
+                android:layout_marginBottom="5px"
+                android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px" />
+
+
+        <TextView
+                android:id="@+id/lblMark"
+                android:layout_width="80px"
+                android:layout_height="40px"
+                android:layout_alignTop="@+id/btnPhoto"
+                android:layout_marginLeft="15px"
+                android:layout_marginTop="15px"
+                android:layout_toRightOf="@+id/btnPhoto"
+                android:gravity="center"
+                android:text="100点"
+                android:textColor="@color/LIGHT_YELLOW_COLOR"
+                android:textSize="28px" />
+
+        <TextView
+                android:id="@+id/lblDate"
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:layout_alignLeft="@+id/lblMark"
+                android:layout_below="@+id/lblMark"
+                android:layout_marginTop="10px"
+                android:gravity="center"
+                android:text="6月20日"
+                android:textColor="@color/GRAY_COLOR"
+                android:textSize="20px" />
+
+        <TextView
+                android:id="@+id/lblSiteMark"
+                android:layout_width="100px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblMark"
+                android:layout_alignTop="@+id/lblMark"
+                android:layout_marginLeft="5px"
+                android:layout_toRightOf="@+id/lblMark"
+                android:gravity="center"
+                android:text="平台XX点"
+                android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px" />
+
+        <TextView
+                android:id="@+id/lblTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblDate"
+                android:layout_alignRight="@+id/lblSiteMark"
+                android:layout_alignTop="@+id/lblDate"
+                android:layout_toRightOf="@+id/lblDate"
+                android:gravity="center"
+                android:textColor="@color/GRAY_COLOR"
+                android:textSize="20px" />
+
+        <ImageView
+                android:id="@+id/imgOrder"
+                android:layout_width="120px"
+                android:layout_height="120px"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/imgPhoto"
+                android:layout_marginRight="10px"
+                android:focusableInTouchMode="false"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_order" />
+
+        <TextView
+                android:id="@+id/lblDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblName"
+                android:layout_alignLeft="@+id/imgOrder"
+                android:layout_alignRight="@+id/imgOrder"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="1.5Km"
+                android:textColor="@color/GRAY_COLOR"
+                android:textSize="@dimen/BASE_TEXT_SIZE" />
+
+        <TextView
+                android:id="@+id/lblMiddlePos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/lblName"
+                android:layout_centerHorizontal="true"
+                android:text="订单详情"
+                android:textColor="@color/LIGHT_YELLOW_COLOR"
+                android:textSize="@dimen/BASE_TEXT_SIZE"
+                android:visibility="visible" />
+
+        <ImageButton
+                android:id="@+id/btn_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bk_empty" />
+
+        <ImageButton
+                android:id="@+id/btnPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgPhoto"
+                android:layout_alignLeft="@+id/imgPhoto"
+                android:layout_alignRight="@+id/imgPhoto"
+                android:layout_alignTop="@+id/imgPhoto"
+                android:layout_marginBottom="-5px"
+                android:layout_marginLeft="-5px"
+                android:layout_marginRight="-5px"
+                android:layout_marginTop="-5px"
+                android:background="@drawable/btn_frame" />
+
+        <ImageButton
+                android:id="@+id/btn_accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgOrder"
+                android:layout_alignLeft="@+id/imgOrder"
+                android:layout_alignRight="@+id/imgOrder"
+                android:layout_alignTop="@+id/imgOrder"
+                android:background="@drawable/btn_round" />
+
+        <Button
+                android:id="@+id/btn_fee_detail"
+                android:layout_width="120px"
+                android:layout_height="30px"
+                android:layout_alignTop="@+id/lblMark"
+                android:layout_marginLeft="10px"
+                android:layout_toLeftOf="@+id/btn_accept"
+                android:layout_toRightOf="@+id/lblMark"
+                android:background="@drawable/btn_fee"
+                android:drawableLeft="@drawable/fee_icon"
+                android:gravity="center"
+                android:paddingLeft="5px"
+                android:text="费用详情"
+                android:textColor="@color/TITLE_BACKCOLOR"
+                android:textSize="16px" />
+    </RelativeLayout>
+
+</RelativeLayout>

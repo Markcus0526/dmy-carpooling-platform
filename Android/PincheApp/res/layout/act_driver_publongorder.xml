@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_LONGDISTANCE_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/scrollView" android:layout_below="@+id/title_layout">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="740px"
+					android:id="@+id/content_layout" android:background="@color/WHITE_COLOR">
+		        <EditText
+		                android:layout_width="135px"
+		                android:layout_height="56px"
+		                android:hint="@string/STR_LONGDISTANCE_QISHICHENGSHI"
+		                android:id="@+id/txtStartCity" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		                android:background="@drawable/roundlightgraywhite_frame" android:layout_marginLeft="10px"
+		                android:layout_marginTop="30px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="22px" android:maxLines="2"
+		                android:maxLength="5"/>
+		        <EditText
+		                android:layout_width="wrap_content"
+		                android:layout_height="56px"
+		                android:hint="@string/STR_LONGDISTANCE_MUDECHENGSHI"
+		                android:id="@+id/txtEndCity" android:layout_below="@+id/txtStartCity"
+		                android:layout_alignLeft="@+id/txtStartCity" android:layout_marginTop="10px"
+		                android:layout_alignRight="@+id/txtStartCity" android:background="@drawable/roundlightgraywhite_frame"
+		                android:gravity="center" android:textColor="@color/GRAY_COLOR" android:textSize="22px"
+		                android:maxLines="2" android:maxLength="5"/>
+		        <Button
+		                android:layout_width="400px"
+		                android:layout_height="60px"
+		                android:text="@string/STR_LONGDISTANCE_XUANZECHUFARIQI"
+		                android:id="@+id/btnDate" android:layout_below="@+id/txtEndCity" android:layout_centerHorizontal="true"
+		                android:layout_marginTop="18dp" android:background="@drawable/btn_green"
+		                android:textColor="@color/WHITE_COLOR" android:textSize="24px"/>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lblStartPosVal" android:layout_alignTop="@+id/txtStartCity"
+		                android:layout_toRightOf="@+id/txtStartCity" android:layout_alignBottom="@+id/txtStartCity"
+		                android:layout_marginLeft="10px" android:background="@drawable/roundlightgraywhite_frame"
+		                android:gravity="center_vertical|left" android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+		                android:singleLine="true" android:paddingLeft="15px"
+		                android:hint="@string/STR_LONGDISTANCE_QISHIXIANGXIDIDIAN" android:ellipsize="end"
+		                android:layout_toLeftOf="@+id/btnStartCity" android:layout_marginRight="10px"/>
+		        <ImageButton
+		                android:layout_width="50px"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/btnStartCity" android:layout_alignTop="@+id/lblStartPosVal"
+		                android:layout_alignParentRight="true" android:layout_above="@+id/txtEndCity"
+		                android:layout_marginRight="10px" android:background="@drawable/bk_mic"/>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lblEndPosVal" android:layout_alignTop="@+id/txtEndCity"
+		                android:layout_alignLeft="@+id/lblStartPosVal" android:layout_alignBottom="@+id/txtEndCity"
+		                android:layout_alignRight="@+id/lblStartPosVal"
+		                android:background="@drawable/roundlightgraywhite_frame" android:ellipsize="end"
+		                android:gravity="center_vertical|left" android:paddingLeft="15px" android:singleLine="true"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+		                android:hint="@string/STR_LONGDISTANCE_MUDEXIANGXIDIDIAN"/>
+		        <ImageButton
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/btnEndCity" android:layout_alignTop="@+id/lblEndPosVal"
+		                android:layout_alignRight="@+id/btnStartCity" android:layout_alignBottom="@+id/lblEndPosVal"
+		                android:layout_alignLeft="@+id/btnStartCity" android:background="@drawable/bk_mic"/>
+                <RelativeLayout android:layout_width="fill_parent"
+                              android:layout_height="30px"
+                              android:id="@+id/division"
+                              android:layout_below="@+id/btnDate"
+                              android:layout_marginTop="20px"
+                              android:background="#F1F1F1">
+                </RelativeLayout>
+		        <TextView
+		                android:layout_width="140px"
+		                android:layout_height="56px"
+		                android:text="@string/STR_LONGDISTANCE_TIGONGZUOWEISHU"
+		                android:id="@+id/lblSeat" android:layout_below="@+id/division"
+		                android:layout_alignLeft="@+id/txtEndCity" android:layout_marginTop="30px" android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+		        <ImageView
+		                android:layout_width="56px"
+		                android:layout_height="56px"
+		                android:id="@+id/imgSeatMinus" android:layout_alignTop="@+id/lblSeat"
+		                android:layout_toRightOf="@+id/lblSeat" android:layout_marginLeft="10px" android:scaleType="fitCenter"
+		                android:src="@drawable/btn_roundminus"/>
+				<EditText
+						android:layout_width="100px"
+						android:layout_height="wrap_content"
+						android:text="1"
+						android:id="@+id/lblSeatVal"
+                        android:textColor="@color/BLACK_COLOR"
+                        android:textSize="24px"
+						android:layout_alignTop="@+id/imgSeatMinus"
+                        android:layout_toRightOf="@+id/imgSeatMinus"
+						android:layout_alignBottom="@+id/imgSeatMinus"
+                        android:layout_marginLeft="10px"
+						android:background="@drawable/roundlightgraywhite_frame"
+						android:gravity="center"
+                        android:digits="0123456789"
+                        android:maxLength="2"/>
+				<TextView
+		                android:layout_width="32px"
+		                android:layout_height="wrap_content"
+		                android:text="@string/STR_LONGDISTANCE_ZUO"
+		                android:id="@+id/lblSeatUnit" android:layout_alignTop="@+id/lblSeatVal"
+		                android:layout_toRightOf="@+id/lblSeatVal" android:layout_alignBottom="@+id/lblSeatVal"
+		                android:layout_marginLeft="10px" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="24px" android:gravity="center_vertical|left"/>
+		        <ImageView
+		                android:layout_width="56px"
+		                android:layout_height="56px"
+		                android:id="@+id/imgSeatPlus" android:layout_alignTop="@+id/lblSeatVal"
+		                android:layout_alignRight="@+id/btnEndCity" android:scaleType="fitCenter"
+		                android:src="@drawable/btn_roundplus"/>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="56px"
+		                android:text="@string/STR_LONGDISTANCE_NINDEBAOJIA"
+		                android:id="@+id/lblPrice" android:layout_below="@+id/lblSeat"
+		                android:layout_marginTop="35px" android:layout_alignRight="@+id/lblSeat"
+		                android:layout_alignLeft="@+id/lblSeat" android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+		        <ImageView
+		                android:layout_width="56px"
+		                android:layout_height="56px"
+		                android:id="@+id/imgPriceMinus" android:layout_alignTop="@+id/lblPrice"
+		                android:layout_alignLeft="@+id/imgSeatMinus" android:scaleType="fitCenter"
+		                android:src="@drawable/btn_roundminus"/>
+				<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="100"
+						android:id="@+id/lblPriceVal" android:gravity="center"
+						android:layout_alignTop="@+id/imgPriceMinus"
+						android:layout_alignLeft="@+id/lblSeatVal" android:layout_alignBottom="@+id/imgPriceMinus"
+						android:layout_alignRight="@+id/lblSeatVal"
+						android:background="@drawable/roundlightgraywhite_frame"
+						android:textColor="@color/BLACK_COLOR" android:textSize="24px" android:inputType="numberSigned"
+						android:maxLength="4"/>
+				<TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/STR_LONGDISTANCE_DIANZUO"
+		                android:id="@+id/lblPriceUnit" android:layout_alignTop="@+id/lblPriceVal"
+		                android:layout_alignLeft="@+id/lblSeatUnit" android:layout_alignBottom="@+id/lblPriceVal"
+		                android:layout_toLeftOf="@+id/imgSeatPlus" android:layout_marginRight="10px" android:gravity="center_vertical|left"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+		        <ImageView
+		                android:layout_width="56px"
+		                android:layout_height="56px"
+		                android:id="@+id/imgPricePlus" android:layout_alignTop="@+id/lblPriceUnit"
+		                android:layout_alignRight="@+id/imgSeatPlus" android:scaleType="fitCenter"
+		                android:src="@drawable/btn_roundplus"/>
+                <RelativeLayout android:layout_width="fill_parent"
+                                android:layout_height="5px"
+                                android:layout_below="@+id/lblPriceVal"
+                                android:id="@+id/division2"
+                                android:layout_marginTop="20px"
+                                android:background="#F1F1F1">
+                </RelativeLayout>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50px"
+                        android:id="@+id/fee_txt_tip1" android:layout_below="@+id/division2"
+                        android:layout_marginTop="10px"
+                        android:layout_marginLeft="30px"
+                        android:layout_alignParentLeft="true" android:gravity="center_vertical"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+                        android:text="平台信息费："/>
+		        <TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="50px"
+		                android:id="@+id/lblSitePrice" android:layout_below="@+id/division2"
+		                android:layout_marginTop="10px"
+                        android:layout_toRightOf="@+id/fee_txt_tip1" android:gravity="center_vertical"
+		                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+		                android:layout_marginLeft="0px" android:text=""/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50px"
+                        android:id="@+id/fee_txt_tip4"
+                        android:layout_below="@+id/division2"
+                        android:layout_marginTop="10px"
+                        android:layout_toRightOf="@+id/lblSitePrice"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR"
+                        android:textSize="21px"
+                        android:text="@string/PUBLONG_TIP3"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50px"
+                        android:id="@+id/fee_txt_tip2"
+                        android:layout_below="@+id/division2"
+                        android:layout_marginTop="10px"
+                        android:layout_toRightOf="@+id/fee_txt_tip4"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR"
+                        android:textSize="21px"
+                        android:text="@string/PUBLONG_TIP2"
+                        android:layout_marginLeft="50px"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50px"
+                        android:id="@+id/lblInsurance" android:layout_below="@+id/division2"
+                        android:layout_toRightOf="@+id/fee_txt_tip2" android:layout_marginTop="10px"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+                        android:text=""/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50px"
+                        android:id="@+id/fee_txt_tip3" android:layout_below="@+id/division2"
+                        android:layout_marginTop="10px"
+                        android:layout_toRightOf="@+id/lblInsurance"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="21px"
+                        android:text="@string/PUBLONG_TIP3"/>
+		        <TextView
+		                android:layout_width="100px"
+		                android:layout_height="40px"
+		                android:text="@string/STR_LONGDISTANCE_BEIZHU"
+		                android:id="@+id/lblComment" android:layout_below="@+id/division2"
+		                android:layout_alignLeft="@+id/lblPrice"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="24px" android:gravity="center_vertical|left"
+                        android:visibility="gone"/>
+		        <EditText
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/txtComment" android:layout_below="@+id/lblComment"
+		                android:layout_alignLeft="@+id/lblComment" android:layout_alignRight="@+id/imgPricePlus"
+		                android:background="@drawable/roundlightgraywhite_frame" android:gravity="left|top"
+		                android:padding="10px" android:textColor="@color/GRAY_COLOR" android:textSize="24px"
+		                android:hint="@string/STR_LONGDISTANCE_FEIBITIANXIANG" android:layout_above="@+id/btnSend"
+		                android:layout_marginBottom="20px" android:maxLength="100"
+                        android:visibility="gone"/>
+                <RelativeLayout android:layout_width="fill_parent"
+                                android:layout_height="fill_parent"
+                                android:layout_marginTop="20px"
+                                android:layout_below="@+id/fee_txt_tip3"
+                                android:layout_alignParentBottom="true"
+                                android:background="#F1F1F1">
+                </RelativeLayout>
+		        <Button
+		                android:layout_width="wrap_content"
+		                android:layout_height="60px"
+		                android:text="@string/STR_LONGDISTANCE_FABU"
+		                android:id="@+id/btnSend" android:layout_alignParentBottom="true"
+		                android:layout_marginBottom="30px" android:layout_alignRight="@+id/btnDate"
+		                android:layout_alignLeft="@+id/btnDate" android:background="@drawable/btn_green"
+		                android:textColor="@color/WHITE_COLOR" android:textSize="24px"/>
+		    </RelativeLayout>
+		</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>

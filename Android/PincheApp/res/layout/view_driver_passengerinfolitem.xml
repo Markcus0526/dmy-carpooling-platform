@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="120px" android:background="@drawable/roundgraywhite_frame">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:id="@+id/lblName" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20px" android:layout_marginTop="20px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblEvalVal" android:layout_alignTop="@+id/lblName"
+                android:layout_toRightOf="@+id/lblName" android:layout_alignBottom="@+id/lblName"
+                android:gravity="center_vertical|left" android:layout_marginLeft="20px" android:textSize="18px"
+                android:textColor="@color/GOODEVAL_COLOR"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblDate" android:layout_alignTop="@+id/lblEvalVal" android:layout_alignParentRight="true"
+                android:layout_marginRight="20px" android:layout_alignBottom="@+id/lblEvalVal" android:gravity="center_vertical|right"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35px"
+                android:id="@+id/lblEval" android:layout_below="@+id/lblName" android:layout_alignLeft="@+id/lblName"
+                android:layout_toLeftOf="@+id/lblDate" android:layout_marginTop="5px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:ellipsize="end"
+                android:singleLine="true"/>
+	    <ImageButton
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:id="@+id/btn_item" android:background="@drawable/bk_empty"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_LOGIN_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/scrollView" android:layout_below="@+id/title_layout">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="734px" android:id="@+id/content_layout"
+					android:background="#F1F1F1"
+					>
+				<ImageView
+						android:layout_width="110px"
+						android:layout_height="110px"
+						android:id="@+id/img_icon" android:layout_marginTop="80px" android:layout_centerHorizontal="true"
+						android:background="@drawable/demoicon"/>
+				<ImageView
+						android:layout_width="400px"
+						android:layout_height="60px"
+						android:id="@+id/img_username" android:layout_below="@+id/img_icon" android:layout_marginTop="70px"
+						android:layout_centerHorizontal="true" android:background="@drawable/img_txt_top"/>
+				<ImageView
+						android:layout_width="wrap_content"
+						android:layout_height="60px"
+						android:id="@+id/img_password" android:layout_alignLeft="@+id/img_username"
+						android:layout_alignRight="@+id/img_username" android:layout_below="@+id/img_username"
+						android:background="@drawable/img_txt_bottom" android:layout_marginTop="-2px"/>
+				<ImageView
+						android:layout_width="36px"
+						android:layout_height="36px"
+						android:id="@+id/img_username_icon" android:layout_alignTop="@+id/img_username"
+						android:layout_alignLeft="@+id/img_username" android:layout_marginTop="12px"
+						android:layout_marginLeft="10px" android:scaleType="centerInside"
+						android:src="@drawable/login_user_icon"/>
+				<ImageView
+						android:layout_width="36px"
+						android:layout_height="36px"
+						android:id="@+id/img_pwd_icon" android:layout_marginTop="12px" android:layout_marginLeft="10px"
+						android:layout_alignTop="@+id/img_password" android:layout_alignLeft="@+id/img_password"
+						android:scaleType="centerInside" android:src="@drawable/login_password_icon"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="wrap_content"
+						android:id="@+id/img_sep_username" android:layout_alignTop="@+id/img_username_icon"
+						android:layout_alignBottom="@+id/img_username_icon" android:layout_toRightOf="@+id/img_username_icon"
+						android:background="#D0D0D0" android:layout_marginLeft="8px"/>
+				<ImageView
+						android:layout_width="1px"
+						android:layout_height="wrap_content"
+						android:id="@+id/img_sep_pwd" android:layout_alignTop="@+id/img_pwd_icon"
+						android:layout_alignBottom="@+id/img_pwd_icon" android:layout_toRightOf="@+id/img_pwd_icon"
+						android:background="#D0D0D0" android:layout_marginLeft="8px"/>
+				<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/edt_username" android:layout_alignTop="@+id/img_username"
+						android:layout_toRightOf="@+id/img_sep_username" android:layout_alignRight="@+id/img_username"
+						android:layout_alignBottom="@+id/img_username" android:textSize="23px" android:textColor="#606060"
+						android:background="@drawable/bk_empty" android:paddingLeft="20px" android:paddingRight="10px"
+						android:hint="@string/STR_LOGIN_INPUTUSERNAME" android:singleLine="true"/>
+				<EditText
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/edt_password" android:layout_alignTop="@+id/img_password"
+						android:layout_alignBottom="@+id/img_password" android:layout_alignRight="@+id/img_password"
+						android:layout_toRightOf="@+id/img_sep_pwd" android:textSize="23px" android:textColor="#606060"
+						android:background="@drawable/bk_empty" android:paddingLeft="20px" android:paddingRight="10px"
+						android:hint="@string/STR_LOGIN_INPUTPWD" android:inputType="textPassword"
+						android:maxLength="20" android:singleLine="true"/>
+				<ImageView
+						android:layout_width="30px"
+						android:layout_height="30px"
+						android:id="@+id/img_auto_login" android:background="@drawable/checkbox_selected"
+						android:layout_below="@+id/img_password" android:layout_alignLeft="@+id/img_password"
+						android:layout_marginLeft="30px" android:layout_marginTop="30px"
+						android:visibility="invisible"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/STR_LOGIN_AUTOLOGIN"
+						android:id="@+id/txt_auto_login" android:layout_alignTop="@+id/img_auto_login"
+						android:layout_alignBottom="@+id/img_auto_login" android:layout_toRightOf="@+id/img_auto_login"
+						android:gravity="center_vertical" android:textColor="#A0A0A0" android:textSize="21px"
+						android:visibility="invisible"/>
+				<ImageButton
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/btn_autologin" android:layout_alignTop="@+id/txt_auto_login"
+						android:layout_alignBottom="@+id/txt_auto_login"
+						android:layout_alignLeft="@+id/img_auto_login" android:layout_alignRight="@+id/txt_auto_login"
+						android:background="@drawable/bk_empty" android:visibility="invisible"/>
+				<ImageView
+						android:layout_width="30px"
+						android:layout_height="30px"
+						android:id="@+id/img_remem_pwd" android:background="@drawable/checkbox_normal"
+						android:layout_alignTop="@+id/txt_remem_pwd" android:layout_toLeftOf="@+id/txt_remem_pwd"
+						android:visibility="invisible"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="30px"
+						android:text="@string/STR_LOGIN_REMEMPWD"
+						android:id="@+id/txt_remem_pwd"
+						android:gravity="center_vertical" android:textSize="21px" android:textColor="#A0A0A0"
+						android:layout_marginTop="30px" android:layout_below="@+id/img_password"
+						android:layout_alignRight="@+id/img_password" android:layout_marginRight="30px"
+						android:visibility="invisible"/>
+				<ImageButton
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:id="@+id/btn_remem_pwd" android:layout_alignTop="@+id/txt_remem_pwd"
+						android:layout_alignBottom="@+id/txt_remem_pwd" android:layout_alignLeft="@+id/img_remem_pwd"
+						android:layout_alignRight="@+id/txt_remem_pwd" android:background="@drawable/bk_empty"
+						android:visibility="invisible"/>
+				<Button
+						android:layout_width="140px"
+						android:layout_height="50px"
+						android:text="@string/STR_LOGIN_LOGIN"
+						android:id="@+id/btn_login" android:background="@drawable/btn_smallgreen" android:textSize="23px"
+						android:layout_below="@+id/img_auto_login" android:layout_alignLeft="@+id/img_auto_login"
+						android:layout_marginTop="40px" android:textColor="#FFFFFF"/>
+				<Button
+						android:layout_width="140px"
+						android:layout_height="50px"
+						android:text="@string/STR_LOGIN_REGISTER"
+						android:id="@+id/btn_register" android:background="@drawable/btn_smallwhite" android:textSize="23px"
+						android:layout_alignTop="@+id/btn_login" android:layout_alignRight="@+id/txt_remem_pwd"
+						android:textColor="#4DB47D"/>
+				<ImageView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/img_forget_pwd" android:layout_alignTop="@+id/btn_forget_pwd"
+						android:layout_alignBottom="@+id/btn_forget_pwd" android:background="#E3E3E3"/>
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="55px"
+						android:text="@string/STR_LOGIN_FORGETPWD"
+						android:id="@+id/btn_forget_pwd" android:background="@drawable/btn_empty" android:layout_alignParentBottom="true"
+						android:textColor="#505050" android:singleLine="false" android:textSize="23px"/>
+			</RelativeLayout>
+		</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>

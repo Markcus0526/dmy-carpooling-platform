@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:background="#60000000" android:id="@+id/parent_layout">
+
+	<RelativeLayout
+			android:layout_width="400px"
+			android:layout_height="wrap_content" android:id="@+id/back_layout" android:layout_centerInParent="true"
+			>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="70px" android:background="@drawable/bk_selphoto_title"
+				android:id="@+id/title_layout">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_TAKE_PHOTO_TITLE"
+					android:id="@+id/txt_title" android:textColor="#FFFFFF" android:textSize="25px"
+					android:gravity="center"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="70px" android:id="@+id/takephoto" android:layout_below="@+id/title_layout">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_TAKE_PHOTO"
+					android:id="@+id/txt_takephoto" android:textSize="25px" android:textColor="#A0A0A0"
+					android:background="@drawable/img_txt_middle" android:gravity="center_vertical|left"
+					android:paddingLeft="30px"/>
+			<Button
+									android:layout_width="fill_parent"
+									android:layout_height="fill_parent"
+									android:id="@+id/btn_take_photo" android:background="@drawable/btn_empty"
+									android:textColor="#FFFFFF"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="70px" android:id="@+id/selectphoto" android:layout_below="@+id/takephoto">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_SELECT_IMAGE"
+					android:id="@+id/txt_selphoto" android:textSize="25px" android:textColor="#A0A0A0"
+					android:background="@drawable/img_txt_middle" android:gravity="center_vertical|left"
+					android:paddingLeft="30px"/>
+			<Button
+									android:layout_width="fill_parent"
+									android:layout_height="fill_parent"
+									android:id="@+id/btn_sel_image" android:background="@drawable/btn_empty"
+									android:textColor="#FFFFFF"/>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="1px" android:background="#a7a7a7" android:id="@+id/sep_layout1">
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="70px" android:id="@+id/cancelphoto" android:layout_below="@+id/selectphoto">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:text="@string/STR_QUXIAO"
+					android:id="@+id/txt_cancel" android:textSize="25px" android:textColor="#A0A0A0"
+					android:background="@drawable/bk_sel_photo" android:gravity="center_vertical|left"
+					android:paddingLeft="30px"/>
+			<Button
+									android:layout_width="fill_parent"
+									android:layout_height="fill_parent"
+									android:id="@+id/btn_cancel"
+									android:textColor="#6c6c6c"
+									android:background="@drawable/btn_empty"/>
+			<RelativeLayout android:layout_width="fill_parent" android:layout_height="1px" android:background="#a7a7a7"
+			                android:id="@+id/sel_layout2"/>
+		</RelativeLayout>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/crop_layout" android:background="#FF000000">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:id="@+id/image_layout" android:layout_above="@+id/oper_layout"
+				>
+			<ImageView
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:id="@+id/img_sel" android:scaleType="matrix"/>
+			<view android:layout_width="match_parent"
+			      android:layout_height="match_parent"
+			      class="com.damytech.Utils.ClipView" android:id="@+id/clipview"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="80px" android:layout_alignParentBottom="true" android:id="@+id/oper_layout">
+			<RelativeLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:layout_centerInParent="true">
+				<Button
+						android:layout_width="150px"
+						android:layout_height="50px"
+						android:text="@string/STR_QUEDING"
+						android:id="@+id/btn_confirm" android:background="@drawable/btn_smallwhite"
+						android:textSize="24px" android:textColor="@color/TITLE_BACKCOLOR"/>
+			</RelativeLayout>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:id="@+id/pop_view"
+    android:gravity="center_horizontal"
+    >
+    <TextView 
+        android:layout_width="260px"
+    	android:layout_height="wrap_content"
+        android:gravity="center"
+    	android:id= "@+id/location_tips"
+        android:textColor="@color/WHITE_COLOR"
+        android:background="@drawable/location_label_gray"
+        android:visibility="gone"
+        android:textSize="20px"
+     />
+    <ImageView android:layout_width="30px"
+               android:layout_height="45px"
+               android:background="@drawable/main_location"
+               android:layout_marginTop="2px"
+               android:layout_marginBottom="8px"
+               android:id="@+id/main_location"/>
+</LinearLayout>

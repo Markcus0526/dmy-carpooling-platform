@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.financial.request.dao.FreezeMapper" >
+
+    <!-- 充值提现管理 -->
+
+    <resultMap
+        id="cherges"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="reqid" />
+
+        <result
+            column="order_cs_id"
+            property="order_cs_id" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="req_num"
+            property="req_num" />
+
+        <result
+            column="account_type"
+            property="account_type" />
+
+        <result
+            column="user_id"
+            property="user_id" />
+
+        <result
+            column="oper"
+            property="oper" />
+
+        <result
+            column="sum"
+            property="sum" />
+
+        <result
+            column="date1"
+            property="req_date" />
+
+        <result
+            column="audit_date"
+            property="audit_date" />
+
+        <result
+            column="status"
+            property="status" />
+
+        <result
+            column="account_type"
+            property="account_type" />
+
+        <result
+            column="oper_type"
+            property="oper_type" />
+
+        <result
+            column="channel"
+            property="channel" />
+
+        <result
+            column="req_cause"
+            property="req_cause" />
+
+        <result
+            column="reject_cause"
+            property="reject_cause" />
+
+        <result
+            column="ts_id"
+            property="ts_id" />
+
+        <result
+            column="req_user"
+            property="req_user" />
+
+        <result
+            column="auditor"
+            property="auditor" />
+
+        <result
+            column="req_source"
+            property="req_source" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+        <!-- user -->
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+            <result
+            column="subbranch"
+            property="subbranch" /> 
+    </resultMap>
+    <!-- balance -->
+
+    <resultMap
+        id="userbalance"
+        type="java.util.Map" >
+
+        <result
+            column="balance"
+            property="ubalance" />
+
+        <result
+            column="adminid"
+            property="adminid" />
+
+        <result
+            column="balance"
+            property="balance" />
+
+        <result
+            column="state"
+            property="state" />
+
+        <result
+            column="freeze_ts_id"
+            property="freeze_ts_id" />
+
+        <result
+            column="release_ts_id"
+            property="release_ts_id" />
+        <result
+            column="usercode"
+            property="usercode" />
+            
+    </resultMap>
+    <!-- fpinfo -->
+
+    <resultMap
+        id="fpinfo"
+        type="java.util.Map" >
+
+        <result
+            column="userid"
+            property="userid" />
+
+        <result
+            column="userid"
+            property="userid" />
+    </resultMap>
+    <!-- 查找余额 -->
+
+    <resultMap
+        id="balance"
+        type="java.util.Map" >
+
+        <result
+            column="balance"
+            property="balance" />
+    </resultMap>
+<!-- 表格中数据的查询方法 -->
+    <select
+        id="findby"
+        parameterType="java.util.Map"
+        resultMap="cherges" >
+	    SELECT r.*, DATE_FORMAT(r.req_date,'%Y年%m月%d日 %H时%I分%S秒') AS date1,u.id,u.username,u.phone,u.subbranch,dd.usercode 
+FROM req_client_account 
+	 r
+LEFT JOIN user u  ON r.user_id = u.id
+left join user dd on r.auditor = dd.id
+WHERE r.deleted=0 AND u.deleted=0  and oper_type != 3
+
+        <if test="null!=userid" >
+	        and user_id like #{userid}
+        </if>
+
+        <if test="null!=username" >
+	        and username like #{username}
+        </if>
+
+        <if test="null!=phone" >
+	        and phone like #{phone}
+        </if>
+
+        <if test="null!=opert_ype1 or null!=oper_type2" >
+	        and oper_type in (#{oper_type1},#{oper_type2})
+        </if>
+
+        <if test="null!=begintime" >
+	         and req_date > #{begintime} 
+        </if>
+         <if test=" null!=endtime" >
+	         and   #{endtime} > req_date
+
+        </if>
+
+        <if test="1==status" >
+	         and status in (1,3,5)
+        </if>
+
+        <if test="2==status" >
+	         and status in (1,2,3,4,5)        </if>
+        <if test="array!=null">
+        and r.account_type in 
+        	<foreach collection="array" index="index" item="item" separator="," >
+       			(#{item})  
+        		</foreach>
+        </if>
+         <if test="start!=null">
+         	  LIMIT #{start},#{limit}
+         </if>
+    </select>
+<!-- 表格的数据的总数查询 -->
+    <select
+        id="findcount"
+        parameterType="java.util.Map"
+        resultType="int" >
+	   	     SELECT count(*)
+FROM req_client_account 
+	 r
+LEFT JOIN user u  ON r.user_id = u.id
+WHERE r.deleted=0 AND u.deleted=0  and oper_type != 3
+
+        <if test="null!=userid" >
+	        and user_id like #{userid}
+        </if>
+
+        <if test="null!=username" >
+	        and username like #{username}
+        </if>
+
+        <if test="null!=phone" >
+	        and phone like #{phone}
+        </if>
+
+        <if test="null!=opert_ype1 or null!=oper_type2" >
+	        and oper_type in (#{oper_type1},#{oper_type2})
+        </if>
+
+          <if test="null!=begintime" >
+	         and req_date > #{begintime} 
+
+        </if>
+         <if test=" null!=endtime" >
+	         and   #{endtime} > req_date
+
+        </if>
+        <if test="1==status" >
+	         and status in (1,3,5)
+        </if>
+
+        <if test="2==status" >
+	         and status in (1,2,3,4,5)
+        </if>
+          <if test="array!=null">
+        and r.account_type in 
+        	<foreach collection="array" index="index" item="item" separator="," >
+       			(#{item})  
+        		</foreach>
+        </if>
+    </select>
+    <!-- 处理一个 ，批量处理也用这个-->
+
+    <update
+        id="updatedealsingle"
+        parameterType="int" >
+update req_client_account set status = 5,audit_date=now() where id = #{reqid}
+    </update>
+
+    <!-- 完成一个 ，批量完成也用这个-->
+
+    <update
+        id="updatefinishsingle"
+        parameterType="int" >
+update req_client_account set status = 2,audit_date=now() where id = #{reqid}
+    </update>
+ <!-- 完成，或处理之后要进行解冻并插入新的解冻记录id-->
+    <update
+        id="updateupfpstate"
+        parameterType="java.util.Map" >
+update freeze_points set state=2 where userid=#{uid} and release_ts_id = #{utsid} 
+    </update>
+    <!-- 关闭一个 -->
+
+    <update
+        id="updateclosesingle"
+        parameterType="int" >
+update req_client_account set status = 4,oper=1,audit_date=now() where id = #{reqid}
+    </update>
+<!-- 暂时没有用到 -->
+    <select
+        id="findbalance"
+        parameterType="java.util.Map"
+        resultMap="balance" >
+
+        <if test="1==type" >
+	    select balance from ts where id = (select max(id) from ts where userid =#{userid}) and deleted =0
+        </if>
+
+        <if test="2==type" >
+	    select balance from ts where id = (select max(id) from ts where groupid =#{groupid}) and deleted =0
+        </if>
+
+        <if test="3==type" >
+	    select balance from ts where id = (select max(id) from ts where unitid =#{unitid}) and deleted =0
+        </if>
+    </select>
+    <!-- 查询出每个人的最新余额 -->
+
+    <select
+        id="finduserbalance"
+        parameterType="java.util.Map"
+        resultMap="userbalance" >
+	select balance from ts where id =(select balance_ts from user where id=#{uid})
+    </select>
+<!-- 暂时用不到 -->
+    <select
+        id="findgroupbalance"
+        parameterType="java.util.Map"
+        resultMap="userbalance" >
+	select balance from ts where id =(select balance_ts from group where id=#{uid})
+    </select>
+<!-- 暂时用不到 -->
+    <select
+        id="findunitbalance"
+        parameterType="java.util.Map"
+        resultMap="userbalance" >
+	select balance from ts where id =(select balance_ts from app_spread_unit where id=#{uid})
+    </select>
+    <!-- 查询出绿点冻结表里的信息用于插入解冻记录时插入一些不变的数据时使用-->
+
+    <select
+        id="findfpinfo"
+        parameterType="java.util.Map"
+        resultMap="fpinfo" >
+	select * from freeze_points where userid=#{uid} and freeze_ts_id =#{tsid}
+    </select>
+
+    <!-- 插入一条解冻记录 -->
+
+    <insert
+        id="addupfp"
+        parameterType="java.util.Map" >
+	    insert into freeze_points (userid,source,adminid,balance,state,freeze_ts_id,release_ts_id) 
+	    values(#{userid},#{source},#{adminid},#{balance},#{state},#{freeze_ts_id},#{release_ts_id})
+    </insert>
+
+</mapper>

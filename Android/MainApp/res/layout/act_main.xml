@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/parent_layout" android:background="#f1f1f1">
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/txt_title" android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF"
+				android:gravity="center" android:text="@string/STR_MAIN_TITLE"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_show_share" android:layout_marginRight="20px" android:layout_alignParentRight="true"
+				android:layout_centerVertical="true" android:scaleType="fitXY" android:padding="5px"
+				android:src="@drawable/btn_share" android:background="@null"/>
+	</RelativeLayout>
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout" android:layout_above="@+id/tab_layout">
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_app_layout"
+				android:visibility="gone">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="40px" android:background="#FFFFFF" android:id="@+id/installed_apps_title">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_INSTALLED_APPS"
+						android:id="@+id/txt_installed_apps" android:gravity="center_vertical" android:layout_marginLeft="20px"
+						android:textColor="#868686" android:textSize="23px"/>
+			</RelativeLayout>
+			<HorizontalScrollView
+					android:layout_width="match_parent"
+					android:layout_height="150px"
+					android:id="@+id/installed_apps_scrollview" android:layout_below="@+id/installed_apps_title">
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:id="@+id/installed_apps_layout">
+				</LinearLayout>
+			</HorizontalScrollView>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="40px" android:background="#FFFFFF"
+					android:id="@+id/notinstalled_apps_title" android:layout_below="@+id/installed_apps_scrollview">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="@string/STR_NOTINSTALLED_APPS"
+						android:id="@+id/txt_notinstalled_apps" android:gravity="center_vertical" android:layout_marginLeft="20px"
+						android:textColor="#868686" android:textSize="23px"/>
+			</RelativeLayout>
+			<HorizontalScrollView
+					android:layout_width="match_parent"
+					android:layout_height="300px"
+					android:id="@+id/notinstalled_apps_scrollview"
+					android:layout_below="@+id/notinstalled_apps_title">
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:id="@+id/notinstalled_apps_layout">
+				</LinearLayout>
+			</HorizontalScrollView>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_news_layout"
+				>
+			<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="60px" android:id="@+id/news_type_layout">
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent" android:background="#FFFFFF"
+						android:layout_marginBottom="3px">
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:text="@string/STR_GONGGAO"
+								android:id="@+id/txt_title_gonggao" android:gravity="center" android:textColor="@color/NEWS_TITLE_SEL_COLOR"
+								android:textSize="25px"/>
+						<Button
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/btn_title_gonggao" android:background="@drawable/bk_empty"/>
+						<ImageView
+								android:layout_width="30px"
+								android:layout_height="30px"
+								android:id="@+id/img_new_mark_gonggao" android:layout_alignParentTop="true"
+								android:layout_alignParentRight="true" android:background="@drawable/new_badge"/>
+					</RelativeLayout>
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:text="@string/STR_DINGDANXIAOXI"
+								android:id="@+id/txt_title_order_notif" android:gravity="center" android:textColor="@color/NEWS_TITLE_NORMAL_COLOR"
+								android:textSize="25px"/>
+						<Button
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/btn_title_dingdanxiaoxi" android:background="@drawable/bk_empty"/>
+						<ImageView
+								android:layout_width="30px"
+								android:layout_height="30px"
+								android:id="@+id/img_new_mark_dingdanxiaoxi" android:layout_alignParentTop="true"
+								android:layout_alignParentRight="true" android:background="@drawable/new_badge"/>
+					</RelativeLayout>
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:text="@string/STR_TONGZHI"
+								android:id="@+id/txt_title_person_notif" android:gravity="center" android:textColor="@color/NEWS_TITLE_NORMAL_COLOR"
+								android:textSize="25px"/>
+						<Button
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/btn_title_tongzhi" android:background="@drawable/bk_empty"/>
+						<ImageView
+								android:layout_width="30px"
+								android:layout_height="30px"
+								android:id="@+id/img_new_mark_tongzhi" android:layout_alignParentTop="true"
+								android:layout_alignParentRight="true" android:background="@drawable/new_badge"/>
+					</RelativeLayout>
+				</LinearLayout>
+				<RelativeLayout
+						android:layout_width="160px"
+						android:layout_height="3px" android:layout_alignParentBottom="true"
+						android:background="#4eb680" android:id="@+id/indicator_layout">
+				</RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:id="@+id/news_list_layout"
+					android:layout_below="@+id/news_type_layout" android:layout_marginTop="20px"
+					android:layout_marginBottom="20px" android:layout_marginLeft="20px"
+					android:layout_marginRight="20px">
+				<view android:layout_width="match_parent"
+				      android:layout_height="match_parent"
+				      class="com.damytech.Utils.HorizontalPager" android:id="@+id/news_list_pager"
+				      android:background="#D0D0D0"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent" android:layout_centerInParent="true"
+					android:background="#70000000" android:id="@+id/coupon_contain_layout">
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/btn_coupon_content" android:background="@drawable/bk_empty"/>
+				<RelativeLayout
+						android:layout_width="350px"
+						android:layout_height="350px" android:id="@+id/coupon_content_layout"
+						android:layout_centerInParent="true" android:background="@drawable/roundrect_white_layout"
+						android:clickable="true">
+					<ImageView
+							android:layout_width="300px"
+							android:layout_height="110px"
+							android:id="@+id/img_coupon" android:layout_centerHorizontal="true"
+							android:layout_marginTop="30px" android:background="@drawable/coupon_tmp"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/txt_coupon_content"
+							android:gravity="center"
+							android:textColor="#808080" android:textSize="29px" android:layout_marginTop="20px"
+							android:layout_below="@+id/img_coupon"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/txt_coupon_code" android:layout_below="@+id/txt_coupon_content"
+							android:layout_centerHorizontal="true"
+							android:textColor="#E7A93A" android:textSize="25px"
+							android:layout_above="@+id/txt_spreadunit_name" android:gravity="center"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/txt_spreadunit_name" android:layout_alignParentBottom="true"
+							android:layout_alignParentRight="true" android:layout_marginBottom="20px"
+							android:layout_marginRight="20px" android:textSize="23px"
+							android:textColor="#A0A0A0"/>
+				</RelativeLayout>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:id="@+id/news_content_layout"
+					android:background="#70000000" android:visibility="gone">
+				<RelativeLayout
+						android:layout_width="300px"
+						android:layout_height="400px" android:id="@+id/news_detail_layout"
+						android:layout_centerInParent="true" android:background="@drawable/roundrect_white_layout">
+					<ScrollView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/scrollView"
+							android:layout_margin="20px">
+						<RelativeLayout
+								android:layout_width="fill_parent"
+								android:layout_height="fill_parent">
+							<TextView
+									android:layout_width="match_parent"
+									android:layout_height="match_parent"
+									android:id="@+id/txt_news_detail" android:textColor="#000000"
+									android:textSize="23px" android:lines="1" android:singleLine="false"/>
+						</RelativeLayout>
+					</ScrollView>
+				</RelativeLayout>
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_person_layout"
+				android:visibility="gone">
+			<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="440px"
+					android:layout_height="280px" android:layout_centerHorizontal="true"
+					android:layout_marginTop="20px" android:id="@+id/table_layout">
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txt_top">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_WODEGERENXINXI"
+							android:id="@+id/textView" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_wodegerenxinxi" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txt_middle">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView1" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_WODEJIANPAILVDIAN"
+							android:id="@+id/textView1" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_wodejianpailvdian" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txt_top">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView2" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_WODEDIANQUAN"
+							android:id="@+id/textView2" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:id="@+id/btn_wodedianquan" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="match_parent"
+						android:layout_height="0dp" android:layout_below="@+id/table_layout"
+						android:layout_alignLeft="@+id/table_layout" android:layout_alignRight="@+id/table_layout"
+						android:layout_marginTop="30px" android:background="@drawable/img_txtback"
+						android:layout_weight="1">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView3" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_GUANYUOO"
+							android:id="@+id/textView3" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_guanyuoo" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+			</LinearLayout>
+			<Button
+					android:layout_width="400px"
+					android:layout_height="54px"
+					android:text="@string/STR_TUICHUDENGLU"
+					android:id="@+id/btn_logout" android:background="@drawable/btn_red"
+					android:layout_centerHorizontal="true"
+					android:layout_marginBottom="50px" android:layout_alignParentBottom="true"
+					android:singleLine="true" android:textColor="#FFFFFF" android:textSize="22px"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_share_layout"
+				android:visibility="gone">
+			<WebView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/share_webview"/>
+		</RelativeLayout>
+	</RelativeLayout>
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/TAB_HEIGHT" android:layout_alignParentBottom="true"
+			android:id="@+id/tab_layout" android:background="@color/TABCOLOR">
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_app" android:layout_centerHorizontal="true" android:layout_marginTop="10px"
+					android:background="@drawable/tab_app_sel"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_TAB_APP"
+					android:id="@+id/txt_app" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_app" android:textColor="@color/TAB_SEL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_app" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_news" android:layout_centerHorizontal="true" android:layout_marginTop="10px"
+					android:background="@drawable/tab_news_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_TAB_NEWS"
+					android:id="@+id/txt_news" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_news" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_news" android:background="@drawable/btn_empty"/>
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_tab_new_mark" android:layout_alignParentTop="true"
+					android:layout_alignParentRight="true" android:background="@drawable/new_badge"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_person" android:layout_centerHorizontal="true"
+					android:layout_marginTop="10px" android:background="@drawable/tab_person_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_TAB_PERSON"
+					android:id="@+id/txt_person" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_person" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_person" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_share" android:layout_centerHorizontal="true" android:layout_marginTop="10px"
+					android:background="@drawable/tab_share_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_TAB_SHARE"
+					android:id="@+id/txt_share" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_share" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_share" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+	</LinearLayout>
+</RelativeLayout>

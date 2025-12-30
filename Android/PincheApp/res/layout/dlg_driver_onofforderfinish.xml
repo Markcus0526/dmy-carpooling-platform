@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout"
+                android:background="@drawable/roundwhitewhite_frame" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="400px"
+            android:layout_height="270px"
+            android:background="@drawable/roundwhitewhite_frame">
+        <ImageView
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:id="@+id/imgHelp" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50px" android:layout_marginTop="30px" android:scaleType="fitCenter"
+                android:src="@drawable/bk_help"/>
+        <TextView
+                android:layout_width="200px"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_COMMUTEORDERFINISH_TITLE"
+                android:id="@+id/lblTitle" android:layout_alignTop="@+id/imgHelp"
+                android:layout_toRightOf="@+id/imgHelp" android:layout_alignBottom="@+id/imgHelp"
+                android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+        <Button
+                android:layout_width="130px"
+                android:layout_height="50px"
+                android:text="@string/STR_QUEDING"
+                android:id="@+id/btnOk" android:layout_below="@+id/imgHelp" android:layout_alignParentLeft="true"
+                android:layout_marginTop="15px" android:layout_marginLeft="30px"
+                android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+                android:textSize="21px"/>
+        <Button
+                android:layout_width="130px"
+                android:layout_height="50px"
+                android:text="@string/STR_QUXIAO"
+                android:id="@+id/btnCancel" android:layout_alignTop="@+id/btnOk" android:layout_alignParentRight="true"
+                android:layout_marginRight="30px" android:textSize="21px" android:textColor="@color/TITLE_BACKCOLOR"
+                android:background="@drawable/roundgreenwhite_frame"/>
+        <TextView
+                android:layout_width="80px"
+                android:layout_height="30px"
+                android:text="@string/STR_COMMUTEORDERFINISH_HINT"
+                android:id="@+id/lblHint" android:layout_below="@+id/btnOk" android:layout_alignParentLeft="true"
+                android:layout_marginTop="15px" android:layout_marginLeft="15px" android:gravity="left|top"
+                android:textColor="@color/GRAY_COLOR" android:textSize="16px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80px"
+                android:text="@string/STR_COMMUTEORDERFINISH_HINTVAL"
+                android:id="@+id/lblHintVal" android:layout_alignTop="@+id/lblHint"
+                android:layout_toRightOf="@+id/lblHint" android:layout_alignParentRight="true"
+                android:layout_marginRight="15px" android:gravity="left|top" android:textColor="@color/GRAY_COLOR"
+                android:textSize="16px"/>
+    </RelativeLayout>
+</RelativeLayout>

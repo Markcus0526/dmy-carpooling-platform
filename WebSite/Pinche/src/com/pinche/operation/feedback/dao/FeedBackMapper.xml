@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.operation.feedback.dao.FeedBackMapper" >
+
+    <resultMap
+        id="FeedBackResult"
+        type="FeedBack" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="title"
+            property="title" />
+
+        <result
+            column="ps_date"
+            property="psDate" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="userid"
+            property="userid" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="content"
+            property="content" />
+
+        <result
+            column="driver_verified"
+            property="driver_verified" />
+
+        <result
+            column="city_cur"
+            property="city_cur" />
+    </resultMap>
+
+    <select
+        id="findByCondition"
+        parameterType="java.util.Map"
+        resultMap="FeedBackResult" >
+             select f.id,f.title,f.ps_date, f.content,f.userid ,u.username ,u.phone ,u.city_cur ,u.driver_verified
+             from Feedback f , user u  where f.deleted=0  and f.userid=u.id 
+
+        <if test="id != null and &apos;&apos; != id" >
+              AND f.id = #{id}  
+        </if>
+
+        <if test="userid != null and &apos;&apos; != userid" >
+              AND f.userid= #{userid} 
+        </if>
+
+        <if test="city != null and &apos;&apos; != city" >
+              AND u.city_cur like #{city}  
+        </if>
+
+        <if test="begin != null and &apos;&apos; != begin" >
+              AND f.ps_date > #{begin}   
+        </if>
+
+        <if test="over != null and &apos;&apos; != over" >
+             and #{over} > f.ps_date   
+        </if>
+
+        <if test="userName != null and &apos;&apos; != userName" >
+              AND u.username like #{userName}  
+        </if>
+
+        <if test="phone != null and &apos;&apos; != phone" >
+              AND u.phone like #{phone}  
+        </if>
+
+        <if test="verified != null and &apos;&apos; != verified" >
+              AND u.driver_verified= #{verified}  
+        </if>
+                LIMIT #{start},#{limit}      
+    </select>
+
+    <select
+        id="countByCondition"
+        parameterType="java.util.Map"
+        resultType="int" >
+             select count(*)
+             from Feedback f , user u  where f.deleted=0  and f.userid=u.id 
+
+        <if test="id != null and &apos;&apos; != id" >
+              AND f.id = #{id}  
+        </if>
+
+        <if test="userid != null and &apos;&apos; != userid" >
+              AND f.userid= #{userid} 
+        </if>
+
+        <if test="city != null and &apos;&apos; != city" >
+              AND u.city_cur like #{city}  
+        </if>
+
+        <if test="begin != null and &apos;&apos; != begin" >
+              AND f.ps_date > #{begin}   
+        </if>
+
+        <if test="over != null and &apos;&apos; != over" >
+             and #{over} > f.ps_date   
+        </if>
+
+        <if test="userName != null and &apos;&apos; != userName" >
+              AND u.username like #{userName}  
+        </if>
+
+        <if test="phone != null and &apos;&apos; != phone" >
+              AND u.phone like #{phone}  
+        </if>
+
+        <if test="verified != null and &apos;&apos; != verified" >
+              AND u.driver_verified= #{verified}  
+        </if>
+    </select>
+
+    <select
+        id="findById"
+        parameterType="long"
+        resultMap="FeedBackResult" >
+	select f.id,f.title,f.content,f.ps_date, f.userid ,u.username ,u.phone ,u.city_cur ,u.driver_verified
+            from Feedback f , user u  where f.deleted=0  and f.userid=u.id and f.id=#{id}
+    </select>
+
+    <update
+        id="delete"
+        parameterType="long" >
+	       update feedback set deleted=1 where id=#{id}
+    </update>
+
+</mapper>

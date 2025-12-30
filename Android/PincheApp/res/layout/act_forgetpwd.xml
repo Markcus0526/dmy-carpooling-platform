@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F0F0F0">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_FORGETPWD_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/scrollView"
+	            android:layout_below="@+id/title_layout">
+		<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+		                android:id="@+id/txt_content">
+			<ImageView android:layout_width="400px" android:layout_height="56px" android:id="@+id/img_username"
+			           android:layout_centerHorizontal="true"
+                       android:background="@drawable/img_txtback"
+                       android:visibility="gone"
+			           android:layout_marginTop="30px"/>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:text="@string/STR_FORGETPWD_USERNAME" android:id="@+id/txt_username"
+                      android:visibility="gone"
+			          android:textSize="23px" android:layout_alignTop="@+id/img_username"
+			          android:layout_alignBottom="@+id/img_username" android:gravity="center_vertical"
+			          android:layout_alignLeft="@+id/img_username" android:layout_marginLeft="20px"
+			          android:textColor="#A0A0A0"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+			           android:id="@+id/img_sep_username"
+                       android:layout_alignTop="@+id/img_username"
+                       android:visibility="gone"
+			           android:layout_alignBottom="@+id/img_username" android:layout_marginTop="10px"
+			           android:layout_marginBottom="10px" android:layout_toRightOf="@+id/txt_username"
+			           android:layout_marginLeft="16px" android:background="#D0D0D0"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/edt_username"
+                      android:visibility="gone"
+                      android:layout_alignTop="@+id/img_username"
+			          android:layout_toRightOf="@+id/img_sep_username" android:layout_alignBottom="@+id/img_username"
+			          android:layout_alignRight="@+id/img_username" android:background="@drawable/bk_empty"
+			          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+			          android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="20"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="56px" android:id="@+id/img_phone"
+			           android:layout_alignLeft="@+id/img_username" android:layout_alignRight="@+id/img_username"
+			           android:layout_below="@+id/img_username" android:background="@drawable/img_txtback"
+			           android:layout_marginTop="30px"/>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:text="@string/STR_FORGETPWD_MOBILE" android:id="@+id/txt_phone" android:textSize="23px"
+			          android:gravity="center_vertical" android:textColor="#A0A0A0"
+			          android:layout_alignTop="@+id/img_phone" android:layout_alignBottom="@+id/img_phone"
+			          android:layout_alignLeft="@+id/img_phone" android:layout_marginLeft="20px"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content" android:id="@+id/img_sep_mobile"
+			           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+			           android:layout_alignTop="@+id/img_phone" android:layout_alignBottom="@+id/img_phone"
+			           android:layout_toRightOf="@+id/txt_phone" android:layout_marginLeft="16px"
+			           android:background="#D0D0D0"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/edt_mobile" android:layout_alignTop="@+id/img_phone"
+			          android:layout_toRightOf="@+id/img_sep_mobile" android:layout_alignRight="@+id/img_phone"
+			          android:layout_alignBottom="@+id/img_phone" android:background="@drawable/bk_empty"
+			          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+			          android:paddingLeft="10px" android:paddingRight="10px" android:inputType="phone"
+			          android:maxLength="11"/>
+			<Button android:layout_width="wrap_content" android:layout_height="56px"
+			        android:text="@string/STR_REGISTER_GETVERIFYKEY" android:id="@+id/btn_verifykey"
+			        android:layout_alignLeft="@+id/img_phone" android:layout_alignRight="@+id/img_phone"
+			        android:layout_below="@+id/img_phone" android:background="@drawable/btn_green"
+			        android:textColor="#FFFFFF" android:textSize="24px" android:layout_marginTop="30px"
+			        android:visibility="visible"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="56px" android:id="@+id/img_verifykey"
+			           android:layout_alignLeft="@+id/btn_verifykey" android:layout_alignRight="@+id/btn_verifykey"
+			           android:layout_below="@+id/btn_verifykey" android:background="@drawable/img_txtback"
+			           android:layout_marginTop="30px"/>
+			<ImageView android:layout_width="30px" android:layout_height="wrap_content"
+			           android:id="@+id/img_verifkey_match" android:layout_alignTop="@+id/img_verifykey"
+			           android:layout_alignBottom="@+id/img_verifykey" android:layout_alignRight="@+id/img_verifykey"
+			           android:layout_marginRight="10px" android:scaleType="centerInside"
+			           android:src="@drawable/img_match_unchecked"/>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:text="@string/STR_REGISTER_VERIFYKEY" android:id="@+id/txt_verifykey"
+			          android:textSize="23px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+			          android:layout_alignTop="@+id/img_verifykey" android:layout_alignBottom="@+id/img_verifykey"
+			          android:layout_alignLeft="@+id/img_verifykey" android:layout_marginLeft="20px"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+			           android:id="@+id/img_sep_verifkey" android:layout_alignTop="@+id/img_verifykey"
+			           android:layout_alignBottom="@+id/img_verifykey" android:background="#D0D0D0"
+			           android:layout_marginLeft="16px" android:layout_toRightOf="@+id/txt_verifykey"
+			           android:layout_marginTop="10px" android:layout_marginBottom="10px"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/edt_verifkey" android:layout_alignTop="@+id/img_verifykey"
+			          android:layout_toRightOf="@+id/img_sep_verifkey" android:layout_toLeftOf="@+id/img_verifkey_match"
+			          android:layout_alignBottom="@+id/img_verifykey" android:background="@drawable/bk_empty"
+			          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+			          android:paddingLeft="10px" android:paddingRight="10px" android:inputType="number"
+			          android:maxLength="4"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="56px" android:id="@+id/img_password"
+			           android:layout_alignLeft="@+id/img_verifykey" android:layout_alignRight="@+id/img_verifykey"
+			           android:layout_below="@+id/img_verifykey" android:background="@drawable/img_txtback"
+			           android:layout_marginTop="30px"/>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:text="@string/STR_FORGETPWD_NEWPWD" android:id="@+id/txt_password"
+			          android:textSize="23px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+			          android:layout_alignTop="@+id/img_password" android:layout_alignBottom="@+id/img_password"
+			          android:layout_alignLeft="@+id/img_password" android:layout_marginLeft="20px"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+			           android:id="@+id/img_sep_password" android:layout_marginLeft="16px"
+			           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+			           android:layout_alignTop="@+id/img_password" android:layout_alignBottom="@+id/img_password"
+			           android:layout_toRightOf="@+id/txt_password" android:background="#D0D0D0"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/edt_password" android:layout_alignTop="@+id/img_password"
+			          android:layout_alignBottom="@+id/img_password" android:layout_toRightOf="@+id/img_sep_password"
+			          android:layout_alignRight="@+id/img_password" android:background="@drawable/bk_empty"
+			          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+			          android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="16"
+			          android:inputType="textPassword"/>
+			<ImageView android:layout_width="wrap_content" android:layout_height="56px"
+			           android:id="@+id/img_confirm_pwd" android:layout_alignLeft="@+id/img_password"
+			           android:layout_alignRight="@+id/img_password" android:layout_below="@+id/img_password"
+			           android:background="@drawable/img_txtback" android:layout_marginTop="30px"/>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:text="@string/STR_FORGETPWD_CONFIRMPWD" android:id="@+id/txt_confirm_password"
+			          android:textSize="23px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+			          android:layout_marginLeft="20px" android:layout_alignTop="@+id/img_confirm_pwd"
+			          android:layout_alignBottom="@+id/img_confirm_pwd"
+			          android:layout_alignLeft="@+id/img_confirm_pwd"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+			           android:id="@+id/img_sep_confirmpwd" android:background="#D0D0D0"
+			           android:layout_marginLeft="16px" android:layout_marginTop="10px"
+			           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_confirm_pwd"
+			           android:layout_alignBottom="@+id/img_confirm_pwd"
+			           android:layout_toRightOf="@+id/txt_confirm_password"/>
+			<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+			          android:id="@+id/edt_confirm_pwd" android:layout_alignTop="@+id/img_confirm_pwd"
+			          android:layout_toRightOf="@+id/img_sep_confirmpwd"
+			          android:layout_alignBottom="@+id/img_confirm_pwd" android:layout_alignRight="@+id/img_confirm_pwd"
+			          android:background="@drawable/bk_empty" android:textColor="#505050" android:textSize="23px"
+			          android:singleLine="true" android:paddingLeft="10px" android:paddingRight="10px"
+			          android:maxLength="16" android:inputType="textPassword"/>
+			<Button android:layout_width="150px" android:layout_height="50px" android:text="@string/STR_QUEDING"
+			        android:id="@+id/btn_register" android:layout_below="@+id/img_confirm_pwd"
+			        android:layout_marginTop="30px" android:layout_marginLeft="20px"
+			        android:layout_alignLeft="@+id/img_confirm_pwd" android:textColor="#FFFFFF" android:textSize="25px"
+			        android:background="@drawable/btn_smallgreen"/>
+			<Button android:layout_width="150px" android:layout_height="50px" android:text="@string/STR_QUXIAO"
+			        android:id="@+id/btn_cancel" android:layout_alignRight="@+id/img_confirm_pwd"
+			        android:layout_alignTop="@+id/btn_register" android:layout_marginRight="20px"
+			        android:textColor="#4DB47D" android:textSize="25px" android:background="@drawable/btn_smallwhite"/>
+			<RelativeLayout android:layout_width="fill_parent" android:layout_height="30px"
+			                android:id="@+id/space_layout" android:layout_below="@+id/btn_register"/>
+		</RelativeLayout>
+	</ScrollView>
+</RelativeLayout>

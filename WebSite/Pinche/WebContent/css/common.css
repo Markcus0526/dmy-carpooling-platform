@@ -1,0 +1,16 @@
+/* CSS Document清除默认样式 */
+html, body, div, span,iframe,h1, h2, h3, h4, h5, h6, p, pre,a, em, img,small,strong,b, i,dl, dt, dd, ol, ul, li, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, footer, header,  menu, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+ss
+    vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+aside, footer, header,  menu, nav, section {display: block;}
+ol, ul {list-style: none;}
+a{text-decoration:none;}
+input{background:none;outline:none;border:none;}
+
+body{font-size:10px;font-family:"微软雅黑","Microsoft YaHei";}
+.box{width:100%;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-box-align:center;-webkit-box-pack:center;display:-ms-box;display:-o-box;}

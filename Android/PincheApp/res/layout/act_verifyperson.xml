@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1F1F1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_VERIFYPERSON_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout">
+		<ImageView
+				android:layout_width="180px"
+				android:layout_height="180px"
+				android:id="@+id/img_idcard_fore" android:layout_marginLeft="40px" android:layout_marginTop="40px"
+				android:scaleType="fitXY" android:src="@drawable/bk_idcard_fore"/>
+		<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/btn_idcard_foreimage" android:layout_alignTop="@+id/img_idcard_fore"
+				android:layout_alignLeft="@+id/img_idcard_fore" android:layout_alignBottom="@+id/img_idcard_fore"
+				android:layout_alignRight="@+id/img_idcard_fore" android:background="@drawable/btn_empty"/>
+		<ImageView
+				android:layout_width="180px"
+				android:layout_height="180px"
+				android:id="@+id/img_idcard_back" android:layout_marginRight="40px" android:layout_alignParentRight="true"
+				android:layout_marginTop="40px" android:scaleType="fitXY" android:src="@drawable/bk_idcard_back"/>
+		<ImageButton
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/btn_idcard_backimage" android:layout_alignTop="@+id/img_idcard_back"
+				android:layout_alignLeft="@+id/img_idcard_back" android:layout_alignBottom="@+id/img_idcard_back"
+				android:layout_alignRight="@+id/img_idcard_back" android:background="@drawable/btn_empty"/>
+		<ImageView
+				android:layout_width="30px"
+				android:layout_height="30px"
+				android:id="@+id/img_icon1" android:layout_marginLeft="40px"
+				android:layout_below="@+id/img_idcard_fore" android:layout_marginTop="60px"
+				android:background="@drawable/idverify_icon1"/>
+		<TextView
+				android:layout_width="350px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_VERIFYPERSON_MSG1"
+				android:id="@+id/txt_msg1" android:layout_alignTop="@+id/img_icon1"
+				android:layout_marginLeft="20px"
+				android:layout_toRightOf="@+id/img_icon1" android:textColor="#707070" android:textSize="21px"
+				android:gravity="center_vertical|left" android:layout_marginTop="3px"/>
+		<ImageView
+				android:layout_width="30px"
+				android:layout_height="30px"
+				android:id="@+id/img_icon2" android:layout_alignLeft="@+id/img_icon1"
+				android:layout_below="@+id/txt_msg1" android:background="@drawable/idverify_icon2"
+				android:layout_marginTop="30px"/>
+		<TextView
+				android:layout_width="350px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_VERIFYPERSON_MSG2"
+				android:id="@+id/txt_msg2" android:layout_alignTop="@+id/img_icon2"
+				android:layout_alignLeft="@+id/txt_msg1"
+				android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+				android:layout_marginTop="3px"/>
+		<ImageView
+				android:layout_width="30px"
+				android:layout_height="30px"
+				android:id="@+id/img_icon3" android:layout_alignLeft="@+id/img_icon1"
+				android:layout_below="@+id/txt_msg2" android:background="@drawable/idverify_icon3"
+				android:layout_marginTop="30px"/>
+		<TextView
+				android:layout_width="350px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_VERIFYPERSON_MSG3"
+				android:id="@+id/txt_msg3"
+				android:layout_alignTop="@+id/img_icon3" android:layout_alignLeft="@+id/txt_msg2"
+				android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+				android:layout_marginTop="3px"/>
+		<ImageView
+				android:layout_width="30px"
+				android:layout_height="30px"
+				android:id="@+id/img_icon4" android:layout_alignLeft="@+id/img_icon1"
+				android:layout_below="@+id/txt_msg3" android:background="@drawable/idverify_icon4"
+				android:layout_marginTop="30px"/>
+		<TextView
+				android:layout_width="350px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_VERIFYPERSON_MSG4"
+				android:id="@+id/txt_msg4" android:layout_alignTop="@+id/img_icon4"
+				android:layout_alignLeft="@+id/txt_msg3"
+				android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+				android:layout_marginTop="3px"/>
+		<ImageView
+				android:layout_width="30px"
+				android:layout_height="30px"
+				android:id="@+id/img_icon5" android:layout_alignLeft="@+id/img_icon1"
+				android:layout_below="@+id/txt_msg4" android:background="@drawable/idverify_icon5"
+				android:layout_marginTop="30px"/>
+		<TextView
+				android:layout_width="350px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_VERIFYPERSON_MSG5"
+				android:id="@+id/txt_msg5" android:layout_alignTop="@+id/img_icon5"
+				android:layout_alignLeft="@+id/txt_msg4"
+				android:textColor="#707070" android:textSize="21px" android:gravity="center_vertical|left"
+				android:layout_marginRight="30px" android:layout_marginTop="3px"/>
+		<Button
+				android:layout_width="wrap_content"
+				android:layout_height="54px"
+				android:text="@string/STR_VERIFYPERSON_TIJIAO"
+				android:id="@+id/btn_upload" android:layout_alignLeft="@+id/img_idcard_fore"
+				android:layout_alignRight="@+id/img_idcard_back" android:background="@drawable/btn_green"
+				android:textColor="#FFFFFF"
+				android:textSize="23px" android:layout_marginBottom="30px" android:layout_alignParentBottom="true"/>
+	</RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+			android:id="@+id/title_layout">
+		<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:text="@string/STR_MAIN_TITLE_DRIVER"
+				android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+				android:textSize="@dimen/TITLE_FONTSIZE"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_switch_identify" android:layout_centerVertical="true"
+				android:layout_marginLeft="20px" android:background="@null"
+				android:src="@drawable/btn_switch_identify" android:scaleType="fitXY" android:padding="5px"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_news" android:layout_centerVertical="true" android:layout_marginRight="20px"
+				android:layout_alignParentRight="true" android:background="@null" android:src="@drawable/btn_news"
+				android:scaleType="fitXY" android:padding="5px"/>
+		<ImageView
+				android:layout_width="20px"
+				android:layout_height="20px"
+				android:id="@+id/img_has_news" android:layout_alignParentRight="true"
+				android:background="@drawable/new_badge" android:layout_alignWithParentIfMissing="false"
+				android:layout_marginTop="5px" android:layout_marginRight="10px" android:visibility="invisible"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_share" android:layout_centerVertical="true"
+				android:layout_alignParentRight="true" android:layout_marginRight="20px" android:background="@null"
+				android:scaleType="fitXY" android:src="@drawable/btn_share" android:padding="5px"
+				/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tab_main_layout" android:visibility="visible"
+				android:background="#F1F1F1">
+			<ImageView
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:id="@+id/img_back" android:background="@drawable/driver_main_back"
+					android:visibility="visible"/>
+			<view android:layout_width="160px"
+			      android:layout_height="160px"
+			      class="com.damytech.Utils.image.SmartImageView" android:id="@+id/img_photo"
+			      android:layout_marginTop="135px" android:layout_centerHorizontal="true"
+			      android:visibility="visible" android:padding="1px"/>
+			<ImageButton
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/btn_frame" android:layout_alignTop="@+id/img_photo"
+					android:layout_alignLeft="@+id/img_photo" android:layout_alignBottom="@+id/img_photo"
+					android:layout_alignRight="@+id/img_photo" android:background="@drawable/btn_frame"/>
+			<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:id="@+id/verify_layout">
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="54px" android:id="@+id/person_verify_layout"
+						android:visibility="invisible">
+					<Button
+							android:layout_width="110px"
+							android:layout_height="36px"
+							android:text="@string/STR_MAIN_GOTOVERIFY"
+							android:id="@+id/btn_person_verify" android:layout_centerVertical="true"
+							android:layout_alignParentRight="true" android:layout_marginRight="40px"
+							android:background="@drawable/btn_smallgreen" android:textColor="#FFFFFF"
+							android:textSize="21px"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_PERSON_NOTVERIFIED"
+							android:id="@+id/txt_person_verify" android:layout_alignParentLeft="true"
+							android:layout_toLeftOf="@+id/btn_person_verify" android:textSize="20px"
+							android:textColor="#FFFFFF" android:gravity="center_vertical" android:layout_marginLeft="20px"
+							android:layout_marginRight="20px"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="54px" android:id="@+id/driver_verify_layout"
+						android:visibility="invisible">
+					<Button
+							android:layout_width="110px"
+							android:layout_height="36px"
+							android:text="@string/STR_MAIN_GOTOVERIFY"
+							android:id="@+id/btn_driver_verify" android:layout_centerVertical="true"
+							android:layout_alignParentRight="true" android:layout_marginRight="40px"
+							android:background="@drawable/btn_smallgreen" android:textColor="#FFFFFF"
+							android:textSize="21px"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_DRIVER_NOTVERIFIED"
+							android:id="@+id/txt_driver_verify" android:layout_alignParentLeft="true"
+							android:layout_toLeftOf="@+id/btn_driver_verify" android:textSize="20px"
+							android:textColor="#FFFFFF" android:gravity="center_vertical" android:layout_marginLeft="20px"
+							android:layout_marginRight="20px"/>
+				</RelativeLayout>
+			</LinearLayout>
+			<ImageButton
+					android:layout_width="170px"
+					android:layout_height="170px"
+					android:id="@+id/btn_send_longorder"
+					android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+					android:layout_marginBottom="80px" android:layout_marginLeft="40px"
+					android:scaleType="centerInside" android:background="@drawable/btn_open_longorder"/>
+			<ImageButton
+					android:layout_width="170px"
+					android:layout_height="170px"
+					android:id="@+id/btn_view_cityorder" android:background="@drawable/btn_view_cityorder"
+					android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+					android:layout_marginBottom="80px" android:layout_marginRight="40px"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tab_order_layout" android:background="#F1F1F1"
+				android:visibility="gone">
+			<RelativeLayout
+			        android:layout_width="fill_parent"
+			        android:layout_height="60px" android:layout_alignParentTop="true"
+			        android:layout_alignParentLeft="true" android:background="@color/WHITE_COLOR"
+                    android:gravity="center"
+			        android:id="@+id/relativeLayout">
+			    <ImageView
+			            android:layout_width="24px"
+			            android:layout_height="24px"
+			            android:id="@+id/imgAll" android:layout_centerVertical="true"
+			            android:layout_alignParentLeft="true" android:layout_marginLeft="30px"
+                        android:visibility="gone"
+			            android:scaleType="fitCenter" android:src="@drawable/radiobox_roundsel"/>
+			    <TextView
+			            android:layout_width="50px"
+			            android:layout_height="fill_parent"
+			            android:text="@string/STR_MYORDERLIST_ALL"
+                        android:visibility="gone"
+			            android:id="@+id/lblAll" android:layout_alignParentTop="true"
+			            android:layout_toRightOf="@+id/imgAll" android:layout_marginLeft="5px"
+			            android:textColor="@color/GRAY_COLOR" android:textSize="18px" android:gravity="center_vertical|left"/>
+			    <ImageView
+			            android:layout_width="24px"
+			            android:layout_height="24px"
+			            android:id="@+id/imgReqOpr" android:layout_centerVertical="true"
+			            android:layout_toRightOf="@+id/lblAll" android:layout_marginLeft="30px"
+			            android:scaleType="fitCenter" android:src="@drawable/radiobox_roundsel"/>
+			    <TextView
+			            android:layout_width="60px"
+			            android:layout_height="fill_parent"
+			            android:text="@string/STR_MYORDERLIST_REQOPR"
+			            android:id="@+id/lblReqOpr" android:layout_centerVertical="true"
+			            android:layout_toRightOf="@+id/imgReqOpr" android:layout_marginLeft="5px" android:gravity="center_vertical|left"
+			            android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+			    <ImageView
+			            android:layout_width="24px"
+			            android:layout_height="24px"
+			            android:id="@+id/imgOnce" android:layout_centerVertical="true"
+			            android:layout_toRightOf="@+id/lblReqOpr" android:layout_marginLeft="30px"
+			            android:scaleType="fitCenter" android:src="@drawable/radiobox_roundnormal"/>
+			    <TextView
+			            android:layout_width="50px"
+			            android:layout_height="fill_parent"
+			            android:text="@string/STR_MYORDERLIST_ONCE"
+			            android:id="@+id/lblOnce" android:layout_centerVertical="true"
+			            android:layout_toRightOf="@+id/imgOnce" android:layout_marginLeft="5px" android:gravity="center_vertical|left"
+			            android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+                <ImageView
+			            android:layout_width="24px"
+			            android:layout_height="24px"
+			            android:id="@+id/imgLongDist" android:layout_centerVertical="true"
+                        android:layout_marginLeft="30px"
+			            android:scaleType="fitCenter" android:src="@drawable/radiobox_roundnormal"
+                        android:layout_toRightOf="@+id/lblOnce"/>
+			    <TextView
+			            android:layout_width="50px"
+			            android:layout_height="fill_parent"
+			            android:text="@string/STR_MYORDERLIST_LONGDIST"
+			            android:id="@+id/lblLongDist" android:layout_centerVertical="true"
+			            android:layout_toRightOf="@+id/imgLongDist" android:layout_marginLeft="5px" android:gravity="center_vertical|left"
+			            android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+			</RelativeLayout>
+			<view android:layout_width="fill_parent"
+		          android:layout_height="fill_parent"
+		          class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView" android:id="@+id/driverOrderList"
+		          android:layout_below="@+id/relativeLayout" android:layout_alignParentLeft="true"
+		          android:background="#00000000"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/STR_MSG_NO_ORDERS"
+                    android:id="@+id/lblNoOrders" android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true" android:textColor="@color/GRAY_COLOR"
+                    android:textSize="22px" android:visibility="gone"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tab_person_layout" android:background="#F1F1F1"
+				>
+			<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="440px"
+					android:layout_height="400px" android:layout_centerHorizontal="true"
+					android:layout_marginTop="20px" android:id="@+id/table_layout">
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txtback">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_WODEGERENXINXI"
+							android:id="@+id/textView" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_wodegerenxinxi" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0px" android:layout_weight="1"
+						android:background="@drawable/img_txt_bottom" android:visibility="gone">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView4" android:layout_marginRight="5px"
+							android:layout_centerVertical="true" android:layout_alignParentRight="true"
+							android:background="@drawable/img_right_arrow"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_SHEZHIRICHANGLUXIAN"
+							android:id="@+id/textView4" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textColor="#707070" android:textSize="21px"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_route_setting" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txt_top" android:layout_marginTop="30px">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView1" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_WODEJIANPAILVDIAN"
+							android:id="@+id/textView1" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_wodejianpailvdian" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0dp" android:layout_weight="1"
+						android:background="@drawable/img_txt_bottom">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView2" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_WODEDIANQUAN"
+							android:id="@+id/textView2" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:id="@+id/btn_wodedianquan" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="0px" android:layout_weight="1" android:layout_marginTop="30px"
+						android:background="@drawable/img_txt_top">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView5" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:layout_marginRight="5px"
+							android:background="@drawable/img_right_arrow"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_PINCHEGONGLVE"
+							android:id="@+id/textView5" android:textColor="#707070" android:textSize="21px"
+							android:gravity="center_vertical|left" android:layout_marginLeft="20px"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_pinche_stratigy" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="match_parent"
+						android:layout_height="0dp" android:layout_below="@+id/table_layout"
+						android:layout_alignLeft="@+id/table_layout" android:layout_alignRight="@+id/table_layout"
+						android:background="@drawable/img_txt_bottom"
+						android:layout_weight="1">
+					<ImageView
+							android:layout_width="30px"
+							android:layout_height="30px"
+							android:id="@+id/imageView3" android:layout_alignParentRight="true"
+							android:layout_centerVertical="true" android:background="@drawable/img_right_arrow"
+							android:layout_marginRight="5px"/>
+					<TextView
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:text="@string/STR_MAIN_GUANYUOO"
+							android:id="@+id/textView3" android:gravity="center_vertical|left"
+							android:layout_marginLeft="20px" android:textSize="21px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:id="@+id/btn_guanyuoo" android:background="@drawable/btn_empty"/>
+				</RelativeLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/table_layout"
+                        android:layout_alignLeft="@+id/table_layout"
+                        android:layout_alignRight="@+id/table_layout"
+                        android:background="@drawable/img_txt_bottom"
+                        android:layout_weight="1">
+                    <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="@string/STR_MAIN_TUICHUDENGLU"
+                            android:id="@+id/btn_logout"
+                            android:background="@drawable/btn_empty"
+                            android:singleLine="true"
+                            android:gravity="left|center_vertical"
+                            android:paddingLeft="20px"
+                            android:textColor="#707070"
+                            android:textSize="21px"/>
+                    <ImageView
+                            android:layout_width="30px"
+                            android:layout_height="30px"
+                            android:id="@+id/imageView7"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/img_right_arrow"
+                            android:layout_marginRight="5px"/>
+                </RelativeLayout>
+
+			</LinearLayout>
+
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tab_share_layout"
+				android:background="#F1F1F1" android:visibility="gone">
+			<WebView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/share_webview"/>
+		</RelativeLayout>
+	</RelativeLayout>
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/TAB_HEIGHT" android:id="@+id/tab_layout" android:layout_alignParentBottom="true"
+			android:background="@color/TABCOLOR">
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="30px"
+					android:layout_height="30px"
+					android:id="@+id/img_shouye" android:layout_centerHorizontal="true" android:layout_marginTop="15px"
+					android:background="@drawable/tab_shouye_sel"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_MAIN_TAB_SHOUYE"
+					android:id="@+id/txt_shouye" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_shouye" android:textColor="@color/TAB_SEL_COLOR"
+					android:textSize="19px" android:layout_marginTop="5px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_shouye" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="30px"
+					android:layout_height="30px"
+					android:id="@+id/img_wodedingdan" android:layout_centerHorizontal="true" android:layout_marginTop="15px"
+					android:background="@drawable/tab_wodedingdan_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_MAIN_TAB_WODEDINGDAN"
+					android:id="@+id/txt_wodedingdan" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_wodedingdan" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px" android:layout_marginTop="5px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_wodedingdan" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_person" android:layout_centerHorizontal="true"
+					android:layout_marginTop="10px" android:background="@drawable/tab_person_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_MAIN_TAB_GERENZHONGXIN"
+					android:id="@+id/txt_person" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_person" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_person" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<ImageView
+					android:layout_width="40px"
+					android:layout_height="40px"
+					android:id="@+id/img_share" android:layout_centerHorizontal="true" android:layout_marginTop="10px"
+					android:background="@drawable/tab_share_normal"/>
+			<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/STR_MAIN_TAB_FENXIANG"
+					android:id="@+id/txt_share" android:layout_centerHorizontal="true"
+					android:layout_below="@+id/img_share" android:textColor="@color/TAB_NORMAL_COLOR"
+					android:textSize="19px"/>
+			<ImageButton
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/btn_tab_share" android:background="@drawable/btn_empty"/>
+		</RelativeLayout>
+	</LinearLayout>
+</RelativeLayout>

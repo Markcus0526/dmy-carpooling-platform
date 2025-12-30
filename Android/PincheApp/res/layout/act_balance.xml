@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#F1F1F1">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_BALANCE_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout" android:layout_above="@+id/tab_layout">
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_chaxun_layout"
+				android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:visibility="gone">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="70px" android:background="#FFFFFF"
+					android:id="@+id/balance_titlelayout">
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:text="@string/STR_BALANCE_MYBALANCE"
+						android:id="@+id/lbl_balance" android:layout_marginLeft="60px" android:gravity="center_vertical"
+						android:textSize="23px" android:textColor="#707070"/>
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="match_parent"
+						android:id="@+id/txt_balance" android:gravity="center_vertical"
+						android:layout_toRightOf="@+id/lbl_balance" android:layout_marginLeft="20px"
+						android:textSize="23px" android:textColor="#ffa037"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/STR_BALANCE_MYBALANCE_DES"
+                        android:id="@+id/lbl_balance_des"
+                        android:layout_marginLeft="20px"
+                        android:gravity="center_vertical"
+                        android:layout_toRightOf="@+id/txt_balance"
+                        android:textSize="23px"
+                        android:textColor="#707070"/>
+				<ImageView
+						android:layout_width="match_parent"
+						android:layout_height="1px"
+						android:id="@+id/img_sep_balance" android:layout_alignParentBottom="true"
+						android:background="#707070"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="55px" android:id="@+id/chaxun_result_layout"
+					android:layout_below="@+id/balance_titlelayout" android:layout_marginLeft="20px"
+					android:layout_marginTop="40px" android:layout_marginRight="20px"
+					android:background="@drawable/lvdian_header">
+				<LinearLayout
+						android:orientation="horizontal"
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" android:id="@+id/chaxun_result_scroll_header">
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="2">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/txt_jiaoyi_id" android:textSize="21px" android:textColor="#FFFFFF"
+								android:gravity="center" android:text="@string/STR_BALANCE_JIAOYISHIJIAN"/>
+						<ImageView
+								android:layout_width="1px"
+								android:layout_height="match_parent"
+								android:id="@+id/imageView" android:background="#303030"
+								android:layout_alignParentRight="true"/>
+					</RelativeLayout>
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/txt_jinchuzhang" android:textSize="21px" android:textColor="#FFFFFF"
+								android:gravity="center" android:text="@string/STR_BALANCE_JINCHUZHANG"/>
+						<ImageView
+								android:layout_width="1px"
+								android:layout_height="match_parent"
+								android:id="@+id/imageView1" android:background="#303030"
+								android:layout_alignParentRight="true"/>
+					</RelativeLayout>
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/txt_laiyuan" android:textSize="21px" android:textColor="#FFFFFF"
+								android:gravity="center" android:text="@string/STR_BALANCE_LAIYUAN"/>
+						<ImageView
+								android:layout_width="1px"
+								android:layout_height="match_parent"
+								android:id="@+id/imageView2" android:background="#303030"
+								android:layout_alignParentRight="true"/>
+					</RelativeLayout>
+					<RelativeLayout
+							android:layout_width="0dp"
+							android:layout_height="fill_parent" android:layout_weight="1">
+						<TextView
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:id="@+id/txt_yue" android:textSize="21px" android:textColor="#FFFFFF"
+								android:gravity="center" android:text="@string/STR_BALANCE_YUE"/>
+					</RelativeLayout>
+				</LinearLayout>
+			</RelativeLayout>
+			<view android:layout_width="wrap_content"
+			      android:layout_height="match_parent"
+			      class="com.damytech.Utils.Android_PullToRefresh.PullToRefreshListView" android:id="@+id/chaxun_result_listview"
+			      android:layout_alignLeft="@+id/chaxun_result_layout"
+			      android:layout_below="@+id/chaxun_result_layout"
+			      android:layout_alignRight="@+id/chaxun_result_layout" android:layout_marginBottom="30px"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" android:id="@+id/tab_chongzhi_layout" android:visibility="gone">
+			<RelativeLayout android:layout_width="fill_parent" android:layout_height="70px" android:background="#FFFFFF"
+			                android:id="@+id/chongzhi_title_layout">
+				<TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+				          android:text="@string/STR_BALANCE_MYBALANCE" android:id="@+id/lbl_balance2"
+				          android:layout_marginLeft="60px" android:gravity="center_vertical" android:textSize="23px"
+				          android:textColor="#707070"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+				          android:id="@+id/txt_balance2" android:gravity="center_vertical"
+				          android:layout_toRightOf="@+id/lbl_balance2" android:layout_marginLeft="20px"
+				          android:textSize="23px" android:textColor="#ffa037"/>
+				<ImageView android:layout_width="match_parent" android:layout_height="1px"
+				           android:id="@+id/imageView3" android:layout_alignParentBottom="true"
+				           android:background="#707070"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:layout_below="@+id/chongzhi_title_layout"
+					android:id="@+id/chongzhi_content_layout">
+				<ImageView android:layout_width="match_parent" android:layout_height="56px" android:id="@+id/img_txt_back"
+				           android:background="@drawable/img_txtback"
+				           android:layout_marginTop="50px" android:layout_marginLeft="50px"
+				           android:layout_marginRight="50px"/>
+				<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+				          android:text="@string/STR_BALANCE_CHARGE_BALANCE" android:id="@+id/lbl_balance_charge_" android:textSize="23px"
+				          android:gravity="center_vertical" android:textColor="#707070"
+				          android:layout_alignTop="@+id/img_txt_back" android:layout_alignBottom="@+id/img_txt_back"
+				          android:layout_marginLeft="20px" android:layout_alignLeft="@+id/img_txt_back"/>
+				<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+				           android:id="@+id/img_sep_charge_balance" android:layout_marginTop="10px"
+				           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_txt_back"
+				           android:layout_alignBottom="@+id/img_txt_back" android:layout_toRightOf="@+id/lbl_balance_charge_"
+				           android:layout_marginLeft="16px" android:background="#D0D0D0"/>
+				<EditText android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+				          android:id="@+id/edt_balance"
+                          android:layout_alignTop="@+id/img_txt_back"
+				          android:layout_toRightOf="@+id/img_sep_charge_balance"
+				          android:layout_alignBottom="@+id/img_txt_back"
+                          android:background="@drawable/bk_empty"
+				          android:textColor="#505050"
+                          android:textSize="23px"
+                          android:singleLine="true"
+				          android:paddingLeft="10px"
+                          android:paddingRight="10px"
+				          android:layout_toLeftOf="@+id/edt_charge_balance_dian"
+                          android:maxLength="4"
+                          android:numeric="integer"
+                        />
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/STR_BALANCE_DIAN"
+						android:id="@+id/edt_charge_balance_dian" android:layout_alignTop="@+id/img_txt_back"
+						android:layout_alignBottom="@+id/img_txt_back" android:layout_alignRight="@+id/img_txt_back"
+						android:gravity="center" android:layout_marginRight="20px" android:textColor="#707070"
+						android:textSize="23px"/>
+				<Button
+						android:layout_width="wrap_content"
+						android:layout_height="54px"
+						android:text="@string/STR_BALANCE_QUEDINGCHONGZHI"
+						android:id="@+id/btn_charge" android:layout_below="@+id/img_txt_back"
+						android:layout_alignLeft="@+id/img_txt_back" android:layout_alignRight="@+id/img_txt_back"
+						android:background="@drawable/btn_green" android:layout_marginTop="30px"
+						android:textColor="#FFFFFF" android:textSize="21px"/>
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tab_tixian_layout" android:visibility="visible">
+			<ScrollView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/scrollView">
+				<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+						>
+					<ImageView android:layout_width="440px" android:layout_height="56px" android:id="@+id/img_realname"
+					           android:layout_centerHorizontal="true" android:background="@drawable/img_txtback"
+					           android:layout_marginTop="30px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_BALANCE_ZHANGHUXINGMING" android:id="@+id/txt_realname"
+					          android:textSize="23px" android:layout_alignTop="@+id/img_realname"
+					          android:layout_alignBottom="@+id/img_realname" android:gravity="center_vertical"
+					          android:layout_alignLeft="@+id/img_realname" android:layout_marginLeft="10px"
+					          android:textColor="#A0A0A0"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_realname" android:layout_alignTop="@+id/img_realname"
+					           android:layout_alignBottom="@+id/img_realname" android:layout_marginTop="10px"
+					           android:layout_marginBottom="10px" android:layout_toRightOf="@+id/txt_realname"
+					           android:layout_marginLeft="10px" android:background="#D0D0D0"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/edt_realname" android:layout_alignTop="@+id/img_realname"
+							android:layout_toRightOf="@+id/img_sep_realname" android:layout_alignRight="@+id/img_realname"
+							android:layout_alignBottom="@+id/img_realname" android:textColor="#707070"
+							android:textSize="23px" android:gravity="center_vertical" android:ellipsize="end"
+							android:singleLine="true"/>
+					<ImageView android:layout_width="wrap_content" android:layout_height="56px" android:id="@+id/img_accountname"
+					           android:layout_alignLeft="@+id/img_realname" android:layout_alignRight="@+id/img_realname"
+					           android:layout_below="@+id/img_realname" android:background="@drawable/img_txtback"
+					           android:layout_marginTop="30px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_BALANCE_TIXIANZHANGHU" android:id="@+id/txt_accountname" android:textSize="23px"
+					          android:gravity="center_vertical" android:textColor="#A0A0A0"
+					          android:layout_alignTop="@+id/img_accountname" android:layout_alignBottom="@+id/img_accountname"
+					          android:layout_alignLeft="@+id/img_accountname" android:layout_marginLeft="10px"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content" android:id="@+id/img_sep_accountname"
+					           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+					           android:layout_alignTop="@+id/img_accountname" android:layout_alignBottom="@+id/img_accountname"
+					           android:layout_toRightOf="@+id/txt_accountname" android:layout_marginLeft="10px"
+					           android:background="#D0D0D0"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:id="@+id/edt_accountname" android:layout_alignTop="@+id/img_accountname"
+							android:layout_toRightOf="@+id/img_sep_accountname"
+							android:layout_alignBottom="@+id/img_accountname"
+							android:layout_alignRight="@+id/img_accountname" android:textColor="#707070"
+							android:textSize="23px" android:gravity="center_vertical" android:ellipsize="end"
+							android:singleLine="true"/>
+					<Button android:layout_width="wrap_content" android:layout_height="56px"
+					        android:text="@string/STR_BALANCE_XIUGAIBANGDINGZHANGHU" android:id="@+id/btn_change_accountname"
+					        android:layout_alignLeft="@+id/img_accountname" android:layout_alignRight="@+id/img_accountname"
+					        android:layout_below="@+id/img_accountname" android:background="@drawable/btn_green"
+					        android:textColor="#FFFFFF" android:textSize="24px" android:layout_marginTop="30px"
+					        android:visibility="visible"/>
+					<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="@string/STR_BALANCE_MSG1"
+							android:id="@+id/txt_msg" android:layout_alignLeft="@+id/btn_change_accountname"
+							android:layout_alignRight="@+id/btn_change_accountname" android:layout_below="@+id/btn_change_accountname"
+							android:layout_marginTop="60px" android:textColor="#707070" android:textSize="17px"/>
+					<ImageView android:layout_width="wrap_content" android:layout_height="56px" android:id="@+id/img_withdraw_balance"
+					           android:layout_alignLeft="@+id/img_accountname" android:layout_alignRight="@+id/img_accountname"
+					           android:layout_below="@+id/btn_change_accountname" android:background="@drawable/img_txtback"
+					           android:layout_marginTop="100px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_BALANCE_TIXIANDIANSHU" android:id="@+id/txt_withdraw_pwd"
+					          android:textSize="23px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+					          android:layout_alignTop="@+id/img_withdraw_balance" android:layout_alignBottom="@+id/img_withdraw_balance"
+					          android:layout_alignLeft="@+id/img_withdraw_balance" android:layout_marginLeft="10px"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_withdraw" android:layout_marginLeft="10px"
+					           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+					           android:layout_alignTop="@+id/img_withdraw_balance" android:layout_alignBottom="@+id/img_withdraw_balance"
+					           android:layout_toRightOf="@+id/txt_withdraw_pwd" android:background="#D0D0D0"/>
+					<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/edt_withdraw_balance" android:layout_alignTop="@+id/img_withdraw_balance"
+					          android:layout_alignBottom="@+id/img_withdraw_balance" android:layout_toRightOf="@+id/img_sep_withdraw"
+					          android:layout_alignRight="@+id/img_withdraw_balance" android:background="@drawable/bk_empty"
+					          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+					          android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="4"
+                              android:ellipsize="end" android:numeric="integer" android:inputType="numberSigned"/>
+					<Button
+							android:layout_width="110px"
+							android:layout_height="56px"
+							android:text="@string/STR_BALANCE_WANGJIMIMA"
+							android:id="@+id/btn_forget_pwd" android:background="@drawable/btn_smallwhite"
+							android:layout_below="@+id/img_withdraw_balance" android:layout_marginTop="20px"
+							android:layout_alignRight="@+id/img_withdraw_balance" android:textColor="#4db47d"
+							android:textSize="23px"/>
+					<ImageView android:layout_width="wrap_content" android:layout_height="56px"
+					           android:id="@+id/img_login_pwd" android:layout_alignLeft="@+id/img_withdraw_balance"
+					           android:layout_below="@+id/img_withdraw_balance"
+					           android:background="@drawable/img_txtback" android:layout_marginTop="20px"
+					           android:layout_toLeftOf="@+id/btn_forget_pwd" android:layout_marginRight="10px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_BALANCE_DENGLUMIMA" android:id="@+id/txt_login_pwd"
+					          android:textSize="23px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+					          android:layout_marginLeft="10px" android:layout_alignTop="@+id/img_login_pwd"
+					          android:layout_alignBottom="@+id/img_login_pwd"
+					          android:layout_alignLeft="@+id/img_login_pwd"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_login_pwd" android:background="#D0D0D0"
+					           android:layout_marginLeft="10px" android:layout_marginTop="10px"
+					           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_login_pwd"
+					           android:layout_alignBottom="@+id/img_login_pwd"
+					           android:layout_toRightOf="@+id/txt_login_pwd"/>
+					<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/edt_login_pwd" android:layout_alignTop="@+id/img_login_pwd"
+					          android:layout_toRightOf="@+id/img_sep_login_pwd"
+					          android:layout_alignBottom="@+id/img_login_pwd" android:layout_alignRight="@+id/img_login_pwd"
+					          android:background="@drawable/bk_empty" android:textColor="#505050" android:textSize="23px"
+					          android:singleLine="true" android:paddingLeft="10px" android:paddingRight="10px"
+					          android:maxLength="20" android:inputType="textPassword" android:ellipsize="end"/>
+                    <Button
+							android:layout_width="wrap_content"
+							android:layout_height="56px"
+							android:text="@string/STR_BALANCE_TIXIAN"
+							android:id="@+id/btn_withdraw" android:layout_below="@+id/btn_forget_pwd"
+							android:layout_alignLeft="@+id/img_withdraw_balance" android:layout_alignRight="@+id/img_withdraw_balance"
+							android:layout_marginTop="20px" android:background="@drawable/btn_green"
+							android:textColor="#FFFFFF" android:textSize="24px"/>
+                    <RelativeLayout android:layout_width="fill_parent" android:layout_height="30px"
+                                    android:id="@+id/space_layout" android:layout_below="@+id/btn_withdraw"/>
+                    <Button
+                            android:layout_width="fill_parent"
+                            android:layout_height="56px"
+                            android:text="@string/STR_WITHDRAWLOG_TITLE"
+                            android:id="@+id/btnWithdrawLog" android:textColor="@color/WHITE_COLOR"
+                            android:textSize="24px" android:layout_alignLeft="@+id/btn_withdraw"
+                            android:layout_below="@+id/space_layout" android:layout_alignRight="@+id/btn_withdraw"
+                            android:background="@drawable/btn_green"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="40px"
+                            android:id="@+id/lblRemain" android:layout_below="@+id/btn_change_accountname"
+                            android:layout_alignLeft="@+id/btn_change_accountname"
+                            android:layout_alignRight="@+id/btn_forget_pwd" android:layout_marginTop="10px"
+                            android:gravity="center_vertical|left" android:textSize="30px"
+                            android:textColor="@color/GRAY_COLOR"/>
+                </RelativeLayout>
+			</ScrollView>
+		</RelativeLayout>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="66px" android:id="@+id/tab_layout"
+			android:layout_alignParentBottom="true">
+		<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="1"
+					android:background="@drawable/btn_chaxun_active" android:id="@+id/bk_chaxun_layout">
+				<ImageButton
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/btn_tab_chaxun" android:background="@drawable/btn_empty"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="1"
+					android:background="@drawable/btn_chongzhi_normal" android:id="@+id/bk_chongzhi_layout">
+				<ImageButton
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/btn_tab_chongzhi" android:background="@drawable/btn_empty"/>
+			</RelativeLayout>
+			<RelativeLayout
+					android:layout_width="0dp"
+					android:layout_height="fill_parent" android:layout_weight="1"
+					android:background="@drawable/btn_tixian_normal" android:id="@+id/bk_tixian_layout">
+				<ImageButton
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/btn_tab_tixian" android:background="@drawable/btn_empty"/>
+			</RelativeLayout>
+		</LinearLayout>
+	</RelativeLayout>
+</RelativeLayout>

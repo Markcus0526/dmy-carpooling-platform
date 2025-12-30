@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/parent_layout"
+                android:background="#FFFFFF">
+    <!--标题 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/TITLE_HEIGHT" android:background="@color/TABCOLOR"
+            android:id="@+id/title_layout">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="@string/STR_WAITORDER_TITLE"
+                android:id="@+id/txt_title" android:gravity="center" android:textColor="#FFFFFF"
+                android:textSize="@dimen/TITLE_FONTSIZE"/>
+        <Button
+                android:layout_width="100px"
+                android:layout_height="40px"
+                android:text="@string/STR_WAITORDER_CANCEL"
+                android:id="@+id/btn_cancel_order" android:layout_centerVertical="true"
+                android:layout_marginRight="20px"
+                android:layout_alignParentRight="true"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/bk_smallgreen_sel"
+                android:textSize="@dimen/BASE_TEXT_SIZE"/>
+    </RelativeLayout>
+    <!--首页详情 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+            android:id="@+id/content_layout" android:layout_above="@+id/tab_layout">
+            <!--地图 -->
+            <com.baidu.mapapi.map.MapView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/img_map"
+                    android:clickable="true"
+                    android:visibility="visible"/>
+            <ImageButton
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:id="@+id/locate_btn"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="10px"
+                    android:layout_marginTop="80px"
+                    android:background="@drawable/btn_gps"
+                    android:visibility="visible"/>
+            <RelativeLayout android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/timer_layout"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="50px"
+                            android:layout_centerHorizontal="true">
+                        <ImageView android:layout_width="70px "
+                                   android:layout_height="70px"
+                                   android:id="@+id/timer_image"
+                                   android:background="@drawable/bk_progress"/>
+                        <TextView android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:id="@+id/timer_text"
+                                  android:textColor="@color/TITLE_BACKCOLOR"
+                                  android:layout_centerInParent="true"
+                                  android:textSize="30px"/>
+
+            </RelativeLayout>
+            <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="60px"
+                      android:background="@color/TRANS_COLOR"
+                      android:gravity="center">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/STR_WAITORDER_NOTIF1"
+                        android:id="@+id/notification_before"
+                        android:gravity="center"
+                        android:textColor="@color/WHITE_COLOR"
+                        android:textSize="@dimen/TITLE_FONTSIZE"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/STR_WAITORDER_NOTIF2"
+                        android:id="@+id/notification"
+                        android:gravity="center"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR"
+                        android:textSize="35px"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/STR_WAITORDER_NOTIF3"
+                        android:id="@+id/notification_after"
+                        android:gravity="center"
+                        android:textColor="@color/WHITE_COLOR"
+                        android:textSize="@dimen/TITLE_FONTSIZE"/>
+
+            </LinearLayout>
+    </RelativeLayout>
+    <TextView
+            android:id="@+id/tv_waiting_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_toast"
+            android:textColor="#FFFFFF"
+            android:textSize="20px"
+            android:paddingLeft="8dip"
+            android:paddingRight="8dip"
+            android:paddingTop="4dip"
+            android:paddingBottom="4dip"
+            android:visibility="gone"
+            />
+
+</RelativeLayout>
+	

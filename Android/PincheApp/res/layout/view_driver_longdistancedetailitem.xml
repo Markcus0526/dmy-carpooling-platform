@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="160px" android:background="@drawable/roundgraywhite_frame">
+        <view android:layout_width="100px"
+              android:layout_height="100px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/viewPhoto"
+              android:layout_alignParentLeft="true"
+              android:layout_marginLeft="10px" android:scaleType="fitXY"
+              android:layout_marginTop="20px"/>
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPhoto" android:layout_alignTop="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+                android:layout_alignBottom="@+id/viewPhoto" android:background="@drawable/btn_frame"
+                android:layout_marginLeft="-5px" android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+                android:layout_marginBottom="-5px"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/viewPhoto"
+                android:id="@+id/relativeLayout">
+            <ImageView
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:id="@+id/imgSex" android:layout_marginLeft="28px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lblAge" android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="false"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="20px" android:gravity="center_vertical|left"
+                    android:layout_toRightOf="@+id/imgSex" android:layout_marginLeft="5px"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="李先生"
+                android:id="@+id/lblName" android:layout_below="@+id/viewPhoto"
+                android:layout_alignLeft="@+id/viewPhoto" android:layout_alignRight="@+id/btnPhoto"
+                android:layout_alignParentBottom="true" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px"/>
+        <ImageView
+                android:layout_width="36px"
+                android:layout_height="36px"
+                android:id="@+id/imgSecurity" android:layout_alignTop="@+id/viewPhoto"
+                android:layout_toRightOf="@+id/lblName" android:layout_marginTop="5px"
+                android:layout_marginLeft="10px" android:scaleType="fitCenter" android:src="@drawable/bk_person_verified"
+		        />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="36px"
+                android:text="New Text"
+                android:id="@+id/lblSecurity"
+                android:layout_toRightOf="@+id/imgSecurity"
+                android:layout_marginLeft="5px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:layout_marginTop="5px"
+                android:layout_alignTop="@+id/viewPhoto"/>
+        <TextView
+                android:layout_width="50px"
+                android:layout_height="wrap_content"
+                android:text="22座"
+                android:id="@+id/lblSeatCount" android:layout_alignTop="@+id/lblSecurity"
+                android:layout_alignBottom="@+id/lblSecurity"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:gravity="center"
+                android:layout_alignParentRight="false" android:layout_toRightOf="@+id/lblSecurity"
+                android:layout_marginLeft="10px"/>
+	    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="New Text"
+			    android:id="@+id/lblSeatCount2" android:layout_alignTop="@+id/lblSeatCount"
+			    android:layout_alignBottom="@+id/lblSeatCount" android:gravity="center"
+			    android:textColor="@color/GRAY_COLOR" android:layout_alignLeft="@+id/imgState"
+			    android:layout_alignRight="@+id/imgState" android:textSize="21px"/>
+	    <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="36px"
+                android:text="好评率 ：99%"
+                android:id="@+id/lblRatio" android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/imgSecurity"
+                android:gravity="center_vertical|left" android:textColor="@color/LIGHT_YELLOW_COLOR"
+                android:textSize="24px" android:layout_alignParentRight="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="36px"
+                android:text="拼车次数 ：100次"
+                android:id="@+id/lblCarpoolCount" android:layout_alignTop="@+id/relativeLayout"
+                android:layout_alignLeft="@+id/lblRatio"
+                android:layout_marginTop="10px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:layout_alignParentRight="true"/>
+        <ImageView
+                android:layout_width="100px"
+                android:layout_height="100px"
+                android:id="@+id/imgState" android:layout_centerVertical="true"
+                android:layout_alignParentRight="true" android:layout_marginRight="10px" android:scaleType="fitCenter"
+                android:src="@drawable/bk_passphone"/>
+	    <ImageButton
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:id="@+id/btnState" android:layout_alignTop="@+id/imgState"
+			    android:layout_alignLeft="@+id/imgState" android:layout_alignBottom="@+id/imgState"
+			    android:layout_alignRight="@+id/imgState" android:background="@drawable/btn_frame"/>
+    </RelativeLayout>
+</RelativeLayout>

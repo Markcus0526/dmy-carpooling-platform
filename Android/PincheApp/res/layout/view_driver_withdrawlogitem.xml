@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+	<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="70px"
+	              android:layout_centerInParent="true" android:id="@+id/linearLayout"
+                  android:background="@color/WHITE_COLOR">
+		<RelativeLayout android:layout_width="0dp" android:layout_height="fill_parent" android:layout_weight="2">
+			<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+			          android:id="@+id/txt_reqtime" android:gravity="center" android:textColor="#707070"
+			          android:textSize="19px" android:singleLine="true"/>
+			<ImageView android:layout_width="1px" android:layout_height="wrap_content" android:id="@+id/imageView"
+			           android:layout_alignParentLeft="true" android:layout_alignTop="@+id/txt_coupon_id"
+			           android:layout_alignBottom="@+id/txt_coupon_id" android:background="#707070"/>
+			<ImageView android:layout_width="1px" android:layout_height="fill_parent" android:id="@+id/imageView1"
+			           android:layout_alignParentRight="true" android:layout_alignTop="@+id/txt_coupon_id"
+			           android:layout_alignBottom="@+id/txt_coupon_id" android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView4"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+        <RelativeLayout android:layout_width="0dp" android:layout_height="fill_parent" android:layout_weight="1">
+			<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+			          android:id="@+id/txt_mark" android:gravity="center" android:textColor="#707070"
+			          android:textSize="19px" android:singleLine="false" android:maxLines="3"/>
+			<ImageView android:layout_width="1px" android:layout_height="fill_parent" android:id="@+id/imageView2"
+			           android:layout_alignParentRight="true" android:layout_alignTop="@+id/txt_content"
+			           android:layout_alignBottom="@+id/txt_content" android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView6"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+		<RelativeLayout android:layout_width="0dp" android:layout_height="fill_parent" android:layout_weight="1">
+			<TextView android:layout_width="match_parent" android:layout_height="match_parent"
+			          android:id="@+id/txt_state" android:gravity="center" android:textColor="#707070"
+			          android:textSize="19px" android:singleLine="false"
+			          android:maxLines="3"/>
+			<ImageView android:layout_width="1px" android:layout_height="fill_parent" android:id="@+id/imageView3"
+			           android:layout_alignParentRight="true" android:layout_alignTop="@+id/txt_use_cond"
+			           android:layout_alignBottom="@+id/txt_use_cond" android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView7"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+        </RelativeLayout>
+		<RelativeLayout android:layout_width="0dp" android:layout_height="fill_parent" android:layout_weight="1">
+            <ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView8"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/STR_WITHDRAWLOG_CHEXIAO"
+                    android:id="@+id/btnOperation" android:textColor="@color/TITLE_BACKCOLOR" android:textSize="19px"
+                    android:background="@drawable/rectgreenwhite_frame" android:layout_margin="5px"/>
+        </RelativeLayout>
+	</LinearLayout>
+</LinearLayout>

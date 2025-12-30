@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout" android:background="#FFFFFF">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_ZHIFULVDIAN"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:id="@+id/content_layout"
+			android:layout_below="@+id/title_layout">
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_BENCIPINCHELVDIAN"
+				android:id="@+id/lbl_balance" android:textSize="28px" android:gravity="center"
+				android:layout_marginTop="30px" android:textColor="#707070"/>
+		<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="100点"
+				android:id="@+id/txt_balance" android:layout_below="@+id/lbl_balance" android:layout_marginTop="20px"
+				android:gravity="center" android:textColor="#ffa368" android:textSize="35px"/>
+		<ImageView
+				android:layout_width="440px"
+				android:layout_height="1px"
+				android:id="@+id/sep_imageview1" android:layout_below="@+id/txt_balance"
+				android:layout_centerHorizontal="true" android:background="#A0A0A0" android:layout_marginTop="20px"/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_ZHIFU_NOTE"
+				android:id="@+id/txt_note" android:layout_below="@+id/sep_imageview1" android:layout_marginTop="20px"
+				android:layout_alignLeft="@+id/sep_imageview1" android:layout_alignRight="@+id/sep_imageview1"
+				android:textColor="#707070" android:textSize="21px"
+				/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_SYDQZF"
+				android:id="@+id/couponListNote" android:layout_below="@+id/txt_note"
+				android:layout_alignLeft="@+id/txt_note" android:layout_marginTop="20px" android:textColor="#707070"
+				android:textSize="21px" android:layout_alignRight="@+id/txt_note"/>
+		<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/imgLstBack" android:layout_below="@+id/couponListNote"
+				android:layout_alignLeft="@+id/couponListNote" android:layout_alignRight="@+id/couponListNote"
+				android:layout_above="@+id/txt_cash_pay" android:layout_marginBottom="10px"
+				android:layout_marginTop="10px" android:background="@drawable/roundframe_gray"
+				android:cropToPadding="false" android:visibility="visible"/>
+		<ListView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/listView" android:layout_alignTop="@+id/imgLstBack"
+				android:layout_alignLeft="@+id/imgLstBack" android:layout_alignRight="@+id/imgLstBack"
+				android:layout_alignBottom="@+id/imgLstBack"
+				android:layout_margin="3px"/>
+		<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="New Text"
+				android:id="@+id/txt_cash_pay" android:textColor="#707070" android:textSize="25px"
+				android:layout_alignRight="@+id/txt_coupon_pay" android:layout_above="@+id/txt_coupon_pay"
+				android:layout_alignLeft="@+id/txt_coupon_pay" android:layout_marginBottom="10px"/>
+		<TextView
+				android:layout_width="250px"
+				android:layout_height="wrap_content"
+				android:text="New Text"
+				android:id="@+id/txt_coupon_pay" android:layout_alignParentBottom="false"
+				android:layout_alignParentRight="true" android:layout_above="@+id/txt_reserve_note"
+				android:layout_marginRight="20px" android:layout_marginBottom="20px" android:textColor="#707070"
+				android:textSize="25px"/>
+		<TextView
+				android:layout_width="440px"
+				android:layout_height="wrap_content"
+				android:text="@string/STR_RESERVE_ORDER_XIAOTISHI"
+				android:id="@+id/txt_reserve_note" android:layout_above="@+id/operation_layout"
+				android:layout_centerHorizontal="true" android:textColor="#707070"
+				android:textSize="21px" android:gravity="center_horizontal"/>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="100px" android:id="@+id/operation_layout"
+				android:layout_alignParentBottom="true" android:background="#F1F1F1">
+			<Button
+					android:layout_width="440px"
+					android:layout_height="60px"
+					android:text="@string/STR_QUERENZHIFU"
+					android:id="@+id/btn_pay" android:layout_centerInParent="true"
+					android:background="@drawable/btn_green" android:textColor="#FFFFFF" android:textSize="25px"/>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

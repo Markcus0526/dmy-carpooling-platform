@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_CITYCARPOOLRUN_TITLE"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="@color/WHITE_COLOR">
+		<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/scrollView">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
+				<TextView
+		                android:layout_width="65px"
+		                android:layout_height="30px"
+		                android:text="@string/STR_CITYCARPOOLRUN_HINT"
+		                android:id="@+id/lblHint" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		                android:layout_marginLeft="30px" android:layout_marginTop="20px" android:gravity="left|top"
+		                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+				<TextView
+		                android:layout_width="wrap_content"
+		                android:layout_height="60px"
+		                android:text="@string/STR_CITYCARPOOLRUN_HINTVAL"
+		                android:id="@+id/lblHintVal" android:layout_alignTop="@+id/lblHint"
+		                android:layout_toRightOf="@+id/lblHint" android:layout_alignParentRight="true"
+		                android:layout_marginRight="30px" android:gravity="left|top" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="18px"/>
+				<TextView
+		                android:layout_width="400px"
+		                android:layout_height="wrap_content"
+		                android:id="@+id/lblPath" android:layout_below="@+id/lblHintVal" android:layout_centerHorizontal="true"
+		                android:layout_marginTop="20px" android:gravity="center_horizontal" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="24px"/>
+				<ImageView
+		                android:layout_width="400px"
+		                android:layout_height="100px"
+		                android:id="@+id/imgState" android:layout_below="@+id/lblPath" android:layout_centerHorizontal="true"
+		                android:layout_marginTop="20px" android:scaleType="fitCenter" android:src="@drawable/bk_runstate0"/>
+				<TextView
+		                android:layout_width="400px"
+		                android:layout_height="40px"
+		                android:text="预订出发时间 ："
+		                android:id="@+id/lblPrecTime" android:layout_below="@+id/imgState" android:layout_centerHorizontal="true"
+		                android:layout_marginTop="30px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+		                android:textSize="21px"/>
+				<TextView
+		                android:layout_width="400px"
+		                android:layout_height="40px"
+		                android:text="总用时 ："
+		                android:id="@+id/lblTotalTime" android:layout_below="@+id/lblPrecTime"
+		                android:layout_centerHorizontal="true" android:layout_marginTop="20px" android:gravity="center"
+		                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+				<TextView
+		                android:layout_width="400px"
+		                android:layout_height="40px"
+		                android:text="拼车里程 ："
+		                android:id="@+id/lblDistance" android:layout_below="@+id/lblTotalTime"
+		                android:layout_centerHorizontal="true" android:gravity="center"
+		                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+				<RelativeLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="fill_parent" android:layout_below="@+id/lblDistance"
+		                android:layout_centerHorizontal="true" android:layout_marginTop="25px"
+		                android:background="@color/LIGHT_GRAY_COLOR" android:paddingBottom="30px">
+		            <Button
+		                    android:layout_width="100px"
+		                    android:layout_height="100px"
+		                    android:text="@string/STR_CITYCARPOOLRUN_BTNVAL2"
+		                    android:id="@+id/btnYanPiao" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+		                    android:layout_marginTop="30px" android:background="@drawable/roundgreenwhite_frame"
+		                    android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"/>
+		            <ImageView
+		                    android:layout_width="26px"
+		                    android:layout_height="47px"
+		                    android:id="@+id/imgRightArrow1" android:layout_alignTop="@+id/btnYanPiao"
+		                    android:layout_toLeftOf="@+id/btnYanPiao" android:layout_marginTop="37px"
+		                    android:layout_marginRight="10px" android:scaleType="fitCenter"
+		                    android:src="@drawable/btn_rightarrow"/>
+		            <Button
+		                    android:layout_width="100px"
+		                    android:layout_height="100px"
+		                    android:text="@string/STR_CITYCARPOOLRUN_BTNVAL1"
+		                    android:id="@+id/btnDaoDa" android:layout_alignTop="@+id/btnYanPiao"
+		                    android:layout_toLeftOf="@+id/imgRightArrow1" android:layout_marginRight="10px"
+		                    android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"
+		                    android:background="@drawable/roundgreenwhite_frame"/>
+		            <ImageView
+		                    android:layout_width="26px"
+		                    android:layout_height="47px"
+		                    android:id="@+id/imgRightArrow2" android:layout_alignTop="@+id/imgRightArrow1"
+		                    android:layout_toRightOf="@+id/btnYanPiao" android:layout_marginLeft="10px"
+		                    android:scaleType="fitCenter" android:src="@drawable/btn_rightarrow"/>
+		            <Button
+		                    android:layout_width="100px"
+		                    android:layout_height="100px"
+		                    android:text="@string/STR_CITYCARPOOLRUN_BTNVAL3"
+		                    android:id="@+id/btnJieshu" android:layout_alignTop="@+id/btnYanPiao"
+		                    android:layout_toRightOf="@+id/imgRightArrow2" android:layout_marginLeft="10px"
+		                    android:background="@drawable/roundgreenwhite_frame" android:textColor="@color/TITLE_BACKCOLOR"
+		                    android:textSize="21px"/>
+		            <Button
+		                    android:layout_width="400px"
+		                    android:layout_height="60px"
+		                    android:text="@string/STR_CITYCARPOOLRUN_CALLPHONE"
+		                    android:id="@+id/btnCall" android:layout_below="@+id/btnYanPiao"
+		                    android:layout_centerHorizontal="true" android:layout_marginTop="40px"
+		                    android:background="@drawable/roundsolidgreen_frame" android:textColor="@color/WHITE_COLOR"
+		                    android:textSize="24px"/>
+					<Button
+							android:layout_width="wrap_content"
+							android:layout_height="60px"
+							android:text="投诉"
+							android:layout_below="@+id/btnCall"
+							android:layout_marginTop="20px" android:layout_alignLeft="@+id/btnCall"
+							android:layout_alignRight="@+id/btnCall"
+							android:background="@drawable/roundsolidgreen_frame" android:textColor="#FFFFFF"
+							android:textSize="24px" android:id="@+id/btnService"/>
+				</RelativeLayout>
+			</RelativeLayout>
+		</ScrollView>
+	</RelativeLayout>
+</RelativeLayout>

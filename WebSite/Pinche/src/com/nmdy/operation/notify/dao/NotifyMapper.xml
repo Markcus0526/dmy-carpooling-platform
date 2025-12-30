@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.operation.notify.dao.NotifyMapper" >
+
+    <resultMap
+        id="NoResult"
+        type="com.nmdy.operation.notify.dao.NotifyEntity" >
+
+        <result
+            column="id"
+            property="userid" />
+
+        <result
+            column="city_register"
+            property="city_register" />
+
+        <result
+            column="city_cur"
+            property="city_cur" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="ga_code"
+            property="ga_code" />
+
+        <result
+            column="ga_name"
+            property="ga_name" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="driver_verified"
+            property="driver_verified" />
+
+        <result
+            column="totle"
+            property="totle" />
+
+        <result
+            column="last_login_time"
+            property="last_login_time" />
+
+        <result
+            column="reg_date"
+            property="reg_date" />
+
+        <result
+            column="driver_verified"
+            property="driver_verified" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="title"
+            property="title" />
+
+        <result
+            column="msg"
+            property="msg" />
+
+        <result
+            column="msg_type"
+            property="msg_type" />
+
+        <result
+            column="receiver"
+            property="receiver" />
+    </resultMap>
+    <!-- 页面加载数据表格查询 -->
+
+    <select
+        id="finduser"
+        parameterType="java.util.Map"
+        resultMap="NoResult" >
+		SELECT ga.ga_code,ga.ga_name,u.usercode,u.id,u.username,u.phone, IFNULL(g.group_name,'没有找到') AS group_name, CASE WHEN u.driver_verified=1 THEN '车主' ELSE '乘客' END driver_verified, DATE_FORMAT(u.last_login_time,'%Y年%m月%d日') AS last_login_time, DATE_FORMAT(u.reg_date,'%Y年%m月%d日') AS reg_date
+FROM (user u
+LEFT JOIN (group_ g
+LEFT JOIN group_details gd ON g.groupid=gd.groupid) ON gd.userid = u.id
+)LEFT JOIN group_association_details gad ON g.id=gad.groupid left join group_association ga on ga.id = gad.associd
+WHERE u.deleted=0
+
+        <if test="reg_date!= null and ''!= reg_date" >
+              AND u.reg_date > #{reg_date}  
+        </if>
+
+        <if test="reg_date1!= null and '' != reg_date1" >
+              AND #{reg_date1} > u.reg_date
+        </if>
+
+        <if test="last_login_time!= null and ''!=last_login_time" >
+              AND u.last_login_time > #{last_login_time}  
+        </if>
+
+        <if test="last_login_time1!= null and '' != last_login_time1" >
+              AND #{last_login_time1} > u.last_login_time
+        </if>
+
+        <if test="userid!= null and '' != userid" >
+              AND u.id like #{userid}  
+        </if>
+
+        <if test="phone!= null and '' != phone" >
+              AND u.phone like #{phone}  
+        </if>
+
+        <if test="username!= null and '' != username" >
+              AND u.username like #{username}  
+        </if>
+
+        <if test="city_register!= null and '' != city_register" >
+              AND u.city_register like  #{city_register}  
+        </if>
+
+        <if test="city_cur!= null and '' != city_cur" >
+              AND u.city_cur like  #{city_cur}  
+        </if>
+
+        <if test="city_cur1!= null and'' != city_cur1" >
+              AND (u.city_cur like #{city_cur1}  or u.city_register like #{city_cur1}  )
+        </if>
+
+        <if test="ga_code!= null and ''!= ga_code" >
+              AND ga.ga_code like #{ga_code}  
+        </if>
+
+        <if test="ga_name!= null and ''!= ga_name" >
+		AND ga.ga_name like #{ga_name}
+        </if>
+
+        <if test="driver_verified!= null and ''!= driver_verified" >
+		AND u.driver_verified = #{driver_verified}
+        </if>
+	    group by u.id
+	LIMIT #{start},#{limit} ;
+    </select>
+
+    <select
+        id="getTotal"
+        parameterType="java.util.Map"
+        resultType="int" >
+			SELECT count(*) FROM (user u
+LEFT JOIN (group_ g
+LEFT JOIN group_details gd ON g.groupid=gd.groupid) ON gd.userid = u.id
+)LEFT JOIN group_association_details gad ON g.id=gad.groupid left join group_association ga on ga.id = gad.associd
+WHERE u.deleted=0
+
+           <if test="reg_date!= null and ''!= reg_date" >
+              AND u.reg_date > #{reg_date}  
+
+        </if>
+
+        <if test="reg_date1!= null and '' != reg_date1" >
+              AND #{reg_date1} > u.reg_date
+
+        </if>
+
+        <if test="last_login_time!= null and ''!=last_login_time" >
+              AND u.last_login_time > #{last_login_time}  
+
+        </if>
+
+        <if test="last_login_time1!= null and '' != last_login_time1" >
+              AND #{last_login_time1} > u.last_login_time
+
+        </if>
+        <if test="userid!= null and ''!= userid" >
+              AND u.id like #{userid}  
+
+        </if>
+
+        <if test="phone!= null and ''!= phone" >
+              AND u.phone like #{phone}  
+
+        </if>
+
+        <if test="username!= null and ''!= username" >
+              AND u.username like #{username}  
+
+        </if>
+
+        <if test="city_register!= null and ''!= city_register" >
+              AND u.city_register like  #{city_register}  
+
+        </if>
+
+        <if test="city_cur!= null and ''!= city_cur" >
+              AND u.city_cur like  #{city_cur}  
+
+        </if>
+
+        <if test="city_cur1!= null and ''!= city_cur1" >
+              AND (u.city_cur like #{city_cur1}  or u.city_register like #{city_cur1}  )
+
+        </if>
+
+        <if test="ga_code!= null and ''!= ga_code" >
+              AND ga.ga_code like #{ga_code}  
+
+        </if>
+
+        <if test="ga_name!= null and ''!= ga_name" >
+		AND ga.ga_name like #{ga_name}
+
+        </if>
+
+        <if test="driver_verified!= null and ''!= driver_verified" >
+		AND u.driver_verified = #{driver_verified}
+
+        </if>
+    </select>
+
+    <select
+        id="findids"
+        parameterType="java.util.Map"
+        resultType="int" >
+		SELECT u.id FROM (user u
+LEFT JOIN (group_ g
+LEFT JOIN group_details gd ON g.groupid=gd.groupid) ON gd.userid = u.id
+)LEFT JOIN group_association_details gad ON g.id=gad.groupid left join group_association ga on ga.id = gad.associd
+WHERE u.deleted=0
+   <if test="reg_date!= null and ''!= reg_date" >
+              AND u.reg_date > #{reg_date}  
+
+        </if>
+
+        <if test="reg_date1!= null and '' != reg_date1" >
+              AND #{reg_date1} > u.reg_date
+
+        </if>
+
+        <if test="last_login_time!= null and ''!=last_login_time" >
+              AND u.last_login_time > #{last_login_time}  
+
+        </if>
+
+        <if test="last_login_time1!= null and '' != last_login_time1" >
+              AND #{last_login_time1} > u.last_login_time
+
+        </if>
+
+        <if test="userid!= null and ''!= userid" >
+              AND u.id like #{userid}  
+
+        </if>
+
+        <if test="phone!= null and ''!= phone" >
+              AND u.phone like #{phone}  
+
+        </if>
+
+        <if test="username!= null and ''!= username" >
+              AND u.username like #{username}  
+
+        </if>
+
+        <if test="city_register!= null and ''!= city_register" >
+              AND u.city_register like  #{city_register}  
+
+        </if>
+
+        <if test="city_cur!= null and ''!= city_cur" >
+              AND u.city_cur like  #{city_cur}  
+
+        </if>
+
+        <if test="city_cur1!= null and ''!= city_cur1" >
+              AND (u.city_cur like #{city_cur1}  or u.city_register like #{city_cur1}  )
+
+        </if>
+
+        <if test="ga_code!= null and ''!= ga_code" >
+              AND ga.ga_code like #{ga_code}  
+
+        </if>
+
+        <if test="ga_name!= null and ''!= ga_name" >
+		AND ga.ga_name like #{ga_name}
+
+        </if>
+
+        <if test="driver_verified!= null and ''!= driver_verified" >
+		AND u.driver_verified = #{driver_verified}
+
+        </if>
+    </select>
+    <!-- 发送 -->
+
+    <insert
+        id="addbatchInsert"
+        parameterType="java.util.List" >
+    insert into notify_person (title,msg,ps_date,msg_type,receiver) 
+
+       
+       values (#{title},#{msg},now(),5,#{userids})  
+     
+    </insert>
+
+</mapper>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_LONGDISTANCEDETAIL_TITLE"/>
+		<ImageButton
+				android:layout_width="36px"
+				android:layout_height="36px"
+				android:id="@+id/btn_refresh" android:background="@drawable/bk_refresh"
+				android:layout_marginRight="10px" android:layout_centerVertical="true"
+				android:layout_alignParentRight="true"/>
+		<ImageButton
+				android:layout_width="50px"
+				android:layout_height="50px"
+				android:id="@+id/btn_back" android:layout_centerVertical="true"
+				android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="@color/LIGHT_GRAY_COLOR">
+        <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollView">
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+	            <RelativeLayout
+			            android:layout_width="fill_parent"
+			            android:layout_height="wrap_content">
+		            <RelativeLayout
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content" android:id="@+id/main_info_layout"
+				            android:background="@color/WHITE_COLOR" android:paddingBottom="20px">
+			            <TextView
+					            android:layout_width="300px"
+					            android:layout_height="wrap_content"
+					            android:id="@+id/lblOrderNo" android:layout_alignParentTop="true"
+					            android:layout_marginTop="20px"
+					            android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+					            android:gravity="center"
+					            android:singleLine="true"
+					            />
+			            <Button
+					            android:layout_width="wrap_content"
+					            android:layout_height="40px"
+					            android:text="保单详情"
+					            android:layout_marginTop="20px"
+					            android:id="@+id/insurance_detail" android:layout_toRightOf="@+id/lblOrderNo"
+					            android:layout_alignParentRight="true"
+					            android:layout_marginRight="20px"
+					            android:layout_marginLeft="10px"
+					            android:layout_below="@+id/relativeLayout"
+					            android:textSize="19px" android:textColor="@color/TITLE_BACKCOLOR"
+					            android:gravity="center"
+					            android:paddingLeft="5px"
+					            android:drawableLeft="@drawable/insurance_icon"
+					            android:background="@drawable/btn_fee"/>
+			            <TextView
+					            android:layout_width="match_parent"
+					            android:layout_height="wrap_content"
+					            android:id="@+id/lblAddr" android:layout_below="@+id/lblOrderNo"
+					            android:layout_marginTop="20px"  android:textSize="21px"
+					            android:textColor="@color/GRAY_COLOR" android:gravity="center"/>
+
+			            <TextView
+					            android:layout_width="match_parent"
+					            android:layout_height="wrap_content"
+					            android:id="@+id/lblStartTime" android:layout_below="@+id/lblAddr"
+					            android:layout_marginTop="10px"
+					            android:gravity="center" android:textColor="@color/GRAY_COLOR" android:textSize="24px"/>
+			            <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:id="@+id/lblState" android:layout_below="@+id/lblStartTime"
+					            android:layout_marginTop="20px" android:layout_alignRight="@+id/lblStartTime"
+					            android:layout_alignLeft="@+id/lblStartTime" android:gravity="center"
+					            android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="24px"/>
+			            <TextView
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:id="@+id/lblSysFee" android:layout_below="@+id/lblState"
+					            android:layout_alignRight="@+id/lblState" android:layout_alignLeft="@+id/lblState"
+					            android:layout_marginTop="10px" android:gravity="center"
+					            android:textColor="@color/GRAY_COLOR" android:textSize="21px"/>
+		            </RelativeLayout>
+		            <RelativeLayout
+	                        android:layout_width="fill_parent"
+	                        android:layout_height="wrap_content"
+	                        android:layout_centerHorizontal="true"
+	                        android:id="@+id/operation_layout" android:paddingBottom="20px"
+	                        android:layout_alignParentBottom="false" android:layout_below="@+id/main_info_layout">
+			            <Button
+	                            android:layout_width="180px"
+	                            android:layout_height="60px"
+	                            android:text="@string/STR_LONGDISTANCEDETAIL_QUXIAODINGDAN"
+	                            android:id="@+id/btnQuXiao"
+	                            android:layout_marginTop="20px"
+	                            android:background="@drawable/btn_smallwhite" android:textColor="@color/TITLE_BACKCOLOR"
+	                            android:textSize="24px" android:layout_marginLeft="40px"
+					            />
+			            <Button
+			                    android:layout_width="180px"
+			                    android:layout_height="60px"
+			                    android:text="@string/STR_LONGDISTANCEDETAIL_ZHIXINGDINGDAN"
+			                    android:id="@+id/btnZhiXing" android:layout_alignTop="@+id/btnQuXiao"
+			                    android:layout_alignParentRight="true" android:layout_marginRight="40px"
+			                    android:background="@drawable/btn_smallgreen"
+			                    android:textColor="@color/WHITE_COLOR" android:textSize="24px"
+					            />
+			            <Button
+			                    android:layout_width="match_parent"
+			                    android:layout_height="60px"
+			                    android:text="@string/STR_LONGDISTANCEDETAIL_QIEIHUAN"
+			                    android:id="@+id/btnQieHuan"
+			                    android:layout_centerHorizontal="true"
+			                    android:background="@drawable/btn_white"
+			                    android:textColor="@color/TITLE_BACKCOLOR" android:textSize="24px"
+			                    android:layout_alignLeft="@+id/btnTouSu"
+			                    android:layout_alignRight="@+id/btnTouSu" android:visibility="visible"
+			                    android:layout_above="@+id/btnTouSu"/>
+			            <Button
+	                            android:layout_width="400px"
+	                            android:layout_height="60px"
+	                            android:text="@string/STR_LONGDISTANCEDETAIL_TOUSU"
+	                            android:id="@+id/btnTouSu"
+	                            android:layout_marginTop="10px"
+	                            android:textColor="@color/WHITE_COLOR" android:textSize="24px"
+	                            android:background="@drawable/btn_green"
+	                            android:layout_centerHorizontal="true" android:layout_below="@+id/btnQuXiao"/>
+		            </RelativeLayout>
+		            <LinearLayout
+				            android:orientation="vertical"
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content" android:id="@+id/list_layout"
+				            android:layout_below="@+id/operation_layout">
+		            </LinearLayout>
+		            <TextView
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:text="暂时还没有拼友抢座，耐心等等吧"
+				            android:id="@+id/txt_no_pass"
+				            android:layout_alignLeft="@+id/list_layout" android:layout_alignRight="@+id/list_layout"
+				            android:gravity="center" android:textColor="#505050" android:textSize="26px"
+				            android:layout_below="@+id/operation_layout" android:layout_marginTop="30px"/>
+	            </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+</RelativeLayout>

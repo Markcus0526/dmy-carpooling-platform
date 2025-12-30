@@ -1,0 +1,55 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import "NSURL+IFUnicodeURL.h"
+    #import "UIImageView+WebCache.h"
+    #import "STDataInfo.h"
+    #import "Common.h"
+    #import "ConstString.h"
+    #import "NSStringHelper.h"
+    #import "DejalActivityView.h"
+    #import "SVProgressHUD.h"
+    #import "CommManager.h"
+    #import "Toast+UIView.h"
+    #import "SuperViewController.h"
+
+#endif
+#ifdef DEBUG// 如果有DEBUG这个宏就编译下面一句代码
+#define MyLog(...) NSLog(__VA_ARGS__)
+#else // 如果没有DEBUG这个宏就编译下面一句代码
+#define MyLog(...)
+#endif
+
+// 快速创建一个颜色
+#define MyColor(r, g, b) [UIColor colorWithRed:(r/255.0) green:(g/255.0)  blue:(b/255.0)  alpha:255/255.0 ]
+
+// 是否是iOS7
+#define iOS7 ([UIDevice currentDevice].systemVersion.doubleValue >= 7.0)
+
+#define iOS8 ([UIDevice currentDevice].systemVersion.doubleValue >= 8.0)
+
+//友盟注册   现在是demo 的appkey  需要改
+//#define UMAppKey @"5402c43efd98c5e571017999"
+#define UMAppKey @"547bdbc5fd98c5b93e0010dd"
+#define SinaRedirectUri @"http://www.520it.com"
+#define RedirectURL @"http://www.ookuaipin.com"
+
+/**
+ *  百度账号：fanxingbbb@163.com
+    百度推送appkey 在BPushConfig.plist 中设置
+ */
+#define BaiDuMapKey @"ivkMCmZ5BjHLEQi7lNCun2M7" //地图显示key
+
+#define ComplainNummber @"4008700111"

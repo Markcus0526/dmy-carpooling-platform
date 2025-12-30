@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+            <TextView android:layout_width="300px"
+                      android:layout_height="60px"
+                       android:id="@+id/point_txt"
+                       android:layout_marginLeft="20px"
+                       android:layout_marginTop="20px"
+                       android:background="@drawable/roundlightgraywhite_frame"
+                       android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                       android:textSize="30px"
+                       />
+            <ImageButton
+                        android:layout_width="60px"
+                        android:layout_height="60px"
+                        android:id="@+id/voice_input"
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft = "20px"
+                        android:background="@drawable/bk_mic"/>
+            <ImageButton
+                    android:layout_width="60px"
+                    android:layout_height="60px"
+                    android:id="@+id/quit_button"
+                    android:layout_marginTop="20px"
+                    android:layout_marginLeft = "20px"
+                    android:background="@null" android:scaleType="fitXY"
+                    android:src="@drawable/bk_close" android:padding="15px"/>
+
+</LinearLayout>

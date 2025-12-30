@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/parent_layout">
+
+    <RelativeLayout
+            android:layout_width="460px"
+            android:layout_height="250px" android:background="@drawable/roundgraywhite_frame">
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="50px"
+                android:text="New Text"
+                android:id="@+id/lblDest" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
+                android:gravity="center" android:textColor="@color/BASE_TEXT_COLOR"
+                android:textSize="25px" android:layout_marginLeft="10px" android:layout_marginRight="10px"
+                android:ellipsize="end" android:singleLine="true"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1px" android:layout_below="@+id/lblDest"
+                android:layout_centerHorizontal="true" android:layout_marginLeft="25px" android:layout_marginTop="1px"
+                android:layout_marginRight="25px" android:background="@color/GRAY_COLOR"
+                android:id="@+id/relativeLayout">
+        </RelativeLayout>
+        <view android:layout_width="120px"
+              android:layout_height="120px"
+              class="com.damytech.Utils.image.SmartImageView" android:id="@+id/imgPhoto"
+              android:layout_below="@+id/relativeLayout" android:layout_alignParentLeft="true"
+              android:layout_marginTop="30px" android:layout_marginLeft="10px" android:scaleType="fitXY"
+                />
+	    <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30px" android:layout_alignBottom="@+id/imgPhoto"
+                android:layout_alignLeft="@+id/imgPhoto" android:layout_alignRight="@+id/imgPhoto"
+                android:id="@+id/relativeLayout2">
+            <ImageView
+                    android:layout_width="24px"
+                    android:layout_height="24px"
+                    android:id="@+id/imgSex" android:layout_marginLeft="33px" android:layout_centerVertical="true"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_manmark"/>
+            <TextView
+                    android:layout_width="30px"
+                    android:layout_height="fill_parent"
+                    android:text="29"
+                    android:id="@+id/lblAge" android:layout_marginRight="27px" android:gravity="center_vertical|left"
+                    android:layout_alignParentRight="true" android:textColor="@color/TAB_NORMAL_COLOR"
+                    android:textSize="23px"/>
+        </RelativeLayout>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30px"
+                android:text="张先生"
+                android:id="@+id/lblName" android:layout_below="@+id/btnPhoto"
+                android:layout_alignLeft="@+id/relativeLayout2" android:layout_marginTop="10px"
+                android:layout_alignRight="@+id/relativeLayout2" android:gravity="center"
+                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+        <TextView
+                android:layout_width="80px"
+                android:layout_height="40px"
+                android:text="100点"
+                android:id="@+id/lblMark" android:layout_alignTop="@+id/btnPhoto"
+                android:layout_toRightOf="@+id/btnPhoto" android:layout_marginLeft="15px"
+                android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="28px"
+                android:layout_marginTop="15px" android:gravity="center_vertical|left"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40px"
+                android:text="7:00 出发"
+                android:id="@+id/lblTime" android:layout_below="@+id/lblMark" android:layout_alignLeft="@+id/lblMark"
+                android:layout_marginTop="10px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="20px" android:gravity="center_vertical|left"/>
+        <TextView
+                android:layout_width="90px"
+                android:layout_height="wrap_content"
+                android:text="平台XX点"
+                android:id="@+id/lblSiteMark" android:layout_alignTop="@+id/lblMark"
+                android:layout_toRightOf="@+id/lblMark" android:layout_alignBottom="@+id/lblMark"
+                android:layout_marginLeft="5px" android:gravity="center" android:textColor="@color/GRAY_COLOR"
+                android:textSize="18px"/>
+        <TextView
+                android:layout_width="150px"
+                android:layout_height="wrap_content"
+                android:text="中途点 ：1"
+                android:id="@+id/lblMiddlePos" android:layout_alignBottom="@+id/lblName"
+                android:layout_alignLeft="@+id/lblTime" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="@dimen/BASE_TEXT_SIZE"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="35px"
+                android:id="@+id/lblMon" android:layout_alignTop="@+id/imgPhoto"
+                android:layout_toRightOf="@+id/lblSiteMark" android:layout_marginLeft="10px" android:gravity="center"
+                android:textSize="21px" android:textColor="@color/WHITE_COLOR"
+                android:background="@drawable/rectgreenwhite_frame" android:text="@string/STR_MON"
+                android:autoText="false"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_TUE"
+                android:id="@+id/lblTue"
+                android:layout_toRightOf="@+id/lblMon" android:layout_alignBottom="@+id/lblMon"
+                android:background="@drawable/rectgreenwhite_frame" android:gravity="center"
+                android:textColor="@color/WHITE_COLOR" android:textSize="21px" android:layout_alignTop="@+id/lblMon"
+                android:autoText="false" android:layout_marginLeft="-2px"/>
+        <TextView
+                android:layout_width="60px"
+                android:layout_height="35px"
+                android:text="@string/STR_WED"
+                android:id="@+id/lblWed" android:layout_below="@+id/lblMon" android:layout_alignLeft="@+id/lblMon"
+                android:background="@drawable/rectgreenwhite_frame" android:gravity="center"
+                android:textColor="@color/WHITE_COLOR" android:textSize="21px" android:autoText="false"
+                android:layout_marginTop="-2px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_THR"
+                android:id="@+id/lblThu" android:layout_alignTop="@+id/lblWed"
+                android:layout_toRightOf="@+id/lblWed" android:layout_alignBottom="@+id/lblWed"
+                android:layout_alignRight="@+id/lblTue" android:background="@drawable/rectgreenwhite_frame"
+                android:gravity="center" android:textColor="@color/WHITE_COLOR" android:textSize="21px"
+                android:autoText="false" android:layout_marginLeft="-2px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35px"
+                android:text="@string/STR_FRI"
+                android:id="@+id/lblFri"
+                android:layout_alignLeft="@+id/lblWed" android:layout_toLeftOf="@+id/lblThu"
+                android:background="@drawable/rectgreenwhite_frame" android:gravity="center"
+                android:textColor="@color/WHITE_COLOR" android:textSize="21px" android:layout_below="@+id/lblWed"
+                android:autoText="false" android:layout_marginTop="-2px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_SAT"
+                android:id="@+id/lblSat" android:layout_alignTop="@+id/lblFri"
+                android:layout_alignLeft="@+id/lblThu" android:layout_alignRight="@+id/lblThu"
+                android:layout_alignBottom="@+id/lblFri" android:background="@drawable/rectgreenwhite_frame"
+                android:gravity="center" android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="35px"
+                android:text="@string/STR_SUN"
+                android:id="@+id/lblSun" android:layout_below="@+id/lblFri" android:layout_toRightOf="@+id/lblFri"
+                android:layout_alignRight="@+id/lblSat" android:background="@drawable/rectgreenwhite_frame"
+                android:gravity="center" android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"
+                android:layout_marginTop="-2px" android:layout_marginLeft="-2px"/>
+	    <ImageButton
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:id="@+id/btnPhoto" android:layout_alignTop="@+id/imgPhoto"
+	            android:layout_alignLeft="@+id/imgPhoto" android:layout_alignBottom="@+id/imgPhoto"
+	            android:layout_alignRight="@+id/imgPhoto"
+	            android:background="@drawable/btn_frame" android:layout_marginLeft="-5px"
+	            android:layout_marginTop="-5px" android:layout_marginRight="-5px" android:layout_marginBottom="-5px"/>
+	    <ImageButton
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:id="@+id/btn_background" android:background="@drawable/bk_empty"/>
+    </RelativeLayout>
+</RelativeLayout>

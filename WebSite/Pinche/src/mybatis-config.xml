@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<!-- 	<settings> -->
+<!-- 		<setting name="cacheEnabled" value="false"/> -->
+<!-- 	</settings> -->
+	
+	<typeAliases>
+		<typeAlias alias="Administrator" type="com.pinche.authority.manager.dao.Administrator" />
+		<typeAlias alias="UserRole" type="com.pinche.authority.manager.dao.UserRole" />
+		<typeAlias alias="Authority" type="com.pinche.authority.manager.dao.Authority" />
+		<typeAlias alias="OperLog" type="com.pinche.authority.manager.dao.OperLog" />
+		<typeAlias alias="Menu" type="com.pinche.authority.menu.dao.Menu" />
+		<typeAlias alias="Role" type="com.pinche.authority.role.dao.Role" />
+		<typeAlias alias="Roleitem" type="com.pinche.authority.role.dao.Roleitem" />
+		<typeAlias alias="Customer" type="com.pinche.customer.user.dao.Customer" />
+		<typeAlias alias="UserBasicInfo" type="com.pinche.customer.user.dao.UserBasicInfo" />
+<!-- 		<typeAlias alias="Group" type="com.nmdy.customerManage.group.dao.Group" /> -->
+		<typeAlias alias="Group" type="com.pinche.customer.group.dao.Group" />
+		<typeAlias alias="Joinunit" type="com.pinche.customer.joinunit.dao.Joinunit" />
+		<typeAlias alias="Groupself" type="com.pinche.customer.groupself.dao.Groupself" />
+		<typeAlias alias="Appoint" type="com.nmdy.order.appoint.dao.Appoint" />
+		<typeAlias alias="Appointdetail" type="com.nmdy.order.appointdetail.dao.Appointdetail" />
+		<typeAlias alias="FreezeTsInfo" type="com.nmdy.order.appointdetail.dao.FreezeTsInfo" />
+		<typeAlias alias="AppointdetailInfo" type="com.nmdy.order.appointdetail.dao.AppointdetailInfo" />
+		<typeAlias alias="OrderModifyLogInfo" type="com.nmdy.order.appointdetail.dao.OrderModifyLogInfo" />
+		<typeAlias alias="OrderLongdistanceUsersCs" type="com.nmdy.order.appointdetail.dao.OrderLongdistanceUsersCs" />
+		<typeAlias alias="OrderOnoffdutyDivide" type="com.nmdy.order.appointdetail.dao.OrderOnoffdutyDivide" />
+		<typeAlias alias="OrderOnoffdutyExecDetails" type="com.nmdy.order.appointdetail.dao.OrderOnoffdutyExecDetails" />
+		<typeAlias alias="Recourse" type="com.nmdy.order.recourse.dao.Recourse" />
+		<typeAlias alias="Account" type="com.nmdy.financial.account.dao.Account" />
+		<typeAlias alias="TransactionDetail" type="com.nmdy.financial.account.dao.TransactionDetail" />
+		<typeAlias alias="AccountUserInfo" type="com.nmdy.financial.account.dao.AccountUserInfo" />
+		<typeAlias alias="TempInfo" type="com.nmdy.order.appoint.dao.TempInfo" />
+		<typeAlias alias="LongDistanceInfo" type="com.nmdy.order.appoint.dao.LongDistanceInfo" />
+		<typeAlias alias="OnoffdutyInfo" type="com.nmdy.order.appoint.dao.OnoffdutyInfo" />
+		<typeAlias alias="MidPoints" type="com.nmdy.order.appoint.dao.MidPoints" />
+		<typeAlias alias="Syscoupon" type="com.nmdy.spread.loan.dao.Syscoupon" />
+		<typeAlias alias="CouponSendLog" type="com.nmdy.spread.loan.dao.CouponSendLog" />
+		<typeAlias alias="SingleCoupon" type="com.nmdy.spread.loan.dao.SingleCoupon" />
+		<typeAlias alias="GlobalParams" type="com.nmdy.spread.loan.dao.GlobalParams" />
+		<typeAlias alias="City" type="com.nmdy.spread.loan.dao.City" />
+		<typeAlias alias="Activities" type="com.nmdy.spread.loan.dao.Activities" />
+		<typeAlias alias="SelUserInfo" type="com.nmdy.spread.sms.dao.SMSUserInfo" />
+		<typeAlias alias="GroupInfo" type="com.nmdy.spread.sms.dao.GroupInfo" />
+		<typeAlias alias="SMSPlan" type="com.nmdy.spread.sms.dao.SMSPlan" />
+		<typeAlias alias="SMSPlanLog" type="com.nmdy.spread.sms.dao.SMSPlanLog" />
+		<typeAlias alias="SMSUserInfo" type="com.nmdy.spread.sms.dao.SMSUserInfo" />
+		<typeAlias alias="Profitconfig" type="com.pinche.spread.number.dao.Profitconfig" />
+		<typeAlias alias="Ledger" type="com.nmdy.financial.ledger.dao.Ledger"/>
+		<typeAlias alias="Coupon" type="com.pinche.statistics.coupon.dao.Coupon"/>
+		<typeAlias alias="SCoupon" type="com.pinche.statistics.coupon.dao.SCoupon"/>
+		<typeAlias alias="Passenger" type="com.pinche.statistics.passenger.dao.Passenger"/>
+		<typeAlias alias="Finance" type="com.pinche.statistics.finance.dao.Finance"/>
+		<typeAlias alias="Driver"	type="com.pinche.statistics.driver.dao.Driver"/>
+		<typeAlias alias="OrderStatisticsInfo"	type="com.pinche.statistics.order.dao.OrderStatisticsInfo"/>
+		
+		<typeAlias alias="FeedBack" type="com.nmdy.operation.feedback.dao.FeedBack" />
+		<typeAlias alias="Oper_Log" type="com.nmdy.operation.operlog.dao.Oper_Log" />
+		<typeAlias alias="App" type="com.nmdy.operation.app.dao.App" />
+		<typeAlias alias="AbbRecord" type="com.nmdy.operation.abbrecord.dao.AbbRecord"/>
+		<typeAlias alias="CityParam" type="com.nmdy.operation.cityparam.dao.CityParam"/>
+		<typeAlias alias="AbbLimit" type="com.nmdy.operation.abbrecord.dao.AbbLimit"/>
+		   <typeAlias alias="Appoint1" type="com.nmdy.order.appoint.dao.Appoint1" />
+				
+		<typeAlias alias="App_Spread_Unit" type="com.nmdy.customerManage.appSpreadUnit.dao.App_Spread_Unit"/>
+		<typeAlias alias="User" type="com.nmdy.customerManage.user.dao.User"/>
+		<typeAlias alias="GroupNew" type="com.nmdy.customerManage.group.dao.GroupNew"/>
+		<typeAlias alias="GroupAssociation" type="com.nmdy.customerManage.groupAssociation.dao.GroupAssociation"/>
+		<typeAlias alias="OrderSearch" type="com.nmdy.order.recourse.dao.OrderSearch"/>
+		<typeAlias alias="ExecDetails" type="com.nmdy.order.appoint.dao.ExecDetails" />
+		<typeAlias alias="WorkForm" type="com.nmdy.order.recourse.dao.WorkForm" />
+		<typeAlias alias="Resource" type="com.nmdy.entity.Resource" />
+		<typeAlias alias="Juese" type="com.nmdy.entity.Juese" />
+		<typeAlias alias="DataJuese" type="com.nmdy.entity.DataJuese" />
+			<typeAlias alias="Activity" type="com.nmdy.entity.Activity" />
+		<typeAlias alias="ActivitySyscoupon" type="com.nmdy.entity.ActivitySyscoupon" />
+		<typeAlias alias="ActivityRule" type="com.nmdy.entity.ActivityRule" />
+		<typeAlias alias="ActivityUser" type="com.nmdy.entity.ActivityUser" />
+		<typeAlias alias="ActivityDto" type="com.nmdy.dto.ActivityDto" />
+		<typeAlias alias="ClientAccount" type="com.nmdy.entity.ClientAccount" />
+		<typeAlias alias="UserOnline" type="com.nmdy.entity.UserOnline" />
+		<typeAlias alias="ExcelUser" type="util.excel.pojo.ExcelUser" />
+		<typeAlias alias="Tip" type="com.nmdy.entity.Tip" />
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+			 <property name="url" value="jdbc:mysql://localhost:3306/pinche?useUnicode=true&amp;characterEncoding=utf8" />  
+       			<property name="username" value="root" />  
+       			<property name="password" value="" />  
+       			
+       			
+<!--        			 <property name="url" value="jdbc:mysql://182.92.237.144:3306/pinchetest?useUnicode=true&amp;characterEncoding=utf8" />   -->
+<!--        			<property name="username" value="hmuser" />   -->
+<!--        			<property name="password" value="haotangC702" />   -->
+       			
+<!--       				 <property name="url" value="jdbc:mysql://124.207.135.69:3306/oopinche?useUnicode=true&amp;characterEncoding=utf8" />   -->
+<!--        			<property name="username" value="root" />   -->
+<!--        			<property name="password" value="123456" />   -->
+
+<!--  <property name="url" value="jdbc:mysql://127.0.0.1:3306/pinche?useUnicode=true&amp;characterEncoding=utf8" />   -->
+<!--        			<property name="username" value="root" />   -->
+<!--        			<property name="password" value="root" />   -->
+       			
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+	<mapper resource="com/pinche/authority/manager/dao/AdministratorMapper.xml" />
+		<mapper resource="com/pinche/authority/manager/dao/UserRoleMapper.xml" />
+		<mapper resource="com/pinche/authority/manager/dao/AuthorityMapper.xml" />
+		<mapper resource="com/pinche/authority/manager/dao/OperLogMapper.xml" />
+		<mapper resource="com/pinche/authority/menu/dao/MenuMapper.xml" />
+		<mapper resource="com/pinche/authority/role/dao/RoleMapper.xml" />
+		<mapper resource="com/pinche/authority/role/dao/RoleitemMapper.xml" />
+		<mapper resource="com/pinche/customer/user/dao/CustomerMapper.xml" />
+		<mapper resource="com/pinche/customer/group/dao/GroupMapper.xml" />
+		<mapper resource="com/pinche/customer/joinunit/dao/JoinunitMapper.xml" />
+		<mapper resource="com/pinche/customer/groupself/dao/GroupselfMapper.xml" />
+		<mapper resource="com/nmdy/order/appoint/dao/AppointMapper.xml" />
+		<mapper resource="com/nmdy/order/appointdetail/dao/AppointdetailMapper.xml" />
+		<mapper resource="com/nmdy/order/recourse/dao/RecourseMapper.xml"/>
+		<mapper resource="com/nmdy/financial/manage/dao/MyFormMapper.xml"/>
+		<mapper resource="com/nmdy/financial/request/dao/FreezeMapper.xml"/>
+		<mapper resource="com/nmdy/financial/account/dao/AccountMapper.xml"/>		
+		<mapper resource="com/nmdy/spread/loan/dao/SyscouponMapper.xml"/>
+		<mapper resource="com/nmdy/spread/loan/dao/CouponSendLogMapper.xml"/>
+		<mapper resource="com/nmdy/spread/loan/dao/SingleCouponMapper.xml"/>
+		<mapper resource="com/nmdy/spread/loan/dao/GlobalParamsMapper.xml"/>
+		<mapper resource="com/nmdy/spread/loan/dao/CityMapper.xml"/>
+		<mapper resource="com/nmdy/spread/loan/dao/ActivitiesMapper.xml"/>
+		<mapper resource="com/nmdy/spread/sms/dao/SMSPlanMapper.xml"/>
+		<mapper resource="com/pinche/spread/number/dao/ProfitconfigMapper.xml"/>
+		<mapper resource="com/nmdy/financial/ledger/dao/LedgerMapper.xml"/>
+		<mapper resource="com/pinche/statistics/coupon/dao/CouponMapper.xml"/>
+		<mapper resource="com/pinche/statistics/driver/dao/DriverMapper.xml"/>		
+		<mapper resource="com/pinche/statistics/coupon/dao/SCouponMapper.xml"/>
+		<mapper resource="com/pinche/statistics/passenger/dao/PassengerMapper.xml"/>
+		<mapper resource="com/pinche/statistics/finance/dao/FinanceMapper.xml"/>
+		<mapper resource="com/pinche/statistics/order/dao/OrderStatisticsMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/car/dao/CarMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/share/dao/ShareMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/evaluate/dao/EvaluateMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/notify/dao/NotifyMapper.xml"/>
+		<mapper resource="com/nmdy/operation/feedback/dao/FeedBackMapper.xml"/>
+		<mapper resource="com/nmdy/operation/operlog/dao/Oper_LogMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/app/dao/AppMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/abbrecord/dao/AbbRecordMapper.xml"/>
+		<mapper  resource="com/nmdy/operation/cityparam/dao/CityParamMapper.xml"/>
+		<mapper resource="com/nmdy/customerManage/user/dao/UserNewMapper.xml"/>
+		<mapper resource="com/nmdy/customerManage/groupself/dao/GroupSelfNewMapper.xml"/>
+		<mapper resource="com/nmdy/customerManage/groupAssociation/dao/GroupAssociationMapper.xml"/>
+		<mapper resource="com/nmdy/customerManage/group/dao/GroupNewMapper.xml"/>
+		<mapper resource="com/nmdy/sysManage/role/dao/Resource.xml"/>
+		<mapper resource="com/nmdy/sysManage/role/dao/Juese.xml"/>
+		<mapper resource="com/nmdy/sysManage/role/dao/DataJuese.xml"/>
+		<mapper resource="com/nmdy/customerManage/appSpreadUnit/dao/App_Spread_UnitMapper.xml"/>
+		<mapper resource="com/nmdy/activity/dao/Activity.xml"/>
+		<mapper resource="com/nmdy/workStation/dao/WorkStation.xml"/>
+		<mapper resource="com/nmdy/workStation/dao/ControlCenter.xml"/>
+	</mappers>
+	
+</configuration>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout"
+                android:background="#40000000" android:gravity="center">
+
+    <RelativeLayout
+            android:layout_width="440px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundwhitewhite_frame" android:layout_centerInParent="true"
+            android:paddingBottom="20px" android:id="@+id/content_layout" android:clickable="true">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="75px" android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" android:background="@drawable/roundtopsolidgreen_frame"
+                android:id="@+id/relativeLayout">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/STR_EVALPASS_TITLE"
+                    android:id="@+id/txt_title" android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" android:gravity="center"
+                    android:textColor="@color/WHITE_COLOR" android:textSize="@dimen/TITLE_FONTSIZE"/>
+        </RelativeLayout>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:id="@+id/imageView" android:background="#FFFFFFFF"
+                android:layout_below="@+id/relativeLayout" android:layout_marginTop="-10px"/>
+        <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:id="@+id/imgGoodEval" android:layout_below="@+id/relativeLayout"
+                android:layout_alignParentLeft="true" android:layout_marginLeft="20px" android:layout_marginTop="20px"
+                android:background="@drawable/radiobox_roundsel"/>
+        <ImageView
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:id="@+id/imgGoodEvalIcon" android:layout_below="@+id/relativeLayout"
+                android:layout_toRightOf="@+id/imgGoodEval" android:layout_marginTop="14px"
+                android:layout_marginLeft="5px" android:background="@drawable/bk_goodsmalleval"/>
+        <TextView
+                android:layout_width="40px"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_EVALPASS_GOOD"
+                android:id="@+id/lblGoodEval" android:layout_alignTop="@+id/imgGoodEvalIcon"
+                android:layout_toRightOf="@+id/imgGoodEvalIcon" android:layout_alignBottom="@+id/imgGoodEvalIcon"
+                android:layout_marginLeft="5px"
+                android:textColor="@color/GRAY_COLOR" android:textSize="18px" android:gravity="center_vertical|left"/>
+        <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:id="@+id/imgNormalEval" android:layout_below="@+id/relativeLayout"
+                android:layout_toRightOf="@+id/lblGoodEval"
+                android:layout_marginTop="20px"
+                android:layout_marginLeft="30px" android:background="@drawable/radiobox_roundnormal"/>
+        <ImageView
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:id="@+id/imgNormalEvalIcon" android:layout_below="@+id/relativeLayout"
+                android:layout_toRightOf="@+id/imgNormalEval" android:layout_marginLeft="5px"
+                android:layout_marginTop="14px" android:background="@drawable/bk_normaleval"/>
+        <TextView
+                android:layout_width="40px"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_EVALPASS_NORMAL"
+                android:id="@+id/lblNormalEval" android:layout_alignTop="@+id/imgNormalEvalIcon"
+                android:layout_toRightOf="@+id/imgNormalEvalIcon" android:layout_alignBottom="@+id/imgNormalEvalIcon"
+                android:gravity="center_vertical|left" android:textColor="@color/GRAY_COLOR" android:textSize="18px"
+                android:layout_marginLeft="5px"/>
+        <ImageView
+                android:layout_width="24px"
+                android:layout_height="24px"
+                android:id="@+id/imgBadEval" android:layout_below="@+id/relativeLayout"
+                android:layout_toRightOf="@+id/lblNormalEval" android:layout_marginLeft="25px"
+                android:layout_marginTop="20px"
+                android:background="@drawable/radiobox_roundnormal"/>
+        <ImageView
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:id="@+id/imgBadEvalIcon" android:layout_below="@+id/relativeLayout"
+                android:layout_toRightOf="@+id/imgBadEval"
+                android:layout_marginLeft="5px" android:layout_marginTop="14px"
+                android:background="@drawable/bk_badeval"/>
+        <TextView
+                android:layout_width="40px"
+                android:layout_height="wrap_content"
+                android:text="@string/STR_EVALPASS_BAD"
+                android:id="@+id/lblBadEval" android:layout_alignTop="@+id/imgBadEvalIcon"
+                android:layout_toRightOf="@+id/imgBadEvalIcon" android:layout_alignBottom="@+id/imgBadEvalIcon"
+                android:layout_marginLeft="5px" android:gravity="center_vertical|left"
+                android:textColor="@color/GRAY_COLOR" android:textSize="18px"/>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60px" android:layout_below="@+id/imgNormalEvalIcon"
+                android:layout_marginTop="20px" android:layout_marginLeft="20px" android:layout_marginRight="20px"
+                android:background="@drawable/roundgreenwhite_frame" android:id="@+id/relativeLayout2">
+            <TextView
+                    android:layout_width="200px"
+                    android:layout_height="fill_parent"
+                    android:text="@string/STR_EVALPASS_COMMONWORD"
+                    android:id="@+id/lblCommonWord" android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="20px" android:gravity="center_vertical|left"
+                    android:textColor="@color/TITLE_BACKCOLOR" android:textSize="21px"/>
+            <ImageView
+                    android:layout_width="40px"
+                    android:layout_height="22px"
+                    android:id="@+id/imgCommonWordExpand" android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" android:layout_marginRight="20px"
+                    android:scaleType="fitCenter" android:src="@drawable/bk_downarraw"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="10px" android:layout_below="@+id/relativeLayout2"
+                android:layout_centerHorizontal="true" android:id="@+id/relativeLayout3">
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0px" android:layout_below="@+id/relativeLayout3"
+                android:id="@+id/relativeLayout4">
+	        <ScrollView
+			        android:layout_width="match_parent"
+			        android:layout_height="fill_parent"
+			        android:id="@+id/commWordsScroll">
+		        <LinearLayout
+				        android:orientation="vertical"
+				        android:layout_width="fill_parent"
+				        android:layout_height="fill_parent" android:id="@+id/commWordsCont">
+		        </LinearLayout>
+	        </ScrollView>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="10px" android:layout_below="@+id/relativeLayout4"
+                android:id="@+id/relativieLayout5">
+        </RelativeLayout>
+        <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="125px"
+                android:id="@+id/txtEvalData" android:layout_below="@+id/relativieLayout5"
+                android:layout_centerHorizontal="true" android:layout_marginLeft="20px"
+                android:layout_marginRight="20px" android:layout_marginTop="20px" android:gravity="left|top"
+                android:textColor="@color/GRAY_COLOR" android:textSize="21px" android:padding="10px"
+                android:background="@drawable/roundgraywhite_frame" android:hint="@string/STR_EVAL_HINT"/>
+        <Button
+                android:layout_width="160px"
+                android:layout_height="50px"
+                android:text="@string/STR_EVALPASS_CANCEL"
+                android:id="@+id/btnCanCel" android:layout_below="@+id/txtEvalData"
+                android:layout_alignLeft="@+id/txtEvalData" android:layout_marginTop="20px"
+                android:background="@drawable/roundgreenwhite_frame" android:textColor="@color/TITLE_BACKCOLOR"
+                android:textSize="24px"/>
+        <Button
+                android:layout_width="160px"
+                android:layout_height="50px"
+                android:text="@string/STR_EVALPASS_FINISH"
+                android:id="@+id/btnOk" android:layout_alignTop="@+id/btnCanCel"
+                android:layout_alignRight="@+id/txtEvalData" android:background="@drawable/roundsolidgreen_frame"
+                android:textColor="@color/WHITE_COLOR" android:textSize="24px"/>
+    </RelativeLayout>
+	<RelativeLayout
+			android:layout_width="400px"
+			android:layout_height="200px" android:id="@+id/content_layout2"
+			android:background="@drawable/roundwhitewhite_frame" android:layout_centerInParent="true">
+		<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/scrollView">
+			<RelativeLayout
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent">
+				<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="New Text"
+						android:id="@+id/txt_eval_content" android:textColor="#404040" android:textSize="25px"
+						android:layout_margin="20px"/>
+			</RelativeLayout>
+		</ScrollView>
+	</RelativeLayout>
+</RelativeLayout>

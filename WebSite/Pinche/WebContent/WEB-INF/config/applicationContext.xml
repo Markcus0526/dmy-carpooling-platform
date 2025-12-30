@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="  
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd  
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd"
+     default-autowire="byType" > 
+
+<!--     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"  
+       destroy-method="close">  
+       <property name="driverClassName" value="com.mysql.jdbc.Driver" />  
+         <property name="url" value="jdbc:mysql://127.0.0.1:3306/pinche1103?useUnicode=true&amp;characterEncoding=utf8" />   
+        <property name="username" value="root" />   
+        <property name="password" value="ht365" />   
+          <property name="url" value="jdbc:mysql://127.0.0.1:3306/pinche?useUnicode=true&amp;characterEncoding=utf8" />  
+       <property name="username" value="root" />  
+       <property name="password" value="123456" />   
+
+
+       
+    </bean>  -->    
+
+<!--     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"   -->
+<!--        destroy-method="close">   -->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver" />   -->
+<!--        <property name="url" value="jdbc:mysql://192.168.1.79:3306/pinche?useUnicode=true&amp;characterEncoding=utf8" />   -->
+<!--        <property name="username" value="bjpc_reader" />   -->
+<!--        <property name="password" value="123456" />   -->
+<!--     </bean>   -->
+    
+     <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+    <property name="driver">
+        <value>com.mysql.jdbc.Driver</value>
+    </property>
+    <property name="driverUrl">
+        <value>jdbc:mysql://localhost:3306/pinche?user=root&amp;password=</value>
+    </property>
+    <property name="user" value="root" />
+    <property name="password" value="" />
+    <property name="alias" value="pinche" />
+    <property name="houseKeepingSleepTime" value="90000" />
+    <property name="prototypeCount" value="0" />
+    <property name="maximumConnectionCount" value="50" />
+    <property name="minimumConnectionCount" value="2" />
+    <property name="simultaneousBuildThrottle" value="50" />
+    <property name="maximumConnectionLifetime" value="14400000" />
+    <property name="houseKeepingTestSql" value="select CURRENT_DATE" />
+</bean>
+    
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+      <property name="configLocation" value="classpath:mybatis-config.xml"/> 
+       <property name="dataSource" ref="dataSource" />  
+    </bean>  
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+	   <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+       <property name="basePackage" value="com.nmdy" /> 
+       <property name="markerInterface" value="com.nmdy.base.SupperMapper"/> 
+    </bean>  
+    
+    <bean id="filterService" class="com.nmdy.filter.service.FilterServiceImp"/> 
+    <bean id="loginService" class="com.nmdy.login.service.LoginServiceImp"/>  
+
+
+
+	<bean id="administratorService" class="com.pinche.authority.manager.service.AdministratorServiceImpl"></bean>
+	<bean id="userRoleService" class="com.pinche.authority.manager.service.UserRoleServiceImpl"></bean>
+	<bean id="authorityService" class="com.pinche.authority.manager.service.AuthorityServiceImpl"></bean>
+	<bean id="roleitemService" class="com.pinche.authority.role.service.RoleitemServiceImpl"></bean>
+	<bean id="roleService" class="com.pinche.authority.role.service.RoleServiceImpl"></bean>
+	<bean id="operLogService" class="com.pinche.authority.manager.service.OperLogServiceImpl"></bean>
+	<bean id="menuService" class="com.pinche.authority.menu.service.MenuServiceImpl"></bean>
+	<bean id="customerService" class="com.pinche.customer.user.service.CustomerServiceImpl"></bean>
+	<bean id="groupService" class="com.pinche.customer.group.service.GroupServiceImpl"></bean>
+	<bean id="joinunitService" class="com.pinche.customer.joinunit.service.JoinunitServiceImpl"></bean>
+	<bean id="groupselfService" class="com.pinche.customer.groupself.service.GroupselfServiceImpl"></bean>
+	<bean id="appointService" class="com.nmdy.order.appoint.service.AppointServiceImpl"></bean>
+	<bean id="appointdetailService" class="com.nmdy.order.appointdetail.service.AppointdetailServiceImpl"></bean>
+	<bean id="recourseService" class="com.nmdy.order.recourse.service.RecourseServiceImpl"></bean>
+<!-- 	<bean id="resourceDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  -->
+<!-- 	    <property name="mapperInterface" value="com.nmdy.sysManage.role.dao.ResourceDao"/> -->
+<!-- 	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/> -->
+<!-- 	</bean> -->
+	<bean id="resourceService" class="com.nmdy.sysManage.role.service.ResourceServiceImpl">
+<!-- 		<property name="resourceDao" ref="resourceDao"></property> -->
+	</bean>
+	<bean id="freezeService" class="com.nmdy.financial.request.service.FreezeServiceImpl"></bean>
+	<bean id="accountService" class="com.nmdy.financial.account.service.AccountServiceImpl"></bean>
+	<bean id="loanService" class="com.nmdy.spread.loan.service.LoanServiceImpl"></bean>
+	<bean id="smsPlanService" class="com.nmdy.spread.sms.service.SMSPlanServiceImpl"></bean>
+	<bean id="profitconfigService" class="com.pinche.spread.number.service.ProfitconfigServiceImpl"></bean> 
+	<bean id="ledgerService" class="com.nmdy.financial.ledger.service.LedgerServiceImpl"></bean>
+	<bean id="couponService" class="com.pinche.statistics.coupon.service.CouponServiceImpl"></bean>
+	<bean id="scouponService" class="com.pinche.statistics.coupon.service.SCouponServiceImpl"></bean>
+	<bean id="driverService" class="com.pinche.statistics.driver.service.DriverServiceImpl"></bean>
+	<bean id="passengerService" class="com.pinche.statistics.passenger.service.PassengerServiceImpl"></bean>
+	<bean id="financeService" class="com.pinche.statistics.finance.service.FinanceServiceImpl"></bean>
+	<bean id="orderStatisticsService" class="com.pinche.statistics.order.service.OrderStatisticsServiceImpl"></bean>
+	<bean id="carService" class="com.nmdy.operation.car.service.CarServiceImpl" />
+	<bean id="app_Spread_UnitService" class="com.nmdy.customerManage.appSpreadUnit.service.App_Spread_UnitServiceImpl" />
+	<bean id="groupNewService" class="com.nmdy.customerManage.group.service.GroupNewServiceImpl" />
+	<bean id="groupAssociationService" class="com.nmdy.customerManage.groupAssociation.service.GroupAssociationServiceImpl" />
+	<bean id="groupSelfNewService" class="com.nmdy.customerManage.groupself.service.GroupSelfNewServiceImpl" />
+	<bean id="userNewService" class="com.nmdy.customerManage.user.service.UserNewServiceImpl" />
+	
+	
+	      <bean class="com.nmdy.operation.share.service.ShareServiceImpl" id="shareService"/>
+		 
+		  <bean class="com.nmdy.operation.evaluate.service.EvaluateServiceImpl" id="evaluateService"/>
+	    
+	      <bean class="com.nmdy.operation.notify.service.NotifyServiceImpl" id="notifyService"/>
+	      		  <bean class="com.nmdy.operation.feedback.service.FeedBackServiceImpl" id="feedBackService"/>
+		  <bean id="feedBackAction" class="com.nmdy.operation.feedback.action.FeedBackAction">
+		    <property name="feedBackService" ref="feedBackService"/>
+		  </bean>
+	
+		  <bean class="com.nmdy.operation.operlog.service.Oper_LogServiceImpl" id="oper_LogService"/>
+		   <bean id="oper_LogAction" class="com.nmdy.operation.operlog.action.Oper_LogAction">
+		    <property name="oper_LogService" ref="oper_LogService"/>
+		  </bean>
+		  
+		   <bean class="com.nmdy.operation.app.service.AppServiceImpl" id="appService"/>
+		   <bean id="appAction" class="com.nmdy.operation.app.action.AppAction">
+		    <property name="appService" ref="appService"/>
+		  </bean>
+		  
+		    <bean class="com.nmdy.operation.abbrecord.service.AbbRecordServiceImpl" id="abbRecordService"/>
+		   <bean id="abbRecordAction" class="com.nmdy.operation.abbrecord.action.AbbRecordAction">
+		    <property name="abbRecordService" ref="abbRecordService"/>
+		  </bean>
+		  
+		    <bean class="com.nmdy.operation.cityparam.service.CityParamServiceImpl" id="cityParamService"/>
+		   <bean id="cityParamAction" class="com.nmdy.operation.cityparam.action.CityParamAction">
+		    <property name="cityParamService" ref="cityParamService"/>
+		  </bean>
+		  <bean id="myService" class="com.nmdy.financial.manage.service.MyFormServiceImpl" />
+	
+		  <bean id="myFormAction" class="com.nmdy.financial.manage.action.MyFormAction">
+	  		  <property name="myService" ref="myService"/>	      
+	  	  </bean>
+	  	  
+	  	     <bean id="resourceAction" class="com.nmdy.sysManage.role.action.ResourceAction">
+	  		  <property name="resourceService" ref="resourceService"/>	      
+	  	  </bean>
+	  	  
+<!--   	  	  <bean id="loginAction" class="com.nmdy.login.action.LoginAction">
+			<property name="loginService" ref="loginService"></property>
+			<property name="administratorService" ref="administratorService"></property>
+			<property name="resourceService" ref="resourceService"></property>
+	  </bean> -->
+	  
+<!-- 	  	<bean id="jueseDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+	    <property name="mapperInterface" value="com.nmdy.sysManage.role.dao.JueseDao"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean> -->
+	
+	 <bean id="jueseService" class="com.nmdy.sysManage.role.service.JueseServiceImpl">
+	 	<!-- <property name="jueseDao" ref="jueseDao"></property> -->
+	 </bean> 
+	 
+<!--    	<bean id="dataJueseDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+	    <property name="mapperInterface" value="com.nmdy.sysManage.role.dao.DataJueseDao"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean> -->
+	
+	 <bean id="dataJueseService" class="com.nmdy.sysManage.role.service.DataJueseServiceImpl">
+	 	<!-- <property name="dataJueseDao" ref="dataJueseDao"></property> -->
+	 </bean> 
+	 
+<!--    	<bean id="userNewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+	    <property name="mapperInterface" value="com.nmdy.customerManage.user.dao.UserNewMapper"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean> -->
+	 
+<!--   	<bean id="app_Spread_UnitMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+	    <property name="mapperInterface" value="com.nmdy.customerManage.appSpreadUnit.dao.App_Spread_UnitMapper"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean> -->
+	
+ 	<bean id="gameService" class="com.nmdy.activity.service.GameServiceImpl">
+<!-- 	 	<property name="userNewMapper" ref="userNewMapper"></property>
+	 	<property name="app_Spread_UnitMapper" ref="app_Spread_UnitMapper"></property> -->
+<!-- 	 	<property name="loanService" ref="loanService"></property> -->
+<!-- 	 	<property name="loginService" ref="loginService"></property> -->
+	 </bean> 
+	 
+<!-- 	   <bean id="gameAction" class="com.nmdy.activity.action.GameAction">
+		    <property name="gameService" ref="gameService"/>
+		  </bean> -->
+		  
+<!-- 	  	<bean id="activityDao" class="org.mybatis.spring.mapper.MapperFactoryBean"> 
+	    <property name="mapperInterface" value="com.nmdy.activity.dao.ActivityDao"/>
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean> -->
+	
+	<bean id="activityService" class="com.nmdy.activity.service.ActivityServiceImpl"></bean> 
+	
+		<bean id="workStationService" class="com.nmdy.workStation.service.WorkStationServiceImpl"></bean> 
+	<bean id="controlCenterService" class="com.nmdy.workStation.service.ControlCenterServiceImpl"></bean> 
+	<bean id="excelUserService" class="util.excel.service.impl.ExcelUserServiceImpl"></bean> 
+	 	<!-- <property name="activityDao" ref="activityDao"></property> -->
+	 
+	 
+	 
+<!-- 	<import resource="classpath:META-INF/cxf/cxf.xml" /> -->
+<!--     <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" /> -->
+<!--     <import resource="classpath:META-INF/cxf/cxf-servlet.xml" /> -->
+
+	
+<!--     <jaxws:endpoint id="helloService" implementor="com.nmdy.webService.service.HelloServiceImpl" address="/helloService" /> -->
+<!--     <jaxws:endpoint id="insuranceService" implementor="com.nmdy.webService.service.InsuranceServiceImpl" address="/insuranceService" /> -->
+       
+</beans>

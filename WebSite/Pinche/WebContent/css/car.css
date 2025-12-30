@@ -1,0 +1,23 @@
+.carBox{width:94%;margin:3%;overflow:hidden;}
+.header{width:100%;background:#34875b;position:relative;overflow:visible;}
+.header img{padding:8px;}
+.header:after{width:0;height:0;display:block;content:'';border-style:solid dashed dashed dashed;border-color:#34875b transparent transparent transparent;border-width:10px;position:absolute;bottom:-20px;left:50%;margin-left:-5px;}
+.now{font:bold 16px/40px "Microsoft YaHei","微软雅黑";color:#34875b;text-align:center;}
+.download{width:100%;overflow:hidden;margin-bottom:15px;}
+.download dl{width:100%;}
+.download dd{height:36px;-webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  -ms-border-radius:10px;
+  -o-border-radius:10px;
+    border-radius:10px;
+  background:#34875b;margin-bottom:6px;font:bold 16px/36px "Microsoft YaHei","微软雅黑";color:white;padding-left:40%;box-shadow:inset 0px -1px 1px #626262}
+.download dd a{color:white;}
+.download dd:nth-child(1){background:url('../images/carIcon1_03.jpg') no-repeat 25% center #34875b;background-size:23px 27px;}
+.download dd:nth-child(2){background:url('../images/carIcon2_03.jpg') no-repeat 25% center #34875b;background-size:23px 27px;}
+.main{width:100%;overflow:hidden;}
+.main .title{font:bold 16px/40px "Microsoft YaHei","微软雅黑";color:#34875b;background:#f5b91b;text-align:left;position:relative;padding-left:5px;}
+.main .title:after{width:0;height:0;content:'';display:block;border-style:solid dashed dashed dashed;border-color:#f5b91b transparent transparent transparent;border-width:10px;position:absolute;bottom:-20px;left:50%;margin-left:-5px;}
+.content{width:98%;overflow:hidden;background:#34875b;color:white;padding:20px 1% 60px;}
+.content dl{width:100%;overflow:hidden;font:12px/18px "Microsoft YaHei","微软雅黑";}
+.content dl dt{width:27%;float:left;text-align:right;}
+.content dl dd{width:73%;float:left;text-align:left;}

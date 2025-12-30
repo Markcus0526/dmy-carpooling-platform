@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="#F3F3F3"
+                android:id="@+id/parent_layout"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+        >
+    <include layout="@layout/act_header"/>
+
+    <RelativeLayout
+            android:id="@+id/rl_order_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            >
+
+        <!--地图 -->
+        <com.baidu.mapapi.map.MapView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/img_map"
+                android:clickable="true"
+                android:visibility="visible"/>
+        <ImageButton
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:id="@+id/locate_btn"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="10px"
+                android:layout_marginTop="120px"
+                android:background="@drawable/btn_gps"
+                android:visibility="visible"/>
+
+        <LinearLayout
+                android:id="@+id/ll_waitorder_drivers_hint"
+                android:layout_width="fill_parent"
+                      android:layout_height="100px"
+                      android:background="#CFD4D4D4"
+                      android:gravity="center">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_WAITORDER_NOTIF1"
+                    android:id="@+id/notification_before"
+                    android:gravity="center"
+                    android:textColor="@color/GRAY_COLOR"
+                    android:textSize="@dimen/ORDER_FONTSIZE"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_WAITORDER_NOTIF2"
+                    android:id="@+id/notification"
+                    android:gravity="center"
+                    android:textColor="@color/LIGHT_YELLOW_COLOR"
+                    android:textSize="32px"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/STR_WAITORDER_NOTIF3"
+                    android:id="@+id/notification_after"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/GRAY_COLOR"
+                    android:textSize="@dimen/ORDER_FONTSIZE"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/ll_order_addprice_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#CFD4D4D4"
+                android:layout_below="@+id/ll_waitorder_drivers_hint"
+                android:visibility="visible"
+                >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="70px"
+                    android:text="等待响应"
+                    android:gravity="center"
+                    android:background="#E4E4E4"
+                    android:textColor="@color/NEWS_TITLE_NORMAL_COLOR"
+                    android:textSize="35px"
+                    android:visibility="gone"
+                    />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25px"
+                    android:paddingRight="45px"
+                    android:paddingTop="10px"
+                    android:paddingBottom="10px"
+                    >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OO提示您："
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:textColor="#4db47d"
+                        />
+                <TextView
+                        android:id="@+id/tv_order_addprice_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5px"
+                        android:text="没有车主接单，可能打赏的太低啊"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:textColor="#717171"
+                        />
+
+            </LinearLayout>
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#E4E4E4"
+                    android:visibility="gone"
+                    />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20px"
+                    android:paddingTop="10px"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                <ImageButton
+                        android:id="@+id/ib_order_subprice"
+                        android:layout_width="55px"
+                        android:layout_height="55px"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/btn_roundminus"
+                        />
+                <TextView
+                        android:id="@+id/tv_addprice_point"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/STR_WAITORDER_NOTIF2"
+                        android:textColor="@color/BLACK_COLOR"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:gravity="center"
+                        android:layout_marginLeft="12px"
+                        android:padding="5px"
+                        android:background="@drawable/bg_addprice_points"
+                        />
+                <TextView
+                        android:id="@+id/tv_addprice_point_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="点"
+                        android:textColor="@color/BLACK_COLOR"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:gravity="center"
+                        android:layout_marginLeft="5px"
+                        android:layout_marginRight="12px"
+                        />
+                <ImageButton
+                        android:id="@+id/ib_order_addprice"
+                        android:layout_width="55px"
+                        android:layout_height="55px"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/btn_roundplus"
+                        />
+
+                 <Button
+                         android:id="@+id/bt_addprice"
+                         android:layout_width="wrap_content"
+                         android:layout_height="55px"
+                         android:text="加价再发"
+                         android:textColor="@color/WHITE_COLOR"
+                         android:textSize="@dimen/ORDER_FONTSIZE"
+                         android:background="@drawable/roundsolidgreen_frame"
+                         android:paddingLeft="12px"
+                         android:paddingRight="12px"
+                         android:layout_marginLeft="30px"
+                         />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/timer_layout"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="120px"
+                        android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="70px "
+                       android:layout_height="70px"
+                       android:id="@+id/timer_image"
+                       android:visibility="gone"
+                       android:background="@drawable/loading_360"/>
+            <ProgressBar
+                    android:layout_width="80px"
+                    android:layout_height="80px"
+                    android:layout_gravity="center"
+                    android:indeterminate="false"
+                    android:indeterminateDrawable="@drawable/loading_360"
+                    style="@android:style/Widget.ProgressBar.Inverse"
+                    />
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/timer_text"
+                      android:textColor="@color/RED_COLOR"
+                      android:layout_centerInParent="true"
+                      android:textSize="28px"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:id="@+id/sv_waitorder_over"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:visibility="gone"
+            >
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="30px"
+                android:paddingBottom="30px"
+                android:paddingRight="50px"
+                android:paddingLeft="50px"
+                android:gravity="center"
+                android:background="@color/WHITE_COLOR"
+                >
+            <ImageView
+                    android:layout_width="150px"
+                    android:layout_height="150px"
+                    android:scaleType="fitXY"
+                    android:background="@drawable/icon_appprice_over"
+                    />
+            <TextView
+                    android:id="@+id/tv_addprice_over_drivers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="已经发送给附近200位司机，若有车主接单，马上通知您"
+                    android:textSize="@dimen/ORDER_FONTSIZE"
+                    android:textColor="@color/GRAY_COLOR"
+                    android:layout_marginTop="20px"
+
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4px"
+                >
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/WHITE_COLOR"
+                    android:layout_marginRight="2px"
+                    android:layout_weight="1"
+                    android:paddingLeft="15px"
+                    android:paddingRight="15px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:gravity="center"
+                    >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上周平均接单时间"
+                        android:textColor="@color/BLACK_COLOR"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:singleLine="true"
+                        />
+                <TextView
+                        android:id="@+id/tv_addprice_ordertime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15分钟"
+                        android:textColor="@color/LIGHT_YELLOW_COLOR"
+                        android:textSize="30px"
+                        android:layout_marginTop="20px"
+                        />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/WHITE_COLOR"
+                    android:layout_marginLeft="2px"
+                    android:layout_weight="1"
+                    android:paddingLeft="15px"
+                    android:paddingRight="15px"
+                    android:paddingTop="20px"
+                    android:paddingBottom="20px"
+                    android:gravity="center"
+                    >
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="离拼车结束还有"
+                        android:textColor="@color/BLACK_COLOR"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:singleLine="true"
+                        />
+                <TextView
+                        android:id="@+id/tv_addprice_orderovertime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="55分钟"
+                        android:textColor="@color/BTN_BLUE_COLOR"
+                        android:textSize="30px"
+                        android:layout_marginTop="20px"
+                        />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="20px"
+                android:paddingBottom="20px"
+                android:paddingRight="25px"
+                android:paddingLeft="20px"
+                >
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    >
+                <ImageView
+                        android:layout_width="20px"
+                        android:layout_height="20px"
+
+                        android:background="@drawable/icon_blue_point"
+                        />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="拼友须知"
+                        android:textSize="28px"
+                        android:textColor="@color/GRAY_COLOR"
+                        android:layout_marginLeft="10px"
+                        android:textStyle="bold"
+                        />
+            </LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1、您的价格不包含高速费和过桥费等其他附加费用"
+                    android:textSize="@dimen/ORDER_FONTSIZE"
+                    android:textColor="@color/TRANS_COLOR"
+                    android:layout_marginTop="12px"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2、请您上车坐副驾驶位置"
+                    android:textSize="@dimen/ORDER_FONTSIZE"
+                    android:textColor="@color/TRANS_COLOR"
+                    android:layout_marginTop="12px"
+                    />
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="12px"
+                    >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3、如有问题，请及时联系"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:textColor="@color/TRANS_COLOR"
+                        />
+                <TextView
+                        android:id="@+id/tv_addprice_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/STR_ORDER_COMPANY_PHONE"
+                        android:textSize="@dimen/ORDER_FONTSIZE"
+                        android:textColor="@color/RED_COLOR"
+                        />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

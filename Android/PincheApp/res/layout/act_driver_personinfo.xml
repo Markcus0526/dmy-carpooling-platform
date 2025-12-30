@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/parent_layout">
+
+	<RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/TITLE_HEIGHT"
+	                android:background="@color/TITLE_BACKCOLOR" android:id="@+id/title_layout">
+		<TextView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/txt_title"
+		          android:textSize="@dimen/TITLE_FONTSIZE" android:textColor="#FFFFFF" android:gravity="center"
+		          android:text="@string/STR_PERSONINFO_TITLE"/>
+		<ImageButton android:layout_width="50px" android:layout_height="50px" android:id="@+id/btn_back"
+		             android:layout_centerVertical="true" android:background="@drawable/btn_back"/>
+	</RelativeLayout>
+	<RelativeLayout
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:layout_below="@+id/title_layout"
+			android:id="@+id/content_layout" android:background="#F1F1F1">
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="60px" android:id="@+id/part_layout" android:background="#FFFFFF">
+			<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:layout_marginBottom="3px">
+				<RelativeLayout
+						android:layout_width="0dp"
+						android:layout_height="fill_parent" android:layout_weight="1">
+					<TextView
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:text="@string/STR_PERSONINFO_USERINFO"
+							android:id="@+id/txt_yonghuxinxi" android:gravity="center"
+							android:textSize="23px" android:textColor="#4Db47D"/>
+					<ImageButton
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:background="@drawable/bk_empty" android:id="@+id/btn_tab_yonghuxinxi"/>
+				</RelativeLayout>
+				<RelativeLayout
+						android:layout_width="0dp"
+						android:layout_height="fill_parent" android:layout_weight="1">
+					<TextView
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:text="@string/STR_PERSONINFO_CHANGEPWD"
+							android:id="@+id/txt_xiugaimima" android:gravity="center"
+							android:textSize="23px" android:textColor="#707070"/>
+					<ImageButton
+							android:layout_width="fill_parent"
+							android:layout_height="fill_parent"
+							android:id="@+id/btn_tab_xiugaimima" android:background="@drawable/bk_empty"/>
+				</RelativeLayout>
+			</LinearLayout>
+			<RelativeLayout
+					android:layout_width="240px"
+					android:layout_height="3px" android:layout_alignParentBottom="true" android:background="#4Db47D"
+					android:id="@+id/page_indicator">
+			</RelativeLayout>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_below="@+id/part_layout"
+				>
+			<view android:layout_width="match_parent"
+			      android:layout_height="match_parent"
+			      class="com.damytech.Utils.HorizontalPager" android:id="@+id/hor_pager" android:visibility="gone"/>
+			<ScrollView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/personinfo_scrollview" android:visibility="visible">
+				<RelativeLayout
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent">
+					<RelativeLayout
+							android:layout_width="fill_parent"
+							android:layout_height="805px">
+						<RelativeLayout
+								android:layout_width="fill_parent"
+								android:layout_height="230px" android:id="@+id/photo_layout"
+								android:background="#DEF3EE" android:visibility="visible">
+							<ImageView
+									android:layout_width="match_parent"
+									android:layout_height="match_parent"
+									android:id="@+id/img_photo_background" android:background="@drawable/bk_image_background"/>
+							<view android:layout_width="200px"
+							      android:layout_height="200px"
+							      class="com.damytech.Utils.image.SmartImageView" android:id="@+id/img_photo_view"
+							      android:layout_centerVertical="true" android:layout_marginLeft="20px"
+							      android:scaleType="fitXY"/>
+							<view android:layout_width="wrap_content"
+							      android:layout_height="wrap_content"
+							      class="com.damytech.Utils.image.SmartImageView" android:id="@+id/upload_photo_view"
+							      android:layout_alignTop="@+id/img_photo_view"
+							      android:layout_alignLeft="@+id/img_photo_view"
+							      android:layout_alignBottom="@+id/img_photo_view"
+							      android:layout_alignRight="@+id/img_photo_view" android:src="@drawable/upload_belt"
+							      android:scaleType="fitXY"/>
+							<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="60px"
+									android:text="@string/STR_UPLOAD_DRIVER_PHOTO"
+									android:id="@+id/txt_upload_photo" android:layout_alignLeft="@+id/img_photo_view"
+									android:layout_alignRight="@+id/img_photo_view"
+									android:layout_alignBottom="@+id/img_photo_view" android:gravity="center"
+									android:textColor="#FFFFFF" android:textSize="20px"/>
+							<ImageButton
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:id="@+id/btn_photo" android:background="@drawable/btn_frame"
+									android:layout_alignTop="@+id/img_photo_view"
+									android:layout_alignLeft="@+id/img_photo_view"
+									android:layout_alignBottom="@+id/img_photo_view"
+									android:layout_alignRight="@+id/img_photo_view" android:layout_marginLeft="-5px"
+									android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+									android:layout_marginBottom="-5px"/>
+							<view android:layout_width="200px"
+							      android:layout_height="200px"
+							      class="com.damytech.Utils.image.SmartImageView" android:id="@+id/img_car_view"
+							      android:layout_marginRight="20px" android:layout_centerVertical="true"
+							      android:layout_alignParentRight="true"
+							      android:scaleType="fitXY"/>
+							<view android:layout_width="wrap_content"
+							      android:layout_height="wrap_content"
+							      class="com.damytech.Utils.image.SmartImageView" android:id="@+id/upload_car_view"
+							      android:layout_alignTop="@+id/img_car_view"
+							      android:layout_alignLeft="@+id/img_car_view"
+							      android:layout_alignBottom="@+id/img_car_view"
+							      android:layout_alignRight="@+id/img_car_view" android:scaleType="fitXY"
+							      android:src="@drawable/upload_belt"/>
+							<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="60px"
+									android:text="@string/STR_UPLOAD_CAR_PHOTO"
+									android:id="@+id/txt_upload_car" android:layout_alignLeft="@+id/img_car_view"
+									android:layout_alignRight="@+id/img_car_view"
+									android:layout_alignBottom="@+id/img_car_view" android:textColor="#FFFFFF"
+									android:textSize="20px" android:gravity="center"/>
+							<ImageButton
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:id="@+id/btn_car_photo" android:layout_marginLeft="-5px"
+									android:layout_marginTop="-5px" android:layout_marginRight="-5px"
+									android:layout_marginBottom="-5px" android:layout_alignTop="@+id/img_car_view"
+									android:layout_alignLeft="@+id/img_car_view"
+									android:layout_alignBottom="@+id/img_car_view"
+									android:layout_alignRight="@+id/img_car_view"
+									android:background="@drawable/btn_frame"/>
+						</RelativeLayout>
+						<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+						                android:id="@+id/person_info_layout" android:layout_below="@+id/photo_layout">
+							<ImageView android:layout_width="400px" android:layout_height="50px"
+							           android:id="@+id/img_phone"
+							           android:background="@drawable/img_txtback" android:layout_marginTop="20px"
+							           android:layout_centerHorizontal="true"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_PHONE" android:id="@+id/txt_phone"
+							          android:textSize="21px" android:gravity="center_vertical"
+							          android:textColor="#A0A0A0" android:layout_alignTop="@+id/img_phone"
+							          android:layout_alignBottom="@+id/img_phone"
+							          android:layout_alignLeft="@+id/img_phone" android:layout_marginLeft="20px"/>
+							<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+							           android:id="@+id/img_sep_mobile" android:layout_marginTop="10px"
+							           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_phone"
+							           android:layout_alignBottom="@+id/img_phone"
+							           android:layout_toRightOf="@+id/txt_phone" android:layout_marginLeft="16px"
+							           android:background="#D0D0D0"/>
+							<TextView android:layout_width="wrap_content"
+                                      android:layout_height="match_parent"
+							          android:id="@+id/edt_mobile"
+                                      android:gravity="center_vertical"
+                                      android:layout_alignTop="@+id/img_phone"
+							          android:layout_toRightOf="@+id/img_sep_mobile"
+							          android:layout_alignRight="@+id/img_phone"
+							          android:layout_alignBottom="@+id/img_phone"
+							          android:background="@drawable/bk_empty" android:textColor="#505050"
+							          android:textSize="23px" android:singleLine="true" android:paddingLeft="10px"
+							          android:paddingRight="10px" android:inputType="phone" android:maxLength="11"/>
+							<Button android:layout_width="wrap_content" android:layout_height="50px"
+							        android:text="@string/STR_PERSONINFO_GETVERIFKEY" android:id="@+id/btn_verifykey"
+							        android:layout_alignLeft="@+id/img_phone" android:layout_alignRight="@+id/img_phone"
+							        android:layout_below="@+id/img_phone" android:background="@drawable/btn_green"
+							        android:textColor="#FFFFFF" android:textSize="22px" android:layout_marginTop="20px"
+							        android:visibility="visible"/>
+							<ImageView android:layout_width="wrap_content" android:layout_height="50px"
+							           android:id="@+id/img_verifykey" android:layout_alignLeft="@+id/btn_verifykey"
+							           android:layout_alignRight="@+id/btn_verifykey"
+							           android:layout_below="@+id/btn_verifykey"
+							           android:background="@drawable/img_txtback" android:layout_marginTop="20px"/>
+							<ImageView android:layout_width="30px" android:layout_height="wrap_content"
+							           android:id="@+id/img_verifkey_match" android:layout_alignTop="@+id/img_verifykey"
+							           android:layout_alignBottom="@+id/img_verifykey"
+							           android:layout_alignRight="@+id/img_verifykey" android:layout_marginRight="10px"
+							           android:scaleType="centerInside" android:src="@drawable/img_match_unchecked"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_VERIFKEY" android:id="@+id/txt_verifykey"
+							          android:textSize="21px" android:gravity="center_vertical"
+							          android:textColor="#A0A0A0" android:layout_alignTop="@+id/img_verifykey"
+							          android:layout_alignBottom="@+id/img_verifykey"
+							          android:layout_alignLeft="@+id/img_verifykey" android:layout_marginLeft="20px"/>
+							<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+							           android:id="@+id/img_sep_verifkey" android:layout_alignTop="@+id/img_verifykey"
+							           android:layout_alignBottom="@+id/img_verifykey" android:background="#D0D0D0"
+							           android:layout_marginLeft="16px" android:layout_toRightOf="@+id/txt_verifykey"
+							           android:layout_marginTop="10px" android:layout_marginBottom="10px"/>
+							<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:id="@+id/edt_verifkey" android:layout_alignTop="@+id/img_verifykey"
+							          android:layout_toRightOf="@+id/img_sep_verifkey"
+							          android:layout_toLeftOf="@+id/img_verifkey_match"
+							          android:layout_alignBottom="@+id/img_verifykey"
+							          android:background="@drawable/bk_empty" android:textColor="#505050"
+							          android:textSize="23px" android:singleLine="true" android:paddingLeft="10px"
+							          android:paddingRight="10px" android:inputType="number" android:maxLength="4"/>
+							<ImageView android:layout_width="230px" android:layout_height="50px"
+							           android:id="@+id/img_nickname" android:layout_alignLeft="@+id/img_verifykey"
+							           android:layout_below="@+id/img_verifykey"
+							           android:background="@drawable/img_txtback2" android:layout_marginTop="20px"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_NICKNAME" android:id="@+id/txt_nickname"
+							          android:textSize="21px" android:textColor="#A0A0A0"
+							          android:layout_marginLeft="20px" android:layout_alignTop="@+id/img_nickname"
+							          android:layout_alignBottom="@+id/img_nickname" android:gravity="center_vertical"
+							          android:layout_alignLeft="@+id/img_nickname"/>
+							<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+							           android:id="@+id/img_sep_nickname" android:background="#D0D0D0"
+							           android:layout_marginLeft="16px" android:layout_marginTop="10px"
+							           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_nickname"
+							           android:layout_alignBottom="@+id/txt_nickname"
+							           android:layout_toRightOf="@+id/txt_nickname"/>
+							<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:id="@+id/edt_nickname" android:layout_alignTop="@+id/img_nickname"
+							          android:layout_toRightOf="@+id/img_sep_nickname"
+							          android:layout_alignBottom="@+id/img_nickname"
+							          android:layout_alignRight="@+id/img_nickname"
+							          android:background="@drawable/bk_empty" android:textColor="#505050"
+							          android:textSize="23px" android:singleLine="true" android:paddingLeft="10px"
+							          android:paddingRight="10px" android:inputType="text" android:maxLength="20"/>
+							<ImageView android:layout_width="20px" android:layout_height="20px"
+							           android:id="@+id/img_male" android:background="@drawable/radiobox_roundsel"
+							           android:layout_alignTop="@+id/img_nickname" android:layout_marginTop="18px"
+							           android:layout_toRightOf="@+id/img_nickname" android:layout_marginLeft="20px"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_MALE" android:id="@+id/txt_male"
+							          android:layout_alignTop="@+id/img_nickname"
+							          android:layout_toRightOf="@+id/img_male"
+							          android:layout_alignBottom="@+id/img_nickname" android:gravity="center_vertical"
+							          android:layout_marginLeft="8px" android:textColor="#A0A0A0"
+							          android:textSize="21px"/>
+							<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+							             android:id="@+id/btn_male" android:focusableInTouchMode="false"
+							             android:layout_alignTop="@+id/txt_male"
+							             android:layout_alignLeft="@+id/img_male"
+							             android:layout_alignBottom="@+id/txt_male"
+							             android:layout_alignRight="@+id/txt_male"
+							             android:background="@drawable/bk_empty"/>
+							<ImageView android:layout_width="20px" android:layout_height="20px"
+							           android:id="@+id/img_female" android:background="@drawable/radiobox_roundnormal"
+							           android:layout_toRightOf="@+id/txt_male" android:layout_alignTop="@+id/img_male"
+							           android:layout_marginLeft="20px"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_FEMALE" android:id="@+id/txt_female"
+							          android:textColor="#A0A0A0" android:textSize="21px"
+							          android:layout_alignTop="@+id/txt_male" android:layout_alignBottom="@+id/txt_male"
+							          android:gravity="center_vertical" android:layout_toRightOf="@+id/img_female"
+							          android:layout_marginLeft="8px"/>
+							<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content"
+							             android:id="@+id/btn_female" android:layout_alignTop="@+id/txt_female"
+							             android:layout_alignBottom="@+id/txt_female"
+							             android:layout_alignLeft="@+id/img_female"
+							             android:layout_alignRight="@+id/txt_female"
+							             android:background="@drawable/bk_empty"/>
+							<ImageView android:layout_width="wrap_content" android:layout_height="50px"
+							           android:id="@+id/img_birthday" android:layout_alignLeft="@+id/img_verifykey"
+							           android:layout_alignRight="@+id/img_verifykey"
+							           android:layout_below="@+id/img_nickname"
+							           android:background="@drawable/img_txtback" android:layout_marginTop="20px"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:text="@string/STR_PERSONINFO_BIRTHDAY" android:id="@+id/txt_birthday"
+							          android:textSize="21px" android:gravity="center_vertical"
+							          android:textColor="#A0A0A0" android:layout_alignTop="@+id/img_birthday"
+							          android:layout_alignBottom="@+id/img_birthday"
+							          android:layout_alignLeft="@+id/img_birthday" android:layout_marginLeft="20px"/>
+							<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+							           android:id="@+id/img_sep_birthday" android:layout_marginLeft="16px"
+							           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+							           android:layout_alignTop="@+id/img_birthday"
+							           android:layout_alignBottom="@+id/img_birthday"
+							           android:layout_toRightOf="@+id/txt_birthday" android:background="#D0D0D0"/>
+							<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+							          android:id="@+id/edt_birthday" android:layout_alignTop="@+id/img_birthday"
+							          android:layout_alignBottom="@+id/img_birthday"
+							          android:layout_toRightOf="@+id/img_sep_birthday"
+							          android:layout_alignRight="@+id/img_birthday"
+							          android:background="@drawable/bk_empty" android:textColor="#505050"
+							          android:textSize="23px" android:paddingLeft="10px"
+							          android:paddingRight="10px"
+                                      android:gravity="center_vertical"/>
+							<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="35px"
+									android:text="@string/STR_PERSONINFO_GERENSHENFENYANZHENG"
+									android:id="@+id/lbl_person_verify" android:textSize="19px"
+									android:textColor="#A0A0A0" android:layout_alignLeft="@+id/img_birthday"
+									android:layout_below="@+id/img_birthday" android:layout_marginTop="20px"
+									android:gravity="center_vertical"/>
+							<TextView
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="ACBD"
+									android:id="@+id/txt_verify_state" android:layout_alignTop="@+id/lbl_person_verify"
+									android:layout_alignBottom="@+id/lbl_person_verify" android:textSize="19px"
+									android:textColor="#F9A02C" android:layout_toRightOf="@+id/lbl_person_verify"
+									android:gravity="center_vertical" android:layout_toLeftOf="@+id/btn_verify"
+									android:layout_marginRight="10px"/>
+							<Button
+									android:layout_width="100px"
+									android:layout_height="wrap_content"
+									android:text="@string/STR_PERSONINFO_QUYANZHENG"
+									android:id="@+id/btn_verify" android:layout_alignTop="@+id/lbl_person_verify"
+									android:layout_alignBottom="@+id/lbl_person_verify"
+									android:layout_alignRight="@+id/img_birthday" android:textSize="19px"
+									android:textColor="#4DB47D" android:background="@drawable/btn_smallwhite"/>
+							<Button
+									android:layout_width="wrap_content"
+									android:layout_height="50px"
+									android:text="@string/STR_PERSONINFO_XIUGAI"
+									android:id="@+id/btn_change" android:background="@drawable/btn_green"
+									android:layout_alignLeft="@+id/btn_verifykey"
+									android:layout_alignRight="@+id/btn_verifykey" android:textColor="#FFFFFF"
+									android:textSize="22px" android:layout_marginTop="20px"
+									android:layout_below="@+id/lbl_driver_verify"/>
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="35px"
+                                    android:text="@string/STR_PERSONINFO_CHEZHUSHENFENYANZHENG"
+                                    android:id="@+id/lbl_driver_verify" android:layout_below="@+id/lbl_person_verify"
+                                    android:layout_alignLeft="@+id/lbl_person_verify"
+                                    android:layout_toLeftOf="@+id/txt_verify_state" android:layout_marginTop="20px"
+                                    android:gravity="center" android:textColor="#A0A0A0" android:textSize="19px"/>
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ABCD"
+                                    android:id="@+id/lbl_driver_verify_state" android:layout_alignTop="@+id/lbl_driver_verify"
+                                    android:layout_toRightOf="@+id/lbl_driver_verify"
+                                    android:layout_alignBottom="@+id/lbl_driver_verify"
+                                    android:layout_alignRight="@+id/txt_verify_state"
+                                    android:textColor="@color/LIGHT_YELLOW_COLOR" android:textSize="19px"
+                                    android:gravity="center_vertical|left"/>
+                            <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/STR_PERSONINFO_QUYANZHENG"
+                                    android:id="@+id/btn_driver_verify" android:layout_alignTop="@+id/lbl_driver_verify_state"
+                                    android:layout_alignLeft="@+id/btn_verify"
+                                    android:layout_alignRight="@+id/btn_verify"
+                                    android:layout_alignBottom="@+id/lbl_driver_verify_state"
+                                    android:background="@drawable/btn_smallwhite"
+                                    android:textColor="@color/TITLE_BACKCOLOR" android:textSize="19px"/>
+                        </RelativeLayout>
+					</RelativeLayout>
+				</RelativeLayout>
+			</ScrollView>
+			<ScrollView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/changepwd_scrollview" android:visibility="gone">
+				<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+				                android:id="@+id/relativeLayout">
+					<ImageView android:layout_width="400px" android:layout_height="56px" android:id="@+id/img_old_pwd"
+					           android:background="@drawable/img_txtback2" android:layout_marginTop="30px"
+					           android:layout_centerHorizontal="true"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_PERSONINFO_OLDPWD" android:id="@+id/txt_old_pwd"
+					          android:textSize="21px" android:textColor="#A0A0A0" android:layout_marginLeft="20px"
+					          android:layout_alignTop="@+id/img_old_pwd" android:layout_alignBottom="@+id/img_old_pwd"
+					          android:gravity="center_vertical" android:layout_alignLeft="@+id/img_old_pwd"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_old_pwd" android:background="#D0D0D0"
+					           android:layout_marginLeft="16px" android:layout_marginTop="10px"
+					           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_old_pwd"
+					           android:layout_alignBottom="@+id/txt_old_pwd"
+					           android:layout_toRightOf="@+id/txt_old_pwd"/>
+					<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/edt_old_pwd" android:layout_alignTop="@+id/img_old_pwd"
+					          android:layout_toRightOf="@+id/img_sep_old_pwd"
+					          android:layout_alignBottom="@+id/img_old_pwd"
+					          android:layout_alignRight="@+id/img_old_pwd" android:background="@drawable/bk_empty"
+					          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+					          android:paddingLeft="10px" android:paddingRight="10px" android:inputType="textPassword"
+					          android:maxLength="16"/>
+					<ImageView android:layout_width="wrap_content" android:layout_height="56px"
+					           android:id="@+id/img_password" android:layout_alignLeft="@+id/img_old_pwd"
+					           android:layout_alignRight="@+id/img_old_pwd" android:layout_below="@+id/img_old_pwd"
+					           android:background="@drawable/img_txtback" android:layout_marginTop="30px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_PERSONINFO_NEWPWD" android:id="@+id/txt_password"
+					          android:textSize="21px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+					          android:layout_alignTop="@+id/img_password" android:layout_alignBottom="@+id/img_password"
+					          android:layout_alignLeft="@+id/img_password" android:layout_marginLeft="20px"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_password" android:layout_marginLeft="16px"
+					           android:layout_marginTop="10px" android:layout_marginBottom="10px"
+					           android:layout_alignTop="@+id/img_password"
+					           android:layout_alignBottom="@+id/img_password"
+					           android:layout_toRightOf="@+id/txt_password" android:background="#D0D0D0"/>
+					<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/edt_password" android:layout_alignTop="@+id/img_password"
+					          android:layout_alignBottom="@+id/img_password"
+					          android:layout_toRightOf="@+id/img_sep_password"
+					          android:layout_alignRight="@+id/img_password" android:background="@drawable/bk_empty"
+					          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+					          android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="16"
+					          android:inputType="textPassword"/>
+					<ImageView android:layout_width="wrap_content" android:layout_height="56px"
+					           android:id="@+id/img_confirm_pwd" android:layout_alignLeft="@+id/img_password"
+					           android:layout_alignRight="@+id/img_password" android:layout_below="@+id/img_password"
+					           android:background="@drawable/img_txtback" android:layout_marginTop="30px"/>
+					<TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:text="@string/STR_PERSONINFO_CONFPWD" android:id="@+id/txt_confirm_password"
+					          android:textSize="21px" android:gravity="center_vertical" android:textColor="#A0A0A0"
+					          android:layout_marginLeft="20px" android:layout_alignTop="@+id/img_confirm_pwd"
+					          android:layout_alignBottom="@+id/img_confirm_pwd"
+					          android:layout_alignLeft="@+id/img_confirm_pwd"/>
+					<ImageView android:layout_width="1px" android:layout_height="wrap_content"
+					           android:id="@+id/img_sep_confirmpwd" android:background="#D0D0D0"
+					           android:layout_marginLeft="16px" android:layout_marginTop="10px"
+					           android:layout_marginBottom="10px" android:layout_alignTop="@+id/img_confirm_pwd"
+					           android:layout_alignBottom="@+id/img_confirm_pwd"
+					           android:layout_toRightOf="@+id/txt_confirm_password"/>
+					<EditText android:layout_width="wrap_content" android:layout_height="wrap_content"
+					          android:id="@+id/edt_confirm_pwd" android:layout_alignTop="@+id/img_confirm_pwd"
+					          android:layout_toRightOf="@+id/img_sep_confirmpwd"
+					          android:layout_alignBottom="@+id/img_confirm_pwd"
+					          android:layout_alignRight="@+id/img_confirm_pwd" android:background="@drawable/bk_empty"
+					          android:textColor="#505050" android:textSize="23px" android:singleLine="true"
+					          android:paddingLeft="10px" android:paddingRight="10px" android:maxLength="16"
+					          android:inputType="textPassword"/>
+					<Button android:layout_width="140px" android:layout_height="46px" android:text="@string/STR_PERSONINFO_SUBMIT"
+					        android:id="@+id/btn_submit" android:layout_below="@+id/img_confirm_pwd"
+					        android:layout_marginTop="50px" android:layout_marginLeft="20px"
+					        android:layout_alignLeft="@+id/txt_confirm_password" android:textColor="#FFFFFF"
+					        android:textSize="21px" android:background="@drawable/btn_smallgreen"/>
+					<Button android:layout_width="140px" android:layout_height="46px" android:text="@string/STR_QUXIAO"
+					        android:id="@+id/btn_cancel" android:layout_alignRight="@+id/img_confirm_pwd"
+					        android:layout_alignTop="@+id/btn_submit" android:layout_marginRight="20px"
+					        android:textColor="#4DB47D" android:textSize="21px"
+					        android:background="@drawable/btn_smallwhite"/>
+					<RelativeLayout android:layout_width="fill_parent" android:layout_height="30px"
+					                android:id="@+id/space_layout" android:layout_below="@+id/btn_submit"/>
+				</RelativeLayout>
+			</ScrollView>
+		</RelativeLayout>
+	</RelativeLayout>
+</RelativeLayout>

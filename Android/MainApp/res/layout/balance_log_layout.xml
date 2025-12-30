@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/item_layout" android:background="#FFFFFF">
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="60px" android:layout_centerInParent="true">
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="2">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/txt_ts_id" android:gravity="center" android:textColor="#707070"
+					android:textSize="20px" android:singleLine="true"/>
+			<ImageView
+					android:layout_width="1px"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView" android:layout_alignParentLeft="true"
+					android:layout_alignTop="@+id/txt_ts_id" android:layout_alignBottom="@+id/txt_ts_id"
+					android:background="#707070"/>
+			<ImageView
+					android:layout_width="1px"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView1" android:layout_alignParentRight="true"
+					android:layout_alignTop="@+id/txt_ts_id" android:layout_alignBottom="@+id/txt_ts_id"
+					android:background="#707070"/>
+			<ImageView
+					android:layout_width="match_parent"
+					android:layout_height="1px"
+					android:id="@+id/imageView4" android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/txt_inout_balance" android:gravity="center" android:textColor="#707070"
+					android:textSize="21px" android:singleLine="true"/>
+			<ImageView
+					android:layout_width="1px"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView2" android:layout_alignParentRight="true"
+					android:layout_alignTop="@+id/txt_inout_balance"
+					android:layout_alignBottom="@+id/txt_inout_balance" android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView6"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/txt_source" android:gravity="center" android:textColor="#707070"
+					android:textSize="21px" android:singleLine="true"/>
+			<ImageView
+					android:layout_width="1px"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView3" android:layout_alignParentRight="true"
+					android:layout_alignTop="@+id/txt_source" android:layout_alignBottom="@+id/txt_source"
+					android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView7"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+		<RelativeLayout
+				android:layout_width="0dp"
+				android:layout_height="fill_parent" android:layout_weight="1">
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/txt_remain_balance" android:gravity="center" android:textColor="#707070"
+					android:textSize="21px" android:singleLine="true"/>
+			<ImageView
+					android:layout_width="1px"
+					android:layout_height="wrap_content"
+					android:id="@+id/imageView5" android:layout_alignParentRight="true"
+					android:layout_alignTop="@+id/txt_remain_balance"
+					android:layout_alignBottom="@+id/txt_remain_balance" android:background="#707070"/>
+			<ImageView android:layout_width="match_parent" android:layout_height="1px" android:id="@+id/imageView8"
+			           android:layout_alignParentBottom="true" android:background="#707070"/>
+		</RelativeLayout>
+	</LinearLayout>
+</RelativeLayout>
