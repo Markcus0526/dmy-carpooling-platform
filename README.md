@@ -8,13 +8,7 @@ This README gives a concise orientation, quick-start steps to run the project lo
 
 ## Screenshots
 
-<img src="android/CarPoolingApp/res/drawable-hdpi/bklogo.png" alt="Android App Logo" width="320">
-
-<img src="ios/CarPoolingApp/BJPinChe/Image/main_background.png" alt="iOS Main Background" width="640">
-
-<img src="manager/WebContent/images/login/login_logo.png" alt="Manager Login" width="480">
-
-> These images are loaded from repository assets. When viewing this README on GitHub/Bitbucket the relative paths will render the images.
+<img width="1200" height="800" alt="Bjcarpool" src="https://github.com/user-attachments/assets/2b5b4d1a-1074-47a4-b4f1-f18ebac78514" />
 
 ---
 
