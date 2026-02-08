@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.statistics.coupon.dao.CouponMapper" >
+
+    <resultMap
+        id="CouponResult"
+        type="Coupon" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="syscoupon_code"
+            property="syscoupon_code" />
+
+        <result
+            column="password"
+            property="password" />
+
+        <result
+            column="sc_date"
+            property="sc_date" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="release_channel"
+            property="release_channel" />
+
+        <result
+            column="app_spread_unit_id"
+            property="app_spread_unit_id" />
+
+        <result
+            column="goods_or_cash"
+            property="goods_or_cash" />
+
+        <result
+            column="sum"
+            property="sum" />
+
+        <result
+            column="goods"
+            property="goods" />
+
+        <result
+            column="apply_source"
+            property="apply_source" />
+
+        <result
+            column="coupon_type"
+            property="coupon_type" />
+
+        <result
+            column="limit"
+            property="limit" />
+
+        <result
+            column="valid_period_unit"
+            property="valid_period_unit" />
+
+        <result
+            column="valid_period"
+            property="valid_period" />
+
+        <result
+            column="active_code"
+            property="active_code" />
+
+        <result
+            column="limit_count"
+            property="limit_count" />
+
+        <result
+            column="isenabled"
+            property="isenabled" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="deploy_cnt"
+            property="deployCount" />
+
+        <result
+            column="use_cnt"
+            property="useCount" />
+    </resultMap>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="CouponResult" >
+		SELECT SC.*, ASU.name AS app_spread_unit_name, DC.deploy_cnt, UC.use_cnt 
+		FROM sys_coupon AS SC 
+		LEFT JOIN app_spread_unit AS ASU ON SC.app_spread_unit_id=ASU.id 
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS deploy_cnt FROM single_coupon GROUP BY coupon_code) AS DC 
+		ON SC.syscoupon_code=DC.coupon_code 
+		LEFT JOIN (SELECT coupon_code, COUNT(id) AS use_cnt FROM single_coupon WHERE isused=1 GROUP BY coupon_code) AS UC 
+		ON SC.syscoupon_code=UC.coupon_code 
+ 		WHERE 1
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND date_format(SC.sc_date,"%Y-%m-%d") >= #{beginDate} 
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND  #{endDate} > date_format(SC.sc_date,"%Y-%m-%d")
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+			AND date_format(SC.sc_date,"%T") >= #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+			AND  #{endTime} >= date_format(SC.sc_date,"%T")
+            </if>
+        </if>
+
+        <if test="releaseChannel == 1" >
+			AND  SC.release_channel = 1
+        </if>
+
+        <if test="releaseChannel == 2" >
+			AND  SC.release_channel = 2
+        </if>
+		AND ( 0 
+
+        <if test="noCondCash == 1" >
+			OR (SC.goods_or_cash = 1 AND SC.coupon_type = 0) 
+        </if>
+
+        <if test="condCash == 1" >
+			OR (SC.goods_or_cash = 1 AND SC.coupon_type != 0) 
+        </if>
+
+        <if test="good == 1" >
+			OR (SC.goods_or_cash = 2) 
+        </if>
+		)
+
+        <!-- AND ( 0 -->
+        <!-- <if test="singlePinche == 1"> -->
+        <!-- OR (SC.goods_or_cash = 1 AND SC.coupon_type = 0) -->
+        <!-- </if> -->
+        <!-- <if test="dimPinche == 1"> -->
+        <!-- OR (SC.goods_or_cash = 1 AND SC.coupon_type != 0) -->
+        <!-- </if> -->
+        <!-- <if test="divPinche == 1"> -->
+        <!-- OR (SC.goods_or_cash = 2) -->
+        <!-- </if> -->
+        <!-- <if test="longPinche == 1"> -->
+        <!-- OR (SC.goods_or_cash = 2) -->
+        <!-- </if> -->
+        <!-- ) -->
+		AND SC.deleted=0 
+
+        <if test="isTotal == 1" >
+		ORDER BY SC.id  LIMIT #{page},#{rows}
+        </if>
+    </select>
+
+</mapper>

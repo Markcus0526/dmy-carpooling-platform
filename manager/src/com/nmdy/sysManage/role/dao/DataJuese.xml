@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.sysManage.role.dao.DataJueseDao" >
+
+    <resultMap
+        id="DataJueseMap"
+        type="DataJuese" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="name"
+            property="name" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="findUsernameById"
+        parameterType="int"
+        resultType="String" >
+		SELECT usercode from administrator where id = #{id}
+    </select>
+
+    <select
+        id="findById"
+        parameterType="int"
+        resultType="DataJuese" >
+		SELECT id, name, remark FROM role_data_zyl WHERE id=#{id} AND deleted=0 ORDER BY id
+    </select>
+
+    <select
+        id="findUserRoles"
+        parameterType="String"
+        resultType="DataJuese" >
+		SELECT b.id, b.name, b.remark FROM administrator_operrole_rel_zyl a 
+		left join role_data_zyl b on a.role_oper_id=b.id
+		WHERE a.administrator_code = #{username}
+    </select>
+
+    <!-- 批量插入资源关系表 -->
+
+    <insert
+        id="addUserRolesBatch"
+        parameterType="java.util.List"
+        useGeneratedKeys="true" >
+    insert into administrator_operrole_rel_zyl (administrator_code,role_oper_id)   
+    values  
+
+        <foreach
+            collection="list"
+            index="index"
+            item="item"
+            separator="," >
+        (#{item.administrator_code},#{item.role_oper_id})  
+        </foreach>
+    </insert>
+
+    <select
+        id="findAll"
+        resultMap="DataJueseMap" >
+		SELECT id, name, remark FROM role_data_zyl WHERE deleted=0 ORDER BY id
+    </select>
+
+    <insert
+        id="add"
+        keyProperty="id"
+        parameterType="DataJuese"
+        useGeneratedKeys="true" >
+		INSERT INTO role_data_zyl(name, remark, deleted) values(#{name}, #{remark}, #{deleted})
+    </insert>
+
+    <update
+        id="update"
+        parameterType="DataJuese" >
+		UPDATE role_data_zyl SET name=#{name}, remark=#{remark} WHERE id=#{id}
+    </update>
+
+    <update
+        id="delete"
+        parameterType="int" >
+		UPDATE role_data_zyl SET deleted=1 WHERE id=#{id}
+    </update>
+
+    <delete
+        id="deleteUserRoles"
+        parameterType="String" >
+		delete from administrator_operrole_rel_zyl where administrator_code = #{username}
+    </delete>
+
+    <select
+        id="findPagination"
+        parameterType="hashmap"
+        resultMap="DataJueseMap" >
+		SELECT * FROM role_data_zyl WHERE `name` like #{name} AND deleted=0 ORDER BY id
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page},#{rows} 
+            </if>
+        </if>
+    </select>
+
+ <select
+        id="countPagination" parameterType="hashmap" resultType="int">
+		SELECT count(*) FROM role_data_zyl WHERE `name` like #{name} AND deleted=0 ORDER BY id
+    </select>
+    
+    <select
+        id="searchOp"
+        parameterType="String"
+        resultType="DataJuese" >
+			SELECT * FROM role_data_zyl WHERE `name` like #{name} AND deleted=0 ORDER BY id
+    </select>
+
+    <!-- <select id="searchData" resultType="Juese" parameterType="string"> -->
+    <!-- SELECT * FROM role_oper_zyl WHERE `name` like CONCAT('%','${name}','%') AND deleted=0 AND type=1 ORDER BY id -->
+    <!-- </select> -->
+
+</mapper>

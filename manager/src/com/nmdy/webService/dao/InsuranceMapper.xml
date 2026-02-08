@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.webService.dao.InsuranceMapper">
+
+	<resultMap id="Insurance" type="java.util.Map">
+
+		<id column="id" property="id" />
+		<result column="request_type" property="request_type" />
+		<result column="requset_time" property="requset_time" />
+		<result column="request_transno" property="request_transno" />
+		<result column="user" property="user" />
+		<result column="password" property="password" />
+		
+		<result column="appl_no" property="appl_no" />
+		<result column="appl_time" property="appl_time" />
+		<result column="prod_type" property="prod_type" />
+		<result column="prod_code" property="prod_code" />
+		<result column="effect_time" property="effect_time" />
+		<result column="insexpr_date" property="insexpr_date" />
+		<result column="bus_branch" property="bus_branch" />
+		<result column="sale_channel" property="sale_channel" />
+		<result column="counter_code" property="counter_code" />
+		<result column="total_amount" property="total_amount" />
+		<result column="total_preminum" property="total_preminum" />
+		
+		<result column="appl_name" property="appl_name" />
+		<result column="appl_sex" property="appl_sex" />
+		<result column="appl_birthday" property="appl_birthday" />
+		<result column="cert_type" property="cert_type" />
+		<result column="cert_code" property="cert_code" />
+		
+		
+		<result column="isd_count" property="isd_count" />
+		
+		<result column="isd_serial" property="isd_serial" />
+		<result column="appl_relation" property="appl_relation" />
+		<result column="isd_type" property="isd_type" />
+		<result column="isd_name" property="isd_name" />
+	</resultMap>
+
+	<select id="fetcheInsuData" parameterType="long" resultMap="Insurance">
+		select
+			insurance.request_type, /* 请求类型*/
+			insurance.requset_time, /* 请求时间*/
+			insurance.request_transno, /* 交易流水号，合作方自己定义*/
+			insurance.user, /* 保险公司分配给合作方的账号*/
+			insurance.password, /* 保险公司分配给合作方的密码*/
+	
+			insurance.appl_no, /* 投保单号*/
+			insurance.appl_time, /* 投保时间，当前时间*/
+			insurance.prod_type, /* 承包产品类型*/
+			insurance.prod_code, /* 承包产品代码*/
+			insurance.effect_time, /* 保单生效时间*/
+			insurance.insexpr_date, /* 保单失效时间*/
+			insurance.bus_branch, /* 业务受理机构*/
+			insurance.sale_channel, /* 销售渠道*/
+			insurance.counter_code, /* 网店代码*/
+			insurance.total_amount, /* 保额*/
+			insurance.total_preminum, /* 合计保费，insu_fee*/
+	
+			insurance.appl_name, /* 投保人姓名*/
+			insurance.appl_sex, /* 投保人性别*/
+			insurance.appl_birthday, /* 投保人生日*/
+			insurance.cert_type, /* 投保人证件类型*/
+			insurance.cert_code, /* 投保人证件号码*/
+	
+			insurance.isd_count, /* 被保险人数*/
+	
+			insurance.isd_serial, /* 被保险人顺序*/
+			insurance.appl_relation, /* 投保人和被保人顺序，司乘*/
+			insurance.isd_type, /* 被保险人类型*/
+			insurance.isd_name, /* 被保人姓名*/
+			insurance.isd_sex, /* 被保人性别*/
+			insurance.isd_birthday, /* 被保险人生日*/
+			insurance.isd_cert_type, /* 被保险人证件类型*/
+			insurance.isd_cert_code, /* 被保险人证件号码*/
+			insurance.benef_order, /* 受益顺序*/
+			insurance.id /* 保单id，用于更改保单状态*/
+		from 
+			insurance
+		where 
+			id = #{insuID};
+	</select>
+
+<resultMap id="InsuDTD" type="java.util.Map" >
+		<id column="id" property="id" />
+		<result column="insu_id" property="insu_id" />
+		<result column="appl_no" property="appl_no" />
+		<result column="oper_type" property="oper_type" />
+		<result column="oper_time" property="oper_time" />
+		<result column="insu_sum" property="insu_sum" />
+</resultMap>
+
+	<select id="fetcheInsuDTD" parameterType="hashmap" resultMap="InsuDTD">
+		SELECT 
+			insurance_dtd.id,
+			insurance_dtd.insu_id,
+			insurance_dtd.appl_no,
+			insurance_dtd.oper_type,
+			insurance_dtd.oper_time,
+			insurance_dtd.insu_sum 
+		FROM 
+			insurance_dtd
+		<![CDATA[ WHERE id>=#{start} AND id <=#{end} ]]>  
+	</select>
+
+
+
+</mapper>

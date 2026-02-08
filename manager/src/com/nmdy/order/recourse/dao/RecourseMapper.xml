@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.order.recourse.dao.RecourseMapper" >
+
+    <resultMap
+        id="RecourseResult"
+        type="Recourse" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="workform_num"
+            property="workform_num" />
+
+        <result
+            column="adm_id"
+            property="adm_id" />
+
+        <result
+            column="form_type"
+            property="form_type" />
+
+        <result
+            column="bussi_type"
+            property="bussi_type" />
+
+        <result
+            column="phone_incoming"
+            property="phone_incoming" />
+
+        <result
+            column="order_cs_id"
+            property="order_cs_id" />
+
+        <result
+            column="order_cs_no"
+            property="order_cs_no" />
+
+        <result
+            column="order_dj_id"
+            property="order_dj_id" />
+
+        <result
+            column="order_dj_no"
+            property="order_dj_no" />
+
+        <result
+            column="customer_name"
+            property="customer_name" />
+
+        <result
+            column="sex"
+            property="sex" />
+
+        <result
+            column="city"
+            property="city" />
+
+        <result
+            column="reason"
+            property="reason" />
+
+        <result
+            column="process_result"
+            property="process_result" />
+
+        <result
+            column="form_agree"
+            property="form_agree" />
+
+        <result
+            column="status"
+            property="status" />
+
+        <result
+            column="wf_date"
+            property="wf_date" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="driver_verified"
+            property="driver_verified" />
+
+        <result
+            column="person_verified"
+            property="person_verified" />
+
+        <result
+            column="username"
+            property="username" />
+    </resultMap>
+
+    <insert
+        id="addAbb_Record"
+        keyProperty="id"
+        parameterType="hashmap" >
+		INSERT INTO abb_record (userid,abb_type,`desc`,order_exec_id,`status`,auditor,deleted) VALUES 
+					(#{userid},#{abb_type},#{desc},#{order_exec_id},1,#{auditor},0)
+    </insert>
+
+    <select
+        id="findOneByUsername"
+        parameterType="java.util.Map"
+        resultType="com.nmdy.order.appoint.dao.Customer" >
+		SELECT * FROM user WHERE username=#{username} AND deleted=0 
+    </select>
+   <select
+        id="findCityName"
+        parameterType="string"
+        resultType="string" >
+		SELECT  name FROM city  WHERE code=#{order_city} 
+
+    </select>
+    <select
+        id="findCountByUsername"
+        parameterType="java.util.Map"
+        resultType="int" >
+		SELECT count(*) FROM user WHERE username=#{username} AND deleted=0 
+    </select>
+    <!-- 通过id 查询客户信息 -->
+
+    <select
+        id="findById"
+        parameterType="long"
+        resultType="com.nmdy.order.appoint.dao.Customer" >
+		SELECT * FROM user WHERE id=#{id} AND deleted=0
+    </select>
+    <!-- 通过id查询工单信息 -->
+
+    <select
+        id="findDetails"
+        parameterType="int"
+        resultType="WorkForm" >
+	    select * from work_form where id=#{id} and deleted=0
+    </select>
+
+    <select
+        id="findAll"
+        resultMap="RecourseResult" >
+		SELECT w.*, u.driver_verified ,u.person_verified u. FROM work_form w LEFT JOIN user u ON w.customer_name=u.username
+		WHERE w.deleted=0 AND u.deleted=0
+    </select>
+
+    <select
+        id="sizeofTable"
+        resultType="int" >
+		SELECT count(*) FROM work_form WHERE deleted=0
+    </select>
+
+    <select
+        id="findPagination"
+        parameterType="hashmap"
+        resultMap="RecourseResult" >
+		SELECT w.*, u.driver_verified , u.person_verified FROM work_form w LEFT JOIN user u ON w.customer_name=u.username
+		WHERE w.deleted=0 AND u.deleted=0
+
+        <if test="istotal == 0" >
+		ORDER BY id	LIMIT #{page}, #{rows}
+        </if>
+    </select>
+
+    <select
+        id="findOrder_num"
+        parameterType="long"
+        resultType="Appoint" >
+			select * from  order_exec_cs where id =#{order_cs_id}
+    </select>
+
+    <insert
+        id="addRecourse"
+        keyProperty="id"
+        parameterType="Recourse"
+        useGeneratedKeys="true" >
+		INSERT INTO work_form(workform_num,bussi_type,form_type,phone_incoming, sex, customer_name, reason, process_result,wf_date,city,status,order_cs_id,deleted)
+		VALUES(#{workform_num},#{bussi_type},#{form_type}, #{phone_incoming}, #{sex}, #{customer_name}, #{reason}, #{process_result}, #{wf_date},#{city},#{status},#{order_cs_id} ,0)
+    </insert>
+
+    <update
+        id="editRecourse"
+        parameterType="java.util.Map" >
+		UPDATE work_form SET 
+
+        <if test="adm_id == null and &apos;&apos;!= adm_id" >
+			 adm_id=#{admin_id}, 
+        </if>
+               form_type=#{form_type},
+				 order_cs_id=#{order_cs_id},
+			     bussi_type=#{bussi_type},sex=#{sex} , 
+		  		 customer_name=#{customer_name},
+		 	     reason=#{reason}, 
+		         form_agree=#{form_agree},
+			     process_result=#{process_result}, 
+			     status=#{status}, 
+			     phone_incoming=#{phone_incoming}
+		 WHERE id=#{id}
+    </update>
+
+    <select
+        id="findOnebyid"
+        parameterType="int"
+        resultType="Recourse" >
+		SELECT * FROM work_form WHERE id=#{id};
+    </select>
+
+    <update
+        id="processRecourse"
+        parameterType="java.util.Map" >
+		UPDATE work_form  SET  process_result=#{process_result},form_agree=#{form_agree} ,  order_cs_id=#{order_cs_id} ,status= 2 WHERE id=#{id}
+    </update>
+
+    <update
+        id="deleteRecourse"
+        parameterType="int" >
+		UPDATE
+		work_form SET deleted=1
+		WHERE id=#{id}
+    </update>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="RecourseResult" >
+		SELECT a.*,u.person_verified,u.driver_verified
+ FROM (select work_form.id,work_form.workform_num,work_form.adm_id,work_form.form_type,work_form.bussi_type,work_form.phone_incoming,work_form.order_cs_id
+       ,work_form.order_cs_no,work_form.order_dj_id,work_form.order_dj_no,work_form.customer_name,work_form.sex,city.name as city,work_form.reason
+       ,work_form.form_agree,work_form.process_result,work_form.`status`,work_form.wf_date,work_form.deleted
+     from work_form left join city on work_form.city=city.code
+) a LEFT JOIN user u 
+			ON a.customer_name = u.username
+			WHERE a.deleted=0 AND u.deleted=0
+
+        <if test="identity !=null and &apos;&apos;!= identity" >
+
+            <if test="identity == 1" >
+				And u.person_verified = 1
+            </if>
+
+            <if test="identity == 2" >
+				And u.driver_verified = 1
+            </if>
+        </if>
+
+        <if test="start_time != null and &apos;&apos;!= start_time" >
+			AND a.wf_date>= #{start_time}
+        </if>
+
+        <if test="end_time != null and &apos;&apos;!= end_time" >
+				AND #{end_time}>= a.wf_date				 
+        </if>
+
+        <if test="city != null and &apos;&apos;!= city" >
+				And a.city like '%${city}%'
+        </if>
+
+        <if test="customer_name != null and &apos;&apos;!= customer_name" >
+			AND a.customer_name like '%${customer_name}%'
+        </if>
+
+        <if test="phone_incoming != null and &apos;&apos;!= phone_incoming" >
+
+            <if test="phone_incoming != &apos;&apos;" >
+				AND a.phone_incoming = #{phone_incoming}
+            </if>
+        </if>
+
+        <if test="process_state != null and &apos;&apos;!= process_state" >
+
+            <if test="process_state == 1" >
+			AND (a.status = 1 or a.status=3)
+            </if>
+
+            <if test="process_state == 0" >
+			AND (a.status = 1 or a.status=3 or a.status=2)
+            </if>
+        </if>
+
+        <if test="bussi_type != null and &apos;&apos;!= bussi_type" >
+				AND a.bussi_type= #{bussi_type}	
+        </if>
+
+        <if test="form_type != null and &apos;&apos;!= form_type" >
+			AND a.form_type= #{form_type}
+        </if>
+		ORDER BY a.id
+	    LIMIT #{page},#{rows}
+    </select>
+
+    <select
+        id="findNameSex"
+        parameterType="hashmap"
+        resultType="OrderSearch" >
+	  select username,sex ,city_cur from user where 
+	  phone = #{phone}
+	  group by username
+    </select>
+
+</mapper>

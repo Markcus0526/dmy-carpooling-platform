@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.manager.dao.OperLogMapper" >
+
+    <resultMap
+        id="OperLogResult"
+        type="OperLog" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="operuser_id"
+            property="uid" />
+
+        <result
+            column="oper_time"
+            property="operTime" />
+
+        <result
+            column="t_name"
+            property="tableName" />
+
+        <result
+            column="action_url"
+            property="actionUrl" />
+
+        <result
+            column="desc"
+            property="desc" />
+    </resultMap>
+
+    <select
+        id="findAll"
+        resultMap="OperLogResult" >
+		SELECT id, operuser_id as uid, oper_time as operTime
+				t_name as tableName, action_url as actionUrl, `desc`
+		FROM oper_log
+		WHERE deleted=0
+    </select>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultType="OperLog" >
+		SELECT id, operuser_id as uid, oper_time as operTime
+				t_name as tableName, action_url as actionUrl, `desc`
+		FROM oper_log
+		WHERE id=#{id} AND deleted=0
+    </select>
+
+    <select
+        id="findByUserId"
+        parameterType="int"
+        resultMap="OperLogResult" >
+		SELECT id, operuser_id as uid, oper_time as operTime
+				t_name as tableName, action_url as actionUrl, `desc`
+		FROM oper_log
+		WHERE operuser_id=#{id} AND deleted=0
+    </select>
+
+    <select
+        id="findByTableName"
+        parameterType="string"
+        resultMap="OperLogResult" >
+		SELECT id, operuser_id as uid, oper_time as operTime
+				t_name as tableName, action_url as actionUrl, `desc`
+		FROM oper_log
+		WHERE t_name=#{tableName} AND deleted=0
+    </select>
+
+    <select
+        id="findByActionUrl"
+        parameterType="string"
+        resultMap="OperLogResult" >
+		SELECT id, operuser_id as uid, oper_time as operTime
+				t_name as tableName, action_url as actionUrl, `desc`
+		FROM oper_log
+		WHERE action_url=#{actionUrl} AND deleted=0
+    </select>
+
+    <insert
+        id="append"
+        keyProperty="id"
+        parameterType="OperLog"
+        useGeneratedKeys="true" >
+		INSERT INTO oper_log(operuser_id, oper_time, t_name, action_url, `desc`, deleted)
+		VALUES (#{uid}, #{operTime}, #{tableName}, #{actionUrl}, #{desc}, 0)
+    </insert>
+
+    <update
+        id="delete"
+        parameterType="int" >
+		UPDATE oper_log
+		SET deleted=1
+		WHERE id=#{id}
+    </update>
+
+</mapper>

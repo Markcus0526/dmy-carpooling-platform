@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.customerManage.group.dao.GroupNewMapper" >
+
+    <!-- 常用的查询结果集 -->
+
+    <resultMap
+        id="GroupBaseInfo"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="memberCount"
+            property="memberCount" />
+    </resultMap>
+
+    <!-- 按照ID，用户名，姓名，电话 四种条件查询 -->
+
+    <select
+        id="findAllForUser"
+        resultMap="GroupBaseInfo" >
+			SELECT
+			g.id as id,
+			g.groupid as groupid,
+			g.group_name as group_name, 
+			g.group_property as group_property,
+			g.linkphone as linkphone
+		FROM 
+			group_ 	g
+    </select>
+
+    <!-- 按照ID，用户名，姓名，电话 四种条件查询 -->
+
+    <select
+        id="findGroupsByCondition"
+        parameterType="java.util.Map"
+        resultMap="GroupBaseInfo" >
+		SELECT
+			g.id as id,
+			g.groupid as groupid,
+			g.group_name as group_name, 
+			g.group_property as group_property,
+			g.linkphone as linkphone,
+			(SELECT COUNT(*) FROM group_details WHERE groupid=g.id) AS memberCount 
+		FROM 
+			group_ 	g
+
+        <where>
+
+            <if test="conditionSelect != null or conditionSelect == null or conditionInput != null  or conditionInput == null" >
+				deleted = 0
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;groupid&apos; and conditionInput != null" >
+				AND groupid LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;group_name&apos; and conditionInput != null" >
+				AND group_name LIKE '%${conditionInput}%'
+            </if>
+        </where>
+		LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 获得条件查询的总记录数 -->
+
+    <select
+        id="getGroupCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		select count(*) from group_
+
+        <where>
+
+            <if test="conditionSelect != null or conditionSelect == null or conditionInput != null  or conditionInput == null" >
+				deleted = 0
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;groupid&apos; and conditionInput != null" >
+				AND groupid LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;group_name&apos; and conditionInput != null" >
+				AND group_name LIKE '%${conditionInput}%'
+            </if>
+        </where>
+    </select>
+
+    <!-- 集团客户查询结果集 -->
+
+    <resultMap
+        id="Group_Info"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="create_date"
+            property="create_date" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="active_as_driver_self"
+            property="active_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+    </resultMap>
+
+    <select
+        id="getGroupInfo"
+        parameterType="long"
+        resultMap="Group_Info" >
+		SELECT
+			id,
+			groupid,
+			group_name,
+			date_format(create_date,'%Y-%m-%d') as create_date,
+			linkname,
+			linkphone,
+			group_property,
+			contract_no,
+			fix_phone,
+			email,
+			fax,
+			group_address,
+			invitecode_self,
+			remark,
+			date_format(sign_time,'%Y-%m-%d') as sign_time,
+			active_as_driver_self,
+			integer_as_driver_self,
+			ratio_as_driver_self
+			
+		FROM
+			group_
+		WHERE
+			id=#{id}
+    </select>
+
+    <resultMap
+        id="Groups"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="create_date"
+            property="create_date" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="balance_ts"
+            property="balance_ts" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="ratio_as_passenger_self"
+            property="ratio_as_passenger_self" />
+
+        <result
+            column="integer_as_passenger_self"
+            property="integer_as_passenger_self" />
+
+        <result
+            column="active_as_passenger_self"
+            property="active_as_passenger_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="active_as_drivr_self"
+            property="active_as_drivr_self" />
+
+        <result
+            column="limit_month_as_passenger_self"
+            property="limit_month_as_passenger_self" />
+
+        <result
+            column="limit_month_as_driver_self"
+            property="limit_month_as_driver_self" />
+
+        <result
+            column="limit_count_as_passenger_self"
+            property="limit_count_as_passenger_self" />
+
+        <result
+            column="limit_count_as_driver_self"
+            property="limit_count_as_driver_self" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="findAll"
+        resultMap="Groups" >
+		SELECT
+			id,
+			groupid,
+			group_name,
+			date_format(create_date,'%Y-%m-%d %H:%m:%S') as create_date,
+			linkname,
+			linkphone,
+			group_property,
+			contract_no,
+			fix_phone,
+			email,
+			fax,
+			group_address,
+			invitecode_self,
+			remark,
+			date_format(sign_time,'%Y-%m-%d %H:%m:%S') as sign_time,
+			active_as_driver_self,
+			integer_as_driver_self,
+			ratio_as_driver_self
+			
+		FROM
+			group_
+    </select>
+
+    <update
+        id="updateGroupInfo"
+        parameterType="java.util.Map" >
+		update group_
+
+        <set>
+
+            <if test="groupid != null" >
+				groupid = #{groupid},
+            </if>
+
+            <if test="group_name != null" >
+				group_name = #{group_name},
+            </if>
+
+            <if test="linkname != null" >
+				linkname = #{linkname},
+            </if>
+
+            <if test="linkphone != null" >
+				linkphone = #{linkphone},
+            </if>
+
+            <if test="group_property != null" >
+				group_property = #{group_property},
+            </if>
+
+            <if test="contract_no != null" >
+				contract_no = #{contract_no},
+            </if>
+
+            <if test="fix_phone != null" >
+				fix_phone = #{fix_phone},
+            </if>
+
+            <if test="email != null" >
+				email = #{email},
+            </if>
+
+            <if test="fax != null" >
+				fax = #{fax},
+            </if>
+
+            <if test="group_address != null" >
+				group_address = #{group_address},
+            </if>
+
+            <if test="invitecode_self != null" >
+				invitecode_self = #{invitecode_self},
+            </if>
+
+            <if test="active_as_driver_self != null" >
+				active_as_driver_self = #{active_as_driver_self},
+            </if>
+
+            <if test="integer_as_driver_self != null" >
+				integer_as_driver_self = #{integer_as_driver_self},
+            </if>
+
+            <if test="ratio_as_driver_self != null" >
+				ratio_as_driver_self = #{ratio_as_driver_self},
+            </if>
+
+            <if test="remark != null" >
+				remark = #{remark}
+            </if>
+        </set>
+		where id = #{id}
+    </update>
+
+    <!-- 新增集团客户（分成信息暂缺） -->
+
+    <insert
+        id="saveGroup"
+        keyProperty="id"
+        parameterType="java.util.Map"
+        useGeneratedKeys="true" >
+
+        <selectKey
+            keyProperty="id"
+            order="AFTER"
+            resultType="java.lang.Long" >
+        SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	  insert into
+	  	 group_ 
+		  	(groupid,group_name,linkname,linkphone,
+		  	 group_property,contract_no,fix_phone,email,fax,
+		 	 group_address,invitecode_self,remark,sign_time,create_date,
+		 	 active_as_driver_self,integer_as_driver_self,ratio_as_driver_self,deleted
+		 	 ) 
+	  values 
+		  	(#{groupid},#{group_name},#{linkname},#{linkphone},
+		  	 #{group_property},#{contract_no},#{fix_phone},#{email},#{fax},
+		  	 #{group_address},#{invitecode_self},#{remark},#{sign_time},#{create_date},
+		  	 #{active_as_driver_self},#{integer_as_driver_self},#{ratio_as_driver_self},0
+		  	 )
+    </insert>
+
+    <resultMap
+        id="groupDrivers"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="active_as_driver_self"
+            property="active_as_driver_self" />
+
+        <result
+            column="reallocateProfit"
+            property="reallocateProfit" />
+    </resultMap>
+
+    <!-- 获得指定集团旗下车主用户 -->
+
+    <select
+        id="getGroupDriversById"
+        parameterType="Long"
+        resultMap="groupDrivers" >
+		SELECT 
+			id,usercode,username,phone,ratio_as_driver_self,integer_as_driver_self,active_as_driver_self
+		FROM 
+			user 
+		WHERE  id IN(SELECT  gd.userid FROM group_details  gd WHERE gd.groupid =#{gid}) and driver_verified = 1  LIMIT #{start},#{limit} ;
+    </select>
+    <!-- 获得指定集团旗下车主用户数 -->
+
+    <select
+        id="getGroupDriversCountById"
+        parameterType="long"
+        resultType="java.lang.Integer" >
+		SELECT 
+			count(*)
+		FROM 
+			user 
+		WHERE  id IN(SELECT  gd.userid FROM group_details  gd WHERE gd.groupid =#{id}) and driver_verified = 1;
+    </select>
+
+    <select
+        id="getGroupDriversByCondition"
+        parameterType="java.util.Map"
+        resultMap="groupDrivers" >
+		SELECT 
+			u.id,
+			u.usercode,
+			u.username,
+			u.phone,
+			u.driver_verified,
+			u.ratio_as_driver_self,
+			u.integer_as_driver_self,
+			u.active_as_driver_self,
+			CASE WHEN activeway_as_driver=0 THEN CONCAT(ratio_as_driver,'%') ELSE CONCAT(integer_as_driver,'点')   END  reallocateProfit   
+		FROM 
+			user u LEFT JOIN group_details gd  ON u.id = gd.userid  
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				u.id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput == null" >
+				  gd.groupid =#{gid} AND driver_verified = 1  
+            </if>
+        </where>
+        <if test="start !=null">
+			LIMIT #{start},#{limit} 
+        </if>
+    </select>
+
+    <select
+        id="getGroupDriversCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		SELECT 
+			COUNT(*)
+		FROM 
+			user u LEFT JOIN group_details gd  ON u.id = gd.userid
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				u.id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput != null or conditionInput ==null" >
+				 AND  gd.groupid =#{gid} AND driver_verified = 1   
+            </if>
+        </where>
+    </select>
+
+    <!-- 获得非集团车主用户 -->
+
+    <select
+        id="getUsersByCondition"
+        parameterType="java.util.Map"
+        resultMap="groupDrivers" >
+		SELECT 
+			u.id,u.usercode,u.username,u.phone,u.driver_verified
+		FROM 
+			user u LEFT JOIN group_details gd  ON u.id = gd.userid  
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				u.id LIKE %${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput != null or conditionInput ==null" >
+				AND  u.id NOT IN  (SELECT userid FROM group_details ) AND u.driver_verified = 1  
+            </if>
+        </where>
+	LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 按照条件获得非集团车主用户的数量 -->
+
+    <select
+        id="getUsersCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+	SELECT 
+		COUNT(*) 
+	FROM 
+		user u   
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;usercode&apos; and conditionInput != null" >
+				u.usercode LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;username&apos; and conditionInput != null" >
+				u.username LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;id&apos; and conditionInput != null" >
+				u.id LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;phone&apos; and conditionInput != null" >
+				u.phone LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput != null or conditionInput ==null" >
+				 AND  u.id NOT IN  (SELECT userid FROM group_details ) AND u.driver_verified = 1  
+            </if>
+        </where>
+    </select>
+
+    <!-- 添加非集团车主到指定集团 -->
+
+    <insert
+        id="addDriverToGroup"
+        keyProperty="id"
+        parameterType="java.util.Map"
+        useGeneratedKeys="true" >
+	INSERT INTO group_details (groupid ,userid ) VALUES (#{gid},#{id});
+    </insert>
+
+    <!-- 将指定车主从集团中移除 -->
+
+    <delete
+        id="removeDriverFromGroup"
+        parameterType="java.util.Map" >
+		DELETE   FROM group_details WHERE groupid=#{gid} AND userid = #{userid}
+    </delete>
+
+    <!-- 删除集团客户（将deleted字段置为1，方便日后查询历史信息） -->
+
+    <update
+        id="delGroup"
+        parameterType="long" >
+		update 
+			group_ 
+		set 
+			deleted=1 
+		where 
+			id=#{id}
+    </update>
+
+    <resultMap
+        id="rebateInfo"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="rpcount"
+            property="rpcount" />
+
+        <result
+            column="rpsum"
+            property="rpsum" />
+
+        <result
+            column="reg_date"
+            property="reg_date" />
+    </resultMap>
+
+    <!-- 根据集团邀请码获得使用该邀请码注册的所有用户的返利信息 -->
+
+    <select
+        id="getGroupAllRebateListInfo"
+        parameterType="java.util.Map"
+        resultMap="rebateInfo" >
+ select a.driver as id,date_format(a.ts_date,'%Y-%m-%d %h:%m:%s') as reg_date,a.sum as rpsum,b.username,0 as rpcount from (
+ select (select driver from order_exec_cs where id= order_cs_id) driver,sum,ts_date from ts where groupid=#{id} and ts_type in ('tx_code_014')
+			)a left join user b on a.driver=b.id		    <if test="start !=null">
+			LIMIT #{start},#{limit} 
+        </if>
+    </select>
+
+	 <select
+        id="countGroupAllRebateListInfo"
+        parameterType="java.util.Map"
+        resultType="int" >
+	 select count(*) from (
+ select (select driver from order_exec_cs where id= order_cs_id) driver,sum,ts_date from ts where groupid=#{id} and ts_type in ('tx_code_014')
+			)a left join user b on a.driver=b.id
+    </select>
+
+    <resultMap
+        id="rebateInfoDetails"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="order_cs_id"
+            property="order_cs_id" />
+
+        <result
+            column="reg_date"
+            property="reg_date" />
+
+        <result
+            column="identityStatus"
+            property="identityStatus" />
+
+        <result
+            column="sum"
+            property="sum" />
+    </resultMap>
+
+    <!-- 显示指定用户的具体返利信息 -->
+
+    <select
+        id="getGroupRebateListInfo"
+        parameterType="Long"
+        resultMap="rebateInfoDetails" >
+	SELECT
+		u.id as id, 
+		u.username as username,
+		t.order_cs_id as order_cs_id,
+		date_format(t.ts_date,'%Y-%m-%d %h:%m:%s') as ts_date,
+		CASE WHEN ts_type=15 THEN '乘客' WHEN ts_type=16 THEN '车主' END   identityStatus,
+		t.sum as sum 
+	FROM 
+		ts t
+	LEFT JOIN 
+		user u
+	ON 
+		t.userid=u.id  
+	WHERE 
+		u.id = #{id};		
+    </select>
+
+    <!-- 更改用户的分成比例 -->
+
+    <update id="setGroupReallocateProfit" >
+			UPDATE 
+				user
+
+        <set>
+
+            <if test="activeway_as_driver != null" >
+					activeway_as_driver = #{activeway_as_driver},
+            </if>
+
+            <if test="integer_as_driver != null" >
+					integer_as_driver = #{integer_as_driver},
+            </if>
+
+            <if test="ratio_as_driver != null" >
+					ratio_as_driver = #{ratio_as_driver},
+            </if>
+        </set>
+			where id = #{userid}
+    </update>
+    <!-- 更改用户的分成比例 为默认值 -->
+
+    <update id="setGroupReallocateProfitDefault" >
+			UPDATE 
+				user u
+			SET 
+				u.integer_as_driver = (SELECT g.integer_as_driver_self FROM group_ g WHERE g.id = #{gid}),
+			  	u.activeway_as_driver = (SELECT g.active_as_driver_self FROM group_ g WHERE g.id = #{gid}),
+			  	u.ratio_as_driver = (SELECT g.ratio_as_driver_self FROM group_ g WHERE g.id = #{gid})
+			WHERE 
+				u.id = #{userid}
+    </update>
+    <!-- 向ts表插入新信息 -->
+
+    <insert
+        id="modifytsbal"
+        parameterType="java.util.Map" >
+
+        <selectKey
+            keyProperty="id"
+            order="AFTER"
+            resultType="java.lang.Long" >
+        SELECT LAST_INSERT_ID() AS id
+        </selectKey>
+	    insert into ts (ts_date,groupid,remark,account_type,ts_type,balance) 
+	    values          (now(),#{groupid},#{remark},#{account_type},#{ts_type},#{balance})
+    </insert>
+
+    <update
+        id="seGrouptsid"
+        parameterType="java.util.Map" >
+			UPDATE 
+				group_ 
+			SET 
+				balance_ts=#{tsid}
+			WHERE 
+				id = #{id}    </update>
+
+
+	   <select id="findIsGroupid"
+        parameterType="String"
+        resultType="int" >
+		select count(*) from group_ where groupid = #{groupId}
+    </select>	
+    
+     <select id="countMoneyAll"  parameterType="String"  resultType="int" >
+		select count(*) from ts where groupid=#{groupId} and ts_type in ('tx_code_014')
+    </select>	
+    
+    <select id="countMoneyNumber"  parameterType="String"  resultType="String" >
+		select case when sum(sum) is null then 0 else sum(sum) end as sum from ts where groupid=#{groupId} and ts_type in ('tx_code_014')
+    </select>
+    
+    
+ 
+    
+    
+    
+</mapper>
