@@ -1,4 +1,4 @@
-# Hospital Management System
+# Carpooling Platform
 
 A multi-module car‑pooling platform repository containing mobile clients (Android & iOS), a Java backend (Struts2-based web API), and a web-based manager/admin UI.
 
