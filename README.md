@@ -29,19 +29,22 @@ This README gives a concise orientation, quick-start steps to run the project lo
 Below is a concise features table that maps the platform's main capabilities to the modules and locations in the repository where their implementations live. This provides a quick reference for contributors who want to find and work on a specific capability.
 
 ### Key Features
+
 #### 🚗 For Drivers
+
 - Ride Creation: Easily post upcoming trips with start/end points, date, time, and available seats.
 - Route Optimization: (If applicable) Integration with mapping services to visualize the travel path.
 - Passenger Management: View and manage booking requests from interested travelers.
+
 #### 🎒 For Passengers
 - Smart Search: Filter rides by destination, date, and price to find the perfect match.
 - Instant Booking: Secure a seat in just a few clicks with real-time availability updates.
 - Ride History: Track past and upcoming journeys in a centralized dashboard.
+
 #### 🛠 Technical Highlights
 - User Authentication: Secure login and profile management for verified community members.
 - Real-time Updates: Stay informed with instant notifications on ride status changes.
 - Responsive Design: Fully optimized for both desktop and mobile browsers.
-
 
 ### Features table
 
@@ -324,6 +327,7 @@ Please include: which module, steps to reproduce, and expected vs actual behavio
 ---
 
 ## If you want, I can:
+
 - Add example configuration templates for jdbc.properties (masked credentials).
 - Create quick starter scripts (Ant/Gradle/Make) to build/deploy common modules.
 - Add labels, issue templates, or a CONTRIBUTING.md.
