@@ -326,14 +326,6 @@ Please include: which module, steps to reproduce, and expected vs actual behavio
 
 ---
 
-## If you want, I can:
-
-- Add example configuration templates for jdbc.properties (masked credentials).
-- Create quick starter scripts (Ant/Gradle/Make) to build/deploy common modules.
-- Add labels, issue templates, or a CONTRIBUTING.md.
-
----
-
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE).
