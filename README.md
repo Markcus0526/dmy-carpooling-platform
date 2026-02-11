@@ -8,7 +8,7 @@ This README gives a concise orientation, quick-start steps to run the project lo
 
 ## Screenshots
 
-<img width="1200" height="800" alt="Carpooling" src="https://github.com/user-attachments/assets/2b5b4d1a-1074-47a4-b4f1-f18ebac78514" />
+<img width="600" height="400" alt="Carpooling" src="https://github.com/user-attachments/assets/2b5b4d1a-1074-47a4-b4f1-f18ebac78514" />
 
 ---
 
