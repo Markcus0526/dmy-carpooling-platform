@@ -1,5 +1,23 @@
 # 🚗 Carpooling Platform — with On-Chain Escrow
 
+A production-grade, decentralized carpooling infrastructure that integrates mobile clients, a robust enterprise Java backend, and an on-chain smart contract escrow layer to secure financial transactions between drivers and riders.
+
+## 🚀 Core Architectural Features
+* **Solidity RideEscrow Contract:** Implements an automated, trustless smart contract that securely holds rider fare deposits in escrow and triggers automated payouts to drivers upon successful trip verification.
+* **Zero-Dependency JSON-RPC Verifier:** Features a custom, highly secure blockchain event monitoring layer designed to read state variables and verify on-chain logs directly without bloated external framework wrappers.
+* **Enterprise REST API:** A high-throughput Java/Struts2 backend engine handling real-time ride matching, geo-location mapping, and system data persistence.
+* **Cross-Platform Native Experience:** Dedicated native execution paths optimized for both Android and iOS devices.
+
+## 🛠️ Tech Stack
+* **Smart Contracts:** Solidity (EVM Compatible)
+* **Backend Architecture:** Java 17, Struts2, JSON-RPC Execution
+* **Target Platforms:** Android Native, iOS Native
+
+---
+💼 **Looking to integrate smart contract escrows or custom Web3 logic into your platform?**  
+[Message me on Telegram](https://t.me/markcus0526) to work together directly. No marketplace KYC required.
+
+
 > **Uber, but the fare rides on-chain.** Full-stack ride-sharing platform (Android + iOS + Java backend) with a Solidity escrow contract for trustless deposits and instant driver payouts.
 
 <p align="center">
