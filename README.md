@@ -1,6 +1,30 @@
 # 🚗 Carpooling Platform
 
-A comprehensive multi-module car-pooling platform featuring mobile clients (Android & iOS), a Java backend (Struts2-based web API), and a web-based manager/admin UI.
+A comprehensive multi-module car-pooling platform featuring mobile clients (Android & iOS), a Java backend (Struts2-based web API), a web-based manager/admin UI, **and an opt-in web3 booking/payment path built on an on-chain escrow contract** (Solidity, EVM-compatible chains).
+
+**Payment options:** Alipay · WeChat Pay · **On-chain escrow (ETH / L2 stablecoins)** — riders choose per trip, without any change to the underlying booking flow.
+
+### 📑 Contents
+
+- [Key Features](#-key-features)
+- [Tech Stack](#️-tech-stack)
+- [Project Structure](#-project-structure)
+- [Database Schema](#️-database-schema)
+- [Quick Start](#-quick-start)
+- [Configuration](#️-configuration)
+- [Core Components](#-core-components)
+- [Features Matrix](#-features-matrix)
+- [⛓️ Web3 Payment & Booking Path](#️-web3-payment--booking-path)
+   - [Architecture at a glance](#-architecture-at-a-glance)
+   - [Smart Contract API](#-smart-contract-api)
+   - [Backend Verification](#-backend-verification-what-happens-on-payordercrypto)
+   - [Setup Checklist](#️-setup-checklist)
+   - [Testing (Hardhat local chain)](#-testing-hardhat-local-chain)
+   - [Trust Model — Honest Take](#️-trust-model--honest-take)
+   - [Regulatory Note](#-regulatory-note)
+   - [Deferred Work](#-deferred-work-calling-out-honest-gaps)
+- [Troubleshooting](#-troubleshooting)
+- [Roadmap](#️-roadmap)
 
 ---
 
@@ -20,6 +44,7 @@ A comprehensive multi-module car-pooling platform featuring mobile clients (Andr
 | 🚗 **Ride Creation** | Post upcoming trips with start/end points, date, time, and available seats |
 | 🗺️ **Route Optimization** | Integration with mapping services to visualize travel paths |
 | 👥 **Passenger Management** | View and manage booking requests from travelers |
+| 💸 **Instant Payout (Web3)** | Receive fare directly to a self-custodial wallet the moment the trip completes |
 
 ### For Passengers
 | Feature | Description |
@@ -27,11 +52,15 @@ A comprehensive multi-module car-pooling platform featuring mobile clients (Andr
 | 🔍 **Smart Search** | Filter rides by destination, date, and price |
 | ⚡ **Instant Booking** | Secure a seat in just a few clicks |
 | 📊 **Ride History** | Track past and upcoming journeys |
+| 🪙 **Pay with Crypto** | Lock fare in an on-chain escrow at booking — released to driver on completion, refundable on cancel |
 
 ### Technical Highlights
 - 🔐 **User Authentication** - Secure login and profile management
 - 🔔 **Real-time Updates** - Instant notifications on ride status changes
 - 📱 **Responsive Design** - Optimized for desktop and mobile browsers
+- ⛓️ **On-chain Escrow** - `RideEscrow.sol` smart contract holds funds between booking and trip completion (deposit → release / refund)
+- 🔗 **Zero-dependency Chain Verifier** - Backend verifies deposits via plain JSON-RPC (no web3j fat jar) — validates receipt status, min-confirmations, event topics, and amount
+- 🧩 **Side-table Design** - Web3 payments live in a parallel `order_crypto_tx` table, so existing `orders` / `order_temp_details` schemas are untouched
 
 ---
 
@@ -49,6 +78,10 @@ A comprehensive multi-module car-pooling platform featuring mobile clients (Andr
 | **Social SDK** | UMeng (Tencent/WeChat SSO) |
 | **Image Loading** | SDWebImage (iOS) |
 | **Networking** | AFNetworking (iOS) |
+| **Smart Contracts** | Solidity 0.8.20, Hardhat (deploy tooling) |
+| **Target Chains** | Any EVM L2 — recommended Base / Arbitrum / Polygon (mainnet or testnet) |
+| **Chain I/O** | Plain JSON-RPC over `HttpURLConnection` (no web3j / ethers dependency in the war) |
+| **Wallet UX** | WalletConnect v2 / MetaMask deep-link (mobile clients) |
 
 ---
 
@@ -63,7 +96,19 @@ dmy-carpooling-platform/
 │   ├── CarPoolingApp/       # BJPinChe - Carpooling app
 │   └── MainApp/             # BJMainApp - Companion app
 ├── service/                 # Backend REST API (Struts2)
+│   └── src/com/webapi/
+│       ├── order/            # Legacy Alipay/WeChat pay + booking flow
+│       └── crypto/           # ⛓️ NEW — on-chain escrow verification
+│           ├── action/       #    Struts2 endpoints (payOrderCrypto, ...)
+│           ├── service/      #    Verification + persistence logic
+│           ├── util/         #    JSON-RPC client, hex helpers
+│           └── config/       #    Loads crypto.properties
 ├── manager/                 # Admin/Manager Web UI (JSP)
+├── contracts/               # ⛓️ NEW — Solidity smart contracts
+│   ├── RideEscrow.sol       #    Deposit / release / refund escrow
+│   └── README.md            #    Deploy instructions (Hardhat)
+├── sql/                     # ⛓️ NEW — schema migrations
+│   └── 2026-07-16_add_crypto_tx.sql
 ├── database/                # MySQL schema and seed data
 │   └── pinche.sql          # Database schema
 ├── README.md               # This file
@@ -154,6 +199,26 @@ Update JDBC properties in:
 # Run on simulator/device
 ```
 
+### Step 7 (optional): Enable Web3 Payments
+
+```bash
+# Deploy the escrow contract (see contracts/README.md)
+cd contracts && npx hardhat run scripts/deploy.js --network baseSepolia
+
+# Apply the crypto DB migration
+mysql -u root -p pinche < sql/2026-07-16_add_crypto_tx.sql
+
+# Configure the backend
+cp service/src/crypto.properties.example service/src/crypto.properties
+$EDITOR service/src/crypto.properties   # fill in RPC url + contract address
+
+# Redeploy the war — new endpoints go live automatically:
+#   POST /webservice/payOrderCrypto
+#   GET  /webservice/getCryptoPayment
+```
+
+See the [⛓️ Web3 Payment & Booking Path](#️-web3-payment--booking-path) section below for full details.
+
 ---
 
 ## ⚙️ Configuration
@@ -185,6 +250,14 @@ Update JDBC properties in:
 | `manager/WebContent/WEB-INF/web.xml` | Filters, servlets, welcome pages |
 | `manager/src/struts.xml` | Struts action mappings |
 | `service/src/struts.xml` | Service API action mappings |
+
+### Web3 Configuration
+
+| File | Purpose |
+|------|---------|
+| [service/src/crypto.properties](service/src/crypto.properties.example) | Chain RPC URL, chain ID, escrow contract address, min confirmations, CNY→wei rate |
+| [contracts/RideEscrow.sol](contracts/RideEscrow.sol) | On-chain escrow contract (deploy target — not runtime config) |
+| [service/src/com/webapi/crypto/service/SVCCryptoPayService.java](service/src/com/webapi/crypto/service/SVCCryptoPayService.java) | `TOPIC_DEPOSITED` — set to the `Deposited` event topic0 printed at deploy |
 
 ---
 
@@ -221,7 +294,12 @@ The backend implements a **push-based notification system** with temporary-grab 
         ↓
 4. Backend locks order (Synchronized)
         ↓
-5. Order accepted → Payment & Evaluation
+5. Order accepted
+        ↓
+6. Rider pays  ─── (a) Alipay / WeChat  → SVCOrderAction.payNormalOrder
+                └─ (b) Crypto escrow    → SVCCryptoPayAction.payOrderCrypto
+        ↓
+7. Trip executed → Evaluation → (crypto) escrow.release() to driver
 ```
 
 ---
@@ -235,12 +313,192 @@ The backend implements a **push-based notification system** with temporary-grab 
 | Push Notifications | Service/Mobile | `ApiGlobal.java` (Baidu Push) | ✅ |
 | User Authentication | Manager/Service | `AuthFilter`, `SVCUser*` | ✅ |
 | Admin Dashboard | Manager | `manager/src/`, JSPs | ✅ |
-| Payments | Android/Service | `WapPayActivity` | ✅ |
+| Payments (Alipay/WeChat) | Android/Service | `WapPayActivity` | ✅ |
 | Geolocation/Maps | Android/iOS | Baidu Maps API | ✅ |
 | Social Login | Android/iOS | UMeng SDK | ✅ |
 | Driver Profiles | Manager/Service | `SVCUser*` | ✅ |
 | Evaluation System | Service | `SVCEvaluationCS` | ✅ |
 | CSV Export | Manager | `Common.java` | ✅ |
+| ⛓️ On-chain Escrow Contract | Contracts | [contracts/RideEscrow.sol](contracts/RideEscrow.sol) | ✅ |
+| ⛓️ Crypto Deposit Verification | Service | [SVCCryptoPayService.java](service/src/com/webapi/crypto/service/SVCCryptoPayService.java) | ✅ |
+| ⛓️ Crypto Payment API | Service | [SVCCryptoPayAction.java](service/src/com/webapi/crypto/action/SVCCryptoPayAction.java) | ✅ |
+| ⛓️ On-chain `release()` from Backend | Service | needs web3j / signing lib | 🟡 |
+| ⛓️ WalletConnect UI (Android) | Android | `android/CarPoolingApp/` | ❌ |
+| ⛓️ WalletConnect UI (iOS) | iOS | `ios/CarPoolingApp/` | ❌ |
+
+---
+
+## ⛓️ Web3 Payment & Booking Path
+
+Alongside the classic Alipay / WeChat Pay flow, the platform ships a
+fully on-chain escrow payment path. This is **additive** — no existing pay
+flow was modified, and the change footprint is a handful of new files plus
+two lines of Struts wiring.
+
+### 🧱 Architecture at a glance
+
+```
+┌──────────────────┐   deposit() payable      ┌──────────────────────┐
+│  Rider Wallet    │ ───────────────────────► │  RideEscrow.sol      │
+│ (MetaMask / WC)  │                          │  (arbitrated escrow) │
+└──────────────────┘                          └──────────────────────┘
+         │                                              ▲       │
+         │ POST txHash                                  │       │ release()
+         ▼                                              │       ▼
+┌──────────────────┐   JSON-RPC verify       ┌──────────────────────┐
+│  Rider App       │ ───────────────────────►│  Backend (Struts2)   │
+└──────────────────┘                         │  SVCCryptoPayAction  │
+                                             │  SVCCryptoPayService │
+                                             │  EthRpcClient        │
+                                             └──────┬───────────────┘
+                                                    │ INSERT
+                                                    ▼
+                                             ┌─────────────────────┐
+                                             │ order_crypto_tx     │
+                                             │ (MySQL side table)  │
+                                             └─────────────────────┘
+```
+
+### 🗂️ File Map
+
+| Piece | Location |
+|-------|----------|
+| Solidity escrow contract | [contracts/RideEscrow.sol](contracts/RideEscrow.sol) |
+| Contract deploy notes | [contracts/README.md](contracts/README.md) |
+| Backend action (Struts2) | [service/src/com/webapi/crypto/action/SVCCryptoPayAction.java](service/src/com/webapi/crypto/action/SVCCryptoPayAction.java) |
+| Verification / persistence | [service/src/com/webapi/crypto/service/SVCCryptoPayService.java](service/src/com/webapi/crypto/service/SVCCryptoPayService.java) |
+| JSON-RPC client (JDK-only) | [service/src/com/webapi/crypto/util/EthRpcClient.java](service/src/com/webapi/crypto/util/EthRpcClient.java) |
+| Hex utilities | [service/src/com/webapi/crypto/util/HexUtil.java](service/src/com/webapi/crypto/util/HexUtil.java) |
+| Config loader | [service/src/com/webapi/crypto/config/CryptoConfig.java](service/src/com/webapi/crypto/config/CryptoConfig.java) |
+| Config template | [service/src/crypto.properties.example](service/src/crypto.properties.example) |
+| DB migration | [sql/2026-07-16_add_crypto_tx.sql](sql/2026-07-16_add_crypto_tx.sql) |
+| Struts wiring | [service/src/struts-config/struts-webapi-module.xml](service/src/struts-config/struts-webapi-module.xml) — actions **129** & **130** |
+
+### 📜 Smart Contract API
+
+`RideEscrow.sol` — Solidity 0.8.20, native currency (ETH / MATIC / xDAI…).
+
+| Function | Caller | Purpose |
+|----------|--------|---------|
+| `constructor(address arbiter)` | deployer | sets initial arbiter (the platform backend's hot wallet) |
+| `deposit(uint256 orderId, address driver) payable` | passenger | locks `msg.value` for this order — reverts if orderId already used |
+| `release(uint256 orderId)` | arbiter | sends escrowed funds to the driver recorded in the deposit |
+| `refund(uint256 orderId)` | arbiter | returns escrowed funds to the payer (cancellations / disputes) |
+| `transferArbiter(address to)` + `acceptArbiter()` | arbiter → new | 2-step arbiter rotation (prevents accidental lockout on a typo) |
+
+**Events** (all indexed by `orderId` for cheap event filtering):
+- `Deposited(uint256 orderId, address payer, address driver, uint256 amount)`
+- `Released(uint256 orderId, address driver, uint256 amount)`
+- `Refunded(uint256 orderId, address payer, uint256 amount)`
+
+### 🔐 Backend Verification (what happens on `payOrderCrypto`)
+
+When the rider app posts a `txHash`, the backend refuses to trust it until
+**all** of these pass:
+
+1. **Not already recorded** — `tx_hash` is UNIQUE in `order_crypto_tx`
+2. **Receipt exists** — `eth_getTransactionReceipt` returns non-null
+3. **Tx succeeded** — receipt `status == 0x1` (post-Byzantium)
+4. **Correct contract** — receipt `to` == `crypto.escrow.address`
+5. **Enough confirmations** — `head_block - tx_block + 1 ≥ crypto.min.confirmations`
+6. **`Deposited` event present** — for this exact `orderId` (topic1 match)
+7. **Payer matches** — event `payer` topic == submitted `walletAddress`
+8. **Amount sufficient** — event `amount ≥ expected_wei` (derived from `price_cny × crypto.wei.per.cny`)
+
+Only then does the row land in `order_crypto_tx`.
+
+### 🌐 API Endpoints
+
+| Method | Path | Params | Purpose |
+|--------|------|--------|---------|
+| POST | `/webservice/payOrderCrypto` | `source, userid, orderid, order_type, price, tx_hash, wallet_addr, devtoken` | Verify a deposit tx and record the payment |
+| GET  | `/webservice/getCryptoPayment` | `orderid` | Return the recorded on-chain state for an order |
+
+All existing pay endpoints (`payNormalOrder`, `payReserveOrder`, `charge`,
+`withdraw`, etc.) continue to work unchanged — clients pick the payment
+method per booking.
+
+### 🗄️ Database
+
+New side-table `order_crypto_tx` (see [migration](sql/2026-07-16_add_crypto_tx.sql)):
+
+| Column | Notes |
+|--------|-------|
+| `tx_hash` | UNIQUE — same tx can't be double-credited |
+| `wallet_addr` / `driver_addr` | Normalized to lowercase for comparison |
+| `amount_wei` | Stored as decimal string (uint256 doesn't fit in BIGINT) |
+| `chain_id` | Multi-chain deployments distinguished here |
+| `block_number` | For reconciliation with a chain-indexer if you ever add one |
+| `expected_cny` | The app's quoted price at pay time — useful for auditing |
+| `released` / `refunded` | Flipped when escrow.release() / refund() lands |
+
+### 🛠️ Setup Checklist
+
+- [ ] Deploy `RideEscrow.sol` — see [contracts/README.md](contracts/README.md); pick chain (Base Sepolia for testing, Base / Arbitrum / Polygon for prod)
+- [ ] Note the printed contract address and the `Deposited` event's `topic0`
+- [ ] Apply migration: `mysql -u root -p pinche < sql/2026-07-16_add_crypto_tx.sql`
+- [ ] `cp service/src/crypto.properties.example service/src/crypto.properties`
+- [ ] Fill in `crypto.rpc.url`, `crypto.chain.id`, `crypto.escrow.address`, `crypto.wei.per.cny`
+- [ ] Set the real `TOPIC_DEPOSITED` constant in [SVCCryptoPayService.java](service/src/com/webapi/crypto/service/SVCCryptoPayService.java) (currently `null` for POC)
+- [ ] Rebuild and redeploy the war
+- [ ] Smoke test with a small deposit on testnet before enabling in the mobile UI
+
+### 🔍 Testing (Hardhat local chain)
+
+```bash
+cd contracts
+npx hardhat node                     # spawns local chain on :8545
+npx hardhat run scripts/deploy.js --network localhost
+# In another terminal — point the backend at http://localhost:8545 in
+# crypto.properties (chain_id=31337), redeploy war, then curl the endpoint:
+curl -X POST http://localhost:8080/service/webservice/payOrderCrypto \
+     -d 'source=11&userid=1&orderid=123&order_type=1&price=25&tx_hash=0x...&wallet_addr=0x...&devtoken=abc'
+```
+
+### 🛡️ Trust Model — Honest Take
+
+This is **"crypto rails, centralized settlement"**. The platform backend is
+the escrow arbiter — it decides `release` vs. `refund` based on off-chain
+trip state (driver marked complete, rider disputed, etc.). Users trust the
+platform to act honestly; the on-chain part gives you:
+
+✅ **Transparent, auditable payment history** — anyone can inspect the
+   escrow contract and see every deposit / release / refund
+✅ **Cross-border rails** — accept USDC-equivalent from anywhere without
+   correspondent banking friction
+✅ **Instant driver payout** on trip completion (no T+2 settlement)
+✅ **Provable refunds** — a canceled deposit is refunded on-chain, not
+   locked in an app-side balance
+
+⚠️ **What it does NOT give you (yet):**
+- Trustless arbitration — the backend's arbiter key can rug any deposit
+- Automatic release on physical trip completion — release is still triggered
+   by the backend, not by a trip-completion oracle
+- Fee splitting on-chain — platform commission is currently deducted
+   off-chain in the same table
+
+**Upgrade paths that don't break the deposit ABI:**
+- Rotate arbiter to a 2-of-3 multi-sig (Safe / Squads)
+- Add a dispute window: `release()` becomes callable by the rider after
+   `T + 24h` unless the driver has flagged an issue
+- Move platform commission on-chain via a `feeBps` state variable
+
+### 🌏 Regulatory Note
+
+Crypto payments are **restricted or banned in mainland China** — the
+original target market of this codebase (Alipay + WeChat Pay + Baidu Maps
+integration reflects that). Enable the web3 path only in jurisdictions
+where digital-asset payments to individuals are permitted (US*, EU, HK, SG,
+LATAM, etc.), and consult local counsel on KYC/AML thresholds — the escrow
+contract itself is permissionless.
+
+*_Some US states impose additional MTL obligations; consult counsel._
+
+### 🚧 Deferred Work (calling out honest gaps)
+
+1. **`TOPIC_DEPOSITED` is `null`** in [SVCCryptoPayService.java](service/src/com/webapi/crypto/service/SVCCryptoPayService.java) — the event-signature check is skipped in the POC. Set to the real topic0 (Hardhat prints it on deploy) before running against real funds.
+2. **Backend does not yet CALL `release()`** — verify+record is fully wired, but signing outbound tx to the escrow needs web3j (intentionally kept out to avoid dependency bloat). The columns `released` and `release_tx` exist and wait for you.
+3. **Wallet UI in the mobile clients** — a "Pay with Crypto" button, WalletConnect handshake, and `deposit()` call still need to be added to `android/CarPoolingApp` and `ios/CarPoolingApp`.
 
 ---
 
@@ -255,6 +513,12 @@ The backend implements a **push-based notification system** with temporary-grab 
 | Database connection error | Verify JDBC credentials in properties files |
 | Push notifications not working | Update Baidu Push API keys in `ApiGlobal.java` |
 | Login failures | Check AuthFilter configuration in `web.xml` |
+| `crypto.properties not on classpath` at startup | Copy from `crypto.properties.example`; it must land in `WEB-INF/classes/` after build |
+| `payOrderCrypto` returns "链上交易尚未打包" | Rider submitted `txHash` too early — the RPC hasn't seen the receipt yet. Retry after ~1 block time (2s on Base, 12s on Ethereum) |
+| `payOrderCrypto` returns "链上确认数不足" | Wait more blocks, or lower `crypto.min.confirmations` for testnet |
+| `payOrderCrypto` returns "交易目标合约不匹配" | `crypto.escrow.address` in properties doesn't match the contract the deposit was sent to — check chain ID too |
+| `payOrderCrypto` returns "未在交易中找到订单 X 的存款事件" | Wrong `orderId` in the deposit call, OR `TOPIC_DEPOSITED` set to the wrong topic0 |
+| Deposit succeeded but no `release()` fires | Expected — see [Deferred Work](#-deferred-work-calling-out-honest-gaps). Signing library not yet wired |
 
 ### Logs Location
 
@@ -270,16 +534,23 @@ The backend implements a **push-based notification system** with temporary-grab 
 - [ ] GPS Integration & Real-time Tracking
 - [ ] Enhanced Matching Engine (ETA-based scoring)
 - [ ] WebSocket for live location updates
+- [ ] ⛓️ Wire backend-signed `escrow.release()` (integrate web3j or equivalent)
+- [ ] ⛓️ WalletConnect v2 integration in Android / iOS clients
 
 ### Medium Priority
 - [ ] Distributed Locking (Redis/DB)
 - [ ] Token-based Authentication (JWT)
 - [ ] Payment Gateway Integration
+- [ ] ⛓️ ERC-20 stablecoin (USDC / USDT) support in `RideEscrow.sol`
+- [ ] ⛓️ Multi-sig arbiter (Safe on Base / Squads-equivalent) for release/refund
+- [ ] ⛓️ Auto-release after dispute window instead of arbiter-only
 
 ### Low Priority
 - [ ] CI/CD Pipeline
-- [ ] Automated Tests
+- [ ] Automated Tests (including Foundry / Hardhat suite for `RideEscrow`)
 - [ ] OpenAPI/Swagger Documentation
+- [ ] ⛓️ Soulbound reputation NFTs for driver/rider ratings
+- [ ] ⛓️ Chain indexer (Subgraph / Envio) for admin dashboard queries
 
 ---
 

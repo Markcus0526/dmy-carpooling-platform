@@ -1,0 +1,28 @@
+# Copy to crypto.properties (same folder) and fill in real values.
+# The properties file must be on the classpath — it ends up in WEB-INF/classes/.
+
+# JSON-RPC endpoint. Public Base Sepolia endpoint shown; for production use
+# your own Alchemy / Infura / self-hosted node URL.
+crypto.rpc.url=https://sepolia.base.org
+
+# EIP-155 chain ID. Base Sepolia=84532, Base mainnet=8453, Polygon=137,
+# Polygon Amoy=80002, Arbitrum One=42161.
+crypto.chain.id=84532
+
+# Address of the deployed RideEscrow contract (0x-prefixed, lowercase or
+# checksummed — we normalise to lowercase before comparing).
+crypto.escrow.address=0x0000000000000000000000000000000000000000
+
+# How many block confirmations to require before treating a deposit as final.
+# Base/Arbitrum L2s reach economic finality quickly — 2 is fine for testnet,
+# 5–10 for mainnet.
+crypto.min.confirmations=2
+
+# Conversion rate: how many wei correspond to 1 CNY. This is the rate the
+# rider app quoted at pay time; the backend re-derives the expected wei
+# amount from (price_cny * wei_per_cny) and rejects underpayments. For a
+# real deployment, quote this per-request from a price oracle instead of
+# hardcoding — but the POC needs a knob and this is it.
+#
+# Example: ETH ~ 15000 CNY, so 1 CNY = 1e18 / 15000 = ~66666666666666 wei
+crypto.wei.per.cny=66666666666666
