@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!--This Configuration is for struts famework -->
+<struts>
+
+	<package name="customer_user" extends="pinche-default,authority,json-default" namespace="/customer">
+		<global-results>
+			<result name="error" type="chain">
+				<param name="actionName">logout</param>
+				<param name="namespace">/</param>
+			</result>
+		</global-results>
+
+<!-- 		<action name="index" class="com.nmdy.customerManage.user.action.UserNewAction" method="index">
+			<result name="index">/WEB-INF/jsp/customer/index.jsp
+			</result>
+		</action> -->
+		<action name="list" class="com.nmdy.customerManage.user.action.UserNewAction" method="list">
+			<result name="list">/WEB-INF/jsp/customer/user/listUI.jsp
+			</result>
+		</action>
+		<action name="pageList" class="com.nmdy.customerManage.user.action.UserNewAction" method="pageList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+		<action name="showUI" class="com.nmdy.customerManage.user.action.UserNewAction" method="showUI">
+			<result name="showUI">/WEB-INF/jsp/customer/user/infoTabs.jsp
+			</result>
+		</action>
+		<action name="show" class="com.nmdy.customerManage.user.action.UserNewAction" method="show">
+<!-- 			<result type="json">
+				<param name="root">jsonObject</param>
+			</result> -->
+			<result name = "show">/WEB-INF/jsp/customer/user/infoTabs1.jsp </result>
+		</action>
+		<action name="findUserAllInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="findUserAllInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		
+		<action name="updateUserBaseInfoUI" class="com.nmdy.customerManage.user.action.UserNewAction" method="updateUserBaseInfoUI">
+			<result name="updateUserBaseInfoUI">/WEB-INF/jsp/customer/user/updateUserBaseInfoUI.jsp
+			</result>
+		</action>
+		<action name="personVerifiedUI" class="com.nmdy.customerManage.user.action.UserNewAction" method="personVerifiedUI">
+			<result name="personVerifiedUI">/WEB-INF/jsp/customer/user/personVerifiedUI.jsp
+			</result>
+		</action>
+		<action name="findPersonVerifiedInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="findPersonVerifiedInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result> 
+		</action>
+		
+		<action name="personVerified" class="com.nmdy.customerManage.user.action.UserNewAction" method="personVerified">
+			<result name="personVerified" type="json">
+				<param name="root">resultObject</param>
+			</result>
+<!-- 			<result name="personVerified" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="namespace">/customer</param>
+			</result>  -->
+		</action>
+		<action name="personVerifiedRejected" class="com.nmdy.customerManage.user.action.UserNewAction" method="personVerifiedRejected">
+			<result name="personVerifiedRejected" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="namespace">/customer</param>
+			</result> 
+		</action>
+		
+		<action name="updateUserBaseInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="updateUserBaseInfo">
+			<result name ="ddd" type="json">
+				<param name="root">resultObject</param>
+			</result> 
+		</action>
+		<action name="updatePersonVerifiedInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="updatePersonVerifiedInfo">
+			<result name="updatePersonVerifiedInfo" type="json">
+				<param name="root">resultObject</param>
+			</result>
+<!-- 			<result name="updatePersonVerifiedInfo" type="redirectAction">
+				<param name="actionName">updateUserBaseInfoUI</param>
+				<param name="namespace">/customer</param>
+			</result>  -->
+
+		</action>
+		
+		<action name="updateDriverVerifiedInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="updateDriverVerifiedInfo">
+			<result name="updateDriverVerifiedInfo" type="json">
+				<param name="root">resultObject</param>
+			</result>
+<!-- 			<result name="updateDriverVerifiedInfo" type="redirectAction">
+				<param name="actionName">updateUserBaseInfoUI</param>
+				<param name="namespace">/customer</param>
+			</result>  -->
+
+		</action>
+		
+		<action name="driverVerifiedUI" class="com.nmdy.customerManage.user.action.UserNewAction" method="driverVerifiedUI">
+			<result name="driverVerifiedUI">/WEB-INF/jsp/customer/user/driverVerifiedUI.jsp
+			</result>
+		</action>
+		<action name="findDriverVerifiedInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="findDriverVerifiedInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result> 
+		</action>
+		<action name="driverVerified" class="com.nmdy.customerManage.user.action.UserNewAction" method="driverVerified">
+			<result name="driverVerified" type="json">
+				<param name="root">resultObject</param>
+			</result>		
+<!-- 			<result name="driverVerified" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="namespace">/customer</param>
+			</result> -->
+		</action>
+		<action name="driverVerifiedRejected" class="com.nmdy.customerManage.user.action.UserNewAction" method="driverVerifiedRejected">
+			<result name="driverVerifiedRejected" type="json">
+				<param name="root">resultObject</param>
+			</result>		
+<!-- 			<result name="driverVerifiedRejected" type="redirectAction">
+				<param name="actionName">list</param>
+				<param name="namespace">/customer</param>
+			</result> -->
+		</action>
+		
+		<action name="updateRebateInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="updateRebateInfo">
+			<result name="updateRebateInfo" type="json">
+				<param name="root">resultObject</param>
+			</result> 		
+<!-- 			<result name="updateRebateInfo">/WEB-INF/jsp/customer/user/updateUserBaseInfoUI.jsp
+			</result> -->
+		</action>
+<!-- 		<action name="showRebateListInfoUI" class="com.nmdy.customerManage.user.action.UserNewAction" method="showRebateListInfoUI">
+			<result name="showRebateListInfoUI">/WEB-INF/jsp/customer/user/driverVerifiedUI.jsp
+			</result>
+		</action> -->
+		<action name="findRebateListInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="findRebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result> 
+		</action>
+		<action name="findAllRebateListInfo" class="com.nmdy.customerManage.user.action.UserNewAction" method="findAllRebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result> 
+		</action>
+		
+		<action name="findCarBrand" class="com.nmdy.customerManage.user.action.UserNewAction" method="findCarBrand">
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		<action name="findCarStyle" class="com.nmdy.customerManage.user.action.UserNewAction" method="findCarStyle">
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		
+
+		<!-- 集团客户 -->
+		<action name="findRoleGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findRoleGroup">
+			<result name="findRoleGroup" type="json">
+				<param name="root">listGroup</param>
+			</result>
+		</action>
+		
+		<!-- 集团客户 -->
+		<action name="updateRoleGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="updateRoleGroup">
+ 			<result name="updateRoleGroup" type="chain">
+				<param name="actionName">
+					index
+				</param>
+				<param name="namespace">
+					/authority/role
+				</param>
+			</result> 
+		</action>
+
+		<!-- 集团客户 -->
+		<action name="groupList" class="com.nmdy.customerManage.group.action.GroupNewAction" method="groupList">
+			<result name="groupList">/WEB-INF/jsp/customer/group/listUI.jsp</result>
+		</action>
+		<action name="groupPageList" class="com.nmdy.customerManage.group.action.GroupNewAction" method="groupPageList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+		<action name="showGroupUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="showGroupUI">
+			<result name="showGroupUI">/WEB-INF/jsp/customer/group/groupInfo.jsp
+			</result>
+		</action>
+		
+		<action name="findGroupInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findGroupInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="showGroupUserUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="showGroupUserUI">
+			<result name="showGroupUserUI">/WEB-INF/jsp/customer/group/showGroupUserInfo.jsp
+			</result>
+		</action>
+		
+		<action name="findGroupUserInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findGroupUserInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="updateGroupInfoUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="updateGroupInfoUI">
+			<result name="updateGroupInfoUI">/WEB-INF/jsp/customer/group/updateGroupInfoUI.jsp
+			</result>
+		</action>
+		
+		<action name="updateGroupInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="updateGroupInfo">
+			<result name="updateGroupInfo" type="json">
+				<param name="root">resultObject</param>
+			</result>	
+<!-- 			<result name="updateGroupInfo" type="redirectAction">
+				<param name="actionName">groupList</param>
+				<param name="namespace">/customer</param>
+			</result> -->
+		</action>
+		
+		<action name="saveGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="saveGroup">
+			<!-- <result name="saveGroup">/WEB-INF/jsp/customer/group/newGroupUI.jsp</result> -->
+			<result name="saveGroup" type="json">
+				<param name="root">resultObject</param>
+			</result>	
+		</action>
+		
+			<action name="getGproperty" class="com.nmdy.customerManage.group.action.GroupNewAction" method="getGproperty">
+			<result name="getGproperty" type="json">
+				<param name="root">robj</param>
+			</result>	
+		</action>
+		
+		
+		<action name="personnelAdjustmentUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="personnelAdjustmentUI">
+			<result name="personnelAdjustmentUI">/WEB-INF/jsp/customer/group/personnelAdjustmentUI.jsp</result>
+		</action>
+
+		<action name="findGroupDriversByCondition" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findGroupDriversByCondition">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>		
+		</action>
+		<action name="removeDriverFromGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="removeDriverFromGroup">
+			<result name="removeDriverFromGroup" type="json">
+				<param name="root">resultObject</param>
+			</result>	
+			<!-- <result name="addDriverUI">/WEB-INF/jsp/customer/group/addDriverUI.jsp</result> -->
+		</action>
+		<action name="addDriverUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="addDriverUI">
+			<result name="addDriverUI">/WEB-INF/jsp/customer/group/addDriverUI.jsp</result>
+		</action>
+		<action name="diverList" class="com.nmdy.customerManage.group.action.GroupNewAction" method="diverList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>		
+		</action>
+
+		<action name="addDriverToGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="addDriverToGroup">
+			<result name="addDriverToGroup" type="json">
+				<param name="root">resultObject</param>
+			</result>	
+			 <!-- <result name="addDriverUI">/WEB-INF/jsp/customer/group/addDriverUI.jsp</result> --> 
+		</action>
+		<action name="addBatchDriver" class="com.nmdy.customerManage.group.action.GroupNewAction" method="addBatchDriver">
+			<result name="addBatchDriver">/WEB-INF/jsp/customer/group/personnelAdjustmentUI.jsp</result>
+		</action>
+		<action name="delGroup" class="com.nmdy.customerManage.group.action.GroupNewAction" method="delGroup">
+			<result name="delGroup" type="json">
+				<param name="root">resultObject</param>
+			</result>	
+			<!-- <result name="delGroup">/WEB-INF/jsp/customer/group/listUI.jsp</result> -->
+		</action>
+		<action name="rebateInfoUI" class="com.nmdy.customerManage.group.action.GroupNewAction" method="rebateInfoUI">
+			<result name="rebateInfoUI">/WEB-INF/jsp/customer/group/rebateInfo.jsp</result>
+		</action>
+		
+<!-- 		<action name="getGroupRebateInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="getGroupRebateInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>		
+		</action> -->
+		<action name="findGroupRebateListInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findGroupRebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>		
+		</action>
+		<action name="findGroupAllRebateListInfo" class="com.nmdy.customerManage.group.action.GroupNewAction" method="findGroupAllRebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>		
+		</action>
+		
+		<action name="editGroupReallocateProfit" class="com.nmdy.customerManage.group.action.GroupNewAction" method="editGroupReallocateProfit">
+			<result name="editGroupReallocateProfit" type="json">
+				<param name="root">resultObject</param>
+			</result>
+			<!-- <result name="setGroupReallocateProfit">/WEB-INF/jsp/customer/group/newGroupUI.jsp</result> -->
+		</action>
+		<action name="editGroupReallocateProfitDefault" class="com.nmdy.customerManage.group.action.GroupNewAction" method="editGroupReallocateProfitDefault">
+			<result name="editGroupReallocateProfitDefault" type="json">
+				<param name="root">resultObject</param>
+			</result>
+			<!-- <result name="editGroupReallocateProfitDefault">/WEB-INF/jsp/customer/group/newGroupUI.jsp</result> -->
+		</action> 
+		
+		
+		<!-- 集团客户自助管理 -->
+ 		<action name="groupSelfInfoUI" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="groupSelfInfoUI">
+			<result name="groupSelfInfoUI">/WEB-INF/jsp/customer/groupself/groupSelfInfoUI.jsp</result>
+		</action>
+		<action name="findGroupUserList" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="findGroupUserList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+ 		<action name="findGroupSelfInfo" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="findGroupSelfInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action> 
+		
+		<action name="updateGroupSelfInfo" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="updateGroupSelfInfo">
+			<result name="updateGroupSelfInfo" type="redirectAction">
+				<param name="actionName">groupSelfInfoUI</param>
+				<param name="namespace">/customer</param>
+			</result>
+		</action>
+		
+		 <action name="showGroupSelfUserInfoUI" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="showGroupSelfUserInfoUI">
+			<result name="showGroupSelfUserInfoUI">/WEB-INF/jsp/customer/groupself/showGroupSelfUserInfoUI.jsp</result>
+		</action>
+		<action name="showGroupSelfUserInfo" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="showGroupSelfUserInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		
+		<action name="removeUserFromGroup" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="removeUserFromGroup">
+			<result name="removeUserFromGroup" type="redirectAction">
+				<param name="actionName">groupSelfInfoUI</param>
+				<param name="namespace">/customer</param>
+			</result>		
+		</action>
+		<action name="editReallocateProfit" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="editReallocateProfit">
+			<result name="editReallocateProfit" type="json">
+				<param name="root">resultObject</param>
+			</result>
+		</action>
+		<action name="editReallocateProfitDefault" class="com.nmdy.customerManage.groupself.action.GroupSelfNewAction" method="editReallocateProfitDefault">
+			<result name="editReallocateProfitDefault" type="json">
+				<param name="root">resultObject</param>
+			</result>
+		</action> 
+		
+		<!-- 集团联盟客户 -->
+		<action name="groupAssociationList" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="groupAssociationList">
+			<result name="groupAssociationList">/WEB-INF/jsp/customer/groupAssociation/listUI.jsp</result>
+		</action>
+		<action name="groupAssociationPageList" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="groupAssociationPageList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+		<action name="showGroupAssociationUI" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="showGroupAssociationUI">
+			<result name="showGroupAssociationUI">/WEB-INF/jsp/customer/groupAssociation/groupAssociationInfo.jsp
+			</result>
+		</action>
+		
+		<action name="findGroupAssociationInfo" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="findGroupAssociationInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="updateGroupAssociationInfoUI" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="updateGroupAssociationInfoUI">
+			<result name="updateGroupAssociationInfoUI">/WEB-INF/jsp/customer/groupAssociation/updateGroupAssociationInfoUI.jsp
+			</result>
+		</action>
+		
+		<action name="updateGroupAssociationInfo" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="updateGroupAssociationInfo">
+			<result name="updateGroupAssociationInfo" type="redirectAction">
+				<param name="actionName">groupAssociationPageList</param>
+				<param name="namespace">/customer</param>
+			</result>
+		</action>
+		
+		<action name="saveGroupAssociation" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="saveGroupAssociation">
+			<result name="saveGroupAssociation">/WEB-INF/jsp/customer/groupAssociation/newGroupAssociationUI.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="addMemberUI" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="addMemberUI">
+			<result name="addMemberUI">/WEB-INF/jsp/customer/groupAssociation/addMemberUI.jsp</result>
+		</action>
+		<action name="addMemberToGroupAssociation" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="addMemberToGroupAssociation">
+			<result name="addMemberUI">/WEB-INF/jsp/customer/groupAssociation/addMemberUI.jsp</result>
+		</action>
+		<action name="removeMember" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="removeMember">
+			<result name="addMemberUI">/WEB-INF/jsp/customer/groupAssociation/addMemberUI.jsp</result>
+		</action>
+		<action name="findGroupsByCondition" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="findGroupsByCondition">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="showUserUI" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="showUserUI">
+			<result name="showUserUI">/WEB-INF/jsp/customer/groupAssociation/showUserInfo.jsp</result>
+		</action>
+		<action name="delGroupAssociation" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="delGroupAssociation">
+			<result name="delGroupAssociation">/WEB-INF/jsp/customer/groupAssociation/listUI.jsp</result>
+		</action>
+		<action name="findUserInfo" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="findUserInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="findGroupsInGA" class="com.nmdy.customerManage.groupAssociation.action.GroupAssociationAction" method="findGroupsInGA">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		
+		
+		
+		
+		<!-- 合作单位 -->
+		<action name="app_Spread_UnitListUI" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="app_Spread_UnitListUI">
+			<result name="app_Spread_UnitListUI">/WEB-INF/jsp/customer/app_spread_unit/listUI.jsp</result>
+		</action>
+		<action name="app_Spread_UnitPageList" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="app_Spread_UnitPageList">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+		<action name="showApp_Spread_UnitUI" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="showApp_Spread_UnitUI">
+			<result name="showApp_Spread_UnitUI">/WEB-INF/jsp/customer/app_spread_unit/app_Spread_UnitInfo.jsp
+			</result>
+		</action>
+		
+		<action name="findApp_Spread_UnitInfo" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="findApp_Spread_UnitInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="updateApp_Spread_UnitInfoUI" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="updateApp_Spread_UnitInfoUI">
+			<result name="updateApp_Spread_UnitInfoUI">/WEB-INF/jsp/customer/app_spread_unit/updateApp_Spread_UnitInfoUI.jsp
+			</result>
+		</action>
+		
+		<action name="updateApp_Spread_UnitInfo" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="updateApp_Spread_UnitInfo">
+			<result name="updateApp_Spread_UnitInfo" type="redirectAction">
+				<param name="actionName">app_Spread_UnitListUI</param>
+				<param name="namespace">/customer</param>
+			</result>
+		</action>
+		
+		<action name="saveApp_Spread_Unit" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="saveApp_Spread_Unit">
+			<result name="saveApp_Spread_Unit" type="redirectAction">
+				<param name="actionName">app_Spread_UnitListUI</param>
+				<param name="namespace">/customer</param>
+			</result>
+		</action>
+		
+		<action name="delApp_Spread_Unit" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="delApp_Spread_Unit">
+			<result name="delApp_Spread_Unit">/WEB-INF/jsp/customer/app_spread_unit/listUI.jsp
+			</result>
+		</action>
+		
+		<action name="ASURebateInfoUI" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="ASURebateInfoUI">
+			<result name="ASURebateInfoUI">/WEB-INF/jsp/customer/app_spread_unit/ASURebateInfo.jsp
+			</result>
+		</action>
+		<action name="findASUAllRebateListInfo" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="findASUAllRebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="findASURebateListInfo" class="com.nmdy.customerManage.appSpreadUnit.action.App_Spread_UnitAction" method="findASURebateListInfo">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+	
+
+</package>
+</struts>

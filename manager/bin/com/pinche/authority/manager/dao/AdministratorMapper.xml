@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.manager.dao.AdministratorMapper" >
+
+    <resultMap
+        id="AdministratorResult"
+        type="Administrator" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="usercode"
+            property="usercode" />
+
+        <result
+            column="password"
+            property="password" />
+
+        <result
+            column="username"
+            property="username" />
+
+        <result
+            column="sex"
+            property="sex" />
+
+        <result
+            column="unit"
+            property="unitcode" />
+
+        <result
+            column="phoneNum"
+            property="phoneNum" />
+
+        <result
+            column="phoneNum2"
+            property="phoneNum2" />
+
+        <result
+            column="qq"
+            property="qq" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="level"
+            property="level" />
+
+        <result
+            column="note"
+            property="note" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="group_name"
+            property="groupname" />
+
+        <result
+            column="name"
+            property="appUnitName" />
+    </resultMap>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.id=#{id} AND a.deleted=0
+    </select>
+
+    <select
+        id="findOneByUsercode"
+        parameterType="string"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.usercode=#{usercode} AND a.deleted=0
+    </select>
+
+    <select
+        id="findAll"
+        parameterType="hashmap"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.deleted=0
+    </select>
+
+    <select
+        id="sizeofTable"
+        resultType="int" >
+		SELECT  count(*)
+		FROM administrator 
+		WHERE deleted=0;
+    </select>
+
+    <select
+        id="searchByUsercode"
+        parameterType="string"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.usercode LIKE #{usercode} AND a.deleted=0
+    </select>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.deleted=0
+
+        <if test="id != null" >
+			AND a.id = #{id}
+        </if>
+
+        <if test="usercode != null" >
+			AND a.usercode LIKE CONCAT('%','${usercode}','%' ) 
+        </if>
+
+        <if test="username != null" >
+			AND a.username LIKE CONCAT('%','${username}','%' ) 
+        </if>
+
+        <if test="unit != null" >
+			AND a.unit LIKE CONCAT('%','${unit}','%' ) 
+        </if>
+
+        <if test="phone != null" >
+			AND a.phoneNum LIKE CONCAT('%','${phone}','%' ) 
+        </if>
+
+        <if test="isTotal == 1" >
+			ORDER BY id LIMIT #{page}, #{rows}
+        </if>
+    </select>
+
+<select
+        id="searchForExcel"
+        parameterType="hashmap"
+        resultType="ExcelUser" >
+		SELECT a.id,a.usercode, a.username,a.phoneNum as phone,g.group_name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.deleted=0
+        <if test="id != null" >
+			AND a.id = #{id}
+        </if>
+        <if test="usercode != null" >
+			AND a.usercode LIKE CONCAT('%','${usercode}','%' ) 
+        </if>
+        <if test="username != null" >
+			AND a.username LIKE CONCAT('%','${username}','%' ) 
+        </if>
+        <if test="unit != null" >
+			AND a.unit LIKE CONCAT('%','${unit}','%' ) 
+
+        </if>
+        <if test="phone != null" >
+			AND a.phoneNum LIKE CONCAT('%','${phone}','%' ) 
+
+        </if>
+    </select>
+   <select
+        id="searchAll"
+        parameterType="hashmap"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.deleted=0 and (a.id = #{id} or a.usercode LIKE CONCAT('%','${usercode}','%' ) or a.username LIKE CONCAT('%','${username}','%' ) or a.unit LIKE CONCAT('%','${unit}','%' ) or a.phoneNum LIKE CONCAT('%','${phone}','%' ))
+        <if test="isTotal == 1" >
+			ORDER BY id LIMIT #{page}, #{rows}
+        </if>
+    </select>
+    
+    <select
+        id="searchByUsername"
+        parameterType="string"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.unit usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.username LIKE #{username} AND a.deleted=0
+    </select>
+
+    <select
+        id="searchByPhone"
+        parameterType="string"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.unit usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.phoneNum LIKE #{phoneNum} AND a.deleted=0
+    </select>
+
+    <select
+        id="searchByUnit"
+        parameterType="string"
+        resultMap="AdministratorResult" >
+		SELECT a.id, a.unit usercode, a.username, a.password, a.sex, a.unit unitcode, 
+				a.phoneNum, a.phoneNum2, a.qq, a.email, a.level, a.note, 
+				g.group_name, asu.name
+		FROM administrator a
+		LEFT JOIN group_ g ON g.groupid=a.unit
+		LEFT JOIN app_spread_unit asu ON asu.unit_id=a.unit
+		WHERE a.unitcode = #{unitcode} 
+    </select>
+
+    <insert
+        id="addAdministrator"
+        keyProperty="id"
+        parameterType="Administrator"
+        useGeneratedKeys="true" >
+		INSERT INTO	administrator(usercode, username, sex, unit, phoneNum, phoneNum2, qq, email, level, note, password,deleted)
+		VALUES(#{usercode},	#{username}, #{sex}, #{unitcode}, #{phoneNum}, #{phoneNum2}, #{qq}, #{email}, #{level}, #{note},#{password},0)
+    </insert>
+
+    <update
+        id="editAdministrator"
+        parameterType="Administrator" >
+		UPDATE administrator 
+		SET usercode=#{usercode}, username=#{username}, sex=#{sex}, unit=#{unitcode}, phoneNum=#{phoneNum}, 
+				phoneNum2=#{phoneNum2}, qq=#{qq}, email=#{email}, note=#{note}
+		WHERE id=#{id} AND deleted=0
+    </update>
+
+    <update
+        id="changePassword"
+        parameterType="Administrator" >
+		UPDATE administrator
+		SET password=#{password}
+		WHERE id=#{id} AND deleted=0
+    </update>
+
+    <update
+        id="changeLevel"
+        parameterType="Administrator" >
+		UPDATE administrator
+		SET level=#{level}
+		WHERE id=#{id} AND deleted=0
+    </update>
+
+    <update
+        id="deleteAdministrator"
+        parameterType="int" >
+		UPDATE administrator
+		SET deleted=1
+		WHERE id=#{id}
+    </update>
+
+    <select
+        id="findByRid"
+        parameterType="int"
+        resultType="int" >
+		SELECT count(*) FROM administrator a 
+		LEFT JOIN user_role b ON a.id=b.user_id
+		WHERE a.deleted=0 AND b.deleted=0 AND b.role_id=#{rid}  
+    </select>
+
+</mapper>

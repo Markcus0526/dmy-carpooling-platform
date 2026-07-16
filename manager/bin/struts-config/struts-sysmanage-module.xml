@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!-- This Configuration is for struts famework -->
+<struts>
+
+    <package
+        name="sys_manager"
+        extends="pinche-default"
+        namespace="/sys_manager" >
+
+        <global-results>
+
+            <result
+                name="error"
+                type="chain" >
+
+                <param name="actionName" >
+logout
+                </param>
+
+                <param name="namespace" >
+/
+                </param>
+            </result>
+        </global-results>
+        <!--
+		<action name="queryAdministrators" class="com.nmdy.sysManage.administrator.action.AdministratorAction" method="displayQueryPage">
+			<result name="success">/WEB-INF/jsp/sysManage/administrator/sys_manage.jsp</result>
+		</action>
+        -->
+    </package>
+
+</struts>

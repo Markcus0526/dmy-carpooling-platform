@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!-- This Configuration is for struts famework -->
+<struts>
+
+	<package name="spread_coupon" extends="pinche-default,authority"
+		namespace="/spread/coupon">
+
+		<action name="index"
+			class="com.nmdy.spreadManage.couponSpread.action.CouponAction"
+			method="index">
+			<result>
+				/WEB-INF/jsp/spread/coupon/index.jsp
+			</result>
+		</action>
+		<action name="search" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="search">
+			<result type="json">
+				<param name="root">resultObj</param>
+			</result>
+		</action>
+		<action name="getConditionPaginationList"
+			class="com.nmdy.spreadManage.couponSpread.action.CouponAction"
+			method="getConditionPaginationList">
+
+			<result type="json">
+
+				<param name="root">
+					jsonObject
+				</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="spread_sms" extends="pinche-default,authority"
+		namespace="/spread/sms">
+
+		<action name="index" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="index">
+
+			<result name="success">
+				/WEB-INF/jsp/spread/sms/index.jsp
+			</result>
+		</action>
+
+		<action name="addPage" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="addPage">
+			<result name="addPage">
+				/WEB-INF/jsp/spread/sms/newSmsPlan.jsp
+			</result>
+		</action>
+
+
+		<action name="add" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="add">
+			<result type="json">
+				<param name="root">resultObj</param>
+			</result>
+		</action>
+
+		<action name="edit" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="edit">
+			<result type="json">
+				<param name="root">resultObj</param>
+			</result>
+		</action>
+
+		<action name="getSmsPlanList" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="findSmsPlanList">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		<action name="getUserList" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="findUserList">
+			<result type="json">
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		<action name="getSMSUserList" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="findSMSUserList">
+			<result type="json">
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		<action name="show" class="com.nmdy.spread.sms.action.SMSPlanAction"
+			method="show">
+			<result type="json">
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="getUnSelectUser" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="findUnSelectUser">
+			<result type="json">
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+<!-- 		<action name="getPhoneList" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="findPhoneList">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action> -->
+		<action name="addSMSuser" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="addSMSuser">
+	
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+			<action name="deleteSMSuser" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="deleteSMSuser">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		<action name="editPage" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="editPage">
+			<result name="success">
+				/WEB-INF/jsp/spread/sms/edit.jsp
+			</result>
+		</action>
+		<action name="selectPage" class="com.nmdy.spread.sms.action.SMSUserAction"
+			method="selectPage">
+			<result name="success">
+				/WEB-INF/jsp/spread/sms/select.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="spread_loan" extends="pinche-default,authority"
+		namespace="/spread/loan">
+
+		<action name="index" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="index">
+
+			<result name="success">
+				/WEB-INF/jsp/spread/loan/index.jsp
+			</result>
+		</action>
+
+		<action name="search" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="search">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="find"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="findCityParam">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="searchUser" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="searchUser">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<!-- <action name="createSyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction" 
+			method="createSyscoupon"> <result name="success">/WEB-INF/jsp/layouts/main_layout.jsp</result> 
+			</action> -->
+
+		<action name="create_syscoupon_page" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="create_syscoupon_page">
+
+			<result>
+				/WEB-INF/jsp/spread/loan/create_syscoupon.jsp
+			</result>
+		</action>
+
+		<action name="doCreateSyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="doCreateSyscoupon">
+
+			<!-- <result type="json"> <param name="root">resultObj</param> </result> -->
+			<result name="success">
+				/WEB-INF/jsp/spread/loan/index.jsp
+			</result>
+		</action>
+
+		<action name="retrieveNewCouponCode" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="retrieveNewCouponCode">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="manualDeploySyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="manualDeploySyscoupon">
+
+			<result name="success">
+				/WEB-INF/jsp/layouts/main_layout.jsp
+			</result>
+		</action>
+
+		<action name="manualdeploy_syscoupon_page" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="manualdeploy_syscoupon_page">
+
+			<result>
+				/WEB-INF/jsp/spread/loan/manualdeploy_syscoupon_page.jsp
+			</result>
+		</action>
+
+		<action name="doManualDeploySyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="doManualDeploySyscoupon">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="disableSyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="disableSyscoupon">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="viewSyscoupon" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="viewSyscoupon">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="deploy" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="deploy">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="viewCouponSendLog" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="viewCouponSendLog">
+
+			<result name="success">
+				/WEB-INF/jsp/layouts/main_layout.jsp
+			</result>
+			<!-- <result type="json"> <param name="root">resultObj</param> </result> -->
+		</action>
+
+		<action name="couponsendlog_page" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="couponsendlog_page">
+
+			<result>
+				/WEB-INF/jsp/spread/loan/couponsendlog_page.jsp
+			</result>
+		</action>
+
+		<action name="couponsendlog_page1" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="couponsendlog_page1">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="searchSendLog" class="com.nmdy.spread.loan.action.LoanspreadAction"
+			method="searchSendLog">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="search4autoSend"
+			class="com.nmdy.spread.loan.action.LoanspreadAutoSendAction"
+			method="search4autoSend">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+<!-- 		<action name="getAutoSendParam"
+			class="com.nmdy.spread.loan.action.LoanspreadAutoSendAction"
+			method="getAutoSendParam">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action> -->
+
+		<action name="saveParam"
+			class="com.nmdy.spread.loan.action.LoanspreadAutoSendAction"
+			method="saveParam">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="search4activity"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="search4activity">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="createActivity"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="createActivity">
+
+			<result>
+				/WEB-INF/jsp/spread/loan/createActivity.jsp
+			</result>
+		</action>
+		<!-- <action name="search4Coupon" class="com.nmdy.spread.loan.action.LoanspreadActivityAction" 
+			method="search4Coupon"> <result type="json"> <param name="root">resultObj</param> 
+			</result> </action> -->
+
+		<action name="doCreateActivity"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="doCreateActivity">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="genActivityCode"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="genActivityCode">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="stopActivity"
+			class="com.nmdy.spread.loan.action.LoanspreadActivityAction"
+			method="stopActivity">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="spread_number" extends="pinche-default,authority"
+		namespace="/spread/number">
+
+		<action name="index"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="index">
+
+			<result name="success">
+				/WEB-INF/jsp/spread/number/index.jsp
+			</result>
+		</action>
+
+		<action name="search"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="search">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="view"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="view">
+
+			<result name="success">
+				/WEB-INF/jsp/spread/number/view.jsp
+			</result>
+		</action>
+
+		<action name="config"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="config">
+
+			<result name="success">
+				/WEB-INF/jsp/spread/number/index.jsp
+			</result>
+		</action>
+
+		<action name="getInfo"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="getInfo">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="getConfig"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="getConfig">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="open"
+			class="com.pinche.spread.number.action.NumberspreadAction" method="open">
+
+			<result name="config_page">
+				/WEB-INF/jsp/spread/number/config.jsp
+			</result>
+
+			<result name="view_page">
+				/WEB-INF/jsp/spread/number/view.jsp
+			</result>
+		</action>
+	</package>
+
+
+	<!-- 活动推广 -->
+	<package name="spread_activity" extends="json-default,authority" namespace="/spread/activity">
+		<action name="searchGift" class="com.nmdy.activity.action.ActivityAction" method="searchGift">
+				<result type="json">
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		
+		<action name="activity_*" class="com.nmdy.activity.action.ActivityAction"
+			method="{1}">
+			<result name="main">/WEB-INF/jsp/spread/activity/main.jsp</result>
+			<result name="add">/WEB-INF/jsp/spread/activity/add.jsp</result>
+			<result name="showGIft">/WEB-INF/jsp/spread/activity/show_gIft.jsp</result>
+			<result name="showActivity">/WEB-INF/jsp/spread/activity/show.jsp</result>
+			<result name="editActivity">/WEB-INF/jsp/spread/activity/edit.jsp</result>
+			<result name="choseGift" type="chain">activity_add</result>
+			<result name="insertRule" type="redirectAction">
+				<param name="actionName">activity_add</param>
+			</result>
+			<result name="removeRule" type="redirectAction">
+				<param name="actionName">activity_add</param>
+			</result>
+			<result name="insertActivityerror" type="chain">activity_add</result>
+			<result name="delRule" type="chain">activity_editActivity</result>
+			<result name="choseGiftForUpdate" type="chain">activity_editActivity</result>
+			<result name="insertActivityRule" type="chain">activity_editActivity</result>
+			<result name="updateActivityError" type="chain">activity_editActivity</result>
+			<result name="updateActivity" type="chain">activity_main</result>
+			<result name="insertActivity" type="redirectAction">
+				<param name="actionName">activity_main</param>
+			</result>
+			<result name="stopActivity" type="redirectAction">
+				<param name="actionName">activity_main</param>
+			</result>
+			<result name="search" type="json">
+				<param name="root">jsonObj</param>
+			</result>
+			<result name="listActivityRole" type="json">
+				<param name="root">jsonObj</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,3408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.operation.announcement.dao.AnnouncementMapper" >
+
+    <!-- ********************************announcement config begnin******************************** -->
+
+    <insert
+        id="insert"
+        keyProperty="id"
+        parameterType="com.pinche.operation.announcement.dao.Announcement"
+        useGeneratedKeys="true" >
+	INSERT INTO
+		announcement( id,title,content,ps_date,publisher,ps_city,`range`,validate)
+	VALUES ( #{id},#{title},#{content},#{ps_date},#{publisher},#{ps_city},#{range},#{validate})
+    </insert>
+
+    <delete
+        id="delete"
+        parameterType="map" >
+	DELETE FROM announcement
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <select
+        id="selectList"
+        parameterType="map"
+        resultType="com.pinche.operation.announcement.dao.Announcement" >
+ 	SELECT id,title,content,ps_date,publisher,ps_city,`range`,validate 
+ 	FROM announcement 
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',id,title,content,ps_date,publisher,ps_city,`range`,validate) Like BINARY #{advanceColumnLike} ]]></if>
+        </where>
+
+        <if test="OrderColumn != null and order != null" >
+<![CDATA[order by ${OrderColumn} ${order}  ]]></if>
+
+        <if test="OrderColumn == null and order == null" >
+        </if>
+
+        <if test="LimitFromRowNum != null and LimitRowSize != null" >
+limit #{LimitFromRowNum},#{LimitRowSize};
+        </if>
+    </select>
+
+    <select
+        id="selectListMap"
+        parameterType="map"
+        resultType="map" >
+    SELECT a.id,a.title,a.content,DATE_FORMAT(a.ps_date,'%Y-%m-%d') AS ps_date ,(CASE WHEN a.publisher='1' THEN b.username ELSE '其他' END) AS publisher,a.ps_city,(CASE WHEN a.`range` = '0' THEN '全部' ELSE '车主' END) AS `range`,
+      DATE_FORMAT(a.validate,'%Y-%m-%d') AS validate 
+ 	FROM announcement a ,administrator b 
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND a.id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND a.id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND a.id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND a.id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND a.id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND a.id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND a.id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND a.id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND a.id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND a.id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND a.id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND a.id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND a.title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND a.title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND a.title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND a.title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND a.title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND a.title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND a.title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND a.title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND a.title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND a.title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND a.title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND a.title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND a.content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND a.content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND a.content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND a.content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND a.content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND a.content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND a.content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND a.content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND a.content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND a.content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND a.content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND a.content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND a.ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND a.ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND a.ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND a.ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND a.ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND a.ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND a.ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND a.ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND a.ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND a.ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND a.ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND a.ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND a.publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND a.publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND a.publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND a.publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND a.publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND a.publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND a.publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND a.publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND a.publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND a.publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND a.publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND a.publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND a.ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND a.ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND a.ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND a.ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND a.ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND a.ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND a.ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND a.ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND a.ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND a.ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND a.ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND a.ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND a.`range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND a.`range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND a.`range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND a.`range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND a.`range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND a.`range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND a.`range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND a.`range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND a.`range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND a.`range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND a.`range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND a.`range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND a.validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND a.validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND a.validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND a.validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND a.validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND a.validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND a.validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND a.validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND a.validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND a.validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND a.validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND a.validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',a.id,a.title,a.content,a.ps_date,a.publisher,a.ps_city,a.`range`,a.validate) Like BINARY #{advanceColumnLike} ]]></if>
+<![CDATA[ AND a.deleted=0 ]]><![CDATA[ AND a.id=b.id ]]></where>
+
+        <if test="OrderColumn != null and order != null" >
+<![CDATA[order by ${OrderColumn} ${order}  ]]></if>
+
+        <if test="OrderColumn == null and order == null" >
+        </if>
+
+        <if test="LimitFromRowNum != null and LimitRowSize != null" >
+limit #{LimitFromRowNum},#{LimitRowSize};
+        </if>
+    </select>
+
+    <select
+        id="selectCount"
+        parameterType="map"
+        resultType="int" >
+    SELECT COUNT(*)
+    FROM announcement
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',id,title,content,ps_date,publisher,ps_city,`range`,validate) Like BINARY #{advanceColumnLike} ]]></if>
+<![CDATA[ AND deleted=0 ]]></where>
+    </select>
+
+    <select
+        id="selectListForUpdate"
+        parameterType="map"
+        resultType="com.pinche.operation.announcement.dao.Announcement" >
+
+<![CDATA[ 
+		SELECT id,title,content,ps_date,publisher,ps_city,`range`,validate FROM announcement 
+	]]>
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',id,title,content,ps_date,publisher,ps_city,`range`,validate) Like BINARY #{advanceColumnLike} ]]></if>
+        </where>
+
+<![CDATA[ 
+    	FOR UPDATE 
+    ]]>
+    </select>
+
+    <select
+        id="selectMapList"
+        parameterType="map"
+        resultType="map" >
+
+<![CDATA[
+	    SELECT id,title,content,ps_date,publisher,ps_city,`range`,validate FROM announcement
+	]]>
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',id,title,content,ps_date,publisher,ps_city,`range`,validate) Like BINARY #{advanceColumnLike} ]]></if>
+        </where>
+    </select>
+
+    <!-- 获取最大主键值 -->
+
+
+    <!-- 更新 禁用/启用 状态 -->
+
+    <update
+        id="updateAnnouncementDisable"
+        parameterType="com.pinche.operation.announcement.dao.Announcement" >
+	UPDATE announcement SET deleted=#{deleted}
+
+        <where>
+	id=#{id}
+        </where>
+    </update>
+
+    <!-- 取出所有主键,返回以逗号分隔的字符串 -->
+
+    <select
+        id="selectAllPrimaryKey"
+        parameterType="map"
+        resultType="String" >
+ 	SELECT 
+ 		GROUP_CONCAT(PrimaryId)
+ 		
+ 	FROM announcement 
+
+        <where>
+
+            <if test="idEqual != null" >
+<![CDATA[ AND id = #{idEqual} ]]></if>
+
+            <if test="idNotEqual != null" >
+<![CDATA[ AND id != #{idNotEqual} ]]></if>
+
+            <if test="idBegin != null" >
+<![CDATA[ AND id > #{idBegin} ]]></if>
+
+            <if test="idBeginEqual != null" >
+<![CDATA[ AND id >= #{idBeginEqual} ]]></if>
+
+            <if test="idEnd != null" >
+<![CDATA[ AND id < #{idEnd} ]]></if>
+
+            <if test="idEndEqual != null" >
+<![CDATA[ AND id <= #{idEndEqual} ]]></if>
+
+            <if test="idNull != null" >
+<![CDATA[ AND id Is null ]]></if>
+
+            <if test="idNotNull != null" >
+<![CDATA[ AND id Is Not null ]]></if>
+
+            <if test="idLike != null" >
+<![CDATA[ AND id Like #{idLike} ]]></if>
+
+            <if test="idNotLike != null" >
+<![CDATA[ AND id Not Like #{idNotLike} ]]></if>
+
+            <if test="idIn != null" >
+ 			AND id In
+
+                <foreach
+                    close=")"
+                    collection="idIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="idNotIn != null" >
+ 			AND id Not In
+
+                <foreach
+                    close=")"
+                    collection="idNotIn"
+                    index="index"
+                    item="iditem"
+                    open="("
+                    separator="," >
+ 				#{iditem}
+                </foreach>
+            </if>
+
+            <if test="titleEqual != null" >
+<![CDATA[ AND title = #{titleEqual} ]]></if>
+
+            <if test="titleNotEqual != null" >
+<![CDATA[ AND title != #{titleNotEqual} ]]></if>
+
+            <if test="titleBegin != null" >
+<![CDATA[ AND title > #{titleBegin} ]]></if>
+
+            <if test="titleBeginEqual != null" >
+<![CDATA[ AND title >= #{titleBeginEqual} ]]></if>
+
+            <if test="titleEnd != null" >
+<![CDATA[ AND title < #{titleEnd} ]]></if>
+
+            <if test="titleEndEqual != null" >
+<![CDATA[ AND title <= #{titleEndEqual} ]]></if>
+
+            <if test="titleNull != null" >
+<![CDATA[ AND title Is null ]]></if>
+
+            <if test="titleNotNull != null" >
+<![CDATA[ AND title Is Not null ]]></if>
+
+            <if test="titleLike != null" >
+<![CDATA[ AND title Like #{titleLike} ]]></if>
+
+            <if test="titleNotLike != null" >
+<![CDATA[ AND title Not Like #{titleNotLike} ]]></if>
+
+            <if test="titleIn != null" >
+ 			AND title In
+
+                <foreach
+                    close=")"
+                    collection="titleIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="titleNotIn != null" >
+ 			AND title Not In
+
+                <foreach
+                    close=")"
+                    collection="titleNotIn"
+                    index="index"
+                    item="titleitem"
+                    open="("
+                    separator="," >
+ 				#{titleitem}
+                </foreach>
+            </if>
+
+            <if test="contentEqual != null" >
+<![CDATA[ AND content = #{contentEqual} ]]></if>
+
+            <if test="contentNotEqual != null" >
+<![CDATA[ AND content != #{contentNotEqual} ]]></if>
+
+            <if test="contentBegin != null" >
+<![CDATA[ AND content > #{contentBegin} ]]></if>
+
+            <if test="contentBeginEqual != null" >
+<![CDATA[ AND content >= #{contentBeginEqual} ]]></if>
+
+            <if test="contentEnd != null" >
+<![CDATA[ AND content < #{contentEnd} ]]></if>
+
+            <if test="contentEndEqual != null" >
+<![CDATA[ AND content <= #{contentEndEqual} ]]></if>
+
+            <if test="contentNull != null" >
+<![CDATA[ AND content Is null ]]></if>
+
+            <if test="contentNotNull != null" >
+<![CDATA[ AND content Is Not null ]]></if>
+
+            <if test="contentLike != null" >
+<![CDATA[ AND content Like #{contentLike} ]]></if>
+
+            <if test="contentNotLike != null" >
+<![CDATA[ AND content Not Like #{contentNotLike} ]]></if>
+
+            <if test="contentIn != null" >
+ 			AND content In
+
+                <foreach
+                    close=")"
+                    collection="contentIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="contentNotIn != null" >
+ 			AND content Not In
+
+                <foreach
+                    close=")"
+                    collection="contentNotIn"
+                    index="index"
+                    item="contentitem"
+                    open="("
+                    separator="," >
+ 				#{contentitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateEqual != null" >
+<![CDATA[ AND ps_date = #{ps_dateEqual} ]]></if>
+
+            <if test="ps_dateNotEqual != null" >
+<![CDATA[ AND ps_date != #{ps_dateNotEqual} ]]></if>
+
+            <if test="ps_dateBegin != null" >
+<![CDATA[ AND ps_date > #{ps_dateBegin} ]]></if>
+
+            <if test="ps_dateBeginEqual != null" >
+<![CDATA[ AND ps_date >= #{ps_dateBeginEqual} ]]></if>
+
+            <if test="ps_dateEnd != null" >
+<![CDATA[ AND ps_date < #{ps_dateEnd} ]]></if>
+
+            <if test="ps_dateEndEqual != null" >
+<![CDATA[ AND ps_date <= #{ps_dateEndEqual} ]]></if>
+
+            <if test="ps_dateNull != null" >
+<![CDATA[ AND ps_date Is null ]]></if>
+
+            <if test="ps_dateNotNull != null" >
+<![CDATA[ AND ps_date Is Not null ]]></if>
+
+            <if test="ps_dateLike != null" >
+<![CDATA[ AND ps_date Like #{ps_dateLike} ]]></if>
+
+            <if test="ps_dateNotLike != null" >
+<![CDATA[ AND ps_date Not Like #{ps_dateNotLike} ]]></if>
+
+            <if test="ps_dateIn != null" >
+ 			AND ps_date In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="ps_dateNotIn != null" >
+ 			AND ps_date Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_dateNotIn"
+                    index="index"
+                    item="ps_dateitem"
+                    open="("
+                    separator="," >
+ 				#{ps_dateitem}
+                </foreach>
+            </if>
+
+            <if test="publisherEqual != null" >
+<![CDATA[ AND publisher = #{publisherEqual} ]]></if>
+
+            <if test="publisherNotEqual != null" >
+<![CDATA[ AND publisher != #{publisherNotEqual} ]]></if>
+
+            <if test="publisherBegin != null" >
+<![CDATA[ AND publisher > #{publisherBegin} ]]></if>
+
+            <if test="publisherBeginEqual != null" >
+<![CDATA[ AND publisher >= #{publisherBeginEqual} ]]></if>
+
+            <if test="publisherEnd != null" >
+<![CDATA[ AND publisher < #{publisherEnd} ]]></if>
+
+            <if test="publisherEndEqual != null" >
+<![CDATA[ AND publisher <= #{publisherEndEqual} ]]></if>
+
+            <if test="publisherNull != null" >
+<![CDATA[ AND publisher Is null ]]></if>
+
+            <if test="publisherNotNull != null" >
+<![CDATA[ AND publisher Is Not null ]]></if>
+
+            <if test="publisherLike != null" >
+<![CDATA[ AND publisher Like #{publisherLike} ]]></if>
+
+            <if test="publisherNotLike != null" >
+<![CDATA[ AND publisher Not Like #{publisherNotLike} ]]></if>
+
+            <if test="publisherIn != null" >
+ 			AND publisher In
+
+                <foreach
+                    close=")"
+                    collection="publisherIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="publisherNotIn != null" >
+ 			AND publisher Not In
+
+                <foreach
+                    close=")"
+                    collection="publisherNotIn"
+                    index="index"
+                    item="publisheritem"
+                    open="("
+                    separator="," >
+ 				#{publisheritem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityEqual != null" >
+<![CDATA[ AND ps_city = #{ps_cityEqual} ]]></if>
+
+            <if test="ps_cityNotEqual != null" >
+<![CDATA[ AND ps_city != #{ps_cityNotEqual} ]]></if>
+
+            <if test="ps_cityBegin != null" >
+<![CDATA[ AND ps_city > #{ps_cityBegin} ]]></if>
+
+            <if test="ps_cityBeginEqual != null" >
+<![CDATA[ AND ps_city >= #{ps_cityBeginEqual} ]]></if>
+
+            <if test="ps_cityEnd != null" >
+<![CDATA[ AND ps_city < #{ps_cityEnd} ]]></if>
+
+            <if test="ps_cityEndEqual != null" >
+<![CDATA[ AND ps_city <= #{ps_cityEndEqual} ]]></if>
+
+            <if test="ps_cityNull != null" >
+<![CDATA[ AND ps_city Is null ]]></if>
+
+            <if test="ps_cityNotNull != null" >
+<![CDATA[ AND ps_city Is Not null ]]></if>
+
+            <if test="ps_cityLike != null" >
+<![CDATA[ AND ps_city Like #{ps_cityLike} ]]></if>
+
+            <if test="ps_cityNotLike != null" >
+<![CDATA[ AND ps_city Not Like #{ps_cityNotLike} ]]></if>
+
+            <if test="ps_cityIn != null" >
+ 			AND ps_city In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="ps_cityNotIn != null" >
+ 			AND ps_city Not In
+
+                <foreach
+                    close=")"
+                    collection="ps_cityNotIn"
+                    index="index"
+                    item="ps_cityitem"
+                    open="("
+                    separator="," >
+ 				#{ps_cityitem}
+                </foreach>
+            </if>
+
+            <if test="rangeEqual != null" >
+<![CDATA[ AND `range` = #{rangeEqual} ]]></if>
+
+            <if test="rangeNotEqual != null" >
+<![CDATA[ AND `range` != #{rangeNotEqual} ]]></if>
+
+            <if test="rangeBegin != null" >
+<![CDATA[ AND `range` > #{rangeBegin} ]]></if>
+
+            <if test="rangeBeginEqual != null" >
+<![CDATA[ AND `range` >= #{rangeBeginEqual} ]]></if>
+
+            <if test="rangeEnd != null" >
+<![CDATA[ AND `range` < #{rangeEnd} ]]></if>
+
+            <if test="rangeEndEqual != null" >
+<![CDATA[ AND `range` <= #{rangeEndEqual} ]]></if>
+
+            <if test="rangeNull != null" >
+<![CDATA[ AND `range` Is null ]]></if>
+
+            <if test="rangeNotNull != null" >
+<![CDATA[ AND `range` Is Not null ]]></if>
+
+            <if test="rangeLike != null" >
+<![CDATA[ AND `range` Like #{rangeLike} ]]></if>
+
+            <if test="rangeNotLike != null" >
+<![CDATA[ AND `range` Not Like #{rangeNotLike} ]]></if>
+
+            <if test="rangeIn != null" >
+ 			AND `range` In
+
+                <foreach
+                    close=")"
+                    collection="rangeIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="rangeNotIn != null" >
+ 			AND `range` Not In
+
+                <foreach
+                    close=")"
+                    collection="rangeNotIn"
+                    index="index"
+                    item="rangeitem"
+                    open="("
+                    separator="," >
+ 				#{rangeitem}
+                </foreach>
+            </if>
+
+            <if test="validateEqual != null" >
+<![CDATA[ AND validate = #{validateEqual} ]]></if>
+
+            <if test="validateNotEqual != null" >
+<![CDATA[ AND validate != #{validateNotEqual} ]]></if>
+
+            <if test="validateBegin != null" >
+<![CDATA[ AND validate > #{validateBegin} ]]></if>
+
+            <if test="validateBeginEqual != null" >
+<![CDATA[ AND validate >= #{validateBeginEqual} ]]></if>
+
+            <if test="validateEnd != null" >
+<![CDATA[ AND validate < #{validateEnd} ]]></if>
+
+            <if test="validateEndEqual != null" >
+<![CDATA[ AND validate <= #{validateEndEqual} ]]></if>
+
+            <if test="validateNull != null" >
+<![CDATA[ AND validate Is null ]]></if>
+
+            <if test="validateNotNull != null" >
+<![CDATA[ AND validate Is Not null ]]></if>
+
+            <if test="validateLike != null" >
+<![CDATA[ AND validate Like #{validateLike} ]]></if>
+
+            <if test="validateNotLike != null" >
+<![CDATA[ AND validate Not Like #{validateNotLike} ]]></if>
+
+            <if test="validateIn != null" >
+ 			AND validate In
+
+                <foreach
+                    close=")"
+                    collection="validateIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="validateNotIn != null" >
+ 			AND validate Not In
+
+                <foreach
+                    close=")"
+                    collection="validateNotIn"
+                    index="index"
+                    item="validateitem"
+                    open="("
+                    separator="," >
+ 				#{validateitem}
+                </foreach>
+            </if>
+
+            <if test="advanceColumnLike != null" >
+<![CDATA[ AND CONCAT_WS('|',id,title,content,ps_date,publisher,ps_city,`range`,validate) Like BINARY #{advanceColumnLike} ]]></if>
+        </where>
+    </select>
+
+    <!-- ********************************announcement config end******************************** -->
+
+</mapper>

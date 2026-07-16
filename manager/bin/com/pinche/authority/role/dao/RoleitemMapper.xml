@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.role.dao.RoleitemMapper" >
+
+    <resultMap
+        id="RoleitemResult"
+        type="Roleitem" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="name"
+            property="name" />
+
+        <result
+            column="mid"
+            property="mid" />
+
+        <result
+            column="rid"
+            property="rid" />
+
+        <result
+            column="level"
+            property="level" />
+
+        <result
+            column="parent"
+            property="parent" />
+
+        <result
+            column="chk"
+            property="chk" />
+
+        <result
+            column="associd"
+            property="associd" />
+
+        <result
+            column="cid"
+            property="cid" />
+    </resultMap>
+
+    <select
+        id="findAllByRid"
+        parameterType="int"
+        resultMap="RoleitemResult" >
+		SELECT * FROM roleitem WHERE rid=#{rid} ORDER BY mid, associd, cid
+    </select>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultType="Roleitem" >
+		SELECT * FROM roleitem WHERE id=#{id};
+    </select>
+
+    <insert
+        id="addItems"
+        keyProperty="id"
+        parameterType="hashmap"
+        useGeneratedKeys="true" >
+
+        <if test="type == 0" >
+			INSERT INTO roleitem (`name`, `mid`, `rid`, `level`, `parent`, `chk`)
+			(SELECT `name`, `id`, #{rid}, CASE WHEN submenu=0 THEN 1 ELSE (CASE WHEN parent>0 THEN 3 ELSE 2 END) END `level`, `parent`, 0 FROM menu ORDER BY menucode, submenu, parent)
+        </if>
+
+        <if test="type == 1" >
+			INSERT INTO roleitem (`rid`, `associd`, `name`, `cid`, `level`, `chk`)
+			SELECT #{rid} `rid`, 0 associd, a.group_name, a.id, 1 `level`, 0 `chk` FROM group_ a
+			LEFT JOIN group_association_details b ON a.id=b.groupid
+			LEFT JOIN group_association c ON b.associd=c.id
+			WHERE b.groupid is null
+			UNION SELECT #{rid} `rid`, -1, 'OO平台', '', 1 `level`, 0 `chk`
+			UNION SELECT #{rid} `rid`, a.id, a.ga_name, '', 1 `level`, 0 `chk` FROM group_association a
+			LEFT JOIN group_association_details b ON a.id=b.associd
+			UNION SELECT #{rid} `rid`, b.associd, a.group_name, b.groupid, 2 `level`, 0 `chk` FROM group_ a
+			LEFT JOIN group_association_details b ON a.id=b.groupid
+			LEFT JOIN group_association c ON b.associd=c.id
+			WHERE b.groupid is not null
+        </if>
+    </insert>
+
+    <update
+        id="editItem"
+        parameterType="Roleitem" >
+		UPDATE roleitem SET chk=#{chk} WHERE id=#{id};
+    </update>
+
+    <delete
+        id="deleteItems"
+        parameterType="int" >
+		DELETE FROM roleitem WHERE rid=#{id};
+    </delete>
+
+</mapper>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.statistics.order.dao.OrderStatisticsMapper" >
+
+    <resultMap
+        id="OrderStatisticsInfoResult"
+        type="OrderStatisticsInfo" >
+
+        <id
+            column="ps_date"
+            property="ps_date" />
+
+        <result
+            column="ps_order_cnt"
+            property="ps_order_cnt" />
+    </resultMap>
+
+    <select
+        id="getOrderCnt"
+        parameterType="hashmap"
+        resultType="OrderStatisticsInfo" >
+		SELECT COUNT(*) AS ps_order_cnt, 
+
+        <choose>
+
+            <when test="dateType == &apos;year&apos;" >
+				YEAR(ps_date) AS ps_date
+            </when>
+
+            <when test="dateType == &apos;quarter&apos;" >
+				QUARTER(ps_date) AS ps_date
+            </when>
+
+            <when test="dateType == &apos;month&apos;" >
+				MONTH(ps_date) AS ps_date
+            </when>
+
+            <when test="dateType == &apos;week&apos;" >
+				WEEK(ps_date) AS ps_date
+            </when>
+
+            <when test="dateType == &apos;day&apos;" >
+				DAY(ps_date) AS ps_date
+            </when>
+
+            <when test="dateType == &apos;hour&apos;" >
+				HOUR(ps_date) AS ps_date
+            </when>
+        </choose>
+		FROM (SELECT order_num, `status`, ps_date, accept_time, price, 1 AS order_type, deleted FROM order_temp_details
+			UNION SELECT order_num, `status`, ps_time AS ps_date, accept_time, price, 3 AS order_type, deleted = 0 FROM order_longdistance_details
+			UNION SELECT order_num, `status`, publish_date AS ps_date, ti_accept_order AS accept_time, price, 2 AS order_type, deleted = 0 FROM order_onoffduty_details) T1  
+		WHERE (1=0 
+
+        <if test="orderTemp != null" >
+			OR T1.order_type = 1
+        </if>
+
+        <if test="orderLong != null" >
+			OR T1.order_type = 2
+        </if>
+
+        <if test="orderOnoffDetails != null" >
+			OR T1.order_type = 3
+        </if>
+)  AND T1.deleted = 0
+
+        <choose>
+
+            <when test="dateType == &apos;year&apos;" >
+				GROUP BY YEAR(T1.ps_date) ORDER BY YEAR(T1.ps_date) DESC
+            </when>
+
+            <when test="dateType == &apos;quarter&apos;" >
+				GROUP BY QUARTER(T1.ps_date) ORDER BY QUARTER(T1.ps_date) DESC
+            </when>
+
+            <when test="dateType == &apos;month&apos;" >
+				GROUP BY MONTH(T1.ps_date) ORDER BY MONTH(T1.ps_date) DESC
+            </when>
+
+            <when test="dateType == &apos;week&apos;" >
+				GROUP BY WEEK(T1.ps_date) ORDER BY WEEK(T1.ps_date) DESC
+            </when>
+
+            <when test="dateType == &apos;day&apos;" >
+				GROUP BY DAY(T1.ps_date) ORDER BY DAY(T1.ps_date) DESC
+            </when>
+
+            <when test="dateType == &apos;hour&apos;" >
+				GROUP BY HOUR(T1.ps_date) ORDER BY HOUR(T1.ps_date) DESC
+            </when>
+        </choose>
+    </select>
+
+    <select
+        id="getOrderCntByStatus2"
+        parameterType="hashmap"
+        resultType="int" >
+		SELECT COUNT(*)
+		FROM (SELECT order_num, `status`, accept_time, price, 1 AS order_type, deleted FROM order_temp_details
+			UNION SELECT order_num, `status`, accept_time, price, 3 AS order_type, deleted = 0 FROM order_longdistance_details
+			UNION SELECT order_num, `status`, ti_accept_order AS accept_time, price, 2 AS order_type, deleted = 0 FROM order_onoffduty_details) T1 
+		WHERE (1=0 
+
+        <if test="orderTemp != null" >
+			OR T1.order_type = 1
+        </if>
+
+        <if test="orderLong != null" >
+			OR T1.order_type = 2
+        </if>
+
+        <if test="orderOnoffDetails != null" >
+			OR T1.order_type = 3
+        </if>
+)  AND T1.deleted = 0
+
+        <if test="date != null" >
+
+            <choose>
+
+                <when test="dateType == &apos;year&apos;" >
+					AND YEAR(T1.accept_time) = #{date}
+                </when>
+
+                <when test="dateType == &apos;quarter&apos;" >
+					AND QUARTER(T1.accept_time) = #{date}
+                </when>
+
+                <when test="dateType == &apos;month&apos;" >
+					AND MONTH(T1.accept_time) = #{date}
+                </when>
+
+                <when test="dateType == &apos;week&apos;" >
+					AND WEEK(T1.accept_time) = #{date}
+                </when>
+
+                <when test="dateType == &apos;day&apos;" >
+					AND DAY(T1.accept_time) = #{date}
+                </when>
+
+                <when test="dateType == &apos;hour&apos;" >
+					AND HOUR(T1.accept_time) = #{date}
+                </when>
+            </choose>
+        </if>
+		AND T1.status >= 2
+    </select>
+
+</mapper>

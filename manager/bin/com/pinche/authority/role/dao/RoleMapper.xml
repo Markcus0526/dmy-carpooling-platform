@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.role.dao.RoleMapper" >
+
+    <resultMap
+        id="RoleResult"
+        type="Role" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="name"
+            property="name" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="type"
+            property="type" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="findOneById"
+        resultType="Role" >
+		SELECT id, name, type, remark FROM role WHERE id=#{id} AND deleted=0 ORDER BY id
+    </select>
+
+    <select
+        id="findAllByName"
+        resultMap="RoleResult" >
+		SELECT id, name, remark FROM role WHERE name like #{param1} AND type=#{param2} AND deleted=0 ORDER BY id
+    </select>
+
+    <select
+        id="findLastAdded"
+        resultMap="RoleResult" >
+		select * from role ORDER BY id desc limit 1;
+    </select>
+
+    <select
+        id="findAllByType"
+        parameterType="int"
+        resultMap="RoleResult" >
+		SELECT id, name, remark FROM role WHERE type=#{type} AND deleted=0 ORDER BY id
+    </select>
+
+    <select
+        id="findAll"
+        resultMap="RoleResult" >
+		SELECT id, name, remark, type FROM role WHERE deleted=0 ORDER BY id
+    </select>
+
+    <insert
+        id="addRole"
+        keyProperty="id"
+        parameterType="Role"
+        useGeneratedKeys="true" >
+		INSERT INTO role(name, remark, type, deleted) values(#{name}, #{remark}, #{type}, #{deleted})
+    </insert>
+
+    <update
+        id="editRole"
+        parameterType="Role" >
+		UPDATE role SET name=#{name}, remark=#{remark} WHERE id=#{id}
+    </update>
+
+    <update
+        id="deleteRole"
+        parameterType="int" >
+		UPDATE role SET deleted=1 WHERE id=#{id}
+    </update>
+
+    <select
+        id="searchOp"
+        parameterType="string"
+        resultType="Role" >
+		SELECT * FROM role WHERE `name` like #{name} AND deleted=0 AND type=0 ORDER BY id
+    </select>
+
+    <select
+        id="searchData"
+        parameterType="string"
+        resultType="Role" >
+		SELECT * FROM role WHERE `name` like #{name} AND deleted=0 AND type=1 ORDER BY id
+    </select>
+
+    <select
+        id="findPagination"
+        parameterType="hashmap"
+        resultMap="RoleResult" >
+		SELECT * FROM role WHERE `name` like #{name} AND type=#{type} AND deleted=0 ORDER BY id
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page},#{rows} 
+            </if>
+        </if>
+    </select>
+
+    <select
+        id="existName"
+        parameterType="hashmap"
+        resultMap="RoleResult" >
+		SELECT * FROM role WHERE `name`=#{name} AND deleted=0 AND type=#{type} AND id!=#{id}
+    </select>
+
+</mapper>

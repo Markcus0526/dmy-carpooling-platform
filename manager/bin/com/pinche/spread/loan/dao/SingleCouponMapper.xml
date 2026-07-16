@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.spread.loan.dao.SingleCouponMapper" >
+
+    <resultMap
+        id="SingleCouponResult"
+        type="SingleCoupon" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="coupon_code"
+            property="singleCouponCode" />
+
+        <result
+            column="sum"
+            property="sum" />
+
+        <result
+            column="date_expired"
+            property="dateExpired" />
+
+        <result
+            column="isused"
+            property="isused" />
+
+        <result
+            column="date_used"
+            property="dateUsed" />
+
+        <result
+            column="password"
+            property="password" />
+
+        <result
+            column="ps_date"
+            property="psDate" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="userid"
+            property="userid" />
+
+        <result
+            column="order_cs_id"
+            property="orderCsId" />
+
+        <result
+            column="isenabled"
+            property="isenabled" />
+
+        <result
+            column="syscoupon_id"
+            property="syscouponId" />
+
+        <result
+            column="active_code"
+            property="activeCode" />
+
+        <result
+            column="is_generated_by_active"
+            property="isGeneratedByActive" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="getMaxId"
+        resultType="int" >
+		SELECT MAX(id) AS max_id FROM single_coupon
+    </select>
+
+    <insert
+        id="insert"
+        keyProperty="id"
+        parameterType="SingleCoupon"
+        useGeneratedKeys="true" >
+		INSERT INTO
+		single_coupon(coupon_code, sum, date_expired, isused, date_used, 
+		password, ps_date, remark, userid, order_cs_id,
+		isenabled, syscoupon_id, active_code, is_generated_by_active, deleted)
+		VALUES(#{singleCouponCode}, #{sum}, #{dateExpired}, #{isused}, #{dateUsed}, 
+		#{password}, #{psDate}, #{remark}, #{userid}, #{orderCsId},
+		#{isenabled}, #{syscouponId}, #{activeCode}, #{isGeneratedByActive}, #{deleted})
+    </insert>
+
+</mapper>

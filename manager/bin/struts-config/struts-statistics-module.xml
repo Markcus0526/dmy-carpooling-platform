@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!-- This Configuration is for struts famework -->
+<struts>
+
+    <package
+        name="statistics_order"
+        extends="pinche-default,authority"
+        namespace="/statistics/order" >
+
+        <action
+            name="index"
+            class="com.pinche.statistics.action.OrderAction"
+            method="index" >
+
+            <result name="success" >
+/WEB-INF/jsp/statistics/order/index.jsp
+            </result>
+        </action>
+
+        <action
+            name="startOrderStatistics"
+            class="com.pinche.statistics.action.OrderAction"
+            method="startOrderStatistics" >
+
+            <result type="json" >
+
+                <param name="root" >
+resultObj
+                </param>
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="statistics_finance"
+        extends="pinche-default,authority"
+        namespace="/statistics/finance" >
+
+        <action
+            name="index"
+            class="com.pinche.statistics.action.FinanceAction"
+            method="index" >
+
+            <result name="success" >
+/WEB-INF/jsp/statistics/finance/index.jsp
+            </result>
+        </action>
+
+        <action
+            name="search"
+            class="com.pinche.statistics.action.FinanceAction"
+            method="search" >
+
+            <result type="json" >
+
+                <param name="root" >
+resultObj
+                </param>
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="statistics_passenger"
+        extends="pinche-default,authority"
+        namespace="/statistics/passenger" >
+
+        <action
+            name="index"
+            class="com.pinche.statistics.action.PassengerAction"
+            method="index" >
+
+            <result name="success" >
+/WEB-INF/jsp/statistics/passenger/index.jsp
+            </result>
+        </action>
+
+        <action
+            name="search"
+            class="com.pinche.statistics.action.PassengerAction"
+            method="search" >
+
+            <result type="json" >
+
+                <param name="root" >
+resultObj
+                </param>
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="statistics_driver"
+        extends="pinche-default,authority"
+        namespace="/statistics/driver" >
+
+        <action
+            name="index"
+            class="com.pinche.statistics.action.DriverAction"
+            method="index" >
+
+            <result name="success" >
+/WEB-INF/jsp/statistics/driver/index.jsp
+            </result>
+        </action>
+
+        <action
+            name="search"
+            class="com.pinche.statistics.action.DriverAction"
+            method="search" >
+
+            <result type="json" >
+
+                <param name="root" >
+resultObj
+                </param>
+            </result>
+        </action>
+    </package>
+
+    <package
+        name="statistics_Loan"
+        extends="pinche-default,authority"
+        namespace="/statistics/loan" >
+
+        <action
+            name="index"
+            class="com.pinche.statistics.action.LoanAction"
+            method="index" >
+
+            <result name="success" >
+/WEB-INF/jsp/statistics/loan/index.jsp
+            </result>
+        </action>
+
+        <action
+            name="search"
+            class="com.pinche.statistics.action.LoanAction"
+            method="search" >
+
+            <result type="json" >
+
+                <param name="root" >
+resultObj
+                </param>
+            </result>
+        </action>
+
+        <action
+            name="viewDetail"
+            class="com.pinche.statistics.action.LoanAction"
+            method="viewDetail" >
+
+            <result type="json" >
+
+                <param name="root" >
+sresultObj
+                </param>
+            </result>
+        </action>
+    </package>
+
+</struts>

@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"/WEB-INF/struts2/struts-2.3.dtd">
+<!-- This Configuration is for struts famework -->
+<struts>
+
+	<package name="authority_manager" extends="pinche-default,authority,json-default"
+		namespace="/authority/manager">
+
+		<action name="index"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="index">
+
+			<result name="success">
+				/WEB-INF/jsp/authority/manager/index.jsp
+			</result>
+			<!-- <result name="success">/WEB-INF/jsp/authority/manager/password.jsp</result> -->
+		</action>
+
+		<action name="add"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="add">
+
+			<result name="success" type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="insert"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="insert">
+			<result name="insert" type="json">
+				<param name="root">
+					robj
+				</param>
+			</result>
+		</action>
+
+		<action name="edit_info"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="edit_info">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="edit"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="edit">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="viewAdministrator"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="viewAdministrator">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="delete"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="delete">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="batchDelete"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="batchDelete">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+		<action name="getRoles"
+			class="com.pinche.authority.manager.action.UserRoleAction" method="getRoles">
+			<result name="getRoles" type="json">
+				<param name="root">jsonObj</param>
+			</result>
+		</action>
+		<action name="password"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="password">
+
+			<result name="forward">
+				/WEB-INF/jsp/authority/manager/password.jsp
+			</result>
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="updateRoles"
+			class="com.pinche.authority.manager.action.UserRoleAction" method="updateRoles">
+			<result name="updateRoles" type="redirectAction">
+				<param name="actionName">
+					index
+				</param>
+			</result>
+		</action>
+
+		<action name="setRoles"
+			class="com.pinche.authority.manager.action.UserRoleAction" method="setRoles">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<!-- 添加角色 -->
+
+		<action name="addJuese"
+			class="com.pinche.authority.manager.action.UserRoleAction" method="addJuese">
+
+			<result name="addJuese" type="redirectAction">
+				<param name="actionName">
+					index
+				</param>
+				<param name="namespace">
+					/authority/role
+				</param>
+			</result>
+			<result name="addJueseError" type="json">
+				<param name="root">jsonObj</param>
+			</result>
+		</action>
+
+		<action name="search"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="search">
+
+			<result type="json">
+
+				<param name="root">
+					robj
+				</param>
+			</result>
+		</action>
+
+		<action name="open"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="open">
+
+			<result name="add_page">
+				/WEB-INF/jsp/authority/manager/add.jsp
+			</result>
+
+			<result name="edit_page">
+				/WEB-INF/jsp/authority/manager/edit.jsp
+			</result>
+
+			<result name="view_page">
+				/WEB-INF/jsp/authority/manager/view.jsp
+			</result>
+
+			<result name="setrole_page">
+				/WEB-INF/jsp/authority/manager/setrole.jsp
+			</result>
+		</action>
+
+		<action name="getUnitList"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="getUnitList">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="export"
+			class="com.pinche.authority.manager.action.AdministratorAction"
+			method="exportExcel">
+
+			<result name="success">
+				/WEB-INF/jsp/common/report.jsp
+			</result>
+		</action>
+	</package>
+
+	<package name="authority_role" extends="pinche-default,authority"
+		namespace="/authority/role">
+
+		<action name="index" class="com.pinche.authority.role.action.RoleAction"
+			method="index">
+
+			<result name="success">
+				/WEB-INF/jsp/authority/role/index.jsp
+			</result>
+		</action>
+
+		<action name="search" class="com.pinche.authority.role.action.RoleAction"
+			method="search">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="open" class="com.pinche.authority.role.action.RoleAction"
+			method="open">
+
+			<result name="add_page">
+				/WEB-INF/jsp/authority/role/add.jsp
+			</result>
+
+			<result name="edit_page">
+				/WEB-INF/jsp/authority/role/edit.jsp
+			</result>
+
+			<result name="view_page">
+				/WEB-INF/jsp/authority/role/view.jsp
+			</result>
+
+			<result name="setOpRole_page">
+				/WEB-INF/jsp/authority/role/setOpRole.jsp
+			</result>
+
+			<result name="setDataRole_page">
+				/WEB-INF/jsp/authority/role/setDataRole.jsp
+			</result>
+		</action>
+
+		<action name="add" class="com.pinche.authority.role.action.RoleAction"
+			method="add">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="edit" class="com.pinche.authority.role.action.RoleAction"
+			method="edit">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="viewJuese" class="com.pinche.authority.role.action.RoleAction"
+			method="viewJuese">
+
+			<result name="viewJuese" type="json">
+
+				<param name="root">
+					juese
+				</param>
+			</result>
+		</action>
+
+		<action name="updateJuese" class="com.pinche.authority.role.action.RoleAction"
+			method="updateJuese">
+
+			<result name="updateJuese" type="json">
+
+				<param name="root">
+					state
+				</param>
+			</result>
+		</action>
+
+		<action name="addJuese" class="com.pinche.authority.role.action.RoleAction"
+			method="addJuese">
+
+			<result name="updateJuese" type="redirectAction">
+
+				<param name="actionName">
+					index
+				</param>
+			</result>
+		</action>
+
+		<action name="view" class="com.pinche.authority.role.action.RoleAction"
+			method="view">
+
+			<result name="success">
+				index
+			</result>
+		</action>
+
+		<action name="delete" class="com.pinche.authority.role.action.RoleAction"
+			method="delete">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+
+		<action name="assignOp" class="com.pinche.authority.role.action.RoleAction"
+			method="assignOp">
+
+			<result name="forward">
+				/WEB-INF/jsp/layouts/main_layout.jsp
+			</result>
+
+			<result name="success" type="chain">
+				index
+			</result>
+		</action>
+
+		<action name="assignData" class="com.pinche.authority.role.action.RoleAction"
+			method="assignData">
+
+			<result name="forward">
+				/WEB-INF/jsp/layouts/main_layout.jsp
+			</result>
+
+			<result name="success" type="chain">
+				index
+			</result>
+		</action>
+
+		<action name="getRoleitemlist" class="com.pinche.authority.role.action.RoleAction"
+			method="getRoleitemlist">
+
+			<result type="json">
+
+				<param name="root">
+					resultObj
+				</param>
+			</result>
+		</action>
+	</package>
+
+</struts>

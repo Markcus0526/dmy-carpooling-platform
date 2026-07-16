@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.sysManage.role.dao.ResourceDao" >
+
+    <cache />
+
+    <resultMap
+        id="resourceMap"
+        type="Resource" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="func_name"
+            property="funcName" />
+
+        <result
+            column="type_"
+            property="type" />
+
+        <result
+            column="url"
+            property="url" />
+
+        <result
+            column="code"
+            property="code" />
+    </resultMap>
+
+    <resultMap
+        id="roleidMap"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="roleId"
+            property="roleId" />
+    </resultMap>
+
+    <!-- 查找他有的资源 -->
+
+    <select
+        id="findAll"
+        resultMap="resourceMap" >
+	  select id,func_name,type_,parent,code,true as checked,url,0 as roleId from func_point_zyl
+    </select>
+
+    <!-- 根据用户名查找他所拥有的资源 -->
+
+    <select
+        id="findResourceByUsername"
+        parameterType="String"
+        resultMap="resourceMap" >
+	  	select c.* from administrator_operrole_rel_zyl a left join role_oper_func_rel_zyl b
+		on a.role_oper_id = b.role_oper_id
+		inner join func_point_zyl c on b.func_code = c.code
+		where a.administrator_code = #{username} 
+		order by code
+    </select>
+
+    <!-- 查出用户的ROLEID -->
+
+    <select
+        id="findUserRoleId"
+        parameterType="String"
+        resultType="int" >
+	  	select role_oper_id as roleId from administrator_operrole_rel_zyl where administrator_code = #{username}
+    </select>
+
+    <!-- 根据用户名查找他所拥有的资源 -->
+
+    <select
+        id="findResourceByRoleId"
+        parameterType="int"
+        resultMap="resourceMap" >
+	 	select c.* from role_oper_func_rel_zyl b
+		inner join func_point_zyl c on b.func_code = c.code
+		where b.role_oper_id = #{roleId}
+		order by code
+    </select>
+
+    <!-- 根据用户名查找他所拥有的资源 -->
+
+    <delete
+        id="deleteResourceByRoleId"
+        parameterType="int" >
+	 	delete from role_oper_func_rel_zyl where role_oper_id = #{roleId}
+    </delete>
+
+    <!-- 批量插入资源关系表 -->
+
+    <insert
+        id="addResourceBatch"
+        parameterType="java.util.List"
+        useGeneratedKeys="true" >
+    insert into role_oper_func_rel_zyl (role_oper_id,func_code)   
+    values  
+
+        <foreach
+            collection="list"
+            index="index"
+            item="item"
+            separator="," >
+        (#{item.roleId},#{item.code})  
+        </foreach>
+    </insert>
+
+</mapper>

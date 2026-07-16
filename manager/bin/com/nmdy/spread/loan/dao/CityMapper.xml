@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.spread.loan.dao.CityMapper" >
+
+    <resultMap
+        id="CityResult"
+        type="City" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="code"
+            property="code" />
+
+        <result
+            column="prov"
+            property="prov" />
+
+        <result
+            column="name"
+            property="name" />
+
+        <result
+            column="level"
+            property="level" />
+
+        <result
+            column="platform"
+            property="platform" />
+
+        <result
+            column="register_syscoupon_id"
+            property="registerSyscouponId" />
+
+        <result
+            column="verified_syscoupon_id"
+            property="verifiedSyscouponId" />
+
+        <result
+            column="num_order_finished"
+            property="numOrderFinished" />
+
+        <result
+            column="finishorders_syscoupon_id"
+            property="finishordersSyscouponId" />
+
+        <result
+            column="num_registermonth"
+            property="numRegistermonth" />
+
+        <result
+            column="registermonth_syscoupon_id"
+            property="registermonthSyscouponId" />
+    </resultMap>
+
+    <select
+        id="findOneByName"
+        parameterType="string"
+        resultMap="CityResult" >
+		SELECT * FROM city 
+		WHERE name=#{name} AND deleted=0 ORDER BY id
+    </select>
+
+    <update
+        id="update"
+        parameterType="java.util.Map" >
+		UPDATE city 
+		SET 
+		 register_syscoupon_id=#{registerSyscouponId},
+		verified_syscoupon_id=#{verifiedSyscouponId}, 
+		num_order_finished=#{numOrderFinished},
+		 finishorders_syscoupon_id=#{finishordersSyscouponId},
+		num_registermonth=#{numRegistermonth}, 
+		registermonth_syscoupon_id=#{registermonthSyscouponId}
+		WHERE name=#{city}
+    </update>
+
+    <select
+        id="findCityParam"
+        parameterType="string"
+        resultMap="CityResult" >
+		SELECT * FROM city 
+		WHERE name=#{name} AND deleted=0 ORDER BY id
+    </select>
+
+    <select
+        id="findglobal"
+        parameterType="string"
+        resultMap="CityResult" >
+		SELECT * FROM global_params 
+		WHERE deleted=0 
+    </select>
+
+</mapper>

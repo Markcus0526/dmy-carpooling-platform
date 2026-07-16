@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nmdy.spread.sms.dao.SMSPlanMapper">
+	<!-- <resultMap id="SMSPlanResult" type="SMSPlan"> -->
+	<resultMap id="SMSPlanResult" type="java.util.Map">
+		<id property="id" column="id" />
+		<result property="plan_code" column="plan_code" />
+		<result property="client_num" column="client_num" />
+		<result property="msg" column="msg" />
+		<result property="price" column="price" />
+		<result property="send_mode" column="send_mode" />
+		<result property="single_time" column="single_time" />
+		<result property="has_send_times" column="has_send_times" />
+		<result property="limit_times" column="limit_times" />
+		<result property="regular_send_mode" column="regular_send_mode" />
+		<result property="time1" column="time1" />
+		<result property="time2" column="time2" />
+		<result property="isenabled" column="isenabled" />
+		<result property="remark" column="remark" />
+		<result property="create_time" column="create_time" />
+		<result property="deleted" column="deleted" />
+	</resultMap>
+
+	<!-- <resultMap id="SMSPlanLogResult" type="SMSPlanLog"> -->
+	<resultMap id="SMSPlanLogResult" type="java.util.Map">
+		<id property="id" column="id" />
+		<result property="sms_plan_id" column="sms_plan_id" />
+		<result property="user_id" column="user_id" />
+		<result property="usercode" column="usercode" />
+		<result property="username" column="username" />
+		<result property="price" column="price" />
+		<result property="status" column="status" />
+		<result property="time" column="time" />
+		<result property="deleted" column="deleted" />
+	</resultMap>
+
+	<!-- <resultMap id="SMSUserInfoResult" type="SMSUserInfo"> -->
+	<resultMap id="SMSUserInfoResult" type="java.util.Map">
+		<id property="id" column="id" />
+		<result property="usercode" column="usercode" />
+		<result property="username" column="username" />
+		<result property="nickname" column="nickname" />
+		<result property="phone" column="phone" />
+		<result property="person_verified" column="person_verified" />
+		<result property="driver_verified" column="driver_verified" />
+		<result property="groupid" column="groupid" />
+		<result property="group_name" column="group_name" />
+		<result property="reg_date" column="reg_date" />
+		<result property="last_login_time" column="last_login_time" />
+		<result property="successCount" column="scnt" />
+		<result property="failCount" column="fcnt" />
+	</resultMap>
+
+	<!-- <select id="findAllPlan" resultMap="SMSPlanResult"> SELECT * FROM sms_plan 
+		WHERE deleted=0 </select> -->
+	<select id="getSMSPrice" resultType="double">
+	  SELECT single_sms_price FROM global_params WHERE deleted=0
+	</select>
+	
+	<select id="getCountByCondition" parameterType="java.util.Map" resultType="int">
+	SELECT count(*)
+			FROM `user` u 
+			LEFT JOIN `group_details` gd ON gd.userid = u.id 
+			LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+			LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+			LEFT JOIN `group_association` ga ON ga.id = gad.associd 
+		<where>
+		     u.deleted = 0 and u.id not in (
+        	 select userid from sms_users where deleted=0 and sms_plan_id=#{id}
+        	 )
+			<if test="userType != null and userType == 'passenger'">
+				and u.person_verified = 1
+			</if>
+				<if test="userType == null ">
+				and(u.driver_verified = 1 or u.person_verified = 1)
+			</if>	
+			<if test="userType != null and userType == 'driver'">
+				and u.driver_verified = 1 
+			</if>		
+			<if test="cityItem != null and cityItem == 'city_register' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'city_cur' and cityName != null">
+				AND u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'register_or_cur' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%' or u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'groupid' and groupName != null">
+				AND u.groupid LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'city_cur' and groupName != null">
+				AND u.city_cur LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'register_or_cur' and groupName != null">
+				AND u.city_register LIKE '%${groupName}%' or u.city_cur LIKE '%${groupName}%'
+			</if> 
+
+			<if test="userItem != null and userItem == 'id' and userInfo != null">
+				AND u.id LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'username' and userInfo != null">
+				AND u.username LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'phone' and userInfo != null">
+				AND u.phone LIKE '%${userInfo}%' 
+			</if>
+
+			<if test="fromRegTime != null and ''!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime} 
+			</if>
+			<if test="toRegTime != null and '' != toRegTime">
+				AND #{toRegTime} >= u.reg_date
+			</if>
+			<if test="fromLoginTime != null and '' != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime} 
+			</if>
+			<if test="toLoginTime != null and ''!= toLoginTime">
+				AND #{toLoginTime} >= u.last_login_time
+			</if>
+	</where> 
+	</select>
+	<select id="searchUnSelectUsers" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT u.id,u.usercode,u.username,u.nickname,u.phone,u.person_verified,u.driver_verified, g.groupid,
+			g.group_name,u.reg_date,u.last_login_time
+			FROM `user` u 
+			LEFT JOIN `group_details` gd ON gd.userid = u.id 
+			LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+			LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+			LEFT JOIN `group_association` ga ON ga.id = gad.associd 
+		<where>
+			u.deleted=0 and u.id not in (
+	         select userid from sms_users where deleted=0 and sms_plan_id=#{id}
+	         )
+			<if test="userType != null and userType == 'passenger'">
+				and u.person_verified = 1
+			</if>
+			<if test="userType == null ">
+				and(u.driver_verified = 1 or u.person_verified = 1)
+			</if>	
+			<if test="userType != null and userType == 'driver'">
+				and u.driver_verified = 1 
+			</if>		
+			<if test="cityItemSelect != null and cityItemSelect == 'city_register' and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%'
+			</if>
+			<if test="cityItemSelect != null and cityItemSelect == 'city_cur' and cityItemInput != null">
+				AND u.city_cur LIKE '%${cityItemInput}%'
+			</if>
+			<if test="cityItemSelect != null and cityItemSelect == 'register_or_cur' and cityItemInput != null">
+				AND u.city_register LIKE '%${cityItemInput}%' or u.city_cur LIKE '%${cityItemInput}%'
+			</if>
+			<if test="groupItemSelect != null and groupItemSelect == 'groupid' and groupItemInput != null">
+				AND u.groupid LIKE '%${groupItemInput}%'
+			</if>
+			<if test="groupItemSelect != null and groupItemSelect == 'city_cur' and groupItemInput != null">
+				AND u.city_cur LIKE '%${groupItemInput}%'
+			</if>
+			<if test="groupItemSelect != null and groupItemSelect == 'register_or_cur' and groupItemInput != null">
+				AND u.city_register LIKE '%${groupItemInput}%' or u.city_cur LIKE '%${groupItemInput}%'
+			</if> 
+
+			<if test="userItemSelect != null and userItemSelect == 'id' and userItemInput != null">
+				AND u.id LIKE '%${userItemInput}%'
+			</if>
+			<if test="userItemSelect != null and userItemSelect == 'username' and userItemInput != null">
+				AND u.username LIKE '%${userItemInput}%'
+			</if>
+			<if test="userItemSelect != null and userItemSelect == 'phone' and userItemInput != null">
+				AND u.phone LIKE '%${userItemInput}%' 
+			</if>
+
+			<if test="fromRegTime != null and ''!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime} 
+			</if>
+			<if test="toRegTime != null and '' != toRegTime">
+				AND #{toRegTime} >= u.reg_date
+			</if>
+			<if test="fromLoginTime != null and '' != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime} 
+			</if>
+			<if test="toLoginTime != null and ''!= toLoginTime">
+				AND #{toLoginTime} >= u.last_login_time
+			</if>
+	</where> 
+		 ORDER BY u.id   LIMIT #{start}, #{limit}
+	</select>
+	<select id="getPhoneById" parameterType="Long" resultType="string">
+	SELECT phone FROM user WHERE deleted=0 and id=#{userid}
+	</select>
+	
+	<select id="getPhones" resultType="java.util.Map" parameterType="Long" >
+	SELECT phone FROM sms_users WHERE deleted=0 AND sms_plan_id=#{id}
+	</select>
+	<select id="searchPlan" resultMap="SMSPlanResult" parameterType="java.util.Map">
+		SELECT *	FROM sms_plan
+		WHERE deleted=0
+		<if test="beginTime != null">
+			AND create_time >= #{beginTime}
+		</if>
+
+		<if test="endTime != null">
+			AND #{endTime} >= create_time
+		</if>
+
+		<if test="status == 1">
+			AND isenabled = 1
+		</if>
+		<if test="status == 2">
+			AND (isenabled = 1 or isenabled = 0)
+		</if>
+		<if test="sendMode1 != null and sendMode2 != null">
+			AND send_mode = #{sendMode1} or  send_mode = #{sendMode2}
+		</if>
+		<if test="sendMode1 == null and sendMode2 != null">
+			AND send_mode = #{sendMode2}
+		</if>
+			<if test="sendMode1 != null and sendMode2 == null">
+			AND send_mode = #{sendMode1}
+		</if>
+			<if test="sendMode1 == null and sendMode2 == null">
+			AND send_mode != #{sendMode1} and send_mode != #{sendMode2}
+		</if>
+			ORDER BY create_time DESC
+			 limit #{start}, #{limit}
+		
+	</select>
+
+	<select id="findAllPlanLog" resultMap="SMSPlanLogResult">
+		SELECT 
+			log.id,
+			log.sms_plan_id as sms_plan_id, 
+			log.user_id as user_id,
+			u.usercode as usercode, 
+			u.username as username,
+			log.price, 
+			log.status, 
+			log.time, 
+			log.deleted
+		FROM sms_log log
+		LEFT JOIN user u
+		ON log.user_id = u.id
+		WHERE log.deleted = 0
+	</select>
+
+	<select id="findSCNT" parameterType="java.util.Map" resultType="int">
+	 SELECT DISTINCT count(*) scnt from sms_log 
+	 <where>
+	 status = 1 
+	 <if test="userid !=null and ''!= userid">
+	 	 AND user_id=#{userid}
+	 </if>
+ 	 <if test="id !=null and ''!= id">
+		 AND sms_plan_id=#{id} 
+	 </if>
+	</where> 
+	</select>
+	
+	<select id="findFCNT" parameterType="java.util.Map" resultType="int">
+	SELECT DISTINCT  count(*) fcnt from sms_log 
+	 <where>
+	 status = 2 
+	 <if test="userid !=null and ''!= userid">
+	 	 AND user_id=#{userid}
+	 </if>
+ 	 <if test="id !=null and ''!= id">
+		 AND sms_plan_id=#{id} 
+	 </if>
+	</where> 
+	</select>
+
+	<select id="findCountUser" parameterType="java.util.Map" resultType="int">
+	 SELECT count(*)
+	 FROM `sms_plan` sp 
+	 LEFT JOIN sms_users su ON sp.id=su.sms_plan_id
+ 	 INNER JOIN `user` u on u.id=su.userid
+	  LEFT JOIN `group_details` gd ON gd.userid = u.id
+	   LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+	   LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+ 	  LEFT JOIN `group_association` ga ON ga.id = gad.associd    where sp.id=#{id} and su.deleted=0
+	</select>
+	
+	  <select id="findSMSUser" resultType="java.util.Map"	parameterType="java.util.Map">
+	  	SELECT u.id,u.usercode,u.username,u.nickname,u.phone,u.person_verified,u.driver_verified, g.groupid,
+		 g.group_name,u.reg_date,u.last_login_time
+		 FROM `sms_plan` sp 
+		 LEFT JOIN sms_users su ON sp.id=su.sms_plan_id
+ 		 INNER JOIN `user` u on u.id=su.userid
+  	  	LEFT JOIN `group_details` gd ON gd.userid = u.id
+  		 LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+  		 LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+   		 LEFT JOIN `group_association` ga ON ga.id = gad.associd where sp.id=#{id} and su.deleted=0
+          LIMIT #{start}, #{limit}
+	  </select>
+	
+	<select id="findAllSMSUserInfo" resultMap="SMSUserInfoResult">
+		SELECT 
+		u.id,
+		u.usercode, 
+		u.username, 
+		u.nickname, 
+		phone,
+		u.person_verified, 
+		u.driver_verified,
+		g.groupid, 
+		g.group_name,
+		u.reg_date,
+		u.last_login_time,
+		spu.sms_plan_id , 
+		s.scnt, 
+		f.fcnt
+		FROM `sms_users` spu
+		LEFT JOIN `user` u ON
+		spu.userid = u.id
+		LEFT JOIN `group_details` gd ON gd.userid = u.id
+		LEFT
+		JOIN `group_` g ON gd.groupid = g.groupid
+		LEFT JOIN
+		`group_association_details` gad ON gad.groupid = g.id
+		LEFT JOIN
+		`group_association` ga ON ga.id = gad.associd
+		LEFT JOIN (SELECT
+		DISTINCT user_id, count(*) scnt from sms_log WHERE status = 1 GROUP BY
+		user_id) s ON s.user_id=u.id
+		LEFT JOIN (SELECT DISTINCT user_id,
+		count(*) fcnt from sms_log WHERE status = 2 GROUP BY user_id) f ON
+		f.user_id=u.id
+		WHERE u.deleted = 0 and spu.deleted=0
+	</select>
+
+	<select id="searchSMSId" resultMap="SMSUserInfoResult"	parameterType="java.util.Map">
+		SELECT u.id 
+			FROM `user` u 
+			LEFT JOIN `group_details` gd ON gd.userid = u.id 
+			LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+			LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+			LEFT JOIN `group_association` ga ON ga.id = gad.associd 
+			LEFT JOIN (SELECT DISTINCT user_id, count(*) scnt from sms_log WHERE status = 1 GROUP BY user_id) s ON s.user_id=u.id 
+			LEFT JOIN (SELECT DISTINCT user_id, count(*) fcnt from sms_log WHERE status = 2 GROUP BY user_id) f ON f.user_id=u.id 
+
+		<where>
+		u.deleted=0 
+			<if test="userType != null and userType == 'passenger'">
+				and u.person_verified = 1
+			</if>
+			<if test="userType == null ">
+				and(u.driver_verified = 1 or u.person_verified = 1)
+			</if>	
+			<if test="userType != null and userType == 'driver'">
+				and u.driver_verified = 1 
+			</if>		
+			<if test="cityItem != null and cityItem == 'city_register' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'city_cur' and cityName != null">
+				AND u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'register_or_cur' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%' or u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'groupid' and groupName != null">
+				AND u.groupid LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'city_cur' and groupName != null">
+				AND u.city_cur LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'register_or_cur' and groupName != null">
+				AND u.city_register LIKE '%${groupName}%' or u.city_cur LIKE '%${groupName}%'
+			</if> 
+
+			<if test="userItem != null and userItem == 'id' and userInfo != null">
+				AND u.id LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'username' and userInfo != null">
+				AND u.username LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'phone' and userInfo != null">
+				AND u.phone LIKE '%${userInfo}%' 
+			</if>
+
+			<if test="fromRegTime != null and ''!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime} 
+			</if>
+			<if test="toRegTime != null and '' != toRegTime">
+				AND #{toRegTime} >= u.reg_date
+			</if>
+			<if test="fromLoginTime != null and '' != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime} 
+			</if>
+			<if test="toLoginTime != null and ''!= toLoginTime">
+				AND #{toLoginTime} >= u.last_login_time
+			</if>
+	</where> 
+		 ORDER BY u.id  
+	</select>
+
+	<select id="getUserCountByCondition" resultType="int"
+		parameterType="java.util.Map">
+		SELECT count(*)
+		FROM `user` u 
+		LEFT JOIN `group_details` gd ON gd.userid = u.id 
+		LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+		LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+		LEFT JOIN `group_association` ga ON ga.id = gad.associd 
+		LEFT JOIN (SELECT DISTINCT user_id, count(*) scnt from sms_log WHERE status = 1 GROUP BY user_id) s ON s.user_id=u.id 
+		LEFT JOIN (SELECT DISTINCT user_id, count(*) fcnt from sms_log WHERE status = 2 GROUP BY user_id) f ON f.user_id=u.id 
+
+		<where>
+		     u.deleted = 0 
+			<if test="userType != null and userType == 'passenger'">
+				and u.person_verified = 1
+			</if>
+				<if test="userType == null ">
+				and(u.driver_verified = 1 or u.person_verified = 1)
+			</if>	
+			<if test="userType != null and userType == 'driver'">
+				and u.driver_verified = 1 
+			</if>		
+			<if test="cityItem != null and cityItem == 'city_register' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'city_cur' and cityName != null">
+				AND u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'register_or_cur' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%' or u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'groupid' and groupName != null">
+				AND u.groupid LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'city_cur' and groupName != null">
+				AND u.city_cur LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'register_or_cur' and groupName != null">
+				AND u.city_register LIKE '%${groupName}%' or u.city_cur LIKE '%${groupName}%'
+			</if> 
+
+			<if test="userItem != null and userItem == 'id' and userInfo != null">
+				AND u.id LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'username' and userInfo != null">
+				AND u.username LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'phone' and userInfo != null">
+				AND u.phone LIKE '%${userInfo}%' 
+			</if>
+
+			<if test="fromRegTime != null and ''!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime} 
+			</if>
+			<if test="toRegTime != null and '' != toRegTime">
+				AND #{toRegTime} >= u.reg_date
+			</if>
+			<if test="fromLoginTime != null and '' != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime} 
+			</if>
+			<if test="toLoginTime != null and ''!= toLoginTime">
+				AND #{toLoginTime} >= u.last_login_time
+			</if>
+	</where> 
+	</select>
+
+	<select id="searchSMSUsers" resultMap="SMSUserInfoResult"
+		parameterType="java.util.Map">
+			SELECT u.id,u.usercode,u.username,u.nickname,u.phone,u.person_verified,u.driver_verified, g.groupid,
+			g.group_name,u.reg_date,u.last_login_time,s.scnt,f.fcnt 
+			FROM `user` u 
+			LEFT JOIN `group_details` gd ON gd.userid = u.id 
+			LEFT JOIN `group_` g ON gd.groupid = g.groupid 
+			LEFT JOIN `group_association_details` gad ON gad.groupid = g.id 
+			LEFT JOIN `group_association` ga ON ga.id = gad.associd 
+			LEFT JOIN (SELECT DISTINCT user_id, count(*) scnt from sms_log WHERE status = 1 GROUP BY user_id) s ON s.user_id=u.id 
+			LEFT JOIN (SELECT DISTINCT user_id, count(*) fcnt from sms_log WHERE status = 2 GROUP BY user_id) f ON f.user_id=u.id 
+
+		<where>
+		u.deleted=0 
+			<if test="userType != null and userType == 'passenger'">
+				and u.person_verified = 1
+			</if>
+			<if test="userType == null ">
+				and(u.driver_verified = 1 or u.person_verified = 1)
+			</if>	
+			<if test="userType != null and userType == 'driver'">
+				and u.driver_verified = 1 
+			</if>		
+			<if test="cityItem != null and cityItem == 'city_register' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'city_cur' and cityName != null">
+				AND u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="cityItem != null and cityItem == 'register_or_cur' and cityName != null">
+				AND u.city_register LIKE '%${cityName}%' or u.city_cur LIKE '%${cityName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'groupid' and groupName != null">
+				AND u.groupid LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'city_cur' and groupName != null">
+				AND u.city_cur LIKE '%${groupName}%'
+			</if>
+			<if test="groupItem != null and groupItem == 'register_or_cur' and groupName != null">
+				AND u.city_register LIKE '%${groupName}%' or u.city_cur LIKE '%${groupName}%'
+			</if> 
+
+			<if test="userItem != null and userItem == 'id' and userInfo != null">
+				AND u.id LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'username' and userInfo != null">
+				AND u.username LIKE '%${userInfo}%'
+			</if>
+			<if test="userItem != null and userItem == 'phone' and userInfo != null">
+				AND u.phone LIKE '%${userInfo}%' 
+			</if>
+
+			<if test="fromRegTime != null and ''!= fromRegTime ">
+				AND u.reg_date >= #{fromRegTime} 
+			</if>
+			<if test="toRegTime != null and '' != toRegTime">
+				AND #{toRegTime} >= u.reg_date
+			</if>
+			<if test="fromLoginTime != null and '' != fromLoginTime">
+				AND u.last_login_time >= #{fromLoginTime} 
+			</if>
+			<if test="toLoginTime != null and ''!= toLoginTime">
+				AND #{toLoginTime} >= u.last_login_time
+			</if>
+	</where> 
+		 ORDER BY u.id   LIMIT #{start}, #{limit}
+	</select>
+
+	<select id="findOneByCode" resultMap="SMSPlanResult"
+		parameterType="string">
+		SELECT *
+		FROM sms_plan
+		WHERE deleted=0 AND 
+		<if test="">
+		plan_code = #{plan_code}
+		</if>
+	</select>
+
+	<select id="getSuccessCount" resultType="int" parameterType="int">
+		SELECT count(*)
+		FROM sms_log
+		WHERE user_id = #{user_id} AND deleted = 0
+		AND status = 1
+	</select>
+
+	<select id="getFailCount" resultType="int" parameterType="int">
+		SELECT
+		count(*)
+		FROM sms_log
+		WHERE user_id = #{user_id} AND deleted = 0 AND
+		status = 2
+	</select>
+
+	<select id="getEnvVariable" resultType="string" parameterType="string">
+		SELECT `value`
+		FROM `environment`
+		WHERE `code` = #{codeName}
+	</select>
+
+	<select id="findId" resultType="long">
+	 select max(id) from sms_plan
+	</select>
+	
+	<select id="show" resultType="java.util.Map" parameterType="Long" >
+		SELECT sp.id,sp.send_mode,sp.has_send_times,sp.client_num,sp.limit_times,sp.price,sp.remark,sp.msg 
+		FROM sms_plan sp  
+		WHERE sp.deleted=0 and sp.id=#{id}
+	</select>
+
+	<insert id="addPlan" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sms_plan
+		(   plan_code,client_num, msg, price, send_mode, single_time,has_send_times, limit_times, 
+			regular_send_mode, time1, time2,isenabled, remark, create_time )
+		VALUES
+		(	#{plan_code}, #{client_num}, #{msg},#{price}, #{send_mode}, #{single_time},#{has_send_times},#{limit_times}, 
+			#{regular_send_mode}, #{time1}, #{time2},#{isenabled}, #{remark}, #{create_time})
+	</insert>
+
+	<insert id="addSMSUser" parameterType="hashmap"
+		useGeneratedKeys="true" keyProperty="id">
+			INSERT INTO sms_users(
+			sms_plan_id,
+			phone,
+			userid)
+		VALUES(
+			#{sms_plan_id}, 
+			#{phone}, 
+			#{user_id}
+		)
+	</insert>
+
+	<insert id="addPlanLog" parameterType="java.util.Map"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO sms_log
+		(
+			sms_plan_id,
+			user_id, 
+			phonenum,
+			price, 
+			status, 
+			time
+		)
+		VALUES
+		(
+			#{sms_plan_id}, 
+			#{user_id},
+			#{phone} ,
+			#{price},
+			#{status},
+			#{time}
+		)
+	</insert>
+
+	<update id="deletePlan" parameterType="int">
+		UPDATE sms_plan
+		SET deleted = 1
+		WHERE id=#{id}
+	</update>
+
+	<update id="deleteSMSUserById" parameterType="int">
+		UPDATE sms_users
+		SET deleted = 1
+		WHERE id=#{id}
+	</update>
+
+	<update id="deleteSMSUser" parameterType="hashmap">
+		UPDATE sms_users
+		SET deleted = 1
+		WHERE userid=#{userid} AND sms_plan_id=#{sms_plan_id}
+	</update>
+
+	<update id="deletePlanLog" parameterType="int">
+		UPDATE sms_log
+		SET
+		deleted = 1
+		WHERE id=#{id}
+	</update>
+
+	<update id="changeSMSPlan" parameterType="long">
+		UPDATE 
+			sms_plan
+		SET
+			client_num=client_num+1
+		WHERE
+			deleted=0
+			AND id=#{id}
+	</update>
+	<update id="updatePlan" parameterType="hashmap">
+		UPDATE 
+			sms_plan
+		SET
+			msg=#{msg},
+			remark=#{remark}
+		WHERE
+			deleted=0
+			AND id=#{id}
+	</update>
+	<update id="changeSMSPlanById" parameterType="long">
+		UPDATE 
+			sms_plan
+		SET
+			client_num=client_num-1
+		WHERE
+			deleted=0
+			AND id=#{id}
+	</update>
+</mapper>

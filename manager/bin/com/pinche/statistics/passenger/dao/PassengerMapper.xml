@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.statistics.passenger.dao.PassengerMapper" >
+
+    <resultMap
+        id="PassengerResult"
+        type="Passenger" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="date"
+            property="date" />
+
+        <result
+            column="cnt_app"
+            property="cnt_app" />
+
+        <result
+            column="cnt_register"
+            property="cnt_register" />
+
+        <result
+            column="cnt_invitecode"
+            property="cnt_invitecode" />
+
+        <result
+            column="cnt_person"
+            property="cnt_person" />
+
+        <result
+            column="cnt_bankcard"
+            property="cnt_bankcard" />
+
+        <result
+            column="cnt_driver"
+            property="cnt_driver" />
+    </resultMap>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="PassengerResult" >
+		SELECT k.date, 0 `cnt_app`, a.cnt_register, b.cnt_invitecode, c.cnt_person, d.cnt_bankcard, e.cnt_driver FROM
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`
+        </if>
+		FROM user WHERE 1=1
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+		) k
+		LEFT JOIN
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`,
+        </if>
+		count(*) `cnt_register` FROM user WHERE 1=1
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+
+        <if test="platform_home == 1" >
+			AND is_platform = 0
+        </if>
+
+        <if test="platform_common == 1" >
+			AND is_platform = 1
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+	 	) a ON k.date=a.date
+		LEFT JOIN
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`,
+        </if>
+		count(*) `cnt_invitecode` FROM user WHERE LENGTH(invitecode_regist)>0
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+		) b ON k.date=b.date
+		LEFT JOIN
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`,
+        </if>
+		count(*) `cnt_person` FROM user WHERE person_verified>0
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+		) c ON k.date = c.date
+		LEFT JOIN
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`,
+        </if>
+		count(*) `cnt_bankcard` FROM user WHERE LENGTH(bankcard)>0
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+		) d ON k.date=d.date
+		LEFT JOIN
+		(SELECT
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date) `date`,
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date) `date`,
+        </if>
+		count(*) `cnt_driver` FROM user WHERE driver_verified>0
+
+        <if test="staticsCity > 0" >
+			AND city_register = #{staticsCity}
+        </if>
+
+        <if test="beginDate != null" >
+
+            <if test="beginDate != &apos;&apos;" >
+				AND reg_date > #{beginDate}
+            </if>
+        </if>
+
+        <if test="endDate != null" >
+
+            <if test="endDate != &apos;&apos;" >
+				AND #{endDate} > reg_date
+            </if>
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime != &apos;&apos;" >
+				AND TIME(reg_date) > #{beginTime}
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+				AND #{endTime} > TIME(reg_date)
+            </if>
+        </if>
+		GROUP BY
+
+        <if test="date_type == &apos;year&apos; || date_type == &apos;&apos;" >
+			year(reg_date)
+        </if>
+
+        <if test="date_type == &apos;quarter&apos;" >
+			quarter(reg_date)
+        </if>
+
+        <if test="date_type == &apos;month&apos;" >
+			month(reg_date)
+        </if>
+
+        <if test="date_type == &apos;week&apos;" >
+			week(reg_date)
+        </if>
+
+        <if test="date_type == &apos;day&apos;" >
+			day(reg_date)
+        </if>
+
+        <if test="date_type == &apos;hour&apos;" >
+			hour(reg_date)
+        </if>
+		) e ON k.date = e.date
+		ORDER BY k.date
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+</mapper>

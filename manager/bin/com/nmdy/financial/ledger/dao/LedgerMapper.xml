@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.financial.ledger.dao.LedgerMapper" >
+
+    <resultMap
+        id="LedgerResult"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="ts_id" />
+
+        <result
+            column="order_cs_id"
+            property="order_cs_id" />
+
+        <result
+            column="passenger_id"
+            property="passenger_id" />
+
+        <result
+            column="passenger_invitecode_regist"
+            property="passenger_invitecode_regist" />
+
+        <result
+            column="passenger_name"
+            property="passenger_name" />
+
+        <result
+            column="passReqId"
+            property="passReqId" />
+
+        <result
+            column="passReqName"
+            property="passReqName" />
+
+        <result
+            column="driver_id"
+            property="driver_id" />
+
+        <result
+            column="driver_name"
+            property="driver_name" />
+
+        <result
+            column="driver_invitecode_regist"
+            property="driver_invitecode_regist" />
+
+        <result
+            column="drivReqId"
+            property="drivReqId" />
+
+        <result
+            column="drivReqName"
+            property="drivReqName" />
+
+        <result
+            column="price"
+            property="order_balance" />
+
+        <result
+            column="city"
+            property="city" />
+
+        <result
+            column="ts_date1"
+            property="date" />
+
+        <result
+            column="application"
+            property="application" />
+
+        <result
+            column="oper1"
+            property="transaction_type" />
+
+        <result
+            column="ts_type"
+            property="status_type" />
+
+        <result
+            column="sum"
+            property="sum" />
+
+        <result
+            column="balance"
+            property="balance" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="userid"
+            property="userid" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="unitid"
+            property="unitid" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="account_type"
+            property="account_type" />
+
+        <result
+            column="pregist"
+            property="passenge" />
+
+        <result
+            column="dregist"
+            property="drive" />
+
+        <result
+            column="pp"
+            property="pp" />
+
+        <result
+            column="dp"
+            property="dp" />
+    </resultMap>
+    <!-- 详细订单 -->
+
+    <resultMap
+        id="orderexeccs"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="order_type"
+            property="order_type" />
+
+        <result
+            column="passenger"
+            property="passenger" />
+
+        <result
+            column="driver"
+            property="driver" />
+
+        <result
+            column="from_"
+            property="from_" />
+
+        <result
+            column="to_"
+            property="to_" />
+
+        <result
+            column="average_price_platform"
+            property="average_price_platform" />
+
+        <result
+            column="price"
+            property="price" />
+
+        <result
+            column="pre_time"
+            property="pre_time" />
+
+        <result
+            column="remark"
+            property="remark" />
+
+        <result
+            column="driverarrival_time"
+            property="driverarrival_time" />
+
+        <result
+            column="clientbeginservice_time"
+            property="clientbeginservice_time" />
+
+        <result
+            column="clientend_time"
+            property="clientend_time" />
+
+        <result
+            column="city_from"
+            property="city_from" />
+
+        <result
+            column="city_to"
+            property="city_to" />
+
+        <result
+            column="has_evaluation_passenger"
+            property="has_evaluation_passenger" />
+
+        <result
+            column="has_evaluation_driver"
+            property="has_evaluation_driver" />
+
+        <result
+            column="password"
+            property="password" />
+
+        <result
+            column="begin_lat"
+            property="begin_lat" />
+
+        <result
+            column="begin_lng"
+            property="begin_lng" />
+
+        <result
+            column="end_lat"
+            property="end_lat" />
+
+        <result
+            column="end_lng"
+            property="end_lng" />
+
+        <result
+            column="freeze_points"
+            property="freeze_points" />
+
+        <result
+            column="begin_exec_time"
+            property="begin_exec_time" />
+
+        <result
+            column="total_distance"
+            property="total_distance" />
+
+        <result
+            column="order_city"
+            property="order_city" />
+
+        <result
+            column="status"
+            property="status" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="cr_date"
+            property="cr_date" />
+
+        <result
+            column="ti_accept_order"
+            property="ti_accept_order" />
+
+        <result
+            column="beginservice_time"
+            property="beginservice_time" />
+
+        <result
+            column="stopservice_time"
+            property="stopservice_time" />
+
+        <result
+            column="pay_time"
+            property="pay_time" />
+
+        <result
+            column="pass_cancel_time"
+            property="pass_cancel_time" />
+
+        <result
+            column="driver_cancel_time"
+            property="driver_cancel_time" />
+
+        <result
+            column="order_num"
+            property="order_num" />
+    </resultMap>
+
+    <resultMap
+        id="MidPoints"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="order_type"
+            property="order_type" />
+
+        <result
+            column="orderid"
+            property="orderid" />
+
+        <result
+            column="index"
+            property="index" />
+
+        <result
+            column="lat"
+            property="lat" />
+
+        <result
+            column="lng"
+            property="lng" />
+
+        <result
+            column="addr"
+            property="addr" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+    <!-- 乘客电话等信息查询 -->
+
+    <resultMap
+        id="userinfo"
+        type="java.util.Map" >
+
+        <result
+            column="username"
+            property="name" />
+
+        <result
+            column="phone"
+            property="phone" />
+
+        <result
+            column="remark"
+            property="remark" />
+    </resultMap>
+
+    <resultMap
+        id="ordernuminfo"
+        type="java.util.Map" >
+
+        <result
+            column="order_num"
+            property="ordernum" />
+    </resultMap>
+    <!-- 上下班班订单 特别部分 -->
+
+    <resultMap
+        id="onoff"
+        type="java.util.Map" >
+
+        <result
+            column="order_cs_id"
+            property="onoff_order_id" />
+
+        <result
+            column="begin_exec_time"
+            property="begin_exec_time" />
+    </resultMap>
+
+    <resultMap
+        id="style"
+        type="java.util.Map" >
+
+        <result
+            column="reqcarstyle"
+            property="reqcarstyle" />
+    </resultMap>
+
+    <resultMap
+        id="which_days"
+        type="java.util.Map" >
+
+        <result
+            column="which_days"
+            property="which_days" />
+    </resultMap>
+    <!-- 长途订单 特别部分 -->
+
+    <resultMap
+        id="long"
+        type="java.util.Map" >
+
+        <result
+            column="order_exec_cs_id"
+            property="long_order_id" />
+
+        <result
+            column="username"
+            property="passengername" />
+    </resultMap>
+    <!-- 客户绿点是否冻结 -->
+
+    <resultMap
+        id="tstype"
+        type="java.util.Map" >
+
+        <result
+            column="ts_type"
+            property="ts_type" />
+    </resultMap>
+
+    <resultMap
+        id="balance"
+        type="java.util.Map" >
+
+        <result
+            column="count"
+            property="count" />
+    </resultMap>
+
+    <!-- unit invit -->
+
+    <resultMap
+        id="unin"
+        type="java.util.Map" >
+
+        <result
+            column="name"
+            property="invitname" />
+        <result
+            column="id"
+            property="userid" />
+    </resultMap>
+<!-- 页面数据表格数据查询 -->
+    <select
+        id="findledger"
+        parameterType="java.util.Map"
+        resultMap="LedgerResult" >
+        
+select * from (SELECT  t.*,  case when t.oper=1 then "进账" else  "出账" end oper1, date_format(t.ts_date,'%Y年%m月%d日') as ts_date1,passenger.id as passenger_id,passenger.is_platform as pp,passenger.invitecode_regist as passenger_invitecode_regist,passenger.username as passenger_name,
+		 passenger.phone as pphone,driver.invitecode_regist as driver_invitecode_regist,driver.phone as dphone,driver.id as driver_id,driver.is_platform as dp,driver.username as driver_name,cs.price,passenger.invitecode_self as pregist,passenger.usercode as pcode,driver.usercode as dcode,
+		driver.invitecode_self as dregist,city.name as city,g.group_name as aa,g.id as bb,a.id as cc,a.name as dd FROM ts t
+		
+		 left JOIN order_exec_cs cs ON t.order_cs_id = cs.id
+		 left JOIN user passenger on passenger.id = cs.passenger
+		 left JOIN user driver ON driver.id = cs.driver
+		 left join group_ g on (passenger.invitecode_regist=g.invitecode_self or driver.invitecode_regist = g.invitecode_self)
+		 left join app_spread_unit a on(passenger.invitecode_regist = a.invite_code or driver.invitecode_regist = a.invite_code)
+		 left JOIN city ON cs.order_city = city.code group by id)tb1  	 
+	
+		where userid=(select id from user where is_platform=1) and tb1.deleted=0
+
+        <!-- 集团客户客户 -->
+
+        <if test="khtype==2 and khinfo==3" >
+
+		    	   
+		    	  
+		    	     and aa=#{username}		
+		    	
+		    	 
+        </if>
+ <!-- 集团客户客户 -->
+
+        <if test="khtype==2 and khinfo==1" >
+
+		    	   
+		    	  
+		    	     and bb=#{khid}		
+		    	
+		    	 
+
+
+
+        </if>
+        <!-- 合作单位客户 -->
+
+        <if test="khtype==3 and khinfo==3" >
+ 
+		    	   cc=#{username}					
+        </if>
+                <if test="khtype==3 and khinfo==1" >
+		    	   
+		    	   and dd=#{khid}		
+
+			
+
+
+        </if>
+		 
+
+        <if test="null!=city" >
+			and city = #{city}
+        </if>
+
+        <if test="null!=begintime" >
+				and ts_date > #{begintime} 
+        </if>
+         <if test="null!=endtime" >
+				 and  #{endtime} > ts_date
+        </if>
+        <!-- 个人客户 -->
+
+        <if test="khtype==1 and khinfo==1" >
+			and account_type=1 and  (passenger_id=#{khid} or driver_id=#{khid})
+        </if>
+
+        <if test="khtype==1 and khinfo==2" >
+			and account_type=1 and (pcode=#{khcode} or dcode=#{khcode})
+        </if>
+
+        <if test="khtype==1 and khinfo==3" >
+			and account_type=1 and (passenger_name=#{username} or driver_name=#{username})
+        </if>
+
+        <if test="khtype==1 and khinfo==4" >
+			and account_type=1 and (pphone=#{phone} or dphone=#{phone})
+        </if>
+
+        <!-- 进出账 -->
+
+        <if test="oper2==0 and oper1==1" >
+			and oper =#{oper1}
+        </if>
+
+        <if test="oper1==0 and oper2==2" >
+			and oper =#{oper2}
+        </if>
+
+        <if test="oper2==2 and oper1==1" >
+			and oper in (#{oper1},#{oper2})
+        </if>
+        <!-- 账目类型 -->
+
+        <if test="ts_type!=null" >
+		     and ts_type =#{ts_type}
+        </if>
+        <!--  -->
+
+        <if test="tsid>0" >
+			and tb1.id=#{tsid}
+        </if>
+
+        <if test="order_cs_id>0" >
+			and order_cs_id=#{order_cs_id}
+        </if>
+        
+        order by ts_date desc
+		 limit #{start},#{limit}
+    </select>
+
+    <select
+        id="gotCount"
+        parameterType="java.util.Map"
+        resultType="int" >
+				select count(*) from (SELECT  t.*,  case when t.oper=1 then "进账" else  "出账" end oper1, date_format(t.ts_date,'%Y年%m月%d日') as ts_date1,passenger.id as passenger_id,passenger.is_platform as pp,passenger.invitecode_regist as passenger_invitecode_regist,passenger.username as passenger_name,
+		 passenger.phone as pphone,driver.invitecode_regist as driver_invitecode_regist,driver.phone as dphone,driver.id as driver_id,driver.is_platform as dp,driver.username as driver_name,cs.price,passenger.invitecode_self as pregist,passenger.usercode as pcode,driver.usercode as dcode,
+		driver.invitecode_self as dregist,city.name as city,g.group_name as aa,g.id as bb,a.id as cc,a.name as dd FROM ts t
+		
+		 left JOIN order_exec_cs cs ON t.order_cs_id = cs.id
+		 left JOIN user passenger on passenger.id = cs.passenger
+		 left JOIN user driver ON driver.id = cs.driver
+		 left join group_ g on (passenger.invitecode_regist=g.invitecode_self or driver.invitecode_regist = g.invitecode_self)
+		 left join app_spread_unit a on(passenger.invitecode_regist = a.invite_code or driver.invitecode_regist = a.invite_code)
+		 left JOIN city ON cs.order_city = city.code group by id)tb1  	 
+	
+		where userid=(select id from user where is_platform=1) and tb1.deleted=0
+
+
+
+
+
+        <!-- 集团客户客户 -->
+
+        <if test="khtype==2 and khinfo==3" >
+
+		    	   
+		    	  
+		    	     and aa=#{username}		
+		    	
+		    	 
+
+
+
+        </if>
+ <!-- 集团客户客户 -->
+
+        <if test="khtype==2 and khinfo==1" >
+
+		    	   
+		    	  
+		    	     and bb=#{khid}		
+		    	
+		    	 
+
+
+
+        </if>
+        <!-- 合作单位客户 -->
+
+        <if test="khtype==3 and khinfo==3" >
+ 
+		    	   cc=#{username}		
+
+			
+
+
+        </if>
+                <if test="khtype==3 and khinfo==1" >
+		    	   
+		    	   and dd=#{khid}		
+
+			
+
+
+        </if>
+		 
+
+
+
+
+
+        <if test="null!=city" >
+			and city = #{city}
+
+
+
+
+        </if>
+
+        <if test="null!=begintime" >
+				and ts_date > #{begintime} 
+        </if>
+         <if test="null!=endtime" >
+				 and  #{endtime} > ts_date
+        </if>
+        <!-- 个人客户 -->
+
+        <if test="khtype==1 and khinfo==1" >
+			and account_type=1 and  (passenger_id=#{khid} or driver_id=#{khid})
+
+
+
+
+        </if>
+
+        <if test="khtype==1 and khinfo==2" >
+			and account_type=1 and (pcode=#{khcode} or dcode=#{khcode})
+
+
+
+
+        </if>
+
+        <if test="khtype==1 and khinfo==3" >
+			and account_type=1 and (passenger_name=#{username} or driver_name=#{username})
+
+
+
+
+        </if>
+
+        <if test="khtype==1 and khinfo==4" >
+			and account_type=1 and (pphone=#{phone} or dphone=#{phone})
+
+
+
+
+        </if>
+
+        <!-- 进出账 -->
+
+        <if test="oper2==0 and oper1==1" >
+			and oper =#{oper1}
+
+
+
+
+        </if>
+
+        <if test="oper1==0 and oper2==2" >
+			and oper =#{oper2}
+
+
+
+
+        </if>
+
+        <if test="oper2==2 and oper1==1" >
+			and oper in (#{oper1},#{oper2})
+
+
+
+
+        </if>
+        <!-- 账目类型 -->
+
+        <if test="ts_type!=null" >
+		     and ts_type =#{ts_type}
+
+
+
+
+        </if>
+        <!--  -->
+
+        <if test="tsid>0" >
+			and tb1.id=#{tsid}
+
+
+
+
+        </if>
+
+        <if test="order_cs_id>0" >
+			and order_cs_id=#{order_cs_id}
+
+
+
+
+        </if>
+    </select>
+
+    <!-- 详细订单查询 -->
+    <!-- 详细订单查询 -->
+
+    <select
+        id="findone"
+        parameterType="int"
+        resultMap="orderexeccs" >
+		SELECT * FROM order_exec_cs WHERE id=#{id} AND deleted=0
+    </select>
+
+    <select
+        id="findMidPoints"
+        parameterType="java.util.Map"
+        resultMap="MidPoints" >
+		SELECT * FROM midpoints WHERE deleted = 0 AND orderid = #{orderid}
+    </select>
+
+    <select
+        id="finduser"
+        parameterType="long"
+        resultMap="userinfo" >
+		select username,phone,remark from user where deleted=0 and id = #{id}
+    </select>
+
+    <select
+        id="findtemp"
+        parameterType="int"
+        resultMap="ordernuminfo" >
+		select order_num from order_temp_details where order_cs_id =#{id}
+    </select>
+
+    <select
+        id="findonoff"
+        parameterType="int"
+        resultMap="ordernuminfo" >
+		SELECT order_num
+FROM order_onoffduty_details
+WHERE id = (
+SELECT orderdetails_id
+FROM order_onoffduty_divide
+WHERE driver_id=(
+SELECT onoffduty_divide_id
+FROM order_onoffduty_exec_details
+WHERE order_cs_id=#{id}))
+    </select>
+
+    <select
+        id="findlongdis"
+        parameterType="int"
+        resultMap="ordernuminfo" >
+		SELECT order_num
+FROM order_longdistance_details
+WHERE id=(
+SELECT orderdriverlongdistance_id
+FROM order_longdistance_users_cs
+WHERE order_exec_cs_id = #{id})
+    </select>
+    <!-- 上下班订单部分执行详情查询 -->
+
+    <select
+        id="showonoff"
+        parameterType="String"
+        resultMap="onoff" >
+SELECT order_cs_id,date_format(oec.begin_exec_time,'%Y年%m月%d日') as begin_exec_time
+FROM order_onoffduty_exec_details ooed
+LEFT JOIN order_exec_cs oec ON
+ooed.order_cs_id = oec.id
+WHERE ooed.onoffduty_divide_id=(
+SELECT id
+FROM order_onoffduty_divide
+WHERE orderdetails_id= (
+SELECT id
+FROM order_onoffduty_details
+WHERE order_num = #{xxx}))
+    </select>
+    <!-- 需求车型 -->
+
+    <select
+        id="carstyle"
+        parameterType="String"
+        resultMap="style" >
+SELECT reqcarstyle
+FROM order_onoffduty_details
+WHERE order_num = #{aaa}
+    </select>
+
+    <!-- 需求车型 -->
+
+    <select
+        id="findday"
+        parameterType="String"
+        resultMap="which_days" >
+SELECT which_days
+FROM order_onoffduty_divide
+WHERE orderdetails_id=(
+SELECT id
+FROM order_onoffduty_details
+WHERE order_num =#{sss})
+    </select>
+    <!-- 长途订单部分详情查询 -->
+
+    <select
+        id="showlong"
+        parameterType="String"
+        resultMap="long" >
+SELECT order_exec_cs_id,u.username
+FROM order_longdistance_users_cs olus
+LEFT JOIN user u ON olus.userid=u.id
+WHERE orderdriverlongdistance_id =(
+SELECT id
+FROM order_longdistance_details
+WHERE order_num = #{bbb})	
+    </select>
+
+    <select
+        id="findts"
+        parameterType="int"
+        resultMap="tstype" >
+	    select ts_type from ts where order_cs_id =#{orderid}
+    </select>
+    <!-- 统计平台总的balance -->
+
+    <select
+        id="sumbalance"
+        resultMap="balance" >
+select ifnull(balance,0) as count from ts where id=(select max(id)from ts where userid=(select id from user where is_platform=1))
+    </select>
+    <!-- 查找user里面的邀请人 -->
+    <!-- user invit -->
+
+    <resultMap
+        id="uin"
+        type="java.util.Map" >
+
+        <result
+            column="username"
+            property="invitname" />
+         <result
+            column="id"
+            property="userid" />
+    </resultMap>
+   
+   
+
+    <select
+        id="finduserinvit"
+        parameterType="java.util.Map"
+        resultMap="uin" >
+		select id,username from user where invitecode_self = #{ins}	
+    </select>
+    <!-- 查找group里面的邀请人 -->
+    <!-- group invit -->
+
+    <resultMap
+        id="gin"
+        type="java.util.Map" >
+
+        <result
+            column="group_name"
+            property="invitname" />
+        <result
+            column="id"
+            property="userid" />
+    </resultMap>
+
+    <select
+        id="findgroupinvit"
+        parameterType="java.util.Map"
+        resultMap="gin" >
+		select id,group_name from group_ where invitecode_self = #{ins}	
+    </select>
+    <!-- 查找unit里面的邀请人 -->
+
+    <select
+        id="findunitinvit"
+        parameterType="java.util.Map"
+        resultMap="uin" >
+		select id,name from app_spread_unit where invite_code = #{ins}	
+    </select>
+
+</mapper>

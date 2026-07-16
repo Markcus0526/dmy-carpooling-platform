@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.customerManage.groupAssociation.dao.GroupAssociationMapper" >
+
+    <!-- 常用的查询结果集 -->
+
+    <resultMap
+        id="GroupAssociationBaseInfo"
+        type="java.util.Map" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="ga_code"
+            property="ga_code" />
+
+        <result
+            column="ga_name"
+            property="ga_name" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="memberCount"
+            property="memberCount" />
+    </resultMap>
+
+    <!-- 按照ID，用户名，姓名，电话 四种条件查询 -->
+
+    <select
+        id="findGroupAssociationsByCondition"
+        parameterType="java.util.Map"
+        resultMap="GroupAssociationBaseInfo" >
+		select
+			ga.id,ga.ga_code, ga.ga_name, ga.group_property,
+			(SELECT COUNT(*) FROM group_association_details WHERE associd=ga.id) AS memberCount 
+		from 
+			group_association ga
+
+        <where>
+
+            <if test="conditionSelect != null or conditionSelect == null or conditionInput != null  or conditionInput == null" >
+				deleted = 0
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;ga_code&apos; and conditionInput != null" >
+				AND ga_code LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;ga_name&apos; and conditionInput != null" >
+				AND ga_name LIKE '%${conditionInput}%'
+            </if>
+        </where>
+		LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 获得条件查询的总记录数 -->
+
+    <select
+        id="getGroupAssociationCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		select count(*) from group_association
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;ga_code&apos; and conditionInput != null" >
+				ga_code LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;ga_name&apos; and conditionInput != null" >
+				ga_name LIKE '%${conditionInput}%'
+            </if>
+        </where>
+    </select>
+
+    <!-- 集团客户查询结果集 -->
+
+    <resultMap
+        id="GroupAssociation_Info"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="ga_code"
+            property="ga_code" />
+
+        <result
+            column="ga_name"
+            property="ga_name" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="desc_"
+            property="desc_" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="getGroupAssociationInfo"
+        parameterType="long"
+        resultMap="GroupAssociation_Info" >
+		SELECT
+			id,
+			ga_code,
+			ga_name,
+			linkname,
+			linkphone,
+			group_property,
+			contract_no,
+			fix_phone,
+			email,
+			fax,
+			group_address,
+			date_format(sign_time,'%Y-%m-%d') as sign_time,
+			deleted,
+			desc_
+
+			
+			
+		FROM
+			group_association
+		WHERE
+			id=#{id}
+    </select>
+
+    <update
+        id="updateGroupAssociationInfo"
+        parameterType="java.util.Map" >
+		update group_association
+
+        <set>
+
+            <if test="ga_code != null" >
+				ga_code = #{ga_code},
+            </if>
+
+            <if test="ga_name != null" >
+				ga_name = #{ga_name},
+            </if>
+
+            <if test="linkname != null" >
+				linkname = #{linkname},
+            </if>
+
+            <if test="linkphone != null" >
+				linkphone = #{linkphone},
+            </if>
+
+            <if test="group_property != null" >
+				group_property = #{group_property},
+            </if>
+
+            <if test="contract_no != null" >
+				contract_no = #{contract_no},
+            </if>
+
+            <if test="fix_phone != null" >
+				fix_phone = #{fix_phone},
+            </if>
+
+            <if test="email != null" >
+				email = #{email},
+            </if>
+
+            <if test="fax != null" >
+				fax = #{fax},
+            </if>
+
+            <if test="group_address != null" >
+				group_address = #{group_address},
+            </if>
+
+            <if test="desc_ != null" >
+				desc_ = #{desc_},
+            </if>
+
+            <if test="sign_time != null" >
+				sign_time = #{sign_time},
+            </if>
+
+            <if test="deleted != null" >
+				deleted = #{deleted},
+            </if>
+        </set>
+		where id = #{id}
+    </update>
+
+    <!-- 新增集团联盟客户 -->
+
+    <insert
+        id="saveGroupAssociation"
+        keyProperty="id"
+        parameterType="java.util.Map"
+        useGeneratedKeys="true" >
+	  insert into
+	  	 group_association 
+		  	(ga_code,ga_name,linkname,linkphone,
+		  	 group_property,contract_no,fix_phone,email,fax,
+		 	 group_address,sign_time,desc_
+		 	 ) 
+	  values 
+		  	(#{ga_code},#{ga_name},#{linkname},#{linkphone},
+		  	 #{group_property},#{contract_no},#{fix_phone},#{email},#{fax},
+		  	 #{group_address},#{sign_time},#{desc_}
+		  	 
+		  	 )
+    </insert>
+
+    <resultMap
+        id="groups"
+        type="java.util.Map" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+    </resultMap>
+
+    <!-- 添加集团客户至集团联盟客户 -->
+
+    <insert
+        id="addMemberToGroupAssociation"
+        keyProperty="id"
+        parameterType="java.util.Map"
+        useGeneratedKeys="true" >
+	INSERT INTO group_association_details (groupid ,associd ) VALUES (#{groupid},#{id});
+    </insert>
+
+    <!-- 从集团联盟客户中移除指定客户 -->
+
+    <delete
+        id="removeMember"
+        parameterType="java.util.Map" >
+	DELETE   FROM group_association_details WHERE groupid=#{groupid} AND associd = #{id}
+    </delete>
+
+    <!-- 根据条件获得非集团联盟客户中的集团客户 -->
+
+    <select
+        id="getGroupsByCondition"
+        parameterType="java.util.Map"
+        resultMap="groups" >
+		select
+			g.id,g.groupid, g.group_name
+		from 
+			group_ g
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;groupid&apos; and conditionInput != null" >
+				g.groupid LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;group_name&apos; and conditionInput != null" >
+				g.group_name LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput != null or conditionInput ==null" >
+				 AND  g.id NOT IN  (SELECT groupid FROM group_association_details )   
+            </if>
+        </where>
+		LIMIT #{start},#{limit} ;
+    </select>
+
+    <!-- 根据条件获得非集团联盟客户中的集团客户 数量 -->
+
+    <select
+        id="getGroupsCountByCondition"
+        parameterType="java.util.Map"
+        resultType="java.lang.Integer" >
+		select
+			count(*)
+		from 
+			group_ g
+
+        <where>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;groupid&apos; and conditionInput != null" >
+				g.groupid LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionSelect != null and conditionSelect == &apos;group_name&apos; and conditionInput != null" >
+				g.group_name LIKE '%${conditionInput}%'
+            </if>
+
+            <if test="conditionInput != null or conditionInput ==null" >
+				 AND  g.id NOT IN  (SELECT groupid FROM group_association_details )   
+            </if>
+        </where>
+    </select>
+
+    <!-- 获得指定集团联盟旗下的集团客户 -->
+
+    <select
+        id="getGroupsInGA"
+        parameterType="java.util.Map"
+        resultMap="groups" >
+		SELECT  
+			g.id,g.groupid,g.group_name 
+		FROM  
+			group_  g  
+		LEFT JOIN 
+			group_association_details gad 
+		ON 
+			g.id = gad.groupid 
+		WHERE 
+			gad.associd = #{id}
+			
+			LIMIT #{start},#{limit};
+    </select>
+
+    <!-- 获得指定集团联盟旗下的集团数 -->
+
+    <select
+        id="getGroupsCountInGA"
+        parameterType="long"
+        resultType="java.lang.Integer" >
+		SELECT  
+			count(*)
+		FROM  
+			group_  g  
+		LEFT JOIN 
+			group_association_details gad 
+		ON 
+			g.id = gad.groupid 
+		WHERE 
+			gad.associd = #{id}
+    </select>
+    <!-- 删除集团联盟客户（将deleted字段置为1，方便日后查询历史信息） -->
+
+    <update
+        id="delGroupAssociation"
+        parameterType="long" >
+		update 
+			group_association 
+		set 
+			deleted=1 
+		where 
+			id=#{id}
+    </update>
+
+</mapper>

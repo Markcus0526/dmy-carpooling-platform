@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.authority.menu.dao.MenuMapper" >
+
+    <resultMap
+        id="MenuResult"
+        type="Menu" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="name"
+            property="name" />
+
+        <result
+            column="url"
+            property="url" />
+
+        <result
+            column="menucode"
+            property="menucode" />
+
+        <result
+            column="submenu"
+            property="submenu" />
+
+        <result
+            column="parent"
+            property="parent" />
+    </resultMap>
+
+    <select
+        id="findAll"
+        resultMap="MenuResult" >
+		SELECT * FROM menu
+    </select>
+
+    <select
+        id="findAllByRole"
+        parameterType="int"
+        resultMap="MenuResult" >
+		SELECT m.* FROM menu m
+		LEFT JOIN roleitem t ON t.mid=m.id
+		LEFT JOIN role r ON r.id=t.rid
+		WHERE r.id=#{rid} and t.chk>0
+    </select>
+
+    <select
+        id="findOneById"
+        parameterType="int"
+        resultType="Menu" >
+		SELECT * FROM menu WHERE id=#{id}
+    </select>
+
+    <select
+        id="findOneByCode"
+        parameterType="hashmap"
+        resultType="Menu" >
+		SELECT * FROM menu WHERE menucode=#{menucode} AND submenu=#{submenu}
+    </select>
+
+    <select
+        id="findAllByMenucode"
+        parameterType="int"
+        resultMap="MenuResult" >
+		SELECT * FROM menu WHERE menucode=#{menucode}
+    </select>
+
+    <select
+        id="findChildren"
+        parameterType="int"
+        resultMap="MenuResult" >
+		SELECT * FROM menu WHERE parent=#{parent}
+    </select>
+
+</mapper>

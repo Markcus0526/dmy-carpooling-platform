@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.customer.group.dao.GroupMapper" >
+
+    <resultMap
+        id="GroupResult"
+        type="Group" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="create_date"
+            property="create_date" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="balance_ts"
+            property="balance_ts" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="ratio_as_passenger_self"
+            property="ratio_as_passenger_self" />
+
+        <result
+            column="integer_as_passenger_self"
+            property="integer_as_passenger_self" />
+
+        <result
+            column="active_as_passenger_self"
+            property="active_as_passenger_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="active_as_drivr_self"
+            property="active_as_drivr_self" />
+
+        <result
+            column="limit_month_as_passenger_self"
+            property="limit_month_as_passenger_self" />
+
+        <result
+            column="limit_month_as_driver_self"
+            property="limit_month_as_driver_self" />
+
+        <result
+            column="limit_count_as_passenger_self"
+            property="limit_count_as_passenger_self" />
+
+        <result
+            column="limit_count_as_driver_self"
+            property="limit_count_as_driver_self" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="findById"
+        parameterType="int"
+        resultType="Group" >
+		SELECT * FROM group_ WHERE id=#{id} AND deleted=0
+    </select>
+
+    <select
+        id="findAll"
+        resultMap="GroupResult" >
+		SELECT * FROM group_ where deleted=0
+    </select>
+
+    <select
+        id="findRoleGroup"
+        parameterType="int"
+        resultMap="GroupResult" >
+		SELECT * FROM role_data_org_rel_zyl a left join group_ b on a.group_id = b.id where role_data_id=#{roleId}
+    </select>
+
+    <insert
+        id="addItem"
+        keyProperty="id"
+        parameterType="Group"
+        useGeneratedKeys="true" >
+		INSERT INTO group_ VALUES(#{mid}, #{gid})
+    </insert>
+
+    <update
+        id="editGroup"
+        parameterType="Group" >
+		UPDATE group_ SET group_name=#{group_name} WHERE id=#{id}
+    </update>
+
+    <delete
+        id="removeItem"
+        parameterType="int" >
+		UPDATE group_ SET deleted = 1 where id=#{id}
+    </delete>
+
+    <update
+        id="updateTsid"
+        parameterType="hashmap" >
+		UPDATE `group_` SET balance_ts=#{ts} WHERE id=#{id}
+    </update>
+
+    <delete
+        id="deleteGroupByRoleId"
+        parameterType="int" >
+			delete from role_data_org_rel_zyl where role_data_id=#{roleId}
+    </delete>
+
+    <!-- 批量插入资源关系表 -->
+
+    <insert
+        id="addGroupBatch"
+        parameterType="java.util.List"
+        useGeneratedKeys="true" >
+    insert into role_data_org_rel_zyl (role_data_id,group_id)   
+    values  
+
+        <foreach
+            collection="list"
+            index="index"
+            item="item"
+            separator="," >
+        (#{item.roleId},#{item.groupId})  
+        </foreach>
+    </insert>
+
+ <select
+        id="findMaxId" resultType="int">
+		select max(id) from group_
+    </select>
+</mapper>

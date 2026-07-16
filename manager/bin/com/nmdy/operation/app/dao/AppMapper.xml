@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.operation.app.dao.AppMapper" >
+
+    <resultMap
+        id="AppResult"
+        type="App" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="app_code"
+            property="app_code" />
+
+        <result
+            column="app_name"
+            property="app_name" />
+
+        <result
+            column="version"
+            property="version" />
+
+        <result
+            column="size"
+            property="size" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+
+        <result
+            column="pack_name"
+            property="pack_name" />
+
+        <result
+            column="qrcode_path"
+            property="qrcode_path" />
+
+        <result
+            column="url"
+            property="url" />
+
+        <result
+            column="bundle_id"
+            property="bundle_id" />
+    </resultMap>
+
+    <resultMap
+        id="AppPlatResult"
+        type="com.nmdy.operation.app.dao.AppPlatform" >
+
+        <result
+            column="id"
+            property="id" />
+
+        <result
+            column="app_name"
+            property="app_name" />
+
+        <result
+            column="pack_name"
+            property="pack_name" />
+
+        <result
+            column="bundle_id"
+            property="bundle_id" />
+    </resultMap>
+    <!-- 按条件查询所有 -->
+
+    <select
+        id="findall"
+        parameterType="java.util.Map"
+        resultMap="AppResult" >
+			select a.id,a.app_code,a.app_name, av.qrcode_path,a.bundle_id, av.version,av.size,av.url
+			from app a,app_version av
+			where a.deleted=0 and av.app_code=a.app_code and av.deleted=0
+			order by a.id desc
+            LIMIT #{start},#{limit}; 
+    </select>
+
+    <select
+        id="findByCode"
+        parameterType="string"
+        resultMap="AppPlatResult" >
+	    select id,pack_name,app_name,bundle_id from  app where app_code=#{app_code} and deleted=0
+    </select>
+
+    <select
+        id="findNew"
+        parameterType="java.util.Map"
+        resultMap="AppResult" >
+	select a.id,a.app_code,a.app_name ,max(av.version) as version, av.qrcode_path,a.bundle_id,av.size,av.url
+			from app a,app_version av
+			where a.deleted=0 and av.app_code=a.app_code and av.deleted=0    
+            group by av.app_code
+              order by a.id desc
+            LIMIT #{start},#{limit}; 
+    </select>
+    <!-- 按条件查询所有列的总和 -->
+    <!--
+     	<select id="getCount" parameterType="java.util.Map" resultType="int">
+			select count(*) 
+			from app a,app_version av
+			where a.deleted=0 and av.app_code=a.app_code; 
+	</select>
+    -->
+
+    <select
+        id="findById"
+        parameterType="java.util.Map"
+        resultMap="AppResult" >
+	   		select a.id,a.app_code,a.app_name, av.qrcode_path,  av.version,av.size,av.url
+	   		from app a,app_version av
+			where a.deleted=0 and av.app_code=a.app_code and a.id=#{id} and  av.version=#{version}
+    </select>
+
+    <select
+        id="checkAppCode"
+        parameterType="string"
+        resultType="int" >
+	    select count(*) from app where app_code=#{app_code} and deleted=0
+    </select>
+
+    <select
+        id="getCountNew"
+        resultType="int" >
+		select count(tbl.version) from(
+		select max(av.version) as version from app a,app_version av
+		 where a.deleted=0 and av.app_code=a.app_code and av.deleted=0 group by av.app_code 
+		 )tbl
+    </select>
+
+    <select
+        id="getCountAll"
+        resultType="int" >
+	select count(*)
+			from app a,app_version av
+			where a.deleted=0 and av.app_code=a.app_code and av.deleted=0
+    </select>
+    <!--
+    更新版本 
+	<update id="update" parameterType="java.util.Map">
+		    update  app a,app_version av
+		    set  av.version= #{version} ,  a.pack_name= #{pack_name} ,av.url= #{url} , av.qrcode_path= #{qrcode_path} ,av.upload_time= #{upload_time} 
+	        where a.deleted=0 and av.app_code=a.app_code and a.id=#{id}
+	</update>
+    -->
+    <!-- 插入APP表的字段 -->
+
+    <insert
+        id="insertApp"
+        parameterType="java.util.Map" >
+
+        <if test="url_scheme == null or &apos;&apos; == url_scheme" >
+			insert into app (app_code,app_name,pack_name,deleted)values(#{app_code},#{app_name},#{pack_name},0);
+        </if>
+
+        <if test="url_scheme != null and &apos;&apos; != url_scheme" >
+ 			insert into app (app_code,app_name,bundle_id,url_scheme,deleted)values(#{app_code},#{app_name},#{bundle_id},#{url_scheme},0);	
+        </if>
+    </insert>
+
+    <!-- 插入APP_SERVION表的字段 -->
+
+    <insert
+        id="insertAppVersion"
+        parameterType="java.util.Map" >
+			insert into app_version (app_code, version,url,qrcode_path,size,upload_time,deleted) values(#{app_code},#{version},#{url},#{qrcode_path},#{size},#{upload_time},0);
+    </insert>
+    <!-- 删除两个表id=#{id}的内容 -->
+
+    <update
+        id="delete"
+        parameterType="long" >
+			update  app a,app_version av set a.deleted=1,av.deleted=1  where a.app_code=av.app_code and a.id=#{id}
+    </update>
+
+    <update
+        id="updateApp"
+        parameterType="java.util.Map" >
+
+        <if test=" app_code != null and &apos;&apos;!= app_code" >
+		update app
+		set app_code=#{app_code}
+
+            <if test=" app_name != null and &apos;&apos;!= app_name" >
+		,  app_name=#{app_name} 
+            </if>
+
+            <if test=" url_scheme != null and &apos;&apos;!= url_scheme" >
+		,  url_scheme=#{url_scheme} 
+            </if>
+
+            <if test=" bundle_id != null and &apos;&apos;!= bundle_id" >
+		 , bundle_id=#{bundle_id} 
+            </if>
+
+            <if test=" pack_name != null and &apos;&apos;!= pack_name" >
+		 , pack_name=#{pack_name} 
+            </if>
+		where app_code=#{app_code} and deleted=0
+        </if>
+    </update>
+
+</mapper>

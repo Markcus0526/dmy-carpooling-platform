@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pinche.customer.groupself.dao.GroupselfMapper" >
+
+    <resultMap
+        id="GroupselfResult"
+        type="Groupself" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="groupid"
+            property="groupid" />
+
+        <result
+            column="group_name"
+            property="group_name" />
+
+        <result
+            column="group_property"
+            property="group_property" />
+
+        <result
+            column="group_address"
+            property="group_address" />
+
+        <result
+            column="linkname"
+            property="linkname" />
+
+        <result
+            column="linkphone"
+            property="linkphone" />
+
+        <result
+            column="contract_no"
+            property="contract_no" />
+
+        <result
+            column="fix_phone"
+            property="fix_phone" />
+
+        <result
+            column="email"
+            property="email" />
+
+        <result
+            column="fax"
+            property="fax" />
+
+        <result
+            column="sign_time"
+            property="sign_time" />
+
+        <result
+            column="invitecode_self"
+            property="invitecode_self" />
+
+        <result
+            column="create_date"
+            property="create_date" />
+
+        <result
+            column="balance_ts"
+            property="balance_ts" />
+
+        <result
+            column="account"
+            property="account" />
+
+        <result
+            column="ratio_as_passenger_self"
+            property="ratio_as_passenger_self" />
+
+        <result
+            column="integer_as_passenger_self"
+            property="integer_as_passenger_self" />
+
+        <result
+            column="active_as_passenger_self"
+            property="active_as_passenger_self" />
+
+        <result
+            column="ratio_as_driver_self"
+            property="ratio_as_driver_self" />
+
+        <result
+            column="integer_as_driver_self"
+            property="integer_as_driver_self" />
+
+        <result
+            column="active_as_driver_self"
+            property="active_as_driver_self" />
+
+        <result
+            column="limit_month_as_passenger_self"
+            property="limit_month_as_passenger_self" />
+
+        <result
+            column="limit_month_as_driver_self"
+            property="limit_month_as_driver_self" />
+
+        <result
+            column="limit_count_as_passenger_self"
+            property="limit_count_as_passenger_self" />
+
+        <result
+            column="limit_count_as_driver_self"
+            property="limit_count_as_driver_self" />
+
+        <result
+            column="deleted"
+            property="deleted" />
+    </resultMap>
+
+    <select
+        id="findOneByGroupId"
+        parameterType="string"
+        resultType="Groupself" >
+		SELECT * FROM group_ 
+		WHERE groupid=#{groupid} AND deleted=0
+    </select>
+
+    <select
+        id="findAll"
+        resultMap="GroupselfResult" >
+		SELECT * FROM group_ WHERE deleted=0
+    </select>
+
+    <update
+        id="editGroupself"
+        parameterType="Groupself" >
+		UPDATE group_ SET group_name=#{group_name}, group_property=#{group_property}, group_address=#{group_address}, linkname=#{linkname},
+			linkphone=#{linkphone}, contract_no=#{contract_no}, fix_phone=#{fix_phone}, email=#{email}, fax=#{fax}, sign_time=#{sign_time}, invitecode_self=#{invitecode_self}
+		WHERE groupid=#{groupid} AND deleted=0
+    </update>
+
+</mapper>

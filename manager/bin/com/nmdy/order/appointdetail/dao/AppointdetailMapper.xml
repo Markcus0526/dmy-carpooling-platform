@@ -1,0 +1,1037 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nmdy.order.appointdetail.dao.AppointdetailMapper" >
+
+    <resultMap
+        id="AppointdetailResult"
+        type="Appointdetail" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="order_num"
+            property="order_num" />
+
+        <result
+            column="start_city"
+            property="start_city" />
+
+        <result
+            column="order_type"
+            property="order_type" />
+
+        <result
+            column="passenger"
+            property="passenger" />
+
+        <result
+            column="driver"
+            property="driver" />
+
+        <result
+            column="status"
+            property="status" />
+
+        <result
+            column="ps_date"
+            property="ps_date" />
+
+        <result
+            column="accept_time"
+            property="accept_time" />
+
+        <result
+            column="begin_exec_time"
+            property="begin_exec_time" />
+
+        <result
+            column="driverarrival_time"
+            property="driverarrival_time" />
+
+        <result
+            column="beginservice_time"
+            property="beginservice_time" />
+
+        <result
+            column="endservice_time"
+            property="endservice_time" />
+
+        <result
+            column="pay_time"
+            property="pay_time" />
+
+        <result
+            column="pass_cancel_time"
+            property="pass_cancel_time" />
+
+        <result
+            column="driver_cancel_time"
+            property="driver_cancel_time" />
+    </resultMap>
+
+    <select
+        id="search"
+        parameterType="hashmap"
+        resultMap="AppointdetailResult" >
+			SELECT tbl_order_detail.*
+		FROM 
+		
+		(
+		
+				SELECT tbl_order_temp.order_num, tbl_order_temp.id,user_city.name AS start_city, 1 AS order_type, tbl_order_temp.publisher AS passenger, tbl_order_temp.driver AS driver, tbl_order_temp.status
+			, tbl_order_temp.ps_date, tbl_order_temp.accept_time, tbl_order_temp.begin_exec_time, tbl_order_temp.driverarrival_time, tbl_order_temp.beginservice_time, tbl_order_temp.endservice_time
+			, tbl_order_temp.pay_time, tbl_order_temp.pass_cancel_time, tbl_order_temp.driver_cancel_time, tbl_order_temp.deleted
+			
+			FROM 
+			(
+				SELECT tbl_temp.*, tbl_exec_cs.driver 
+				FROM order_temp_details tbl_temp 
+				LEFT JOIN order_exec_cs tbl_exec_cs ON tbl_temp.order_cs_id = tbl_exec_cs.id
+			) tbl_order_temp 
+			INNER JOIN city user_city  ON tbl_order_temp.order_city = user_city.code
+			
+		UNION
+      
+	SELECT tbl_onoff_tmp.order_num,tbl_onoff_tmp.id, user_city.name AS start_city, 2 AS order_type, 
+     tbl_onoff_tmp.publisher AS passenger, tbl_onoff_tmp.driver_id AS driver, tbl_onoff_tmp.status ,
+     tbl_onoff_tmp.publish_date AS ps_date, tbl_onoff_tmp.ti_accept_order AS accept_time, tbl_onoff_tmp.begin_exec_time,
+   tbl_onoff_tmp.driverarrival_time , tbl_onoff_tmp.beginservice_time, tbl_onoff_tmp.endservice_time, 
+     tbl_onoff_tmp.pay_time, tbl_onoff_tmp.pass_cancel_time, tbl_onoff_tmp.driver_cancel_time, tbl_onoff_tmp.deleted
+      FROM ( 
+      SELECT tbl_temp2.*, tbl_order_exec.begin_exec_time, tbl_order_exec.driverarrival_time,tbl_order_exec.beginservice_time,
+      tbl_order_exec.pay_time ,tbl_order_exec.pass_cancel_time, tbl_order_exec.driver_cancel_time 
+      FROM ( SELECT tbl_temp1.*, tbl_onoff_exec.order_cs_id 
+      FROM ( SELECT tbl_onoff_detail.*, tbl_onoff_divide.driver_id ,tbl_onoff_divide.id as onoffduty_divide_id 
+      from order_onoffduty_details tbl_onoff_detail 
+      LEFT JOIN order_onoffduty_divide tbl_onoff_divide ON tbl_onoff_detail.id = tbl_onoff_divide.orderdetails_id) tbl_temp1 
+      LEFT JOIN order_onoffduty_exec_details tbl_onoff_exec ON tbl_temp1.onoffduty_divide_id = tbl_onoff_exec.onoffduty_divide_id ) tbl_temp2
+       LEFT JOIN order_exec_cs tbl_order_exec ON tbl_temp2.order_cs_id = tbl_order_exec.id ) tbl_onoff_tmp 
+      INNER JOIN city user_city on tbl_onoff_tmp.order_city=user_city.code 
+      
+		UNION 
+		
+		 SELECT tabdetails.order_num,tabdetails.id, tabdetails.start_city, 3 AS order_type, tbl_long_user.userid AS passenger, tabdetails.publisher AS driver, tabdetails.status
+			, tabdetails.ps_time AS ps_date, tabdetails.ti_accept_order, tabdetails.begin_exec_time, tabdetails.driverarrival_time, tabdetails.beginservice_time
+			, tabdetails.endservice_time, tabdetails.pay_time, tabdetails.pass_cancel_time, tabdetails.driver_cancel_time, tabdetails.deleted
+	  from (
+      select tbl_long_detail.order_num,tbl_long_detail.id, user_city.name AS start_city,   tbl_long_detail.publisher , tbl_long_detail.status
+			, tbl_long_detail.ps_time  ,tbl_long_detail.ti_accept_order, tbl_long_detail.begin_exec_time, tbl_long_detail.driverarrival_time, tbl_long_detail.beginservice_time
+			, tbl_long_detail.endservice_time, tbl_long_detail.pay_time, tbl_long_detail.pass_cancel_time, tbl_long_detail.driver_cancel_time, tbl_long_detail.deleted
+      FROM order_longdistance_details tbl_long_detail 
+      INNER JOIN city user_city  ON tbl_long_detail.start_city = user_city.code
+      ) tabdetails
+		inner JOIN order_longdistance_users_cs tbl_long_user ON tabdetails.id = tbl_long_user.orderdriverlongdistance_id
+		) tbl_order_detail
+
+        <if test="isJoinUser == 1" >
+			  inner JOIN user u 
+
+            <if test="usertype == 1" >
+					ON tbl_order_detail.driver = u.id
+            </if>
+
+            <if test="usertype == 2" >
+					ON tbl_order_detail.passenger = u.id
+            </if>
+
+            <if test="usertype == 3" >
+					ON (tbl_order_detail.driver = u.id OR tbl_order_detail.passenger = u.id) 
+            </if>
+		    	WHERE u.deleted = 0 and tbl_order_detail.deleted=0
+
+            <if test="&apos;&apos;!= usercode and usercode !=null" >
+			AND u.usercode like #{usercode}
+            </if>
+
+            <if test="&apos;&apos;!= username and username !=null" >
+			AND u.username like #{username}
+            </if>
+
+            <if test="&apos;&apos;!= userphone and userphone !=null" >
+			AND u.phone like #{userphone}
+            </if>
+
+            <if test="&apos;&apos;!= nickname and nickname !=null" >
+			AND u.nickname like #{nickname}	
+            </if>
+        </if>
+
+        <if test="isJoinUser == 0" >
+		where tbl_order_detail.deleted=0
+        </if>
+
+        <if test="&apos;&apos;!= status and status !=null" >
+	  		AND tbl_order_detail.status = #{status}
+        </if>
+
+        <if test="&apos;&apos;!= start_city and start_city !=null" >
+			AND tbl_order_detail.start_city like #{start_city}
+        </if>
+
+        <if test="beginTime != null" >
+
+            <if test="beginTime !=&apos;&apos;" >
+
+                <choose>
+
+                    <when test="status == 1" >
+						AND tbl_order_detail.ps_date >= #{beginTime}
+                    </when>
+
+                    <when test="status == 2" >
+						AND tbl_order_detail.accept_time >= #{beginTime}
+                    </when>
+
+                    <when test="status == 3" >
+						AND tbl_order_detail.begin_exec_time >= #{beginTime}
+                    </when>
+
+                    <when test="status == 4" >
+						AND tbl_order_detail.driverarrival_time >= #{beginTime}
+                    </when>
+
+                    <when test="status == 5" >
+						AND tbl_order_detail.beginservice_time >= #{beginTime}
+                    </when>
+
+                    <when test="status == 6" >
+						AND tbl_order_detail.endservice_time >= #{beginTime}
+                    </when>
+
+                    <when test="status == 7" >
+						AND tbl_order_detail.pay_time >= #{beginTime}
+                    </when>
+                </choose>
+            </if>
+        </if>
+
+        <if test="endTime != null" >
+
+            <if test="endTime != &apos;&apos;" >
+
+                <choose>
+
+                    <when test="status == 1" >
+						AND #{endTime} >= tbl_order_detail.ps_date 
+                    </when>
+
+                    <when test="status == 2" >
+						AND #{endTime} >= tbl_order_detail.accept_time 
+                    </when>
+
+                    <when test="status == 3" >
+						AND #{endTime} >= tbl_order_detail.begin_exec_time 
+                    </when>
+
+                    <when test="status == 4" >
+						AND #{endTime} >= tbl_order_detail.driverarrival_time
+                    </when>
+
+                    <when test="status == 5" >
+						AND #{endTime} >= tbl_order_detail.beginservice_time 
+                    </when>
+
+                    <when test="status == 6" >
+						AND #{endTime} >= tbl_order_detail.endservice_time
+                    </when>
+
+                    <when test="status == 7" >
+						AND #{endTime} >= tbl_order_detail.pay_time
+                    </when>
+                </choose>
+            </if>
+        </if>
+		and( 1=0
+
+        <if test="order_type != null" >
+
+            <if test="order_type1 == 1" >
+					OR tbl_order_detail.order_type = #{order_type1}
+            </if>
+
+            <if test="order_type2 == 2" >
+					OR tbl_order_detail.order_type = #{order_type2}
+            </if>
+
+            <if test="order_type3 == 3" >
+					OR tbl_order_detail.order_type = #{order_type3}
+            </if>
+        </if>
+			  )
+
+        <if test="order_num != null" >
+
+            <if test="order_num != &apos;&apos;" >
+				AND tbl_order_detail.order_num = #{order_num}
+            </if>
+        </if>
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+    <select
+        id="getBreakAppointCnt"
+        resultType="int" >
+		SELECT COUNT(*)
+		FROM (SELECT tbl_exec.id, tbl_temp.order_num
+		FROM order_temp_details tbl_temp INNER JOIN order_exec_cs tbl_exec ON tbl_temp.order_cs_id = tbl_exec.id WHERE tbl_exec.deleted = 0) T1
+		INNER JOIN abb_record T2 ON T1.id = T2.order_exec_id WHERE T2.deleted = 0 AND T1.order_num = #{param1}
+    </select>
+
+    <resultMap
+        id="AppointdetailInfoResult"
+        type="AppointdetailInfo" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="order_num"
+            property="order_num" />
+
+        <result
+            column="order_type"
+            property="order_type" />
+
+        <result
+            column="city_from"
+            property="city_from" />
+
+        <result
+            column="driver"
+            property="driver" />
+
+        <result
+            column="total_sum"
+            property="total_sum" />
+
+        <result
+            column="passenger"
+            property="passenger" />
+
+        <result
+            column="price"
+            property="price" />
+
+        <result
+            column="beginservice_time"
+            property="beginservice_time" />
+
+        <result
+            column="pay_time"
+            property="pay_time" />
+
+        <result
+            column="start_addr"
+            property="start_addr" />
+
+        <result
+            column="end_addr"
+            property="end_addr" />
+
+        <result
+            column="ps_date"
+            property="ps_date" />
+
+        <result
+            column="accept_time"
+            property="accept_time" />
+
+        <result
+            column="begin_exec_time"
+            property="begin_exec_time" />
+
+        <result
+            column="driverarrival_time"
+            property="driverarrival_time" />
+
+        <result
+            column="endservice_time"
+            property="endservice_time" />
+
+        <result
+            column="pre_time"
+            property="pre_time" />
+
+        <result
+            column="status"
+            property="status" />
+
+        <result
+            column="reqcarstyle"
+            property="reqcarstyle" />
+
+        <result
+            column="passengerRemark"
+            property="passengerRemark" />
+
+        <result
+            column="driverRemark"
+            property="driverRemark" />
+
+        <result
+            column="weekdays"
+            property="weekdays" />
+
+        <result
+            column="orderExecId"
+            property="orderExecId" />
+
+        <result
+            column="start_city"
+            property="start_city" />
+    </resultMap>
+
+    <select
+        id="findOrderdetailInfo"
+        parameterType="java.util.Map"
+        resultType="AppointdetailInfo" >
+
+        <choose>
+
+            <when test="order_type == 1" >
+			select tempdetails.*,tbl_exec_cs.remark AS driverRemark, tbl_exec_cs.id AS orderExecId,tbl_exec_cs.city_from ,tbl_exec_cs.driver, '1' AS order_type,tbl_exec_cs.price AS total_sum
+   			from ( SELECT tbl_temp.id, tbl_temp.order_num
+				, tbl_temp.publisher AS passenger, tbl_temp.price, tbl_temp.beginservice_time, tbl_temp.pay_time, tbl_temp.start_addr, tbl_temp.end_addr
+				, tbl_temp.ps_date, tbl_temp.accept_time, tbl_temp.begin_exec_time, tbl_temp.driverarrival_time, tbl_temp.endservice_time, tbl_temp.pre_time, tbl_temp.status
+				,c.name as start_city,  tbl_temp.reqcarstyle, tbl_temp.remark AS passengerRemark ,tbl_temp.deleted,tbl_temp.order_cs_id
+			FROM order_temp_details tbl_temp 
+          LEFT JOIN  city  c on tbl_temp.order_city = c.code
+         ) tempdetails
+         LEFT JOIN order_exec_cs tbl_exec_cs ON tempdetails.order_cs_id = tbl_exec_cs.id
+			WHERE tempdetails.deleted = 0 AND (tbl_exec_cs.deleted = 0 OR ISNULL(tbl_exec_cs.deleted))
+			AND tempdetails.id = #{id}
+			group by id	
+            </when>
+
+            <when test="order_type == 2" >
+			SELECT tbl_onoff_tmp.order_num,tbl_onoff_tmp.id, user_city.name AS start_city, 2 as order_type, 
+		     tbl_onoff_tmp.publisher AS passenger, tbl_onoff_tmp.driver_id AS driver, tbl_onoff_tmp.status ,
+		     tbl_onoff_tmp.publish_date AS ps_date, tbl_onoff_tmp.ti_accept_order AS accept_time, tbl_onoff_tmp.begin_exec_time,
+		   tbl_onoff_tmp.driverarrival_time , tbl_onoff_tmp.beginservice_time, tbl_onoff_tmp.endservice_time, tbl_onoff_tmp.weekdays,
+		     tbl_onoff_tmp.pay_time, tbl_onoff_tmp.pass_cancel_time, tbl_onoff_tmp.driver_cancel_time, tbl_onoff_tmp.deleted
+		      FROM ( 
+		      SELECT tbl_temp2.*, tbl_order_exec.begin_exec_time, tbl_order_exec.driverarrival_time,tbl_order_exec.beginservice_time,
+		      tbl_order_exec.pay_time ,tbl_order_exec.pass_cancel_time, tbl_order_exec.driver_cancel_time 
+		      FROM ( SELECT tbl_temp1.*, tbl_onoff_exec.order_cs_id 
+		      FROM ( SELECT tbl_onoff_detail.*, tbl_onoff_divide.driver_id ,tbl_onoff_divide.id as onoffduty_divide_id ,tbl_onoff_divide.which_days as weekdays
+		      from order_onoffduty_details tbl_onoff_detail 
+		      LEFT JOIN order_onoffduty_divide tbl_onoff_divide ON tbl_onoff_detail.id = tbl_onoff_divide.orderdetails_id) tbl_temp1 
+		      LEFT JOIN order_onoffduty_exec_details tbl_onoff_exec ON tbl_temp1.onoffduty_divide_id = tbl_onoff_exec.onoffduty_divide_id ) tbl_temp2
+		       LEFT JOIN order_exec_cs tbl_order_exec ON tbl_temp2.order_cs_id = tbl_order_exec.id ) tbl_onoff_tmp 
+		       INNER JOIN city user_city 
+		       ON tbl_onoff_tmp.order_city = user_city.code
+		       WHERE tbl_onoff_tmp.id = #{id} and tbl_onoff_tmp.deleted=0
+             group by id 
+            </when>
+
+            <when test="order_type == 3" >
+			     select longdeatils.*,3 AS order_type, tbl_long_user.userid AS passenger,tbl_long_user.order_exec_cs_id as orderExecId
+        from
+        (SELECT tbl_long_detail.order_num,tbl_long_detail.id, city.name as start_city, tbl_long_detail.publisher AS driver, tbl_long_detail.status
+				, tbl_long_detail.ps_time AS ps_date, tbl_long_detail.ti_accept_order as accept_time, tbl_long_detail.begin_exec_time, tbl_long_detail.driverarrival_time, tbl_long_detail.beginservice_time
+				, tbl_long_detail.endservice_time, tbl_long_detail.pay_time, tbl_long_detail.pass_cancel_time, tbl_long_detail.driver_cancel_time, tbl_long_detail.deleted
+			
+			FROM order_longdistance_details tbl_long_detail 
+         left join city on city.code=tbl_long_detail.start_city) longdeatils
+			left JOIN order_longdistance_users_cs tbl_long_user 
+         ON longdeatils.id = tbl_long_user.orderdriverlongdistance_id
+			where longdeatils.id =#{id}  and longdeatils.deleted=0
+					group by id
+            </when>
+        </choose>
+    </select>
+
+    <resultMap
+        id="FreezeTsInfoResult"
+        type="FreezeTsInfo" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="userId"
+            property="userId" />
+
+        <result
+            column="balance"
+            property="balance" />
+
+        <result
+            column="freeze_ts_id"
+            property="freeze_ts_id" />
+
+        <result
+            column="ts_balance"
+            property="ts_balance" />
+    </resultMap>
+
+    <select
+        id="findFreezeTsInfo"
+        resultType="FreezeTsInfo" >
+		SELECT F.*, T.balance AS ts_balance
+		FROM freeze_points F LEFT JOIN ts T ON F.freeze_ts_id = T.id 
+		WHERE F.deleted = 0 AND T.deleted = 0 AND T.order_cs_id = #{param1}
+		order by F.id desc limit 1;
+    </select>
+
+    <update
+        id="updateFreeze"
+        parameterType="hashmap" >
+		UPDATE freeze_points SET adminid=#{adminid}, balance=#{balance}, state=1, release_ts_id=#{release_ts_id}		
+    </update>
+
+    <insert
+        id="insertTsInfo"
+        keyProperty="id"
+        parameterType="hashmap"
+        useGeneratedKeys="true" >
+		INSERT INTO ts (`order_cs_id`, `oper`, `ts_way`, `balance`, `ts_date`, `userid`, `groupid`, `unitid`, `remark`, `account`, `account_type`, `application`, `ts_type`, `sum`, `deleted`)
+		VALUE(#{order_cs_id}, #{oper}, #{ts_way}, #{balance}, NOW(), #{userid}, #{groupid}, #{unitid}, "", #{account}, #{account_type}, #{application}, #{ts_type}, #{sum}, 0)
+    </insert>
+
+    <select
+        id="getBankCard"
+        parameterType="int" >
+		SELECT user.bankcard FROM user WHERE user.id = #{param1}		
+    </select>
+
+    <select
+        id="getFreezeMaxId"
+        resultType="int" >
+		SELECT MAX(id) FROM freeze_points		
+    </select>
+
+    <update
+        id="updateOrderOnoffDetail"
+        parameterType="hashmap" >
+		UPDATE order_onoffduty_details SET price=#{price}, start_addr=#{start_addr}, end_addr=#{end_addr} 
+
+        <if test="ps_date != null" >
+
+            <if test="ps_date != &apos;&apos;" >
+				, publish_date=#{ps_date}
+            </if>
+        </if>
+
+        <if test="accept_time != null" >
+
+            <if test="accept_time != &apos;&apos;" >
+				, ti_accept_order=#{accept_time}
+            </if>
+        </if>
+		, `status`=#{status}, reqcarstyle=#{reqcarstyle}, remark=#{remark}
+		WHERE id=#{id} AND deleted=0
+    </update>
+
+    <update
+        id="updateOrderLongDetail"
+        parameterType="hashmap" >
+		UPDATE order_longdistance_details SET price=#{price}
+
+        <if test="start_addr != null" >
+
+            <if test="start_addr != &apos;&apos;" >
+				, start_city=#{start_addr}			
+            </if>
+        </if>
+
+        <if test="end_addr != null" >
+
+            <if test="end_addr != &apos;&apos;" >
+				, end_city=#{end_addr}			
+            </if>
+        </if>
+
+        <if test="ps_date != null" >
+
+            <if test="ps_date != &apos;&apos;" >
+				, ps_time=#{ps_date}
+            </if>
+        </if>
+
+        <if test="accept_time != null" >
+
+            <if test="accept_time != &apos;&apos;" >
+				, ti_accept_order =#{accept_time}
+            </if>
+        </if>
+
+        <if test="begin_exec_time != null" >
+
+            <if test="begin_exec_time != &apos;&apos;" >
+				, begin_exec_time=#{begin_exec_time}
+            </if>
+        </if>
+
+        <if test="driverarrival_time != null" >
+
+            <if test="driverarrival_time != &apos;&apos;" >
+				, driverarrival_time=#{driverarrival_time}
+            </if>
+        </if>
+
+        <if test="endservice_time != null" >
+
+            <if test="endservice_time != &apos;&apos;" >
+				, endservice_time=#{endservice_time}
+            </if>
+        </if>
+
+        <if test="pre_time != null" >
+
+            <if test="pre_time != &apos;&apos;" >
+				, pre_time=#{pre_time}
+            </if>
+        </if>
+		, `status`=#{status}, remark=#{driverRemark}
+		WHERE id=#{id} AND deleted=0
+    </update>
+
+    <update
+        id="updateOrderTempDetail"
+        parameterType="hashmap" >
+		UPDATE order_temp_details SET price=#{price}
+
+        <if test="beginservice_time != null" >
+
+            <if test="beginservice_time != &apos;&apos;" >
+				, beginservice_time=#{beginservice_time}
+            </if>
+        </if>
+
+        <if test="pay_time != null" >
+
+            <if test="pay_time != &apos;&apos;" >
+				, pay_time=#{pay_time}
+            </if>
+        </if>
+
+        <if test="accept_time != null" >
+
+            <if test="accept_time != &apos;&apos;" >
+				, accept_time=#{accept_time}
+            </if>
+        </if>
+
+        <if test="begin_exec_time != null" >
+
+            <if test="begin_exec_time != &apos;&apos;" >
+				, begin_exec_time=#{begin_exec_time}
+            </if>
+        </if>
+
+        <if test="driverarrival_time != null" >
+
+            <if test="driverarrival_time != &apos;&apos;" >
+				, driverarrival_time=#{driverarrival_time}
+            </if>
+        </if>
+
+        <if test="endservice_time != null" >
+
+            <if test="endservice_time != &apos;&apos;" >
+				, endservice_time=#{endservice_time}
+            </if>
+        </if>
+
+        <if test="pre_time != null" >
+
+            <if test="pre_time != &apos;&apos;" >
+				, pre_time=#{pre_time}
+            </if>
+        </if>
+
+        <if test="remark != null" >
+
+            <if test="remark != &apos;&apos;" >
+				, remark=#{remark}
+            </if>
+        </if>
+
+        <if test="start_addr != null" >
+
+            <if test="start_addr != &apos;&apos;" >
+				, start_addr=#{start_addr}
+            </if>
+        </if>
+
+        <if test="end_addr != null" >
+
+            <if test="end_addr != &apos;&apos;" >
+				, end_addr=#{end_addr}
+            </if>
+        </if>
+
+        <if test="remark != null" >
+			, remark=#{remark}
+        </if>
+		, status=#{status}, reqcarstyle=#{reqcarstyle}		
+		WHERE id = #{id}
+    </update>
+
+    <update
+        id="updateOrderExecCs"
+        parameterType="hashmap" >
+		UPDATE order_exec_cs SET price=#{price}, from_=#{from_}, to_=#{to_}, status=#{status}
+
+        <if test="cr_date != null" >
+
+            <if test="cr_date != &apos;&apos;" >
+				, cr_date=#{cr_date}
+            </if>
+        </if>
+
+        <if test="beginservice_time != null" >
+
+            <if test="beginservice_time != &apos;&apos;" >
+				, beginservice_time=#{beginservice_time}
+            </if>
+        </if>
+
+        <if test="pay_time != null" >
+
+            <if test="pay_time != &apos;&apos;" >
+				, pay_time=#{pay_time}
+            </if>
+        </if>
+
+        <if test="ti_accept_order != null" >
+
+            <if test="ti_accept_order != &apos;&apos;" >
+				, ti_accept_order=#{ti_accept_order}
+            </if>
+        </if>
+
+        <if test="begin_exec_time != null" >
+
+            <if test="begin_exec_time != &apos;&apos;" >
+				, begin_exec_time=#{begin_exec_time}
+            </if>
+        </if>
+
+        <if test="driverarrival_time != null" >
+
+            <if test="driverarrival_time != &apos;&apos;" >
+				, driverarrival_time=#{driverarrival_time}
+            </if>
+        </if>
+
+        <if test="stopservice_time != null" >
+
+            <if test="stopservice_time != &apos;&apos;" >
+				, stopservice_time=#{stopservice_time}
+            </if>
+        </if>
+
+        <if test="city_from != null" >
+
+            <if test="stopservice_time != &apos;&apos;" >
+				, city_from=#{city_from}
+            </if>
+        </if>
+
+        <if test="city_to != null" >
+
+            <if test="city_to != &apos;&apos;" >
+				, stopservice_time=#{city_to}
+            </if>
+        </if>
+
+        <if test="remark != null" >
+
+            <if test="remark != &apos;&apos;" >
+				, remark=#{remark}
+            </if>
+        </if>
+		WHERE id=#{order_exec_id} AND deleted=0
+    </update>
+
+    <update id="updateWeekdays" >
+		UPDATE order_onoffduty_divide SET which_days = #{param1} WHERE deleted = 0 AND orderdetails_id = #{param2}
+    </update>
+
+    <select
+        id="getBalanceByUserId"
+        resultType="Double" >
+		SELECT t.balance FROM user u INNER JOIN ts t ON u.id = t.userid WHERE u.id = 4 ORDER BY t.id DESC LIMIT 1 
+    </select>
+
+    <resultMap
+        id="int1"
+        type="java.util.Map" >
+
+        <result
+            column="freeze"
+            property="freeze" />
+
+        <result
+            column="unfreeze"
+            property="freeze" />
+    </resultMap>
+
+    <select
+        id="findFreezeStatus"
+        parameterType="long"
+        resultMap="int1" >
+	select 
+     (select sum(a.sum) from ts a where a.order_id=#{id}  and a.ts_type='tx_code_009') freeze,
+     (select sum(a.sum) from ts a where a.order_id=#{id}  and a.ts_type='tx_code_0010') unfreeze
+    </select>
+
+    <select
+        id="findAccountFreeze"
+        parameterType="java.util.Map"
+        resultType="int" >
+	 select count(*) from ts where ts.order_id=#{id} and ts.userid=#{userid} and ts.ts_type='tx_code_009'
+    </select>
+
+    <select
+        id="findAccountUnfreeze"
+        parameterType="java.util.Map"
+        resultType="int" >
+	 select count(*) from ts where ts.order_id=#{id} and ts.userid=#{userid} and ts.ts_type='tx_code_0010'
+    </select>
+
+    <update id="updateUserBalance_ts" >
+		UPDATE user SET balance_ts = #{param2} WHERE user.id = #{param1}
+    </update>
+
+    <insert
+        id="insertOrderExecHistory"
+        keyProperty="id"
+        parameterType="hashmap"
+        useGeneratedKeys="true" >
+		INSERT INTO order_modify_log (modifier, md_time, md_column, old_value, new_value, order_id, deleted)
+		VALUE (#{modifier}, NOW(), #{md_column}, #{old_value}, #{new_value}, #{order_exec_id}, 0)
+    </insert>
+
+    <resultMap
+        id="OrderModifyLogInfoResult"
+        type="OrderModifyLogInfo" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="modifier"
+            property="modifier" />
+
+        <result
+            column="md_time"
+            property="md_time" />
+
+        <result
+            column="md_column"
+            property="md_column" />
+
+        <result
+            column="old_value"
+            property="old_value" />
+
+        <result
+            column="new_value"
+            property="new_value" />
+
+        <result
+            column="order_exec_id"
+            property="order_exec_id" />
+    </resultMap>
+
+    <select
+        id="findOrderExecModifyLog"
+        parameterType="java.util.Map"
+        resultMap="OrderModifyLogInfoResult" >
+		SELECT * FROM order_modify_log WHERE order_id = #{orderExecId} AND deleted = 0 ORDER BY id
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+    <select
+        id="findAcountOrderModifyLog"
+        parameterType="java.util.Map"
+        resultType="int" >
+			SELECT count(*) FROM order_modify_log WHERE order_id = #{orderExecId} AND deleted = 0 ORDER BY id
+    </select>
+
+    <resultMap
+        id="OrderLongdistanceUsersCsResult"
+        type="OrderLongdistanceUsersCs" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="orderdriverlongdistance_id"
+            property="orderdriverlongdistance_id" />
+
+        <result
+            column="userid"
+            property="userid" />
+
+        <result
+            column="order_exec_cs_id"
+            property="order_exec_cs_id" />
+
+        <result
+            column="seat_num"
+            property="seat_num" />
+
+        <result
+            column="ps_date"
+            property="ps_date" />
+    </resultMap>
+
+    <select
+        id="findLongdistanceUserCs"
+        parameterType="int"
+        resultMap="OrderLongdistanceUsersCsResult" >
+		SELECT * FROM order_longdistance_users_cs WHERE deleted = 0 AND orderdriverlongdistance_id = #{param1}
+    </select>
+
+    <update
+        id="deleteOrderLongdistanceUsers"
+        parameterType="int" >
+		UPDATE order_longdistance_users_cs SET deleted = 1 WHERE orderdriverlongdistance_id = #{param1} AND deleted = 0
+    </update>
+
+    <resultMap
+        id="OrderOnoffdutyDivideResult"
+        type="OrderOnoffdutyDivide" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="which_days"
+            property="which_days" />
+
+        <result
+            column="orderdetails_id"
+            property="orderdetails_id" />
+
+        <result
+            column="driver_id"
+            property="driver_id" />
+    </resultMap>
+
+    <select
+        id="findOnoffdutyDivideByOrderdetails_id"
+        parameterType="int"
+        resultMap="OrderOnoffdutyDivideResult" >
+		SELECT * FROM order_onoffduty_divide WHERE deleted = 0 AND orderdetails_id = #{param1}
+    </select>
+
+    <update
+        id="deleteOrderOnoffdutyDivide"
+        parameterType="int" >
+		UPDATE order_onoffduty_divide SET deleted = 0 WHERE deleted = 0 AND orderdetails_id = #{param1}
+    </update>
+
+    <resultMap
+        id="OrderOnoffdutyExecDetailsResult"
+        type="OrderOnoffdutyExecDetails" >
+
+        <id
+            column="id"
+            property="id" />
+
+        <result
+            column="onoffduty_divide_id"
+            property="onoffduty_divide_id" />
+
+        <result
+            column="order_cs_id"
+            property="order_cs_id" />
+    </resultMap>
+
+    <select
+        id="findOnoffdutyExecByOnoffduty_divide_id"
+        parameterType="int"
+        resultMap="OrderOnoffdutyExecDetailsResult" >
+		SELECT * FROM order_onoffduty_exec_details WHERE deleted = 0 AND onoffduty_divide_id = #{param1}
+    </select>
+
+    <update
+        id="deleteOrderOnoffdutyExecDetailsByOnoffduty_divide_id"
+        parameterType="int" >
+		UPDATE order_onoffduty_exec_details SET deleted = 1 WHERE onoffduty_divide_id = #{param1} AND deleted = 0
+    </update>
+
+    <select
+        id="findOnOffDExecByOId"
+        parameterType="java.util.Map"
+        resultType="ExecDetails" >
+    	select order_exec_cs.id,order_exec_cs.begin_exec_time 
+       from (        select order_onoffduty_exec_details.order_cs_id,onoffduty.detailsId
+                from (  select  order_onoffduty_divide.*,order_onoffduty_details.id as detailsId
+                         from order_onoffduty_divide 
+                         left join order_onoffduty_details  on order_onoffduty_divide.orderdetails_id=order_onoffduty_details.id
+                      ) onoffduty  
+                left join order_onoffduty_exec_details on order_onoffduty_exec_details.onoffduty_divide_id=onoffduty.id
+            ) onoffduty1 
+     inner join  order_exec_cs  on order_exec_cs.id=onoffduty1.order_cs_id
+     where onoffduty1.detailsId=#{id}
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+    <select
+        id="findTempExecByOId"
+        parameterType="java.util.Map"
+        resultType="ExecDetails" >
+	select order_exec_cs.id,order_exec_cs.begin_exec_time from order_temp_details inner join order_exec_cs on order_temp_details.order_cs_id =order_exec_cs.id
+  where order_temp_details.id=#{id}
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+    <select
+        id="findLongDExecByOId"
+        parameterType="java.util.Map"
+        resultType="ExecDetails" >
+		select order_exec_cs.id,order_exec_cs.begin_exec_time
+		from (   select order_longdistance_users_cs.order_exec_cs_id ,order_longdistance_details.id
+	 			 from  order_longdistance_users_cs 
+	 			 left join order_longdistance_details  on order_longdistance_users_cs.orderdriverlongdistance_id=order_longdistance_details.id
+	 		  ) orderlongdistance 
+	 	inner  join order_exec_cs on order_exec_cs.id =orderlongdistance.order_exec_cs_id
+	 	where orderlongdistance.id=#{id}
+
+        <if test="page != null" >
+
+            <if test="rows != null" >
+				LIMIT #{page}, #{rows}
+            </if>
+        </if>
+    </select>
+
+</mapper>
