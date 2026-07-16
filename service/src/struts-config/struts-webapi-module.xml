@@ -814,6 +814,18 @@
 		</action>
 
 
+		<!-- 129 加密货币支付：验证链上托管合约的存款并记录到订单 -->
+		<action name="payOrderCrypto" class="com.webapi.crypto.action.SVCCryptoPayAction" method="payOrderCrypto">
+			<result type="json"/>
+		</action>
+
+
+		<!-- 130 查询某订单的链上支付记录 -->
+		<action name="getCryptoPayment" class="com.webapi.crypto.action.SVCCryptoPayAction" method="getCryptoPayment">
+			<result type="json"/>
+		</action>
+
+
 	</package>
 </struts>
 
