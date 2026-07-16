@@ -15,7 +15,7 @@ A production-grade, decentralized carpooling infrastructure that integrates mobi
 
 ---
 💼 **Looking to integrate smart contract escrows or custom Web3 logic into your platform?**  
-[Message me on Telegram](https://t.me/markcus0526) to work together directly. No marketplace KYC required.
+[Message me on Telegram](https://t.me/markcus0526) to work together directly.
 
 
 > **Uber, but the fare rides on-chain.** Full-stack ride-sharing platform (Android + iOS + Java backend) with a Solidity escrow contract for trustless deposits and instant driver payouts.
